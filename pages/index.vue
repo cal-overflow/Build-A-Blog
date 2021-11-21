@@ -1,7 +1,18 @@
 <template>
-  <Tutorial/>
+  <main>
+    <Home />
+  </main>
 </template>
 
 <script>
-export default {}
+import Home from '@/components/Home.vue';
+
+export default {
+  // eslint-disable-next-line vue/component-definition-name-casing
+  name: 'index',
+
+  components: {
+    Home,
+  },
+};
 </script>

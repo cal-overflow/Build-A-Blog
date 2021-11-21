@@ -4,7 +4,7 @@
       <portfolio-preview />
       <blog-preview />
     </div>
-    <h1>Hi, I'm Christian :)</h1>
+    <p>Hi, I'm Christian :)</p>
     <p>
       I’m a junior at Iowa State University majoring in computer science and minoring in cybersecurity engineering. I’ve worked on all sorts of computer-related projects, from building myself a computer at fifteen years old to developing an engaging website for a local hair salon, Roxy Seven Salon.
     </p>

@@ -1,11 +1,13 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import Home from '@/components/Home.vue';
+import BlogPreview from '@/components/previews/Blog.vue';
+import PortfolioPreview from '@/components/previews/Portfolio.vue';
 
 describe('Home component', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(Home);
+    wrapper = shallowMount(Home);
   });
 
   it('is a Vue instance', () => {
@@ -19,6 +21,11 @@ describe('Home component', () => {
 
   });
 
-  it.todo('contains a Preview Portfolio component');
-  it.todo('contains a Blog Portfolio component');
+  it('contains a PortfolioPreview component', () => {
+    expect(wrapper.findComponent(PortfolioPreview).exists()).toBeTruthy();
+  });
+
+  it('contains a BlogPreview component', () => {
+    expect(wrapper.findComponent(BlogPreview).exists()).toBeTruthy();
+  });
 });

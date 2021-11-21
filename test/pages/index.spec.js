@@ -2,6 +2,7 @@ import { shallowMount } from '@vue/test-utils';
 import index from '@/pages/index.vue';
 import Home from '@/components/Home.vue';
 import NavBar from '@/components/NavBar.vue';
+import Footer from '@/components/Footer.vue';
 
 describe('index page', () => {
   let wrapper;
@@ -24,5 +25,9 @@ describe('index page', () => {
     expect(wrapper.findComponent(Home).exists()).toBeTruthy();
   });
 
-  it.todo('contains the footer component');  
+  it('contains the footer component', () => {
+    const footer = wrapper.findComponent(Footer);
+    expect(footer.exists()).toBeTruthy();
+    expect(footer.props('currentPage')).toEqual('Home'); 
+  });
 });

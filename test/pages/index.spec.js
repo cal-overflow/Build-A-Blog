@@ -1,19 +1,24 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import index from '@/pages/index.vue';
 import Home from '@/components/Home.vue';
+import NavBar from '@/components/NavBar.vue';
 
 describe('index page', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(index);
+    wrapper = shallowMount(index);
   });
 
   it('is a Vue instance', () => {
     expect(wrapper.vm).toBeTruthy();
   });
 
-  it.todo('contains the nav-bar component');
+  it('renders the nav-bar component with the correct props', () => {
+    const navBar = wrapper.findComponent(NavBar);
+    expect(navBar.exists()).toBeTruthy();
+    expect(navBar.props('currentPage')).toEqual('Home');
+  });
 
   it('contains the Home component', () => {
     expect(wrapper.findComponent(Home).exists()).toBeTruthy();

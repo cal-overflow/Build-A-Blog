@@ -14,10 +14,17 @@ describe('Home component', () => {
     expect(wrapper.vm).toBeTruthy();
   });
 
+  it('contains an image with the correct source', () => {
+    const image = wrapper.find('img[alt="Christian Headshot"]');
+    expect(image.exists()).toBeTruthy();
+    expect(image.attributes().src).toContain('Christian_headshot.jpg');
+  });
+
   it('contains the correct text', () => {
     expect(wrapper.text()).toContain("Hi, I'm Christian");
-    expect(wrapper.text()).toContain("I’m a junior at Iowa State University majoring in computer science and minoring in cybersecurity engineering. I’ve worked on all sorts of computer-related projects, from building myself a computer at fifteen years old to developing an engaging website for a local hair salon, Roxy Seven Salon.");
-    expect(wrapper.text()).toContain("I am currently working as a software developer apprentice at Source Allies. I am highly grateful for the opportunity to work for and learn from such a fantastic company.");
+    expect(wrapper.text()).toContain("I’m a junior at Iowa State University studying computer science. I’ve worked on all sorts of computer-related projects, from building myself a computer at fifteen years old to developing an engaging website for a local hair salon, Roxy Seven Salon.");
+    expect(wrapper.text()).toContain("I’m not one for writing an extensive bio; besides, I think a lot of my work speaks for itself. Have a look around my portfolio to get a good sense of what kind of work I do.");
+    expect(wrapper.text()).toContain("If you have any questions while viewing my website or want to get in touch, please feel free to reach out to me.");
 
   });
 

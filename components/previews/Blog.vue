@@ -1,7 +1,7 @@
 <template>
-  <div class="text-center m-4 md:w-1/2">
+  <div class="text-center m-4 p-4 md:w-1/2 bg-gray-100 shadow-md">
     <a href="/blog" class="font-bold">Blog</a>
-    <divider color="red-400" />
+    <divider color="secondary-red" />
     <p>
       My blog is where I post all of my computer-related experiences. This consists of the struggle and learning I underwent working on things like the projects you’ll find in my portfolio. I also post blogs regarding my Iowa State University courses.
     </p>

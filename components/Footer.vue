@@ -1,6 +1,6 @@
 <template>
   <div class="bg-gray-800 text-white">
-    <nav class="mx-auto max-w-6xl flex items-center justify-between flex-wrap p-4 py-6 px-5 mb-4">
+    <nav class="mx-auto max-w-6xl flex items-center justify-between flex-wrap p-4 py-6 px-5">
       <div class="justify-between">
         <nav-item
           v-for="item in items"

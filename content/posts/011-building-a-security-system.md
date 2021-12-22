@@ -2,7 +2,7 @@
 title: Building a Security System
 slug: building-a-security-system
 date: 10-14-2021
-img: securitysystemsnippet.png
+img: security-system-snippet.png
 categories:
   - Portfolio
 ---
@@ -21,7 +21,7 @@ Pretty difficult, it turns out. So difficult, in fact, that I didn’t complete 
 
 I began the project by checking out the [OpenCV](https://opencv.org/) library, which allows a Python program to interact and process frames from input devices such as cameras. It didn’t take me long to have a Python script that could detect movement. Shortly after learning the basics of the image processing library, I started developing the server-client relationship. This relationship boils down to one main idea. The server is constantly receiving frames from the client, a computer with a connected camera.
 
-| ![Diagram of client and server relationship](/blog-images/securitysystemdiagram.png) |
+| ![Diagram of client and server relationship](/blog-images/security-system-diagram.png) |
 | :--: |
 | Server-Client relationship |
 

@@ -23,7 +23,7 @@ The game mechanics are practically identical to that of Pac-Man, where ghosts tr
 
 #### Gameplay Demo
 
-![CyRun Gameplay](/blog-images/cyrungameplay.gif)
+![CyRun Gameplay](/blog-images/cyrun-gameplay.gif)
 
 #### Scoring System
 

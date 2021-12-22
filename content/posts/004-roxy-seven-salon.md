@@ -2,7 +2,7 @@
 title: Roxy Seven Salon
 slug: businesses-need-websites
 date: 11-29-2019
-img: roxysevensalon.png
+img: roxy-seven-salon.png
 categories:
   - Website Development
   - Portfolio

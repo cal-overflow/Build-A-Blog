@@ -28,7 +28,7 @@ Prior to the event, none of us had been to a hackathon, so it was a completely n
 
 With four people, a 24-hour time limit, and only my Raspberry Pi 3B+ as our source of quick hosting, our group decided to create a web application that serves as a graphing calculator, titled Graphicc. Having a backend is not necessary for an app as such; however, we wanted to have a full-stack application. With the app being full-stack, rather than just a website with some JavaScript, everyone had plenty to do in the 24-hours.
 
-![Graphicc UI Demo](/blog-images/graphiccdemo.gif)
+![Graphicc UI Demo](/blog-images/graphicc-demo.gif)
 
 I spent most of my time on the frontend, utilizing Bootstrap to create a responsive design. I also worked with [Carter Brimeyer](https://github.com/carterbrimeyer) to implement drawing the graph on the HTML Canvas and how requests were sent to the backend. 
 

@@ -2,7 +2,7 @@
 title: We All Start Somewhere
 slug: we-all-start-somewhere
 date: 10-01-2019
-img: 'custom.christianlisle.com.jpg'
+img: custom.christianlisle.com.jpg
 categories: 
   - Website Development
 ---

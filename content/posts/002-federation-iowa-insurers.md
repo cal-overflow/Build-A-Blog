@@ -2,7 +2,7 @@
 title: Improving Accessibility and Adding Security
 slug: improving-accessibility-and-adding-security
 date: 10-29-2019
-img: 'federationofiowainsurers.png'
+img: federation-of-iowa-insurers.png
 categories:
   - Website Development
 ---

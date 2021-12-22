@@ -48,6 +48,8 @@ export default {
     '@nuxt/content',
   ],
 
+  srcDir: 'src',
+
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
 

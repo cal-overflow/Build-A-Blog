@@ -10,5 +10,8 @@ module.exports = {
         'primary-pink': '#eaacd3',
       },
     }
-  }
+  },
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 };

@@ -23,8 +23,6 @@
       <portfolio-preview />
       <blog-preview />
     </div>
-
-    <p class="center"> Recent blog posts here</p>
   </div>
 </template>
 

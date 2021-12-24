@@ -1,12 +1,12 @@
 <template>
   <div v-if="post" :class="getCardStyle">
-    <div :class="`${isWideCard ? 'md:w-2/5' : ''} aspect-square`">
-      <nuxt-link ref="feature-image" :to="`/posts/${post.slug}`" class="w-full h-full block hover:rounded">
+    <div :class="getImageContainerStyle">
+      <nuxt-link ref="feature-image" :to="`/posts/${post.slug}`" class="w-full h-full block">
         <img :src="image" class="object-cover w-full h-full" />
       </nuxt-link>
     </div>
 
-    <div :class="`${isWideCard ? 'md:w-3/5 md:m-4' : ''} mt-2`">
+    <div :class="getPostInfoContainerStyle">
       <nuxt-link ref="title" :to="`/posts/${post.slug}`" class="font-bold text-lg hover:underline">
         {{post.title}}
       </nuxt-link>
@@ -18,11 +18,11 @@
   </div>
 
   <div v-else :class="getCardStyle">
-    <div :class="`${isWideCard ? 'md:w-2/5' : ''}`">
-      <div class="bg-gray-500 w-full h-64" />
+    <div :class="getImageContainerStyle">
+      <div class="bg-gray-500 w-full h-full" />
     </div>
 
-    <div :class="`${isWideCard ? 'md:w-3/5 md:m-4' : ''} mt-2`">
+    <div :class="getPostInfoContainerStyle">
       <div class="bg-gray-500 w-40 h-4" />
 
       <div v-for="i in 6" :key="i" class="bg-gray-400 w-full h-3 my-2"/>
@@ -69,14 +69,19 @@ export default {
       if (this.index % 6 === 0 || (this.last && prevIndex & 6 !== 0))
         style += ' md:flex-row-reverse';
 
-      if (this.isWideCard)
+      if (this.isWideCard) {
         style += ' md:col-span-2 md:flex';
-
-      else {
+      }  else {
         style += ' md:col-span-1';
       }
 
       return style;
+    },
+    getImageContainerStyle() {
+      return `aspectRatio ${this.isWideCard ? 'md:w-2/5' : ''}`;
+    },
+    getPostInfoContainerStyle() {
+      return `!mt-2 ${this.isWideCard ? 'md:w-3/5 md:m-4' : ''}`;
     },
     image() {
       if (this.post.img.includes('http://') || this.post.img.includes('https://')) {

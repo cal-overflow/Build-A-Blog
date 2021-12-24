@@ -1,7 +1,7 @@
 ---
 title: The 9 a.m. Meeting
 slug: the-9am-meeting
-date: 11-14-2019
+date: November 14, 2019
 img: the-9am-meeting.png
 categories:
   - Website Development

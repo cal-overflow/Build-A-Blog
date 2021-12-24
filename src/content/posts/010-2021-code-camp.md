@@ -1,7 +1,7 @@
 ---
 title: 2021 Code Camp
 slug: 2021-code-camp
-date: 04-13-2021
+date: April 13, 2021
 img: graphicc.png
 categories:
   - Portfolio

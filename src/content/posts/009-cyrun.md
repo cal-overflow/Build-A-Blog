@@ -1,7 +1,7 @@
 ---
 title: CyRun
 slug: cyrun
-date: 11-30-2020
+date: November 30, 2020
 img: cyrun.png
 categories:
   - Portfolio

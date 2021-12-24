@@ -1,7 +1,7 @@
 ---
 title: Building a Security System
 slug: building-a-security-system
-date: 10-14-2021
+date: October 14, 2021
 img: security-system-snippet.png
 categories:
   - Portfolio

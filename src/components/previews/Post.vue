@@ -1,7 +1,7 @@
 <template>
   <div v-if="post" :class="getCardStyle">
-    <div :class="getImageContainerStyle">
-      <nuxt-link ref="feature-image" :to="`/posts/${post.slug}`" class="w-full h-full block">
+    <div :class="getImageContainerStyle" style="aspect-ratio: 1 / 1;">
+      <nuxt-link ref="feature-image" :to="`/posts/${post.slug}`" class="w-full h-full">
         <img :src="image" class="object-cover w-full h-full" />
       </nuxt-link>
     </div>
@@ -18,12 +18,12 @@
   </div>
 
   <div v-else :class="getCardStyle">
-    <div :class="getImageContainerStyle">
-      <div class="bg-gray-500 w-full h-full" />
+    <div :class="getImageContainerStyle" style="aspect-ratio: 1 / 1;">
+      <div class="bg-gray-500 object-cover w-full h-full" />
     </div>
 
     <div :class="getPostInfoContainerStyle">
-      <div class="bg-gray-500 w-40 h-4" />
+      <div class="bg-gray-500 w-64 h-4" />
 
       <div v-for="i in 6" :key="i" class="bg-gray-400 w-full h-3 my-2"/>
       <div class="bg-gray-400 w-48 h-3 mb-2"/>
@@ -78,10 +78,11 @@ export default {
       return style;
     },
     getImageContainerStyle() {
-      return `aspectRatio ${this.isWideCard ? 'md:w-2/5' : ''}`;
+      // aspect-square seems to not work as expected, so I have also added style tags where needed
+      return `aspect-square ${this.isWideCard ? 'md:w-2/5' : ''}`;
     },
     getPostInfoContainerStyle() {
-      return `!mt-2 ${this.isWideCard ? 'md:w-3/5 md:m-4' : ''}`;
+      return `mt-2 ${this.isWideCard ? 'md:w-3/5 md:m-4' : ''}`;
     },
     image() {
       if (this.post.img.includes('http://') || this.post.img.includes('https://')) {

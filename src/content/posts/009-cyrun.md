@@ -35,6 +35,6 @@ The game mechanics are practically identical to that of Pac-Man, where ghosts tr
 
 ---
 
-Learn more about how CyRun was made in my [COM-S-319 blog post](/posts/com-s-319).
+Learn more about how CyRun was made in my [COM-S-319 blog post](/post/com-s-319).
 
 View the GitHub repository for CyRun [here](https://github.com/ChristianLisle/cyrun).

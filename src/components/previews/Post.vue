@@ -1,17 +1,17 @@
 <template>
   <div v-if="post" :class="getCardStyle">
     <div :class="getImageContainerStyle" style="aspect-ratio: 1 / 1;">
-      <nuxt-link ref="feature-image" :to="`/posts/${post.slug}`" class="w-full h-full">
+      <nuxt-link ref="feature-image" :to="`/post/${post.slug}`" class="w-full h-full">
         <img :src="image" class="object-cover w-full h-full" />
       </nuxt-link>
     </div>
 
     <div :class="getPostInfoContainerStyle">
-      <nuxt-link ref="title" :to="`/posts/${post.slug}`" class="font-bold text-lg hover:underline">
+      <nuxt-link ref="title" :to="`/post/${post.slug}`" class="font-bold text-lg hover:underline">
         {{post.title}}
       </nuxt-link>
       <nuxt-content ref="excerpt" :document="excerpt" />
-      <nuxt-link ref="continue-reading" :to="`/posts/${post.slug}`" class="text-gray-500 font-thin text-sm hover:underline">
+      <nuxt-link ref="continue-reading" :to="`/post/${post.slug}`" class="text-gray-500 font-thin text-sm hover:underline">
         Continue reading
       </nuxt-link>
     </div>
@@ -27,7 +27,7 @@
 
       <div v-for="i in 6" :key="i" class="bg-gray-400 w-full h-3 my-2"/>
       <div class="bg-gray-400 w-48 h-3 mb-2"/>
-      <div to="/" class="bg-gray-300 w-24 h-3" />
+      <div class="bg-gray-300 w-24 h-3" />
     </div>
   </div>
 </template>

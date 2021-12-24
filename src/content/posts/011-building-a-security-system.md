@@ -7,7 +7,7 @@ categories:
   - Portfolio
 ---
 
-Picture this: You had a great time building your last side project over winter break but have since taken a break from side projects to focus on school. That’s the headspace I was in last spring after refining my previous project, [CyRun](/posts/cyrun). The semester was ending, and I was getting ready to start my [software engineering apprenticeship](https://www.sourceallies.com/2021/09/2021-apprentices-part-1).
+Picture this: You had a great time building your last side project over winter break but have since taken a break from side projects to focus on school. That’s the headspace I was in last spring after refining my previous project, [CyRun](/post/cyrun). The semester was ending, and I was getting ready to start my [software engineering apprenticeship](https://www.sourceallies.com/2021/09/2021-apprentices-part-1).
 
 <!--more-->
 

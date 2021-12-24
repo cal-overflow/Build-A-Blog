@@ -14,14 +14,7 @@ describe('Footer component', () => {
   });
 
   it('renders a NavItem for each of the links', () => {
-    expect(wrapper.findAllComponents(NavItem)).toHaveLength(3);
-  });
-
-  it('correctly renders the NavItem for the about page', () => {
-    const navItem = wrapper.findComponent('[title="About"]');
-    expect(navItem.exists()).toBeTruthy();
-    expect(navItem.props('href')).toEqual('/about');
-    expect(navItem.props('active')).not.toBeTruthy();
+    expect(wrapper.findAllComponents(NavItem)).toHaveLength(2);
   });
 
   it('renders a NavItem for the blog page', () => {

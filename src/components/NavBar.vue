@@ -41,10 +41,6 @@ export default {
     },
     items: [
       {
-        title: 'About',
-        href: '/about'
-      },
-      {
         title: 'Blog',
         href: '/blog'
       },

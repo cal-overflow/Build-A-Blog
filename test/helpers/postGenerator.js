@@ -10,7 +10,9 @@ const generatePost = () => ({
   "title": chance.sentence({words: chance.integer({min: 2, max: 5})}),
   "description": chance.paragraph(),
   "excerpt": generateExcerpt(),
+  "date": chance.date({string: true}),
   "img": "https://picsum.photos/400",
+  "categories": chance.n(chance.word, chance.integer({min: 1, max: 10})),
 });
 
 const generateExcerpt = () => ({

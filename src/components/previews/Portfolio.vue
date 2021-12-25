@@ -5,7 +5,7 @@
     <p>
       In my portfolio, you’ll find my most remarkable projects and software development experiences. This varies from a complex real-time web-based multiplayer game to a simple website for a local business. Most of these projects were made for school courses, but some were created for business.
     </p>
-    <nav-item title="View my work" href="/portfolio" class="text-primary-red" />
+    <nav-item title="View my work" href="/portfolio" class="text-red" />
   </div>
 </template>
 

@@ -7,22 +7,20 @@
         <div class="text-gray-600">
           <p>{{post.date}}
             <span v-if="post.categories.length">
-              /
+              <span class="hidden md:inline">/</span>
+              <br class="md:hidden" />
               <span
                 v-for="(category, i) in post.categories"
                 :key="`categories-${category}`"
               >
-                <a :href="`/category/${category.toLowerCase().replace(' ', '-')}`" class="hover:underline">
-                  {{category}}
-                </a>
-                {{(i + 1) === post.categories.length ? '' : ', '}}
+                <a :href="`/category/${category.toLowerCase().replace(' ', '-')}`" class="hover:underline">{{category}}</a>{{(i + 1) === post.categories.length ? '' : ', '}}
               </span>
             </span>
           </p>
         </div>
 
         <img :src="`/blog-images/feature/${post.img}`" class="object-contain w-full md:w-3/4 lg:w-8/12 mx-auto lg:mx-auto max-h-screen" />
-        <nuxt-content :document="post" class="prose m-4 mx-auto max-w-none prose-a:text-red prose-a:underline hover:prose-a:text-secondary-red" />
+        <nuxt-content :document="post" class="prose m-4 mx-auto max-w-none prose-img:w-max prose-img:mx-auto prose-a:text-red prose-a:underline hover:prose-a:text-secondary-red" />
       </div>
     </div>
 

@@ -97,6 +97,13 @@ describe('post page', () => {
       });
     });
 
+    it('renders the post categories with the correct link', () => {
+      fakePost.categories.forEach((category) => {
+        const expectedPath = `/category/${category.toLowerCase().replace(' ', '-')}`;
+        expect(wrapper.html()).toContain(`<a href="${expectedPath}" class="hover:underline">${category}</a>`);
+      });
+    });
+
     it('renders the post feature image correctly', () => {
       expect(wrapper.html()).toContain(`<img src="/blog-images/feature/${fakePost.img}"`);
     });

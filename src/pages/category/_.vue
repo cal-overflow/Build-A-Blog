@@ -27,7 +27,7 @@ export default {
       .catch((err) => {
         error({
           statusCode: 500,
-          message: 'Something went wrong. Please try again.',
+          message: 'Something went wrong',
           error: err,
         });
       });
@@ -35,7 +35,7 @@ export default {
       const category = categories?.find((category) => category.slug === slug);
 
       if (!category) {
-        return error({ statusCode: 404, message: 'Category not found' });
+        return error({ statusCode: 404, message: 'This category could not be found' });
       }
 
     return {

@@ -58,7 +58,7 @@ export default {
       .catch((err) => {
         error({
           statusCode: 500,
-          message: 'Something went wrong. Please try again.',
+          message: 'Something went wrong',
           error: err,
         });
       });
@@ -66,7 +66,7 @@ export default {
     const post = posts?.find((post) => post.slug === slug);
 
     if (!post) {
-      return error({ statusCode: 404, message: 'Post not found' });
+      return error({ statusCode: 404, message: 'This post could not be found' });
     }
 
     return {

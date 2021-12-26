@@ -225,7 +225,7 @@ describe('BlogFeed component', () => {
       expect(nuxtMock.error).toBeCalledTimes(1);
       expect(nuxtMock.error).toBeCalledWith({
         statusCode: 500,
-        message: 'Something went wrong. Please try again.',
+        message: 'Something went wrong',
         error: fakeError
       });
     });

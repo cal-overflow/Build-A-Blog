@@ -139,7 +139,7 @@ describe('post page', () => {
         expect(mockErrorFn).toBeCalled();
         expect(mockErrorFn).toBeCalledWith({
           statusCode: 500,
-          message: 'Something went wrong. Please try again.',
+          message: 'Something went wrong',
           error: fakeError
         });
       });
@@ -172,7 +172,7 @@ describe('post page', () => {
       expect(mockErrorFn).toBeCalled();
       expect(mockErrorFn).toBeCalledWith({
         statusCode: 404,
-        message: 'Post not found',
+        message: 'This post could not be found',
       });
     });
   });  

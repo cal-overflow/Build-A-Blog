@@ -97,7 +97,7 @@ export default {
         .catch((err) => {
           this.$nuxt.error({
             statusCode: 500,
-            message: 'Something went wrong. Please try again.',
+            message: 'Something went wrong',
             error: err,
           });
         });

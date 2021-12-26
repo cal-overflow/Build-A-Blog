@@ -126,7 +126,7 @@ describe('category page', () => {
         expect(mockErrorFn).toBeCalled();
         expect(mockErrorFn).toBeCalledWith({
           statusCode: 500,
-          message: 'Something went wrong. Please try again.',
+          message: 'Something went wrong',
           error: fakeError
         });
       });
@@ -159,7 +159,7 @@ describe('category page', () => {
       expect(mockErrorFn).toBeCalled();
       expect(mockErrorFn).toBeCalledWith({
         statusCode: 404,
-        message: 'Category not found',
+        message: 'This category could not be found',
       });
     });
   });

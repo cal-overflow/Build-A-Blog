@@ -2,22 +2,21 @@
   <main>
     <nav-bar :current-page="currentPage" />
     <blog-feed :category="category" />
-    <Footer :current-page="currentPage" />
+    <footer-bar :current-page="currentPage" />
   </main>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue';
 import BlogFeed from '@/components/BlogFeed.vue';
-import Footer from '@/components/Footer.vue';
+import FooterBar from '@/components/FooterBar.vue';
 
 export default {
-  // eslint-disable-next-line vue/component-definition-name-casing
   name: 'category',
   components: {
     NavBar,
     BlogFeed,
-    Footer,
+    FooterBar,
   },
   async asyncData({ $content, params, error }) {
     const slug = params.pathMatch.toLowerCase();

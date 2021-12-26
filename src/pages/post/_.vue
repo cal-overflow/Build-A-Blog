@@ -35,20 +35,19 @@
 
       </div>
     </div>
-    <Footer current-page="Blog" />
+    <footer-bar current-page="Blog" />
   </main>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue';
-import Footer from '@/components/Footer.vue';
+import FooterBar from '@/components/FooterBar.vue';
 
 export default {
-  // eslint-disable-next-line vue/component-definition-name-casing
   name: 'post',
   components: {
     NavBar,
-    Footer,
+    FooterBar,
   },
   async asyncData({ $content, params, error }) {
     const slug = params.pathMatch;

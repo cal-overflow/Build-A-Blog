@@ -34,7 +34,7 @@
 
 <script>
 export default {
-  name: 'PostPreview',
+  name: 'post-preview',
   props: {
     post: {
       type: Object,

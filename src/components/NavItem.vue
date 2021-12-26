@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: 'NavItem',
+  name: 'nav-item',
   props: {
     title: {
       type: String,

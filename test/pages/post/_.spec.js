@@ -3,7 +3,7 @@ import Chance from 'chance';
 import generatePost from '../../helpers/postGenerator';
 import post from '@/pages/post/_.vue';
 import NavBar from '@/components/NavBar.vue';
-import Footer from '@/components/Footer.vue';
+import FooterBar from '@/components/FooterBar.vue';
 
 const chance = new Chance();
 
@@ -28,14 +28,14 @@ describe('post page', () => {
     expect(wrapper.vm).toBeTruthy();
   });
 
-  it('renders the nav-bar component with the correct props', () => {
+  it('renders the NavBar component with the correct props', () => {
     const navBar = wrapper.findComponent(NavBar);
     expect(navBar.exists()).toBeTruthy();
     expect(navBar.props('currentPage')).toEqual('Blog');
   });
 
-  it('contains the footer component', () => {
-    const footer = wrapper.findComponent(Footer);
+  it('contains the FooterBar component', () => {
+    const footer = wrapper.findComponent(FooterBar);
     expect(footer.exists()).toBeTruthy();
     expect(footer.props('currentPage')).toEqual('Blog'); 
   });

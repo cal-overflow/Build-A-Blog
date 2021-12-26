@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'Divider',
+  name: 'divider',
   props: {
     color: {
       type: String,

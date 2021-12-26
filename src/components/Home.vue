@@ -31,7 +31,7 @@ import BlogPreview from '@/components/previews/Blog.vue';
 import PortfolioPreview from '@/components/previews/Portfolio.vue';
 
 export default {
-  name: 'Home',
+  name: 'home',
   components: {
     BlogPreview,
     PortfolioPreview,

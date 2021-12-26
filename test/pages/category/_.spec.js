@@ -3,7 +3,7 @@ import Chance from 'chance';
 import category from '@/pages/category/_.vue';
 import BlogFeed from '@/components/BlogFeed.vue';
 import NavBar from '@/components/NavBar.vue';
-import Footer from '@/components/Footer.vue';
+import FooterBar from '@/components/FooterBar.vue';
 
 const chance = new Chance();
 
@@ -29,14 +29,14 @@ describe('category page', () => {
     expect(wrapper.vm).toBeTruthy();
   });
 
-  it('renders the nav-bar component with the correct props', () => {
+  it('renders the NavBar component with the correct props', () => {
     const navBar = wrapper.findComponent(NavBar);
     expect(navBar.exists()).toBeTruthy();
     expect(navBar.props('currentPage')).toEqual('Blog');
   });
 
-  it('contains the footer component', () => {
-    const footer = wrapper.findComponent(Footer);
+  it('contains the FooterBar component', () => {
+    const footer = wrapper.findComponent(FooterBar);
     expect(footer.exists()).toBeTruthy();
     expect(footer.props('currentPage')).toEqual('Blog'); 
   });
@@ -206,8 +206,8 @@ describe('category page', () => {
       expect(wrapper.findComponent(NavBar).props('currentPage')).toEqual('Portfolio');
     });
     
-    it('renders the correct current-page prop for Footer', () => {
-      expect(wrapper.findComponent(Footer).props('currentPage')).toEqual('Portfolio');
+    it('renders the correct current-page prop for FooterBar', () => {
+      expect(wrapper.findComponent(FooterBar).props('currentPage')).toEqual('Portfolio');
     });
   });
 });

@@ -16,7 +16,7 @@
 import NavItem from './NavItem.vue';
 
 export default {
-  name: 'Footer',
+  name: 'footer-bar',
   components: {
     NavItem
   },

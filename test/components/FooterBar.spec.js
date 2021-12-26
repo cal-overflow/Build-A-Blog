@@ -1,12 +1,12 @@
 import { shallowMount } from '@vue/test-utils';
-import Footer from '@/components/Footer.vue';
+import FooterBar from '@/components/FooterBar.vue';
 import NavItem from '@/components/NavItem.vue';
 
-describe('Footer component', () => {
+describe('FooterBar component', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallowMount(Footer);
+    wrapper = shallowMount(FooterBar);
   });
 
   it('is a Vue instance', () => {

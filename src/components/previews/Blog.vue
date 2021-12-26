@@ -14,7 +14,7 @@ import Divider from '@/components/Divider.vue';
 import NavItem from '@/components/NavItem.vue';
 
 export default {
-  name: 'BlogPreview',
+  name: 'blog-preview',
   components: {
     Divider,
     NavItem

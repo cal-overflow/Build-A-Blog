@@ -22,7 +22,7 @@
         </div>
 
         <img :src="`/blog-images/feature/${post.img}`" class="object-contain w-full md:w-3/4 lg:w-8/12 mx-auto lg:mx-auto max-h-screen" />
-        <nuxt-content :document="post" class="prose max-w-none m-4 mx-auto" />
+        <nuxt-content :document="post" class="prose m-4 mx-auto max-w-none prose-a:text-red prose-a:underline hover:prose-a:text-secondary-red" />
       </div>
     </div>
 

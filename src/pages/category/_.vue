@@ -1,0 +1,57 @@
+<template>
+  <main>
+    <nav-bar :current-page="currentPage" />
+    <blog-feed :category="category" />
+    <Footer :current-page="currentPage" />
+  </main>
+</template>
+
+<script>
+import NavBar from '@/components/NavBar.vue';
+import BlogFeed from '@/components/BlogFeed.vue';
+import Footer from '@/components/Footer.vue';
+
+export default {
+  // eslint-disable-next-line vue/component-definition-name-casing
+  name: 'category',
+  components: {
+    NavBar,
+    BlogFeed,
+    Footer,
+  },
+  async asyncData({ $content, params, error }) {
+    const slug = params.pathMatch.toLowerCase();
+
+    const categories = await $content('categories')
+      .where({slug})
+      .fetch()
+      .catch((err) => {
+        error({
+          statusCode: 500,
+          message: 'Something went wrong. Please try again.',
+          error: err,
+        });
+      });
+
+      const category = categories?.find((category) => category.slug === slug);
+
+      if (!category) {
+        return error({ statusCode: 404, message: 'Category not found' });
+      }
+
+    return {
+      category
+    };
+  },
+  head() {
+    return {
+      title: this.category?.title || 'Christian Lisle',
+    };
+  },
+  computed: {
+    currentPage() {
+      return this.category?.title === 'Portfolio' ? 'Portfolio' : 'Blog';
+    }
+  }
+};
+</script>

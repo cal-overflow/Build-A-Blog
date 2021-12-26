@@ -55,6 +55,7 @@ export default {
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {
+    nestedProperties: ['post.categories'],
     markdown: {
       prism: {
         theme: "@/assets/css/prism-custom-theme.css"

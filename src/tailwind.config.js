@@ -12,6 +12,9 @@ module.exports = {
         'medGray': '#828282',
         'darkGray': '#2e2e2e',
       },
+      fontFamily: {
+        sans: ['"Poppins"', 'sans-serif']
+      }
     }
   },
   plugins: [

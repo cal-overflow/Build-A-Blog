@@ -8,7 +8,7 @@
 
 <script>
 import NavBar from '@/components/NavBar.vue';
-import BlogFeed from '~/components/BlogFeed.vue';
+import BlogFeed from '@/components/BlogFeed.vue';
 import Footer from '@/components/Footer.vue';
 
 export default {

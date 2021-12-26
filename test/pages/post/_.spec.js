@@ -11,9 +11,9 @@ describe('post page', () => {
   let wrapper, fakePost;
 
   const nuxtContentMock = {
-    '$content': jest.fn().mockReturnThis(),
-    'search': jest.fn().mockReturnThis(),
-    'fetch': jest.fn(),
+    $content: jest.fn().mockReturnThis(),
+    search: jest.fn().mockReturnThis(),
+    fetch: jest.fn(),
   };
 
   beforeEach(() => {

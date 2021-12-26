@@ -2,7 +2,11 @@
   <div>
     <div class="max-w-screen-lg mx-auto">
       <div class="m-6 p-6 m-6 bg-gray-100 shadow-md hover:shadow-none hover:rounded">
-        <p class="text-center text-3xl font-bold">Blog</p>
+        <div v-if="category">
+          <p class="text-center md:text-left text-3xl font-bold">{{category.title}}</p>
+          <p class="text-center md:text-left text-md">{{category.description}}</p>
+        </div>
+        <p v-else class="text-center text-3xl font-bold">Blog</p>
       </div>
     </div>
     <divider />
@@ -45,10 +49,17 @@ import Divider from '@/components/Divider.vue';
 import PostPreview from '@/components/previews/Post.vue';
 
 export default {
-  name: 'BlogFeed',
+  name: 'blog-feed',
   components: {
     Divider,
     PostPreview,
+  },
+  props: {
+    category: {
+      default: undefined,
+      type: Object,
+      required: false,
+    }
   },
   data: () => ({
     posts: [],
@@ -74,17 +85,31 @@ export default {
       this.isFetchingPosts = true;
       const totalPosts = (this.page * this.postCount);
 
-      const tmp = await this.$content('posts')
-      .sortBy('createdAt', 'desc')
-      .limit(totalPosts + 1)
-      .fetch();
+      let fetchPosts = this.$content('posts')
+        .sortBy('createdAt', 'desc')
+        .limit(totalPosts + 1);
+      
+      if (this.category) {
+        fetchPosts = fetchPosts.where({categories: { $contains: this.category.title }});
+      }
+        
+      const tempPosts = await fetchPosts.fetch()
+        .catch((err) => {
+          this.$nuxt.error({
+            statusCode: 500,
+            message: 'Something went wrong. Please try again.',
+            error: err,
+          });
+        });
 
-      this.isMorePosts = tmp.length > totalPosts;
-      if (this.isMorePosts) tmp.pop(); // Remove last blog post
+      if (tempPosts) {
+        this.isMorePosts = tempPosts.length > totalPosts;
+        if (this.isMorePosts) tempPosts.pop(); // Remove last blog post
 
-      this.posts = tmp;
-      this.page++;
-      this.isFetchingPosts = false;
+        this.posts = tempPosts;
+        this.page++;
+        this.isFetchingPosts = false;
+      }
     },
     startScrollListener() {
       window.addEventListener('scroll', this.handleScroll);

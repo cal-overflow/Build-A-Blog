@@ -18,10 +18,11 @@ describe('BlogFeed component', () => {
   };
 
   const nuxtContentMock = {
-    '$content': jest.fn().mockReturnThis(),
-    'sortBy': jest.fn().mockReturnThis(),
-    'limit': jest.fn().mockReturnThis(),
-    'fetch': jest.fn(),
+    $content: jest.fn().mockReturnThis(),
+    sortBy: jest.fn().mockReturnThis(),
+    limit: jest.fn().mockReturnThis(),
+    where: jest.fn().mockReturnThis(),
+    fetch: jest.fn(),
   };
 
   describe('given there are no posts (or they have not loaded)', () => {
@@ -31,7 +32,7 @@ describe('BlogFeed component', () => {
 
       wrapper = shallowMount(BlogFeed, {
         mocks: {
-          '$content': () => nuxtContentMock
+          $content: () => nuxtContentMock
         },
         stubs,
       });
@@ -56,7 +57,7 @@ describe('BlogFeed component', () => {
 
       wrapper = shallowMount(BlogFeed, {
         mocks: {
-          '$content': () => nuxtContentMock
+          $content: () => nuxtContentMock
         },
         stubs,
       });
@@ -111,7 +112,7 @@ describe('BlogFeed component', () => {
 
       wrapper = shallowMount(BlogFeed, {
         mocks: {
-          '$content': () => nuxtContentMock,
+          $content: () => nuxtContentMock,
         },
         stubs,
       });
@@ -155,6 +156,78 @@ describe('BlogFeed component', () => {
       
       expect(nuxtContentMock.fetch).toBeCalledTimes(2);
       expect(nuxtContentMock.limit).toHaveBeenCalledWith((postLimit * 2) + 1);
+    });
+  });
+
+  describe('given a category prop is given', () => {
+    let category;
+
+    beforeEach(() => {
+      fakePosts = chance.n(generatePost, chance.integer({
+        min: 1, max: postLimit
+      }));
+
+      category = {
+        title: chance.string(),
+        description: chance.paragraph(),
+      };
+
+      nuxtContentMock.fetch.mockResolvedValue(fakePosts);
+
+      wrapper = shallowMount(BlogFeed, {
+        mocks: {
+          $content: () => nuxtContentMock
+        },
+        propsData: { category },
+        stubs,
+      });
+    });
+
+    afterEach(jest.clearAllMocks);
+    
+    it('contains the category title and description', () => {
+      expect(wrapper.text()).toContain(category.title);
+      expect(wrapper.text()).toContain(category.description);
+    });
+
+    it('envokes the nuxt content "where" method to find the correct posts', () => {
+      expect(nuxtContentMock.where).toBeCalledTimes(1);
+      expect(nuxtContentMock.where).toBeCalledWith({
+        categories: {$contains: category.title}
+      });
+    });
+  });
+
+  describe('given an error occurs fetching nuxt content', () => {
+    let nuxtMock, fakeError;
+
+    beforeEach(() => {
+      nuxtMock = {
+        error: jest.fn()
+      };
+
+      fakeError = new Error(chance.string());
+
+      nuxtContentMock.fetch.mockRejectedValue(fakeError);
+
+      wrapper = shallowMount(BlogFeed, {
+        mocks: {
+          $content: () => nuxtContentMock,
+          $nuxt: nuxtMock
+        },
+        stubs,
+      });
+    });
+
+    afterEach(jest.clearAllMocks);
+
+    it('envokes nuxt error function correctly', () => {
+      expect(nuxtMock.error).toBeCalledTimes(1);
+      expect(nuxtMock.error).toBeCalledWith({
+        statusCode: 500,
+        message: 'Something went wrong. Please try again.',
+        error: fakeError
+      });
     });
   });
 });

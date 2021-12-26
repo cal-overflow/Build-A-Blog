@@ -99,4 +99,4 @@ I had a great time working on the system itself. Still, I feel the most rewarded
 
 Reading about software is fun, but what’s even better is viewing that software in action. Here’s a video where I demonstrate the live stream and recording captured when motion was detected. I’ve set up the system in my apartment in this demonstration.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/hgwknEyyTGQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/hgwknEyyTGQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="youtube-embed"></iframe>

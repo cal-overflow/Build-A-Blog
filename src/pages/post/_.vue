@@ -84,3 +84,11 @@ export default {
 };
 </script>
 
+<style>
+.youtube-embed {
+  width: 70%;
+  height: auto;
+  aspect-ratio: 16/ 9;
+  margin: 0 auto;
+}
+</style>

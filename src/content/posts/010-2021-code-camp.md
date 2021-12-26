@@ -44,7 +44,7 @@ I spent most of my time on the frontend, utilizing Bootstrap to create a respons
 
 #### "Best Software Hack"
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ttsXtyY5Vso" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/ttsXtyY5Vso" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="youtube-embed"></iframe>
 
 This video was our team’s original submission, which won us the “Best Software Hack” at the event.
 

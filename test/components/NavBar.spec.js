@@ -36,7 +36,7 @@ describe('NavBar component', () => {
   it('renders a NavItem for the Portfolio page', () => {
     const navItem = wrapper.findComponent('[title="Portfolio"]');
     expect(navItem.exists()).toBeTruthy();
-    expect(navItem.props('href')).toEqual('/portfolio');
+    expect(navItem.props('href')).toEqual('/category/portfolio');
     expect(navItem.props('active')).not.toBeTruthy();
   });
 });

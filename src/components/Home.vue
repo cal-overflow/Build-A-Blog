@@ -13,7 +13,7 @@
 
             <p class="mb-4">I’m not one for writing an extensive bio; besides, I think a lot of my work speaks for itself. Have a look around my portfolio to get a good sense of the kind of work I do.</p>
 
-            <p class="mb-4">If you have any questions while viewing my website or want to get in touch, please feel free to <a href="/contact" class="text-red underline">reach out to me</a>.</p>
+            <p class="mb-4">If you have any questions while viewing my website or want to get in touch, please feel free to <nuxt-link to="/contact" class="text-red underline">reach out to me</nuxt-link>.</p>
           </div>
         </div>
     </div>

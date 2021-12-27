@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { shallowMount, RouterLinkStub } from '@vue/test-utils';
 import Home from '@/components/Home.vue';
 import BlogPreview from '@/components/previews/Blog.vue';
 import PortfolioPreview from '@/components/previews/Portfolio.vue';
@@ -7,7 +7,11 @@ describe('Home component', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallowMount(Home);
+    wrapper = shallowMount(Home, {
+      stubs: {
+        NuxtLink: RouterLinkStub
+      }
+    });
   });
 
   it('is a Vue instance', () => {

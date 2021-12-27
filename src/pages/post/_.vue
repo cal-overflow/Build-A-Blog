@@ -13,7 +13,7 @@
                 v-for="(category, i) in post.categories"
                 :key="`categories-${category}`"
               >
-                <a :href="`/category/${category.toLowerCase().replace(' ', '-')}`" class="hover:underline">{{category}}</a>{{(i + 1) === post.categories.length ? '' : ', '}}
+                <nuxt-link :to="`/category/${category.toLowerCase().replace(' ', '-')}`" class="hover:underline">{{category}}</nuxt-link>{{(i + 1) === post.categories.length ? '' : ', '}}
               </span>
             </span>
           </p>

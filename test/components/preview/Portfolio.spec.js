@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { shallowMount, RouterLinkStub } from '@vue/test-utils';
 import PortfolioPreview from '@/components/previews/Portfolio.vue';
 import Divider from '@/components/Divider.vue';
 import NavItem from '@/components/NavItem.vue';
@@ -7,7 +7,11 @@ describe('PortfolioPreview component', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallowMount(PortfolioPreview);
+    wrapper = shallowMount(PortfolioPreview, {
+      stubs: {
+        NuxtLink: RouterLinkStub
+      }
+    });
   });
 
   it('is a Vue instance', () => {
@@ -27,7 +31,7 @@ describe('PortfolioPreview component', () => {
     const portfolioLink = wrapper.findComponent(NavItem);
     expect(portfolioLink.exists()).toBeTruthy();
     expect(portfolioLink.props('title')).toEqual('View my work');
-    expect(portfolioLink.props('href')).toEqual('/portfolio');
+    expect(portfolioLink.props('href')).toEqual('/category/portfolio');
   });
 
 });

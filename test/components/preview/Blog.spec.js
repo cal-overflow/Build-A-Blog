@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { shallowMount, RouterLinkStub } from '@vue/test-utils';
 import BlogPreview from '@/components/previews/Blog.vue';
 import Divider from '@/components/Divider.vue';
 import NavItem from '@/components/NavItem.vue';
@@ -7,7 +7,11 @@ describe('BlogPreview component', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallowMount(BlogPreview);
+    wrapper = shallowMount(BlogPreview, {
+      stubs: {
+        NuxtLink: RouterLinkStub
+      }
+    });
   });
 
   it('is a Vue instance', () => {

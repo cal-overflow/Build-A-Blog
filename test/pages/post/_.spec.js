@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { shallowMount, RouterLinkStub } from '@vue/test-utils';
 import Chance from 'chance';
 import generatePost from '../../helpers/postGenerator';
 import post from '@/pages/post/_.vue';
@@ -19,7 +19,8 @@ describe('post page', () => {
   beforeEach(() => {
     wrapper = shallowMount(post, {
       stubs: {
-      'nuxt-content': true
+        'nuxt-content': true,
+        NuxtLink: RouterLinkStub,
       }
     });
   });
@@ -67,7 +68,8 @@ describe('post page', () => {
 
       wrapper = shallowMount(post, {
         stubs: {
-          'nuxt-content': true
+          'nuxt-content': true,
+          NuxtLink: RouterLinkStub
         }
       });
     });
@@ -98,9 +100,13 @@ describe('post page', () => {
     });
 
     it('renders the post categories with the correct link', () => {
+      const linkComponents = wrapper.findAllComponents(RouterLinkStub);
+
       fakePost.categories.forEach((category) => {
         const expectedPath = `/category/${category.toLowerCase().replace(' ', '-')}`;
-        expect(wrapper.html()).toContain(`<a href="${expectedPath}" class="hover:underline">${category}</a>`);
+
+        const component = linkComponents.wrappers.find((el) => el.text() === category);
+        expect(component.props('to')).toEqual(expectedPath);
       });
     });
 

@@ -47,7 +47,7 @@ describe('error layout', () => {
   });
 
   it('renders a link to the contact page with the correct query parameters', () => {
-    const expectedContactLink = `/contact?statusCode=${mockError.statusCode}&path=${mockPath}&detail=${encodeURIComponent(mockError.error.message)}`;
+    const expectedContactLink = `/contact?statusCode=${mockError.statusCode}&path=${encodeURIComponent(mockPath)}&detail=${encodeURIComponent(mockError.error.message)}`;
     expect(wrapper.findComponent({ref: 'contact-link'}).props('to')).toEqual(expectedContactLink);
   });
 });

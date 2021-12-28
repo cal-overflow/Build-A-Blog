@@ -26,9 +26,9 @@
       <div class="bg-gray-100 m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded">
         <div>
           <p class="font-bold text-2xl">More information 🤓</p>
-          <pre v-if="error.error" class="text-gray-600">{{error.error.message}}</pre>
-          <pre v-else-if="error.statusCode === 404" class="text-gray-600">The page or post you're looking for does not exist.</pre>
-          <pre v-else class="text-gray-600">No more information is available 😕</pre>
+          <pre v-if="error.error" class="text-gray-600 whitespace-normal">{{error.error.message}}</pre>
+          <pre v-else-if="error.statusCode === 404" class="text-gray-600 whitespace-normal">The page or post you're looking for does not exist.</pre>
+          <pre v-else class="text-gray-600 whitespace-normal">No more information is available 😕</pre>
 
           <p class="mt-2">If you believe there has been a mistake, please don't hesitate to <nuxt-link ref="contact-link" :to="contactLink" class="text-red">reach out to me</nuxt-link>.</p>
         </div>

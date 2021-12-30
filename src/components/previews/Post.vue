@@ -1,7 +1,7 @@
 <template>
   <div v-if="post" :class="getCardStyle">
     <div :class="getImageContainerStyle" style="aspect-ratio: 1 / 1;">
-      <nuxt-link ref="feature-image" :to="`/post/${post.slug}`" class="w-full h-full">
+      <nuxt-link ref="feature-image" :to="`/post/${post.slug}`" :class="`w-full h-full motion-safe:animate-blur-fade-in-slow`">
         <img :src="image" class="object-cover w-full h-full" />
       </nuxt-link>
     </div>
@@ -61,7 +61,7 @@ export default {
     },
     getCardStyle() {
       const prevIndex = this.index - 1;
-      let style = 'm-6 p-6 bg-gray-100 hover:rounded shadow-md hover:shadow-none';
+      let style = 'm-6 p-6 bg-gray-100 hover:rounded shadow-md hover:shadow-none motion-safe:animate-fade-in';
 
       if (!this.post)
         style += ' animate-pulse';
@@ -79,7 +79,7 @@ export default {
     },
     getImageContainerStyle() {
       // aspect-square seems to not work as expected, so I have also added style tags where needed
-      return `aspect-square ${this.isWideCard ? 'md:w-2/5' : ''}`;
+      return `aspect-square overflow-hidden ${this.isWideCard ? 'md:w-2/5' : ''}`;
     },
     getPostInfoContainerStyle() {
       return `mt-2 ${this.isWideCard ? 'md:w-3/5 md:m-4' : ''}`;

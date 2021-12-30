@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="max-w-screen-lg mx-auto">
-      <div class="m-6 p-6 m-6 bg-gray-100 shadow-md hover:shadow-none hover:rounded">
+      <div class="m-6 p-6 bg-gray-100 shadow-md hover:shadow-none hover:rounded motion-safe:animate-fade-in-fast">
         <div v-if="category">
           <p class="text-center md:text-left text-3xl font-bold">{{category.title}}</p>
           <p class="text-center md:text-left text-md">{{category.description}}</p>

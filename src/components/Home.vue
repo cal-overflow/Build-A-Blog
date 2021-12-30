@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="max-w-screen-lg mx-auto">
-      <div class="flex bg-gray-100 m-6 p-4 flex-wrap md:flex-nowrap shadow-lg hover:shadow-none hover:rounded">
+      <div class="flex bg-gray-100 m-6 p-4 flex-wrap md:flex-nowrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in-fast">
           <div class="max-w-sm md:w-2/5 lg:w-1/3 mx-auto md:my-auto">
-            <img src="Christian_headshot.jpg" class="rounded-full border-2 border-gray-200" alt="Christian Headshot" />
+            <img src="Christian_headshot.jpg" class="rounded-full border-2 border-gray-200 motion-safe:animate-blur-fade-in-fast" alt="Christian Headshot" />
           </div>
           <div class="md:w-3/5 lg:w-2/3 m-4 xs:mb-12 md:mb-0">
             <p class="text-lg font-bold mb-4">Hi, I'm Christian.</p>
@@ -20,8 +20,8 @@
 
 
     <div class="flex max-w-screen-lg mx-auto flex-wrap md:flex-nowrap">
-      <portfolio-preview />
-      <blog-preview />
+      <portfolio-preview class="motion-safe:animate-fade-in" />
+      <blog-preview class="motion-safe:animate-fade-in" />
     </div>
   </div>
 </template>

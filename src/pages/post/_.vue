@@ -1,7 +1,7 @@
 <template>
   <main>
     <nav-bar current-page="Blog" />
-    <div v-if="post" class="max-w-screen-lg mx-auto flex bg-gray-100 m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded">
+    <div v-if="post" class="max-w-screen-lg mx-auto flex bg-gray-100 m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in">
       <div class="w-full p-4">
         <p class="text-4xl md:text-5xl lg:text-6xl font-bold mb-2">{{post.title}}</p>
         <div class="text-gray-600">

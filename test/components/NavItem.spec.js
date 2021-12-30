@@ -40,13 +40,14 @@ describe('NavItem component', () => {
   });
 
   it('has the correct classes (styling) when not on current page', () => {
-    expect(nuxtLink.html()).toContain('class="p-3 hover:underline"');
+    expect(nuxtLink.html()).toContain('class="p-3 hover:underline "');
+    expect(nuxtLink.html()).not.toContain('text-red');
   });
 
   it('has the correct classes (styling) when on current page', async () => {
     await wrapper.setProps({active: true});
     nuxtLink = wrapper.findComponent(RouterLinkStub);
 
-    expect(nuxtLink.html()).toContain('class="p-3 hover:underline text-red-600"');
+    expect(nuxtLink.html()).toContain('class="p-3 hover:underline text-red"');
   });
 });

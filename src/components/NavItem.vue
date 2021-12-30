@@ -1,15 +1,7 @@
 <template>
   <nuxt-link
-    v-if="active"
     :to="href"
-    class="p-3 hover:underline text-red-600">
-    {{title}}
-  </nuxt-link>
-
-  <nuxt-link
-    v-else
-    :to="href"
-    class="p-3 hover:underline">
+    :class="`p-3 hover:underline ${active ? 'text-red' : ''}`">
     {{title}}
   </nuxt-link>
 </template>

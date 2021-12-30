@@ -6,7 +6,8 @@
           v-for="item in items"
           :key="item.title"
           :title="item.title"
-          :href="item.href" />
+          :href="item.href"
+        />
       </div>
     </nav>
   </div>

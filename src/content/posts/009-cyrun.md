@@ -1,5 +1,5 @@
 ---
-title: CyRun
+title: CyRun 🎮
 slug: cyrun
 date: November 30, 2020
 img: cyrun.png

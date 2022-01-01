@@ -1,5 +1,5 @@
 ---
-title: Building a Security System
+title: Building a Security System 📸
 slug: building-a-security-system
 date: October 14, 2021
 img: security-system-snippet.png

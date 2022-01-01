@@ -2,13 +2,13 @@
   <main>
     <nav-bar />
     <div class="max-w-screen-lg mx-auto">
-      <div class="text-center bg-gray-100 m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in-fast">
+      <div class="bg-gray-100 dark:bg-zinc-800 text-center m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in-fast">
         <p class="text-3xl md:text-5xl font-bold">This is embarrassing {{error.statusCode == '500' ? '🐢' : '😳'}}</p>
       </div>
       
       <divider />
 
-      <div class="bg-gray-100 m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in">
+      <div class="bg-gray-100 dark:bg-zinc-800 m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in">
         <div class="text-center">
           <p class="text-sm mb-2">Status code</p>
           <p class="text-5xl font-bold motion-safe:animate-blur-fade-in">{{error.statusCode}}</p>
@@ -23,12 +23,12 @@
         </div>
       </div>
 
-      <div class="bg-gray-100 m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in">
+      <div class="bg-gray-100 dark:bg-zinc-800 m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in">
         <div>
           <p class="font-bold text-2xl">More information 🤓</p>
-          <pre v-if="error.error" class="text-gray-600 whitespace-normal">{{error.error.message}}</pre>
-          <pre v-else-if="error.statusCode === 404" class="text-gray-600 whitespace-normal">The page or post you're looking for does not exist.</pre>
-          <pre v-else class="text-gray-600 whitespace-normal">No more information is available 😕</pre>
+          <pre class="text-gray-600 dark:text-gray-300 whitespace-normal">
+            {{extraInfo}}
+          </pre>
 
           <p class="mt-2">If you believe there has been a mistake, please don't hesitate to <nuxt-link ref="contact-link" :to="contactLink" class="text-red">reach out to me</nuxt-link>.</p>
         </div>
@@ -75,7 +75,16 @@ export default {
       const detail = this.error.error ? `&detail=${encodeURIComponent(this.error.error.message)}` : '';
 
       return `/contact?statusCode=${status}&path=${path}${detail}`;
-    }
+    },
+    extraInfo() {
+      if (this.error?.error)
+        return this.error.error.message;
+      
+      if (this.error?.statusCode === 404)
+        return "The page or post you're looking for does not exist.";
+
+      return 'No more information is available 😕';
+    },
   }
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-200">
+  <div class="bg-gray-200 dark:bg-zinc-700">
     <nav class="mx-auto max-w-6xl flex items-center justify-between flex-wrap p-4 py-6 px-5 mb-4">
       <nav-item
         :title="signatureHeader.title"
@@ -15,7 +15,8 @@
           :key="item.title"
           :title="item.title"
           :href="item.href"
-          :active="currentPage === item.title" />
+          :active="currentPage === item.title"
+        />
       </div>
     </nav>
   </div>

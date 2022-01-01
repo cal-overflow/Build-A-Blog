@@ -1,7 +1,7 @@
 <template>
   <nuxt-link
     :to="href"
-    :class="`p-3 hover:underline ${active ? 'text-red dark:text-blue' : 'dark:text-white'}`">
+    :class="`p-3 hover:underline ${active ? 'text-primary-light dark:text-primary-dark' : 'dark:text-white'}`">
     {{title}}
   </nuxt-link>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-200 dark:bg-zinc-700">
+  <div class="bg-menu-light dark:bg-menu-dark">
     <nav class="mx-auto max-w-6xl flex items-center justify-between flex-wrap p-4 py-6 px-5">
       <nav-item
         :title="signatureHeader.title"

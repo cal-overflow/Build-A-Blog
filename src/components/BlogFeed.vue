@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="max-w-screen-lg mx-auto">
-      <div class="bg-gray-100 dark:bg-zinc-800 m-6 p-6 shadow-md dark:shadow-stone-800 hover:shadow-none hover:rounded motion-safe:animate-fade-in-fast">
+      <div class="bg-card-light dark:bg-card-dark m-6 p-6 shadow-md dark:shadow-shadow-dark hover:shadow-none hover:rounded motion-safe:animate-fade-in-fast">
         <div v-if="category">
           <p class="text-center md:text-left text-3xl font-bold">{{category.title}}</p>
           <p class="text-center md:text-left text-md">{{category.description}}</p>
@@ -24,10 +24,10 @@
       <div
         v-if="isMorePosts"
         ref="loadMorePosts"
-        :class="`bg-gray-200 dark:bg-zinc-700 m-6 px-6 hover:bg-gray-300 dark:hover:bg-zinc-600 hover:rounded shadow-md hover:shadow-none md:col-span-2 cursor-pointer ${loadingStyle}`"
+        :class="`bg-card-light dark:bg-card-dark m-6 px-6 hover:bg-extra-gray-light dark:hover:bg-extra-gray-dark hover:rounded shadow-md hover:shadow-none md:col-span-2 cursor-pointer ${loadingStyle}`"
         @mousedown="getPosts"
       >
-        <p class="m-4 hover:underline text-center text-lg">
+        <p class="m-4 underline hover:no-underline text-center text-lg">
           {{isFetchingPosts ? 'Loading' : 'Load more'}}
         </p>
       </div>

@@ -1,9 +1,9 @@
 <template>
-  <Nuxt class="bg-white dark:bg-zinc-900 dark:text-white" />
+  <Nuxt class="bg-main-light dark:bg-main-dark dark:text-white" />
 </template>
 
 <style>
 html {
-  background: #1f2937;
+  background: #292929;
 }
 </style>

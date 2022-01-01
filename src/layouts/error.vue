@@ -2,13 +2,13 @@
   <main>
     <nav-bar />
     <div class="max-w-screen-lg mx-auto">
-      <div class="bg-gray-100 dark:bg-zinc-800 text-center m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in-fast">
+      <div class="bg-card-light dark:bg-card-dark text-center m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in-fast">
         <p class="text-3xl md:text-5xl font-bold">This is embarrassing {{error.statusCode == '500' ? '🐢' : '😳'}}</p>
       </div>
       
       <divider />
 
-      <div class="bg-gray-100 dark:bg-zinc-800 m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in">
+      <div class="bg-card-light dark:bg-card-dark m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in">
         <div class="text-center">
           <p class="text-sm mb-2">Status code</p>
           <p class="text-5xl font-bold motion-safe:animate-blur-fade-in">{{error.statusCode}}</p>
@@ -19,18 +19,18 @@
         <divider />
 
         <div class="text-center">
-          <nuxt-link ref="back-home" to="/" class="text-red hover:underline">Take me home</nuxt-link>
+          <nuxt-link ref="back-home" to="/" class="text-primary-light underline hover:no-underline dark:text-primary-dark">Take me home</nuxt-link>
         </div>
       </div>
 
-      <div class="bg-gray-100 dark:bg-zinc-800 m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in">
+      <div class="bg-card-light dark:bg-card-dark m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in">
         <div>
           <p class="font-bold text-2xl">More information 🤓</p>
-          <pre class="text-gray-600 dark:text-gray-300 whitespace-normal">
+          <pre class="text-extra-gray-dark dark:text-extra-gray-light whitespace-normal">
             {{extraInfo}}
           </pre>
 
-          <p class="mt-2">If you believe there has been a mistake, please don't hesitate to <nuxt-link ref="contact-link" :to="contactLink" class="text-red">reach out to me</nuxt-link>.</p>
+          <p class="mt-2">If you believe there has been a mistake, please don't hesitate to <nuxt-link ref="contact-link" :to="contactLink" class="text-primary-light underline hover:no-underline dark:text-primary-dark">reach out to me</nuxt-link>.</p>
         </div>
       </div>
 

@@ -36,6 +36,10 @@ export default {
       {
         title: 'Portfolio',
         href: '/category/portfolio'
+      },
+      {
+        title: 'Contact',
+        href: '/contact'
       }
     ]
   }),

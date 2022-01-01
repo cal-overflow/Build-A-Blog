@@ -14,7 +14,7 @@ describe('FooterBar component', () => {
   });
 
   it('renders a NavItem for each of the links', () => {
-    expect(wrapper.findAllComponents(NavItem)).toHaveLength(2);
+    expect(wrapper.findAllComponents(NavItem)).toHaveLength(3);
   });
 
   it('renders a NavItem for the blog page', () => {
@@ -28,6 +28,13 @@ describe('FooterBar component', () => {
     const navItem = wrapper.findComponent('[title="Portfolio"]');
     expect(navItem.exists()).toBeTruthy();
     expect(navItem.props('href')).toEqual('/category/portfolio');
+    expect(navItem.props('active')).not.toBeTruthy();
+  });
+
+  it('renders a NavItem for the contact page', () => {
+    const navItem = wrapper.findComponent('[title="Contact"]');
+    expect(navItem.exists()).toBeTruthy();
+    expect(navItem.props('href')).toEqual('/contact');
     expect(navItem.props('active')).not.toBeTruthy();
   });
 });

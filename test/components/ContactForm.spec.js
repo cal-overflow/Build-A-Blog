@@ -30,6 +30,20 @@ describe('ContactForm', () => {
       expect(wrapper.find('[for="message"]').element.innerHTML).toEqual('Message');
       expect(wrapper.find('[name="message"]').element.placeholder).toEqual('Your website is awesome! 🤩');
     });
+
+    it('computes the correctly formatted mailto link', async () => {
+      const name = chance.string();
+      const message = chance.paragraph();
+      const body = `${message}\n\nFrom: ${name}`;
+
+      const expectedLink = `mailto:lisleachristian@gmail.com?subject=${encodeURIComponent('Website Contact Form')}&body=${encodeURIComponent(body)}`;
+
+      wrapper.find('[name="name"]').setValue(name);
+      wrapper.find('[name="message"]').setValue(message);
+
+      await wrapper.vm.$nextTick();
+      expect(wrapper.vm.mailLink).toEqual(expectedLink);
+    });
   });
 
   describe('given there are query params entailing an error', () => {
@@ -67,6 +81,19 @@ describe('ContactForm', () => {
       expect(wrapper.find('[name="statusCode"]').element.value).toEqual(`${query.statusCode}`);
       expect(wrapper.find('[name="path"]').element.value).toEqual(`${query.path}`);
       expect(wrapper.find('[name="errorDetails"]').element.value).toContain(`${query.detail}`);
+    });
+
+    it('computes the correctly formatted mailto link', async () => {
+      const name = chance.string();
+      const extraFeedback = chance.paragraph();
+      const body = `Error information:\nStatus Code: ${query.statusCode}\nPath: ${query.path}\nDetail: ${query.detail}\n\nFeedback:\n${extraFeedback}\n\nFeedback provided by: ${name}`;
+      const expectedLink = `mailto:lisleachristian@gmail.com?subject=${encodeURIComponent('Website Contact Form')}&body=${encodeURIComponent(body)}`;
+
+      wrapper.find('[name="name"]').setValue(name);
+      wrapper.find('[name="extraFeedback"]').setValue(extraFeedback);
+
+      await wrapper.vm.$nextTick();
+      expect(wrapper.vm.mailLink).toEqual(expectedLink);
     });
   });
 });

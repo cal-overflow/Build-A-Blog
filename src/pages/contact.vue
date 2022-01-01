@@ -9,7 +9,7 @@
 
         <divider />
 
-      <contact-form info="$route.query" />
+      <contact-form />
     </div>
 
     <footer-bar current-page="Contact" />

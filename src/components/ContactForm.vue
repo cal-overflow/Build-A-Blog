@@ -1,6 +1,21 @@
 <template>
   <div class="bg-card-light dark:bg-card-dark m-6 p-6 shadow-md hover:shadow-none hover:rounded motion-safe:animate-fade-in">
-    <form  @submit.prevent="openMail">
+    <div v-if="formSubmitted" class="flex min-h-80 motion-safe:animate-fade-in">
+      <div class="m-auto">
+        <p class="mb-4">
+          Thanks for reaching out!
+          <br />
+          <br />
+          Be sure to send the email that was just generated for you.
+          <br />
+          I'll get back to you as soon as I can.
+        </p>
+
+        <p class="motion-safe:animate-fade-in-slow">Click <a :href="mailLink" target="_blank" class="text-primary-light dark:text-primary-dark underline hover:no-underline">here</a> to open the email link again.</p>
+      </div>
+    </div>
+
+    <form v-else  @submit.prevent="openMail">
       <div class="flex flex-wrap md:flex-nowrap">
         <div :class="`w-full ${isError ? 'md:w-1/2' : 'md:w-2/3'} p-6 mx-auto`">
           <label for="name">Name</label>
@@ -108,6 +123,7 @@ export default {
     topic: undefined,
     message: undefined,
     extraFeedback: undefined,
+    formSubmitted: false,
   }),
   computed: {
     isError() {
@@ -115,15 +131,15 @@ export default {
     },
     mailLink() {
       const statusCode = `Status Code: ${this.$route?.query.statusCode || '---' }`;
-      const path = `Status Code: ${this.$route?.query.path || '---' }`;
-      const detail = `Status Code: ${this.$route?.query.detail || '---' }`;
+      const path = `Path: ${this.$route?.query.path || '---' }`;
+      const detail = `Detail: ${this.$route?.query.detail || '---' }`;
       let body;
 
       if (this.isError) {
         body = `Error information:\n${statusCode}\n${path}\n${detail}\n\nFeedback:\n${this.extraFeedback || 'Not provided'}\n\nFeedback provided by: ${this.name || 'anonymous'}`;
       }
       else {
-        body = `${this.message}\n\nFrom: ${this.name || 'anonymous'}`;
+        body = `${this.message || 'No message provided'}\n\nFrom: ${this.name || 'anonymous'}`;
       }
       
       return `mailto:lisleachristian@gmail.com?subject=${encodeURIComponent(this.topic || 'Website Contact Form')}&body=${encodeURIComponent(body)}`;
@@ -131,7 +147,9 @@ export default {
   },
   methods: {
     openMail() {
-      location.href = this.mailLink;
+      window.open(this.mailLink, '_blank');
+
+      this.formSubmitted = true;
     },
     textInputStyle(options) {
       const classes = 'w-full resize-none px-4 py-2 bg-extra-gray-light dark:bg-extra-gray-dark rounded-lg outline-none focus:ring focus:ring-primary-light focus:dark:ring-primary-dark';

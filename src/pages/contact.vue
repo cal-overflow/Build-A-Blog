@@ -1,0 +1,35 @@
+<template>
+  <main>
+    <nav-bar current-page="Contact" />
+
+    <div class="max-w-screen-lg mx-auto">
+      <div class="m-6 p-4 bg-gray-100 shadow-md hover:shadow-none hover:rounded motion-safe:animate-fade-in-fast">
+          <p class="text-center md:text-left text-3xl font-bold">Contact Me</p>
+          <p class="text-center md:text-left text-md">Get in touch with me</p>
+      </div>
+
+        <divider />
+
+      <contact-form info="$route.query" />
+    </div>
+
+    <footer-bar current-page="Contact" />
+  </main>
+</template>
+
+<script>
+import NavBar from '@/components/NavBar.vue';
+import Divider from '@/components/Divider.vue';
+import ContactForm from '@/components/ContactForm.vue';
+import FooterBar from '@/components/FooterBar.vue';
+
+export default {
+  name: 'contact',
+  components: {
+    NavBar,
+    Divider,
+    ContactForm,
+    FooterBar
+  },
+};
+</script>

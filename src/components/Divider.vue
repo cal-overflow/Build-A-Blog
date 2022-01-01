@@ -6,10 +6,6 @@
 export default {
   name: 'divider',
   props: {
-    color: {
-      type: String,
-      default: 'gray-200',
-    },
     width: {
       type: String,
       default: 'w-1/4',
@@ -17,7 +13,7 @@ export default {
   },
   computed: {
     style() {
-      return `bg-${this.color} text-${this.color} ${this.width} mx-auto my-1 border-0 h-0.5 rounded-none`;
+      return `bg-extra-gray-light text-extra-gray-light dark:bg-extra-gray-dark dark:text-extra-gray-light ${this.width} mx-auto my-1 border-0 h-0.5 rounded-none`;
     },
   },
 };

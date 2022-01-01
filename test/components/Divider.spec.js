@@ -19,23 +19,20 @@ describe('Divider component', () => {
     expect(wrapper.html()).toContain('<hr');
   });
 
-  it('has the correct default color and width', () => {
-    expect(wrapper.html()).toContain('bg-gray-200 text-gray-200');
+  it('has the correct color and default width', () => {
+    expect(wrapper.html()).toContain('bg-extra-gray-light text-extra-gray-light dark:bg-extra-gray-dark dark:text-extra-gray-light');
     expect(wrapper.html()).toContain('w-1/4');
   });
 
-  it('correctly passes the width and color from props', () => {
+  it('correctly passes the width from props', () => {
     const fakeWidth = `w-1/${2 * chance.integer({min: 1, max: 4})}`;
-    const fakeColor = `red-${chance.color()}-${100 * chance.integer({min: 1, max: 9})}`;
 
     wrapper= mount(Divider, {
       propsData: {
         width: fakeWidth,
-        color: fakeColor,
       }
     });
 
-    const expectedTailwindClasses = `bg-${fakeColor} text-${fakeColor} ${fakeWidth}`;
-    expect(wrapper.html()).toContain(expectedTailwindClasses);
+    expect(wrapper.html()).toContain(fakeWidth);
   });
 });

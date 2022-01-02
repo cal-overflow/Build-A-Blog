@@ -36,6 +36,17 @@ module.exports = {
           '100%': {
             opacity: '100%',
           }
+        },
+        'wave': {
+          /* Animation source: https://jarv.is/notes/css-waving-hand-emoji/ */
+          '0%': { transform: 'rotate( 0.0deg)' },
+          '10%': { transform: 'rotate(14.0deg)' }, /* The following five values can be played with to make the waving more or less extreme */
+          '20%': { transform: 'rotate(-8.0deg)' },
+          '30%': { transform: 'rotate(14.0deg)' },
+          '40%': { transform: 'rotate(-8.0deg)' },
+          '50%': { transform: 'rotate(10.0deg)' },
+          '60%': { transform: 'rotate( 0.0deg)' },
+          '100%': { transform: 'rotate( 0.0deg)' },
         }
       },
       animation: {
@@ -45,6 +56,7 @@ module.exports = {
         'fade-in-fast': 'fade-in 0.25s ease-in-out',
         'fade-in': 'fade-in 1s ease-in-out',
         'fade-in-slow': 'fade-in 1.5s ease-in-out',
+        'hand-wave': 'wave 1.75s 2s 1',
       }
     },
   },

@@ -20,7 +20,7 @@ describe('BlogPreview component', () => {
 
   it('contains the correct text', () => {
     expect(wrapper.text()).toContain("Blog");
-    expect(wrapper.text()).toContain("My blog is where I post all of my computer-related experiences. This consists of the struggle and learning I underwent working on things like the projects you’ll find in my portfolio. I also post blogs regarding my Iowa State University courses.");
+    expect(wrapper.text()).toContain("My blog is where I post about my experiences as a software engineer. This consists of the struggle and learning I underwent while working on the projects you'll find in my portfolio or while taking a course at Iowa State University.");
   });
 
   it('contains a Divider component', () => {

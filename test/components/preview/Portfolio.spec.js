@@ -20,7 +20,7 @@ describe('PortfolioPreview component', () => {
 
   it('contains the correct text', () => {
     expect(wrapper.text()).toContain("Portfolio");
-    expect(wrapper.text()).toContain("In my portfolio, you’ll find my most remarkable projects and software development experiences. This varies from a complex real-time web-based multiplayer game to a simple website for a local business. Most of these projects were made for school courses, but some were created for business.");
+    expect(wrapper.text()).toContain("You'll find my most remarkable projects and software development experiences in my portfolio. This varies from a complex real-time web-based multiplayer game to simple websites for local businesses.");
   });
 
   it('contains a Divider component', () => {

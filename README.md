@@ -1,8 +1,10 @@
-# Portfolio
+# Portfolio [![Netlify Status](https://api.netlify.com/api/v1/badges/15085e05-f139-4f5f-a673-6bf86682c401/deploy-status)](https://app.netlify.com/sites/christianlisle/deploys)
 
 Personal website for blogging and showcasing my work.
 
 Built primarily with [NuxtJS](https://nuxtjs.org/) and [TailwindCSS](https://tailwindcss.com/).
+
+
 
 ## Build Setup
 

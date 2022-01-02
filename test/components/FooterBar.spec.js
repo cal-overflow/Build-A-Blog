@@ -37,4 +37,11 @@ describe('FooterBar component', () => {
     expect(navItem.props('href')).toEqual('/contact');
     expect(navItem.props('active')).not.toBeTruthy();
   });
+
+  it('renders a linked Github logo that is correctly styled', () => {
+    const img = wrapper.find('img');
+    expect(wrapper.find('a').element.href).toEqual('https://github.com/ChristianLisle');
+    expect(img.element.src).toContain('/github.png');
+    expect(img.attributes('class')).toContain('invert');
+  });
 });

@@ -49,6 +49,49 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    '@nuxtjs/feed',
+  ],
+
+  feed: [
+    { // (mostly) default feed object from feed module
+      path: '/feed.xml',
+      async create(feed) {
+        const { $content } = require('@nuxt/content');
+        
+        feed.options = {
+          title: 'Christian Lisle',
+          link: 'https://www.christianlisle.com/feed.xml',
+          description: "Blog posts from Christian Lisle",
+        };
+
+        const posts = await $content('posts').sortBy('createdAt', 'asc').fetch();
+
+        posts.forEach((post) => {
+          feed.addItem({
+            title: post.title,
+            id: post.slug,
+            link: `https://www.christianlisle.com/post/${post.slug}`,
+            description: `posted on: ${post.date}`,
+          });
+        });
+
+        const categories = await $content('categories').fetch();
+  
+        categories.forEach((category) => {
+          feed.addCategory(category.title);
+        });
+        
+        feed.addContributor({
+          name: 'Christian Lisle',
+          email: 'lisleachristian@gmail.com',
+          link: 'https://www.christianlisle.com'
+        });
+
+      },
+      cacheTime: 1000 * 60 * 15,
+      type: 'rss2',
+      data: ["Christian Lisle's Blog Feed"]
+    }
   ],
 
   srcDir: 'src',

@@ -20,7 +20,7 @@
             </p>
           </div>
 
-          <img :src="`/blog-images/feature/${post.img}`" class="object-contain w-full md:w-3/4 lg:w-8/12 mx-auto lg:mx-auto max-h-screen" />
+          <img :src="`/blog-images/feature/${post.img}`" class="object-contain w-full md:w-3/4 3xl:w-3/4 mx-auto lg:mx-auto max-h-screen motion-safe:transition hover:shadow-lg hover:animate-bounce" />
           <nuxt-content :document="post" class="prose m-4 mx-auto max-w-none prose-img:w-max prose-img:mx-auto prose-a:underline hover:prose-a:no-underline prose-a:text-primary-light dark:prose-invert dark:prose-a:text-primary-dark" />
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { shallowMount, RouterLinkStub } from '@vue/test-utils';
 import Chance from 'chance';
-import generatePost from '../../helpers/postGenerator';
+import generatePost from '../../../helpers/postGenerator';
 import post from '@/pages/post/_.vue';
 import NavBar from '@/components/NavBar.vue';
 import FooterBar from '@/components/FooterBar.vue';

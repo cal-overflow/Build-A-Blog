@@ -1,6 +1,6 @@
 import { mount, RouterLinkStub } from '@vue/test-utils';
 import Chance from 'chance';
-import generatePost from '../../helpers/postGenerator';
+import generatePost from '../../../helpers/postGenerator';
 import PostPreview from '@/components/previews/Post.vue';
 
 const chance = new Chance();

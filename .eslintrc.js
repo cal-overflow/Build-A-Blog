@@ -19,5 +19,8 @@ module.exports = {
   rules: {
     semi: ["error", "always"],
     "vue/component-definition-name-casing": ["error", "kebab-case"]
+  },
+  globals: {
+    cy: true
   }
 };

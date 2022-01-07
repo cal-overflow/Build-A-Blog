@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
 import Chance from 'chance';
-import generatePost from '../helpers/postGenerator';
+import generatePost from '../../helpers/postGenerator';
 import BlogFeed from '@/components/BlogFeed.vue';
 import PostPreview from '@/components/previews/Post.vue';
 import Divider from '@/components/Divider.vue';

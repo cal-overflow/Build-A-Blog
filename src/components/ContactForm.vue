@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-card-light dark:bg-card-dark m-6 p-6 shadow-md hover:shadow-none hover:rounded motion-safe:animate-fade-in">
+  <div id="contact-form-card" class="bg-card-light dark:bg-card-dark m-6 p-6 shadow-md hover:shadow-none hover:rounded motion-safe:animate-fade-in">
     <div v-if="formSubmitted" class="flex min-h-80 motion-safe:animate-fade-in">
       <div class="m-auto">
         <p class="mb-4">

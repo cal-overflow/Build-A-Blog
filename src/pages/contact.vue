@@ -1,7 +1,7 @@
 <template>
   <main>
     <nav-bar current-page="Contact" />
-    <div class="max-w-screen-lg mx-auto">
+    <div id="contact-header-card" class="max-w-screen-lg mx-auto">
       <div class="bg-card-light dark:bg-card-dark m-6 p-4 shadow-md hover:shadow-none hover:rounded motion-safe:animate-fade-in-fast">
           <p class="text-center md:text-left text-3xl font-bold">Contact Me</p>
           <p class="text-center md:text-left text-md">Get in touch with me</p>

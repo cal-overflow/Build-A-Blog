@@ -26,8 +26,9 @@ $ npm run start
 $ npm run generate
 ```
 
-### Testing
+### Testing [![portfolio](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/ap95b9&style=flat-square&logo=cypress)](https://dashboard.cypress.io/projects/ap95b9/runs)
 
+#### Unit tests
 Unit tests can be run with the [Jest](https://jestjs.io/) test runner.
 
 ```bash
@@ -35,5 +36,22 @@ Unit tests can be run with the [Jest](https://jestjs.io/) test runner.
 $ npm install
 
 # run unit tests
-$ npm run test
+$ npm run unit
+```
+
+#### E2E tests
+End-to-end tests can be run with [Cypress](https://www.cypress.io/). 
+
+```bash
+# install dependencies (if not already done)
+$ npm install
+
+# run e2e tests
+npm run e2e
+
+# run e2e in headless mode
+npm run e2e:headless
+
+# run e2e by connecting to an already-running server
+npm run e2e:live
 ```

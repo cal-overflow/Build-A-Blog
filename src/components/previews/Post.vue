@@ -1,5 +1,5 @@
 <template>
-  <div v-if="post" :class="getCardStyle">
+  <div v-if="post" :class="`post-preview-card ${getCardStyle}`">
     <div :class="getImageContainerStyle" style="aspect-ratio: 1 / 1;">
       <nuxt-link ref="feature-image" :to="`/post/${post.slug}`" :class="`w-full h-full motion-safe:animate-blur-fade-in-slow`">
         <img :src="image" class="object-cover w-full h-full" />
@@ -17,7 +17,7 @@
     </div>
   </div>
 
-  <div v-else :class="getCardStyle">
+  <div v-else :class="`post-preview-card ${getCardStyle}`">
     <div :class="getImageContainerStyle" style="aspect-ratio: 1 / 1;">
       <div class="bg-gray-500 object-cover w-full h-full" />
     </div>

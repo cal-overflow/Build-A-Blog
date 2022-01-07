@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="post-feed">
     <div class="max-w-screen-lg mx-auto">
       <div class="bg-card-light dark:bg-card-dark m-6 p-6 shadow-md dark:shadow-shadow-dark hover:shadow-none hover:rounded motion-safe:animate-fade-in-fast">
         <div v-if="category">

@@ -111,7 +111,7 @@ describe('post page', () => {
     });
 
     it('renders the post feature image correctly', () => {
-      expect(wrapper.html()).toContain(`<img src="/blog-images/feature/${fakePost.img}"`);
+      expect(wrapper.html()).toContain(`<img id="post-feature-image" src="/blog-images/feature/${fakePost.img}"`);
     });
 
     it('contains nuxt content element for the post body', () => {

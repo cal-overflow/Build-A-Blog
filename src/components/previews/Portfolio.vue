@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-between bg-card-light dark:bg-card-dark text-center m-6 p-6 md:w-1/2 hover:rounded shadow-md dark:shadow-shadow-dark hover:shadow-none">
+  <div id="portfolio-preview-card" class="flex flex-col justify-between bg-card-light dark:bg-card-dark text-center m-6 p-6 md:w-1/2 hover:rounded shadow-md dark:shadow-shadow-dark hover:shadow-none">
     <nuxt-link to="/category/portfolio" class="font-bold">Portfolio</nuxt-link>
     <divider width="w-2/5" />
     <p>

@@ -2,13 +2,13 @@
   <main>
     <nav-bar />
     <div class="max-w-screen-lg mx-auto">
-      <div class="bg-card-light dark:bg-card-dark text-center m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in-fast">
+      <div id="error-header-card" class="bg-card-light dark:bg-card-dark text-center m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in-fast">
         <p class="text-3xl md:text-5xl font-bold">This is embarrassing {{error.statusCode == '500' ? '🐢' : '😳'}}</p>
       </div>
       
       <divider />
 
-      <div class="bg-card-light dark:bg-card-dark m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in">
+      <div id="error-main-info-card" class="bg-card-light dark:bg-card-dark m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in">
         <div class="text-center">
           <p class="text-sm mb-2">Status code</p>
           <p class="text-5xl font-bold motion-safe:animate-blur-fade-in">{{error.statusCode}}</p>
@@ -23,7 +23,7 @@
         </div>
       </div>
 
-      <div class="bg-card-light dark:bg-card-dark m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in">
+      <div id="error-more-info-card" class="bg-card-light dark:bg-card-dark m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in">
         <div>
           <p class="font-bold text-2xl">More information 🤓</p>
           <pre class="text-extra-gray-dark dark:text-extra-gray-light whitespace-normal">

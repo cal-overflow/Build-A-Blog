@@ -47,7 +47,6 @@ describe('ContactForm', () => {
   });
 
   describe('given there are query params entailing an error', () => {
-    
     beforeEach(() => {
       query = {
         statusCode: chance.integer({min: 400, max: 599}),
@@ -63,18 +62,13 @@ describe('ContactForm', () => {
     });
 
     it('renders the name label and input', () => {
-      expect(wrapper.find('[for="extraFeedback"]').element.innerHTML).toEqual('Describe what happened when this error occurred');
-      expect(wrapper.find('[name="extraFeedback"]').element.placeholder).toEqual('I saw an error when I tried viewing the blog post about your multiplayer pac-man game, CyRun.');
+      expect(wrapper.find('[for="message"]').element.innerHTML).toEqual('Describe what happened when this error occurred');
+      expect(wrapper.find('[name="message"]').element.placeholder).toEqual('I saw an error when I tried viewing the blog post about your multiplayer pac-man game, CyRun.');
     });
 
     it('renders the topic label and placeholder correctly', () => {
       expect(wrapper.find('[for="topic"]').element.innerHTML).toEqual('Topic');
       expect(wrapper.find('[name="topic"]').element.placeholder).toEqual(`${query.statusCode} error`);
-    });
-
-    it('renders the extra feedback label and placeholder correctly', () => {
-      expect(wrapper.find('[for="extraFeedback"]').element.innerHTML).toEqual('Describe what happened when this error occurred');
-      expect(wrapper.find('[name="extraFeedback"]').element.placeholder).toEqual('I saw an error when I tried viewing the blog post about your multiplayer pac-man game, CyRun.');
     });
 
     it('renders the error information', () => {
@@ -90,7 +84,53 @@ describe('ContactForm', () => {
       const expectedLink = `mailto:lisleachristian@gmail.com?subject=${encodeURIComponent('Website Contact Form')}&body=${encodeURIComponent(body)}`;
 
       wrapper.find('[name="name"]').setValue(name);
-      wrapper.find('[name="extraFeedback"]').setValue(extraFeedback);
+      wrapper.find('[name="message"]').setValue(extraFeedback);
+
+      await wrapper.vm.$nextTick();
+      expect(wrapper.vm.mailLink).toEqual(expectedLink);
+    });
+  });
+  describe('given there are query parameters entailing feedback for the memory-download app', () => {
+
+    beforeEach(() => {
+      query = {
+        memoryDownload: true,
+        photos: chance.integer({min: 0}),
+        videos: chance.integer({min: 0}),
+      };
+
+      wrapper = mount(ContactForm, {
+        mocks: {
+          $route: {query} 
+        }
+      });
+    });
+
+    it('renders the name label and input', () => {
+      expect(wrapper.find('[for="message"]').element.innerHTML).toEqual('Feedback');
+      expect(wrapper.find('[name="message"]').element.placeholder).toEqual('I downloaded the app, but my download is stuck at 20%');
+    });
+
+    it('renders the topic label and placeholder correctly', () => {
+      expect(wrapper.find('[for="topic"]').element.innerHTML).toEqual('Topic');
+      expect(wrapper.find('[name="topic"]').element.placeholder).toEqual('Memory Downloader feedback');
+    });
+
+    it('renders the photo and video counts', () => {
+      expect(wrapper.find('[name="photoCount"]').element.value).toEqual(`${query.photos}`);
+      expect(wrapper.find('[name="videoCount"]').element.value).toEqual(`${query.videos}`);
+    });
+
+    it('computes the correctly formatted mailto link', async () => {
+      const name = chance.string();
+      const feedback = chance.paragraph();
+      const appUseInfo = `Information from app:\nPhotos: ${query.photos}\nVideos: ${query.videos}\n\n`;
+      const body = `${appUseInfo}Feedback:\n${feedback}\n\nFrom:\n${name}`;
+      const expectedLink = `mailto:lisleachristian@gmail.com?subject=${encodeURIComponent('Website Contact Form')}&body=${encodeURIComponent(body)}`;
+
+
+      wrapper.find('[name="name"]').setValue(name);
+      wrapper.find('[name="message"]').setValue(feedback);
 
       await wrapper.vm.$nextTick();
       expect(wrapper.vm.mailLink).toEqual(expectedLink);

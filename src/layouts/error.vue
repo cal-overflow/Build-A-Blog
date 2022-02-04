@@ -2,13 +2,13 @@
   <main>
     <nav-bar />
     <div class="max-w-screen-lg mx-auto">
-      <div id="error-header-card" class="bg-card-light dark:bg-card-dark text-center m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in-fast">
+      <div id="error-header-card" class="bg-card-light dark:bg-card-dark text-center m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in-fast transition">
         <p class="text-3xl md:text-5xl font-bold">This is embarrassing {{error.statusCode == '500' ? '🐢' : '😳'}}</p>
       </div>
       
       <divider />
 
-      <div id="error-main-info-card" class="bg-card-light dark:bg-card-dark m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in">
+      <div id="error-main-info-card" class="bg-card-light dark:bg-card-dark m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in transition">
         <div class="text-center">
           <p class="text-sm mb-2">Status code</p>
           <p class="text-5xl font-bold motion-safe:animate-blur-fade-in">{{error.statusCode}}</p>
@@ -19,18 +19,18 @@
         <divider />
 
         <div class="text-center">
-          <nuxt-link ref="back-home" to="/" class="text-primary-light underline hover:no-underline dark:text-primary-dark">Take me home</nuxt-link>
+          <nuxt-link ref="back-home" to="/" class="text-primary-light underline hover:no-underline dark:text-primary-dark transition">Take me home</nuxt-link>
         </div>
       </div>
 
-      <div id="error-more-info-card" class="bg-card-light dark:bg-card-dark m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in">
+      <div id="error-more-info-card" class="bg-card-light dark:bg-card-dark m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in transition">
         <div>
           <p class="font-bold text-2xl">More information 🤓</p>
-          <pre class="text-extra-gray-dark dark:text-extra-gray-light whitespace-normal">
+          <pre class="text-extra-gray-dark dark:text-extra-gray-light whitespace-normal transition">
             {{extraInfo}}
           </pre>
 
-          <p class="mt-2">If you believe there has been a mistake, please don't hesitate to <nuxt-link ref="contact-link" :to="contactLink" class="text-primary-light underline hover:no-underline dark:text-primary-dark">reach out to me</nuxt-link>.</p>
+          <p class="mt-2">If you believe there has been a mistake, please don't hesitate to <nuxt-link ref="contact-link" :to="contactLink" class="text-primary-light underline hover:no-underline dark:text-primary-dark transition">reach out to me</nuxt-link>.</p>
         </div>
       </div>
 

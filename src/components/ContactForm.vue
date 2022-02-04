@@ -1,5 +1,5 @@
 <template>
-  <div id="contact-form-card" class="bg-card-light dark:bg-card-dark m-6 p-6 shadow-md hover:shadow-none hover:rounded motion-safe:animate-fade-in">
+  <div id="contact-form-card" class="bg-card-light dark:bg-card-dark m-6 p-6 shadow-md hover:shadow-none hover:rounded motion-safe:animate-fade-in transition">
     <div v-if="formSubmitted" class="flex min-h-80 motion-safe:animate-fade-in">
       <div class="m-auto">
         <p class="mb-4">
@@ -11,7 +11,7 @@
           I'll get back to you as soon as I can.
         </p>
 
-        <p class="motion-safe:animate-fade-in-slow">Click <a :href="mailLink" target="_blank" class="text-primary-light dark:text-primary-dark underline hover:no-underline">here</a> to open the email link again.</p>
+        <p class="motion-safe:animate-fade-in-slow">Click <a :href="mailLink" target="_blank" class="text-primary-light dark:text-primary-dark underline hover:no-underline transition">here</a> to open the email link again.</p>
       </div>
     </div>
 
@@ -52,7 +52,7 @@
 
         <div v-if="hasExtraInformation" class="w-full md:w-1/2 mx-auto p-6 mx-auto">
           <p class="text-lg font-bold">{{extraInfoLabel}}</p>
-          <p class="text-sm text-extra-gray-dark dark:text-extra-gray-light">{{extraInfoDescription}}</p>
+          <p class="text-sm text-extra-gray-dark dark:text-extra-gray-light transition">{{extraInfoDescription}}</p>
           <div v-if="$route.query.statusCode">
             <label for="statusCode">Status Code</label>
             <br />
@@ -114,9 +114,9 @@
         <input
           type="submit"
           value="Continue"
-          :class="`rounded-md py-1 px-2 bg-primary-light dark:bg-primary-dark text-white transition-opacity duration-1000 ${name || topic || message ? 'opacity-1' : 'opacity-25'}`"
+          :class="`rounded-md py-1 px-2 bg-primary-light dark:bg-primary-dark text-white transition duration-1000 ${name || topic || message ? 'opacity-1' : 'opacity-25'}`"
         />
-        <p :class="`text-sm text-extra-gray-dark dark:text-extra-gray-light transition-opacity duration-1000 ${name || topic || message ? 'opacity-1' : 'opacity-0'}`">
+        <p :class="`text-sm text-extra-gray-dark dark:text-extra-gray-light transition duration-1000 ${name || topic || message ? 'opacity-1' : 'opacity-0'}`">
           An email will be generated for you based on the information you provided above. All you have to do is press send.
         </p>
       </div>

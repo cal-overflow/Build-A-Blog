@@ -13,7 +13,7 @@ export default {
   },
   computed: {
     style() {
-      return `bg-extra-gray-light text-extra-gray-light dark:bg-extra-gray-dark dark:text-extra-gray-light ${this.width} mx-auto my-1 border-0 h-0.5 rounded-none`;
+      return `bg-extra-gray-light text-extra-gray-light dark:bg-extra-gray-dark dark:text-extra-gray-light transition ${this.width} mx-auto my-1 border-0 h-0.5 rounded-none`;
     },
   },
 };

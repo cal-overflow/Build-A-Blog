@@ -1,5 +1,5 @@
 <template>
-  <Nuxt class="bg-main-light dark:bg-main-dark dark:text-white transition-colors" />
+  <Nuxt class="bg-main-light dark:bg-main-dark dark:text-white transition" />
 </template>
 
 <script>

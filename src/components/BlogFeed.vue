@@ -1,7 +1,7 @@
 <template>
   <div id="post-feed">
     <div class="max-w-screen-lg mx-auto">
-      <div class="bg-card-light dark:bg-card-dark m-6 p-6 shadow-md dark:shadow-shadow-dark hover:shadow-none hover:rounded motion-safe:animate-fade-in-fast">
+      <div class="bg-card-light dark:bg-card-dark m-6 p-6 shadow-md dark:shadow-shadow-dark hover:shadow-none hover:rounded motion-safe:animate-fade-in-fast transition">
         <div v-if="category">
           <p class="text-center md:text-left text-3xl font-bold">{{category.title}}</p>
           <p class="text-center md:text-left text-md">{{category.description}}</p>
@@ -24,7 +24,7 @@
       <div
         v-if="isMorePosts"
         ref="loadMorePosts"
-        :class="`bg-card-light dark:bg-card-dark m-6 px-6 hover:bg-extra-gray-light dark:hover:bg-extra-gray-dark hover:rounded shadow-md hover:shadow-none md:col-span-2 cursor-pointer ${loadingStyle}`"
+        :class="`bg-card-light dark:bg-card-dark m-6 px-6 hover:bg-extra-gray-light dark:hover:bg-extra-gray-dark hover:rounded shadow-md hover:shadow-none md:col-span-2 cursor-pointer transition ${loadingStyle}`"
         @mousedown="getPosts"
       >
         <p class="m-4 underline hover:no-underline text-center text-lg">

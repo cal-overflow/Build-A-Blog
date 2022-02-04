@@ -10,7 +10,7 @@
         />
       </div>
       <a id="github-link" href="https://github.com/ChristianLisle" target="_blank" title="View my Github account">
-        <img class="invert aspect-square w-6 h-auto inline align-top" src="/github.png" />
+        <img class="invert aspect-square w-6 h-auto inline align-middle" src="/github.png" />
       </a>
     </nav>
   </div>

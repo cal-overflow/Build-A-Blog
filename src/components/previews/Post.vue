@@ -11,7 +11,7 @@
         {{post.title}}
       </nuxt-link>
       <nuxt-content ref="excerpt" :document="excerpt" />
-      <nuxt-link ref="continue-reading" :to="`/post/${post.slug}`" class="text-extra-gray-dark dark:text-extra-gray-light font-thin text-sm underline hover:no-underline">
+      <nuxt-link ref="continue-reading" :to="`/post/${post.slug}`" class="text-extra-gray-dark dark:text-extra-gray-light font-thin text-sm underline hover:no-underline transition">
         Continue reading
       </nuxt-link>
     </div>
@@ -23,7 +23,7 @@
     </div>
 
     <div :class="getPostInfoContainerStyle">
-      <div class="bg-gray-500 dark:bg-white w-64 h-4" />
+      <div class="bg-gray-500 dark:bg-white w-64 h-4 transition" />
 
       <div v-for="i in 6" :key="i" class="bg-gray-400 w-full h-3 my-2"/>
       <div class="bg-gray-400 w-48 h-3 mb-2"/>
@@ -61,7 +61,7 @@ export default {
     },
     getCardStyle() {
       const prevIndex = this.index - 1;
-      let style = 'bg-card-light dark:bg-card-dark m-6 p-6 hover:rounded shadow-md dark:shadow-shadow-dark hover:shadow-none motion-safe:animate-fade-in';
+      let style = 'bg-card-light dark:bg-card-dark m-6 p-6 hover:rounded shadow-md dark:shadow-shadow-dark hover:shadow-none motion-safe:animate-fade-in transition';
 
       if (!this.post)
         style += ' motion-safe:animate-pulse';

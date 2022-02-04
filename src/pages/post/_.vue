@@ -2,10 +2,10 @@
   <main>
     <nav-bar current-page="Blog" />
     <div class="max-w-screen-lg mx-auto">
-      <div v-if="post" id="post-card" class="bg-card-light dark:bg-card-dark m-0 md:m-6 p-4 flex flex-wrap shadow-lg dark:shadow-shadow-dark hover:shadow-none hover:rounded motion-safe:animate-fade-in">
+      <div v-if="post" id="post-card" class="bg-card-light dark:bg-card-dark m-0 md:m-6 p-4 flex flex-wrap shadow-lg dark:shadow-shadow-dark hover:shadow-none hover:rounded motion-safe:animate-fade-in transition">
         <div class="w-full p-4">
           <p id="post-title" class="text-4xl md:text-5xl lg:text-6xl font-bold mb-2">{{post.title}}</p>
-          <div class="text-extra-gray-dark dark:text-extra-gray-light">
+          <div class="text-extra-gray-dark dark:text-extra-gray-light transition">
             <p id="post-metadata">{{post.date}}
               <span v-if="post.categories.length">
                 <span class="hidden md:inline">/</span>
@@ -21,11 +21,11 @@
           </div>
 
           <img id="post-feature-image" :src="`/blog-images/feature/${post.img}`" class="object-contain w-full md:w-3/4 3xl:w-3/4 mx-auto lg:mx-auto max-h-screen" />
-          <nuxt-content id="post-content" :document="post" class="prose m-4 mx-auto max-w-none prose-img:w-max prose-img:mx-auto prose-a:underline hover:prose-a:no-underline prose-a:text-primary-light dark:prose-invert dark:prose-a:text-primary-dark" />
+          <nuxt-content id="post-content" :document="post" class="prose m-4 mx-auto max-w-none prose-img:w-max prose-img:mx-auto prose-a:underline hover:prose-a:no-underline prose-a:text-primary-light dark:prose-invert dark:prose-a:text-primary-dark transition" />
         </div>
       </div>
 
-      <div v-else class="max-w-screen-lg mx-auto flex bg-card-light dark:bg-card-dark m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded animate-pulse">
+      <div v-else class="max-w-screen-lg mx-auto flex bg-card-light dark:bg-card-dark m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded animate-pulse transition">
         <div class="w-full p-4">
           <div class="bg-white w-80 lg:w-96 h-16 mb-2" />
           <div class="bg-gray-300 w-60 h-4 mb-1" />

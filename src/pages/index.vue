@@ -1,7 +1,7 @@
 <template>
   <main>
     <nav-bar current-page="Home" />
-    <home />
+    <home :about="aboutContent" />
     <footer-bar current-page="Home" />
   </main>
 </template>
@@ -18,5 +18,20 @@ export default {
     Home,
     FooterBar,
   },
+  async asyncData({ $content, error }) {
+    const aboutContent = await $content('about')
+      .fetch()
+      .catch((err) => {
+        error({
+          statusCode: 500,
+          message: 'Something went wrong',
+          error: err
+        });
+      });
+
+    return {
+      aboutContent
+    };
+  }
 };
 </script>

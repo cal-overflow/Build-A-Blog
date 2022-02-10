@@ -19,9 +19,9 @@ describe('Home component', () => {
   });
 
   it('contains an image with the correct source', () => {
-    const image = wrapper.find('img[alt="Christian Headshot"]');
+    const image = wrapper.find('img[alt="Headshot"]');
     expect(image.exists()).toBeTruthy();
-    expect(image.attributes().src).toContain('Christian_headshot.jpg');
+    expect(image.attributes().src).toContain('headshot.jpg');
   });
 
   it('contains the correct text', () => {

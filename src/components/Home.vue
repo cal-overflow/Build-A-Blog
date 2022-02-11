@@ -7,7 +7,7 @@
           </div>
           <div class="md:w-3/5 lg:w-2/3 m-4 xs:mb-12 md:mb-0">
             <p class="text-lg font-bold mb-4">Hi. I'm Christian. <span class="motion-safe:animate-hand-wave animation-inline">👋</span></p>
-            <nuxt-content :document="about" class="prose prose-a:underline hover:prose-a:no-underline prose-a:text-primary-light dark:prose-invert dark:prose-a:text-primary-dark leading-normal transition" />
+            <nuxt-content :document="bio" class="prose prose-a:underline hover:prose-a:no-underline prose-a:text-primary-light dark:prose-invert dark:prose-a:text-primary-dark leading-normal transition" />
           </div>
         </div>
     </div>
@@ -30,12 +30,19 @@ export default {
     BlogPreview,
     PortfolioPreview,
   },
-  props: {
-    about: {
-      type: undefined,
-      default: undefined,
-      required: true,
-    }
+  data: () => ({
+    bio: undefined
+  }),
+  async mounted() {
+    this.bio = await this.$content('about')
+      .fetch()
+      .catch((err) => {
+        this.$nuxt.error({
+          statusCode: 500,
+          message: 'Something went wrong while fetching the "about me" content',
+          error: err
+        });
+      });
   }
 };
 </script>

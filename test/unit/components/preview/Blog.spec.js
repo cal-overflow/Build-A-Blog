@@ -6,10 +6,20 @@ import NavItem from '@/components/NavItem.vue';
 describe('BlogPreview component', () => {
   let wrapper;
 
+  const nuxtContentMock = {
+    $content: jest.fn().mockReturnThis(),
+    fetch: jest.fn().mockReturnThis(),
+    catch: () => {}
+  };
+
   beforeEach(() => {
     wrapper = shallowMount(BlogPreview, {
       stubs: {
-        NuxtLink: RouterLinkStub
+        NuxtLink: RouterLinkStub,
+        'nuxt-content': true,
+      },
+      mocks: {
+        $content: () => nuxtContentMock
       }
     });
   });
@@ -18,9 +28,8 @@ describe('BlogPreview component', () => {
     expect(wrapper.vm).toBeTruthy();
   });
 
-  it('contains the correct text', () => {
+  it('contains the correct header', () => {
     expect(wrapper.text()).toContain("Blog");
-    expect(wrapper.text()).toContain("My blog is where I post about my experiences as a software engineer. This consists of the struggle and learning I underwent while working on the projects you'll find in my portfolio or while taking a course at Iowa State University.");
   });
 
   it('contains a Divider component', () => {

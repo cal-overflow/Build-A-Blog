@@ -6,10 +6,20 @@ import NavItem from '@/components/NavItem.vue';
 describe('PortfolioPreview component', () => {
   let wrapper;
 
+  const nuxtContentMock = {
+    $content: jest.fn().mockReturnThis(),
+    fetch: jest.fn().mockReturnThis(),
+    catch: () => {}
+  };
+
   beforeEach(() => {
     wrapper = shallowMount(PortfolioPreview, {
       stubs: {
-        NuxtLink: RouterLinkStub
+        NuxtLink: RouterLinkStub,
+        'nuxt-content': true,
+      },
+      mocks: {
+        $content: () => nuxtContentMock
       }
     });
   });
@@ -18,9 +28,8 @@ describe('PortfolioPreview component', () => {
     expect(wrapper.vm).toBeTruthy();
   });
 
-  it('contains the correct text', () => {
+  it('contains the correct header', () => {
     expect(wrapper.text()).toContain("Portfolio");
-    expect(wrapper.text()).toContain("You'll find my most remarkable projects and software development experiences in my portfolio. This varies from a complex real-time web-based multiplayer game to simple websites for local businesses.");
   });
 
   it('contains a Divider component', () => {

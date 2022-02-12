@@ -1,0 +1,1 @@
+My blog is where I post about my experiences as a software engineer. This consists of the struggle and learning I underwent while working on the projects you'll find in my portfolio or while taking a course at Iowa State University.

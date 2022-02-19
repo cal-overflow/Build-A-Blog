@@ -42,37 +42,17 @@ Select the operating system that your device is running, and the application wil
 
 Find the downloaded zip file on your computer. It will be located in your browsers default download folder. Unzip the folder so that you can find the app itself.
 
-<!-- TODO: DELETE OR USE -->
-<!-- ![Unzip Memory Downloader application](/blog-images/memory-download/unzip-memory-downloader.gif) -->
-
 Next, you'll want to double click on the **memory-download** executable file to launch the application. You'll likely see a prompt showing that the application is from an unrecognized developer. To override this message, see the direcions below specfic to your operating system.
 
 #### Windows
 
-Click the "More Info" button. Then, click "Run anyway."
+Click the "More Info" button.
 
 ![Click "More Info"](/blog-images/memory-download/windows-protected-1.PNG)
 
 Then, click "Run anyway."
 
 ![Click "Run Anyway"](/blog-images/memory-download/windows-protected-2.PNG)
-
-<!-- TODO: change this to something like below, so it has images side-by-side on larger displays -->
-<!-- Click the "More Info" button. Then, click "Run anyway."
-
-<div align="center" class="grid md:grid-cols-2">
-  <div class="md:col-span-1">
-    <img src="/blog-images/memory-download/windows-protected-1.PNG">
-  </div>
-  <div class="md:col-span-1">
-    <img src="/blog-images/memory-download/windows-protected-2.PNG">
-  </div>
-</div> -->
-
-<!-- 
-| ![Click "More Info"](/blog-images/memory-download/windows-protected-1.PNG) | ![Click "Run Anyway"](/blog-images/memory-download/windows-protected-2.PNG) |
-| -- | -- |
-| | | -->
 
 #### MacOS
 
@@ -86,9 +66,6 @@ Once you're inside the Security and Privacy options pane, click the "Open Anyway
 
 Finally, click the "Open" button on the prompt to launch the app.
 
-<!-- <div align="center">
-  <img src="/blog-images/memory-download/open.png" alt="Click open" width="25%" height="auto" />
-</div> -->
 ![Open the application](/blog-images/memory-download/open.png)
 
 After the application has successfully launched on your computer, you're ready to use it to download your memories. Before you can download your memories, you must download your account data from Snapchat.
@@ -120,10 +97,6 @@ You've already completed the first two steps, so you can skip to the third step.
 ![Select file and a download location](/blog-images/memory-download/app-screen-3.png)
 
 While on this screen, click "Choose file" to select the `memories_history.json` file that is located within your data downloaded from Snapchat. You must also select a folder to which all of your memories should be downloaded. *Selecting an empty folder is recommended.*
-
-<!-- #### Advanced options
-
-You may click the "Additional settings" button to view more advanced download options. More information can be found by hovering over the options themselves. -->
 
 
 Once you've selected the input file and a download folder, you can start the download by clicking the "Begin download" button.

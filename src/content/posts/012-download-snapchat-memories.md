@@ -17,14 +17,14 @@ Platforms such as Snapchat are wonderful for a variety of reasons. However, havi
 
 In this tutorial, you'll find the steps necessary to download all of your Snapchat memories to your computer.
 
-<!-- ### Table of Contents
-1. Download & Launch the application
-   1. Download the application
-   2. Launch the application
-2. Download your Snapchat data
-3. Select your memory data and a download location
-4. Await your download
-5. Enjoy your memories -->
+#### Overview 
+1. [Download & launch the application](#download--launch-the-desktop-application)
+   <!-- - [Download the application](#download-the-application)
+   - [Launch the application](#launch-the-application) -->
+2. [Download your Snapchat data](#download-your-snapchat-data)
+3. [Select your memory data and a download location](#select-your-memory-data-and-a-download-location)
+4. [Await your download](#await-the-memory-download)
+5. [Enjoy your memories](#enjoy-your-memories)
 
 ---
 
@@ -102,7 +102,7 @@ Once you've selected the input file and a download folder, you can start the dow
 
 ## Await the memory download
 
-This is by far the hardest step. Waiting...
+This is by far the hardest step. *Waiting*...
 
 ![Await download](/blog-images/memory-download/app-screen-4.png)
 

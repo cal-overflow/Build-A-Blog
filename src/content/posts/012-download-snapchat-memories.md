@@ -8,10 +8,10 @@ categories:
   - Tutorials
 ---
 
-People nowadays take hundreds, and even thousands, of photos and videos on a regular basis. Millions of people save these images and photos on social networking apps such as Snapchat.
+People nowadays take hundreds, and even thousands, of photos and videos regularly. Millions of people save these images and photos on social networking apps like Snapchat.
 
 
-Platforms such as Snapchat are wonderful, for a variety of reasons. However, having photos and videos stored in different places can make it difficult to keep your precious memories organized.
+Platforms such as Snapchat are wonderful for a variety of reasons. However, having photos and videos stored in different places can make it difficult to keep your precious memories organized.
 
 <!--more-->
 
@@ -28,21 +28,21 @@ In this tutorial, you'll find the steps necessary to download all of your Snapch
 
 ---
 
-## Download & Launch the desktop application
+## Download & launch the desktop application
 
 ### Download the application
 
-Before you can download any of your photos or videos from Snapchat, you'll need to install the Snapchat memory downloader application on your computer. Navigate to [www.downloadmysnapchatmemories.com](https://www.downloadmysnapchatmemories.com) to download the application.
+Before you can download any of your photos or videos from Snapchat, you'll need to install the Snapchat memory downloader application on your computer. Navigate to [downloadmysnapchatmemories.com](https://www.downloadmysnapchatmemories.com) to download the application.
 
 [![downloadmysnapchatmemories.com](/blog-images/memory-download/memory-downloader-site.png)](https://www.downloadmysnapchatmemories.com)
 
-Select the operating system that your device is running, and the application will begin downloading. Once the download is complete, you'll be ready to launch the application on your computer.
+Select the operating system your device is running, and the application will begin downloading. Once the download is complete, you'll be ready to launch the application on your computer.
 
 ### Launch the application
 
-Find the downloaded zip file on your computer. It will be located in your browsers default download folder. Unzip the folder so that you can find the app itself.
+Find the downloaded zip file on your computer. It will be located in your browser's default download folder. Unzip the folder so that you can find the app itself.
 
-Next, you'll want to double click on the **memory-download** executable file to launch the application. You'll likely see a prompt showing that the application is from an unrecognized developer. To override this message, see the direcions below specfic to your operating system.
+Next, you'll want to double-click on the **memory-download** executable file to launch the application. You'll likely see a prompt showing that the application is from an unrecognized developer. To override this message, see the directions below specific to your operating system.
 
 #### Windows
 
@@ -54,13 +54,13 @@ Then, click "Run anyway."
 
 ![Click "Run Anyway"](/blog-images/memory-download/windows-protected-2.PNG)
 
-#### MacOS
+#### macOS
 
-Click "Cancel" to close the prompt. Then, navigate to your System Preferences application. Once System preferences has launched, select the "Security and Privacy" pane.
+Click "Cancel" to close the prompt. Then, navigate to your System Preferences application. Once System Preferences has launched, select the "Security and Privacy" pane.
 
 ![System Preferences - Security & Privacy](/blog-images/memory-download/system-preferences-security-privacy.png)
 
-Once you're inside the Security and Privacy options pane, click the "Open Anyway" button located next to the message saying the application is from an unidentified developer.
+Once you're inside the Security and Privacy options pane, click the "Open Anyway" button next to the message saying the application is from an unidentified developer.
 
 ![System Preferences - Security & Privacy](/blog-images/memory-download/system-preferences-open-anyway.png)
 
@@ -72,9 +72,9 @@ After the application has successfully launched on your computer, you're ready t
 
 ## Download your Snapchat data
 
-The app downloaded in the last step works by taking a piece of your Snapchat data to download your memories to your computer. To get your account data from Snapchat, navigate to [accounts.snapchat.com](http://accounts.snapchat.com) and log in. Once logged in, you'll see a dashboard with various account management options.
+The app downloaded in the last step requires a copy of your Snapchat data to download your memories to your computer. To get your account data from Snapchat, navigate to [accounts.snapchat.com](http://accounts.snapchat.com) and log in. Once logged in, you'll see a dashboard with various account management options.
 
-Click on the "My Data" button to view the **My Data** page where you can request a copy of your data.
+Click on the "My Data" button to view the **My Data** page, where you can request a copy of your data.
 
 [![Snapchat Account Dashboard](/blog-images/memory-download/snapchat-account-dashboard.png)](http://accounts.snapchat.com/accounts/welcome)
 
@@ -92,12 +92,11 @@ Return to the **memory-download** application on your computer. When you first o
 
 ![App Landing Screen](/blog-images/memory-download/app-screen-0.png)
 
-You've already completed the first two steps, so you can skip to the third step.
+You've already completed the first two steps, so you can skip these steps.
 
 ![Select file and a download location](/blog-images/memory-download/app-screen-3.png)
 
-While on this screen, click "Choose file" to select the `memories_history.json` file that is located within your data downloaded from Snapchat. You must also select a folder to which all of your memories should be downloaded. *Selecting an empty folder is recommended.*
-
+While on the step 3 screen, click "Choose file" to select the `memories_history.json` file that is located within your data downloaded from Snapchat. You must also select a folder to which all of your memories should be downloaded. *Selecting an empty folder is recommended.*
 
 Once you've selected the input file and a download folder, you can start the download by clicking the "Begin download" button.
 
@@ -107,18 +106,17 @@ This is by far the hardest step. Waiting...
 
 ![Await download](/blog-images/memory-download/app-screen-4.png)
 
-The app will download all of your memories from Snapchat. This part can take a long time, depending on the number of memories that were saved to your account.
+The app will download all of your memories from Snapchat. This part can take a long time, depending on the number of memories saved to your account.
 
-Be sure to keep your computer from falling asleep or locking while the download is occuring.
-Ensure that your computer does not fall asleep or lock its screen while the download is occuring. If this happens, the download will be interruped, and must be entirely restarted.
+Ensure that your computer does not fall asleep or lock its screen while the download is in progress. If this happens, the download will be interrupted and will need to be entirely restarted.
 
 ## Enjoy your memories
 
 ![Download complete](/blog-images/memory-download/app-screen-5.png)
 
-Once the application is done downloading your memories, it will show you the "Your download is complete" message.
+Once the application has completed downloading your memories, it will show you the "Your download is complete" message.
 
-Click the "View memories" button to open the folder containing all of your memories with your file browser.
+Click the "View memories" button to open the folder containing all your memories with your file browser.
 
 You can now view all of your Snapchat memories on your computer.
 

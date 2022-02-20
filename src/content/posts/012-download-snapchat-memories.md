@@ -2,7 +2,7 @@
 title: How to download your Snapchat memories
 slug: download-snapchat-memories
 date: February 16, 2022
-img: undefined
+img: memories.jpg
 categories: 
   - Portfolio
   - Tutorials
@@ -121,3 +121,15 @@ Once the application is done downloading your memories, it will show you the "Yo
 Click the "View memories" button to open the folder containing all of your memories with your file browser.
 
 You can now view all of your Snapchat memories on your computer.
+
+---
+
+<!-- #### Still confused about something?
+
+You can follow an in-depth video tutorial [here](https://youtu.be/0_1mJ3w5LaA).
+
+If you have any questions or concerns, feel free to [reach out to me](/contact).
+
+--- -->
+
+Feature image by [Kelly Sikkema](https://unsplash.com/@kellysikkema) on [Unsplash](https://unsplash.com).

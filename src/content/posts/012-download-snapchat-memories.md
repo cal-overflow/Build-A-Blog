@@ -122,12 +122,12 @@ You can now view all of your Snapchat memories on your computer.
 
 ---
 
-#### Still confused about something?
+<!-- #### Still confused about something?
 
 You can follow an in-depth video tutorial [here](https://youtu.be/0_1mJ3w5LaA).
 
 If you have any questions or concerns, feel free to [reach out to me](/contact).
 
----
+--- -->
 
 Feature image by [Kelly Sikkema](https://unsplash.com/@kellysikkema) on [Unsplash](https://unsplash.com).

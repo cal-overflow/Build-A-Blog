@@ -97,6 +97,7 @@ describe('ContactForm', () => {
         memoryDownload: true,
         photos: chance.integer({min: 0}),
         videos: chance.integer({min: 0}),
+        version: `${chance.integer({min: 1})}.${chance.integer({min: 1})}.0`
       };
 
       wrapper = mount(ContactForm, {
@@ -121,10 +122,14 @@ describe('ContactForm', () => {
       expect(wrapper.find('[name="videoCount"]').element.value).toEqual(`${query.videos}`);
     });
 
+    it('renders the app version', () => {
+      expect(wrapper.find('[name="appVersion"]').element.value).toEqual(`${query.version}`);
+    });
+
     it('computes the correctly formatted mailto link', async () => {
       const name = chance.string();
       const feedback = chance.paragraph();
-      const appUseInfo = `Information from app:\nPhotos: ${query.photos}\nVideos: ${query.videos}\n\n`;
+      const appUseInfo = `Information from app:\nPhotos: ${query.photos}\nVideos: ${query.videos}\nApp Version: ${query.version}\n\n`;
       const body = `${appUseInfo}Feedback:\n${feedback}\n\nFrom:\n${name}`;
       const expectedLink = `mailto:lisleachristian@gmail.com?subject=${encodeURIComponent('Website Contact Form')}&body=${encodeURIComponent(body)}`;
 

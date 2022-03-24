@@ -199,7 +199,7 @@ export default {
         
         this.extraInfoLabel = 'Extra information';
         this.extraInfoDescription = 'This information was generated from the app.';
-        this.hasExtraInformation = this.$route.query.photos || this.$route.query.videos;
+        this.hasExtraInformation = this.$route.query.photos || this.$route.query.videos || this.$route.query.version;
 
         return true;
       }

@@ -15,5 +15,6 @@ export default {
 <style>
 html {
   background: #292929;
+  scroll-behavior: smooth;
 }
 </style>

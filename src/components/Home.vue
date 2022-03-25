@@ -7,7 +7,18 @@
           </div>
           <div class="md:w-3/5 lg:w-2/3 m-4 xs:mb-12 md:mb-0">
             <p class="text-lg font-bold mb-4">Hi. I'm Christian. <span class="motion-safe:animate-hand-wave animation-inline">👋</span></p>
-            <nuxt-content :document="bio" class="prose prose-a:underline hover:prose-a:no-underline prose-a:text-primary-light dark:prose-invert dark:prose-a:text-primary-dark leading-normal transition" />
+            <nuxt-content
+              v-if="bio"
+              :document="bio"
+              class="prose prose-a:underline hover:prose-a:no-underline prose-a:text-primary-light dark:prose-invert dark:prose-a:text-primary-dark leading-normal transition" 
+            />
+            <div v-else class="motion-safe:animate-pulse">
+              <div v-for="i in 4" :key="`lazy-paragraph-1-${i}`" class="bg-gray-400 w-full h-4 my-2" />
+              <div class="h-2" />
+              <div v-for="i in 3" :key="`lazy-paragraph-2-${i}`" class="bg-gray-400 w-full h-4 my-2" />
+              <div class="h-2" />
+              <div v-for="i in 2" :key="`lazy-paragraph-3-${i}`" class="bg-gray-400 w-full h-4 my-2" />
+            </div>
           </div>
         </div>
     </div>

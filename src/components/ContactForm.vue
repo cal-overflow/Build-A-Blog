@@ -107,6 +107,17 @@
               :class="textInputStyle({disabled: true})"
             />
           </div>
+
+          <div v-if="$route.query.version">
+            <label for="appVersion">Version</label>
+            <br />
+            <input
+              name="appVersion"
+              :value="$route.query.version"
+              disabled
+              :class="textInputStyle({disabled: true})"
+            />
+          </div>
         </div>
       </div>
 
@@ -155,7 +166,8 @@ export default {
       else if (this.isAppFeedback) {
         const photos = this.$route?.query.photos ? `Photos: ${this.$route?.query.photos}` : undefined;
         const videos = this.$route?.query.videos ? `Videos: ${this.$route?.query.videos}` : undefined;
-        const appUseInfo = (photos || videos) ? `Information from app:\n${photos}\n${videos}\n\n` : '';
+        const appVersion = this.$route?.query.version ? `App Version: ${this.$route?.query.version}` : undefined;
+        const appUseInfo = (photos || videos || appVersion) ? `Information from app:\n${photos}\n${videos}\n${appVersion}\n\n` : '';
 
         body =  `${appUseInfo}Feedback:\n${this.message || 'No message provide'}\n\nFrom:\n${this.name || 'anonymous'}`;
       }
@@ -187,7 +199,7 @@ export default {
         
         this.extraInfoLabel = 'Extra information';
         this.extraInfoDescription = 'This information was generated from the app.';
-        this.hasExtraInformation = this.$route.query.photos || this.$route.query.videos;
+        this.hasExtraInformation = this.$route.query.photos || this.$route.query.videos || this.$route.query.version;
 
         return true;
       }

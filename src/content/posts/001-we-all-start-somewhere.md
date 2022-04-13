@@ -1,4 +1,5 @@
 ---
+id: 1
 title: We All Start Somewhere
 slug: we-all-start-somewhere
 date: October 1, 2019

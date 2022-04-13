@@ -79,7 +79,7 @@ describe('BlogFeed component', () => {
   
     it('calls nuxt content sortBy with correct values', () => {
       expect(nuxtContentMock.sortBy).toBeCalledTimes(1);
-      expect(nuxtContentMock.sortBy).toBeCalledWith('createdAt', 'desc');
+      expect(nuxtContentMock.sortBy).toBeCalledWith('id', 'desc');
     });
   
     it('calls nuxt content limit with correct value', () => {

@@ -23,6 +23,7 @@ export default {
 
     const categories = await $content('categories')
       .where({slug})
+      .sortBy('id', 'desc')
       .fetch()
       .catch((err) => {
         error({

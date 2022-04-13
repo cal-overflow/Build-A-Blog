@@ -1,4 +1,5 @@
 ---
+id: 12
 title: How to download your Snapchat memories
 slug: download-snapchat-memories
 date: February 20, 2022

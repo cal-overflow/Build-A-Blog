@@ -5,7 +5,7 @@
           <div class="max-w-sm md:w-2/5 lg:w-1/3 mx-auto md:my-auto">
             <img src="headshot.jpg" class="rounded-full border-2 border-extra-gray-light dark:border-extra-gray-dark motion-safe:animate-blur-fade-in-fast transition" alt="Headshot" />
           </div>
-          <div class="md:w-3/5 lg:w-2/3 m-4 xs:mb-12 md:mb-0">
+          <div class="w-full md:w-3/5 lg:w-2/3 m-4 xs:mb-12 md:mb-0">
             <p class="text-lg font-bold mb-4">Hi. I'm Christian. <span class="motion-safe:animate-hand-wave animation-inline">👋</span></p>
             <nuxt-content
               v-if="bio"

@@ -32,7 +32,7 @@ The game mechanics are practically identical to that of Pac-Man, where ghosts tr
   - Pac-Man consumes Ghost – 2 points
   - Ghost kills Pac-Man – 15 points
 
-[Click here](http://cyrun.christianlisle.com) to play CyRun.
+[Click here](http://cyrun.christianlisle.io) to play CyRun.
 
 ---
 

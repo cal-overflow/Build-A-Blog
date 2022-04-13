@@ -3,7 +3,7 @@ id: 1
 title: We All Start Somewhere
 slug: we-all-start-somewhere
 date: October 1, 2019
-img: custom.christianlisle.com.jpg
+img: custom.christianlisle.io.jpg
 categories: 
   - Website Development
 ---
@@ -16,4 +16,4 @@ I moved away from using this website, because optimizing it for different types 
 
 **Built with:** HTML, CSS, & JavaScript
 
-[Visit website](http://custom.christianlisle.com)
+[Visit website](http://custom.christianlisle.io)

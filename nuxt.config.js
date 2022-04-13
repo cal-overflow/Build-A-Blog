@@ -60,7 +60,7 @@ export default {
         
         feed.options = {
           title: 'Christian Lisle',
-          link: 'https://www.christianlisle.com/feed.xml',
+          link: 'https://www.christianlisle.io/feed.xml',
           description: "Blog posts from Christian Lisle",
         };
 
@@ -70,7 +70,7 @@ export default {
           feed.addItem({
             title: post.title,
             id: post.slug,
-            link: `https://www.christianlisle.com/post/${post.slug}`,
+            link: `https://www.christianlisle.io/post/${post.slug}`,
             description: `posted on: ${post.date}`,
           });
         });
@@ -84,7 +84,7 @@ export default {
         feed.addContributor({
           name: 'Christian Lisle',
           email: 'lisleachristian@gmail.com',
-          link: 'https://www.christianlisle.com'
+          link: 'https://www.christianlisle.io'
         });
 
       },

@@ -86,7 +86,7 @@ export default {
       const totalPosts = (this.page * this.postCount);
 
       let fetchPosts = this.$content('posts')
-        .sortBy('createdAt', 'desc')
+        .sortBy('id', 'desc')
         .limit(totalPosts + 1);
       
       if (this.category) {

@@ -13,6 +13,7 @@ describe('category page', () => {
   const nuxtContentMock = {
     $content: jest.fn().mockReturnThis(),
     where: jest.fn().mockReturnThis(),
+    sortBy: jest.fn().mockReturnThis(),
     search: jest.fn().mockReturnThis(),
     fetch: jest.fn(),
   };

@@ -3,6 +3,7 @@ import Chance from "chance";
 const chance = new Chance();
 
 const generatePost = () => ({
+  "id": chance.integer({ min: 1, max: 100 }),
   "dir": `/${chance.string()}`,
   "slug": chance.string(),
   "path": `/${chance.string}/${chance.string()}`,

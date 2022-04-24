@@ -38,9 +38,16 @@ describe('FooterBar component', () => {
     expect(navItem.props('active')).not.toBeTruthy();
   });
 
+  it('renders a linked YouTube logo that is correctly styled', () => {
+    const img = wrapper.findComponent('img[id="youtube-logo"]');
+    expect(wrapper.findComponent('a[id="youtube-link"]').element.href).toEqual('https://www.youtube.com/channel/UCTfscxyX4CI9SnWdFqK4FJw');
+    expect(img.element.src).toContain('/youtube.png');
+    expect(img.attributes('class')).not.toContain('invert');
+  });
+
   it('renders a linked Github logo that is correctly styled', () => {
-    const img = wrapper.find('img');
-    expect(wrapper.find('a').element.href).toEqual('https://github.com/ChristianLisle');
+    const img = wrapper.findComponent('img[id="github-logo"]');
+    expect(wrapper.findComponent('a[id="github-link"]').element.href).toEqual('https://github.com/ChristianLisle');
     expect(img.element.src).toContain('/github.png');
     expect(img.attributes('class')).toContain('invert');
   });

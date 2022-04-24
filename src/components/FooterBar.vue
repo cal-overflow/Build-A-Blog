@@ -9,9 +9,17 @@
           :href="item.href"
         />
       </div>
-      <a id="github-link" href="https://github.com/ChristianLisle" target="_blank" title="View my Github account">
-        <img class="invert aspect-square w-6 h-auto inline align-middle" src="/github.png" />
-      </a>
+
+      <div>
+        <a id="youtube-link" href="https://www.youtube.com/channel/UCTfscxyX4CI9SnWdFqK4FJw" target="_blank" title="View my Youtube channel">
+          <img id="youtube-logo" class="aspect-square w-8 h-auto inline align-middle mx-4" src="/youtube.png" />
+        </a>
+
+        <a id="github-link" href="https://github.com/ChristianLisle" target="_blank" title="View my Github account">
+          <img id="github-logo" class="invert aspect-square w-6 h-auto inline align-middle mx-4" src="/github.png" />
+        </a>
+      </div>
+
     </nav>
   </div>
 </template>

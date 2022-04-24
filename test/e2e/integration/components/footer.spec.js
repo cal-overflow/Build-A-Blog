@@ -20,7 +20,11 @@ describe('Footer bar', () => {
     cy.location('pathname').should('eq', '/contact');
   });
 
+  it('links to Youtube profile correctly', () => {
+    cy.get('#footer-bar > div > #youtube-link').should('have.attr', 'href', 'https://www.youtube.com/channel/UCTfscxyX4CI9SnWdFqK4FJw');
+  });
+
   it('links to Github profile correctly', () => {
-    cy.get('#footer-bar > #github-link').should('have.attr', 'href', 'https://github.com/ChristianLisle');
+    cy.get('#footer-bar > div > #github-link').should('have.attr', 'href', 'https://github.com/ChristianLisle');
   });
 });

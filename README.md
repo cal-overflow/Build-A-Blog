@@ -5,10 +5,20 @@ Personal website used for blogging and showcasing work.
 Built primarily with [NuxtJS](https://nuxtjs.org/) and [TailwindCSS](https://tailwindcss.com/).
 
 <!-- Table of contents -->
-#### Table of contents
+### Table of contents
 - [Running locally](#running-locally) 
-- [Make the site your own](#make-the-site-your-own-👨‍💻)
-- [Blog posts](#blog-posts)
+  - [Environment setup](#environment-setup)
+  - [Environment variables](#environment-variables)
+  - [Run or generate the website](#run-or-generate-the-website)
+  - [Testing](#testing-)
+- [Make the site your own](#make-the-site-your-own-)
+  1. [Set environment variables](#1-set-environment-variables)
+  2. [Change the site description](#2-change-the-site-description)
+  3. [Remove old content](#3-remove-old-content)
+  4. [Replace essential content](#4-replace-essential-content)
+  5. [Change the color palette](#5-change-the-color-palette)
+  6. [Write your first blog post](#6-write-your-first-blog-post)
+- [Blog posts](#blog-posts-)
 - [Post categories](#post-categories)
 
 ## Running locally
@@ -91,9 +101,9 @@ I've built this portfolio to be "modular" so that most of the content is seperat
 
 ### 1. Set environment variables
 
-Refer the [Environment Variables](#environment-variables) section above.
+Refer the [Environment variables](#environment-variables) section above.
 
-### 2. Change the site description (meta tag in nuxt config)
+### 2. Change the site description
 
 Find the `head` object within the `nuxt.config.js` file. Change the value of `content` in the object named `description`.
 
@@ -128,7 +138,7 @@ Replace the essentials such as my bio and description of my blog/portfolio with 
 - [ ] Replace the contents of `about.md`, `blog-preview.md`, and `portfolio-preview.md` found within the `src/content/` directory.
 
 
-### 5. Change colors in tailwind config
+### 5. Change the color palette
 Change the color scheme of the website by editing `color` object within the `tailwind.config.js` file in the `src/` directory. You can find a small description for some of the properties below.
 
 ```js
@@ -155,7 +165,6 @@ Re-visit the [Running locally](#running-locally) section for more details on ins
 ## Blog Posts 📝
 Blog posts are written in markdown and convertted to HTML with the [Nuxt Content](https://content.nuxtjs.org/) module.
 
-#### Writing content
 To write a blog post, create a markdown file (ending in `.md`) file within the `src/content/posts/` directory. An [example post](https://www.christianlisle.io/post/download-snapchat-memories) is shown below.
 
 ```md
@@ -185,7 +194,7 @@ View the Nuxt docs on [Writing Content](https://content.nuxtjs.org/writing) for 
 ## Post Categories
 Post categories allow you to group posts together based on similarities such as topic. Post categories are defined in markdown files, similar to posts themselves.
 
-Categories should be defined within the `src/content/categories/` directory. Each category file should contain a yml file with each of the properties shown in the example below.
+Categories should be defined within the `src/content/categories/` directory. Each category file should contain a yml section with each of the properties shown in the example below.
 
 ```md
 ---

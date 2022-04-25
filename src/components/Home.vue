@@ -6,7 +6,7 @@
             <img src="headshot.jpg" class="rounded-full border-2 border-extra-gray-light dark:border-extra-gray-dark motion-safe:animate-blur-fade-in-fast transition" alt="Headshot" />
           </div>
           <div class="w-full md:w-3/5 lg:w-2/3 m-4 xs:mb-12 md:mb-0">
-            <p class="text-lg font-bold mb-4">Hi. I'm Christian. <span class="motion-safe:animate-hand-wave animation-inline">👋</span></p>
+            <p class="text-lg font-bold mb-4">Hi. I'm {{ name }}. <span class="motion-safe:animate-hand-wave animation-inline">👋</span></p>
             <nuxt-content
               v-if="bio"
               :document="bio"
@@ -42,7 +42,8 @@ export default {
     PortfolioPreview,
   },
   data: () => ({
-    bio: undefined
+    bio: undefined,
+    name: process.env.NUXT_ENV_FULL_NAME.split(' ')[0]
   }),
   async mounted() {
     this.bio = await this.$content('about')

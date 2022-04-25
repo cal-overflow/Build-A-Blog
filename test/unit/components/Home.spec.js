@@ -1,16 +1,31 @@
 import { shallowMount, RouterLinkStub } from '@vue/test-utils';
+import Chance from 'chance';
 import Home from '@/components/Home.vue';
 import BlogPreview from '@/components/previews/Blog.vue';
 import PortfolioPreview from '@/components/previews/Portfolio.vue';
 
+const chance = new Chance();
+
 describe('Home component', () => {
   let wrapper;
+  const oldEnv = process.env;
 
   const nuxtContentMock = {
     $content: jest.fn().mockReturnThis(),
     fetch: jest.fn().mockReturnThis(),
     catch: () => {}
   };
+
+  beforeAll(() => {
+    process.env = {
+      ...oldEnv,
+      NUXT_ENV_FULL_NAME: chance.name()
+    };
+  });
+
+  afterAll(() => {
+    process.env = oldEnv;
+  });
 
   beforeEach(() => {
     wrapper = shallowMount(Home, {
@@ -35,7 +50,7 @@ describe('Home component', () => {
   });
 
   it('contains the correct introduction', () => {
-    expect(wrapper.text()).toContain("Hi. I'm Christian. 👋");
+    expect(wrapper.text()).toContain(`Hi. I'm ${process.env.NUXT_ENV_FULL_NAME.split(' ')[0]}. 👋`);
   });
 
   it('contains a PortfolioPreview component', () => {

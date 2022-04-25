@@ -139,6 +139,7 @@
 export default {
   name: 'contact-form',
   data: () => ({
+    emailAddress: process.env.NUXT_ENV_EMAIL_ADDRESS,
     name: undefined,
     topic: undefined,
     message: undefined,
@@ -175,7 +176,7 @@ export default {
         body = `${this.message || 'No message provided'}\n\nFrom: ${this.name || 'anonymous'}`;
       }
       
-      return `mailto:lisleachristian@gmail.com?subject=${encodeURIComponent(this.topic || 'Website Contact Form')}&body=${encodeURIComponent(body)}`;
+      return `mailto:${this.emailAddress}?subject=${encodeURIComponent(this.topic || 'Website Contact Form')}&body=${encodeURIComponent(body)}`;
     },
   },
   mounted() {

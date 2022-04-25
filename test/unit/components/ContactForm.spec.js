@@ -6,6 +6,18 @@ const chance = new Chance();
 
 describe('ContactForm', () => {
   let wrapper, query;
+  const oldEnv = process.env;
+
+  beforeAll(() => {
+    process.env = {
+      ...oldEnv,
+      NUXT_ENV_EMAIL_ADDRESS: chance.email()
+    };
+  });
+
+  afterAll(() => {
+    process.env = oldEnv;
+  });
 
   describe('default (given there are no error query params)', () => {
     beforeEach(() => {
@@ -36,7 +48,7 @@ describe('ContactForm', () => {
       const message = chance.paragraph();
       const body = `${message}\n\nFrom: ${name}`;
 
-      const expectedLink = `mailto:lisleachristian@gmail.com?subject=${encodeURIComponent('Website Contact Form')}&body=${encodeURIComponent(body)}`;
+      const expectedLink = `mailto:${process.env.NUXT_ENV_EMAIL_ADDRESS}?subject=${encodeURIComponent('Website Contact Form')}&body=${encodeURIComponent(body)}`;
 
       wrapper.find('[name="name"]').setValue(name);
       wrapper.find('[name="message"]').setValue(message);
@@ -81,7 +93,7 @@ describe('ContactForm', () => {
       const name = chance.string();
       const extraFeedback = chance.paragraph();
       const body = `Error information:\nStatus Code: ${query.statusCode}\nPath: ${query.path}\nDetail: ${query.detail}\n\nFeedback:\n${extraFeedback}\n\nFeedback provided by: ${name}`;
-      const expectedLink = `mailto:lisleachristian@gmail.com?subject=${encodeURIComponent('Website Contact Form')}&body=${encodeURIComponent(body)}`;
+      const expectedLink = `mailto:${process.env.NUXT_ENV_EMAIL_ADDRESS}?subject=${encodeURIComponent('Website Contact Form')}&body=${encodeURIComponent(body)}`;
 
       wrapper.find('[name="name"]').setValue(name);
       wrapper.find('[name="message"]').setValue(extraFeedback);
@@ -131,7 +143,7 @@ describe('ContactForm', () => {
       const feedback = chance.paragraph();
       const appUseInfo = `Information from app:\nPhotos: ${query.photos}\nVideos: ${query.videos}\nApp Version: ${query.version}\n\n`;
       const body = `${appUseInfo}Feedback:\n${feedback}\n\nFrom:\n${name}`;
-      const expectedLink = `mailto:lisleachristian@gmail.com?subject=${encodeURIComponent('Website Contact Form')}&body=${encodeURIComponent(body)}`;
+      const expectedLink = `mailto:${process.env.NUXT_ENV_EMAIL_ADDRESS}?subject=${encodeURIComponent('Website Contact Form')}&body=${encodeURIComponent(body)}`;
 
 
       wrapper.find('[name="name"]').setValue(name);

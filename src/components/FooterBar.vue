@@ -11,11 +11,11 @@
       </div>
 
       <div>
-        <a id="youtube-link" href="https://www.youtube.com/channel/UCTfscxyX4CI9SnWdFqK4FJw" target="_blank" title="View my Youtube channel">
+        <a v-if="youtubeUrl" id="youtube-link" :href="youtubeUrl" target="_blank" title="View my Youtube channel">
           <img id="youtube-logo" class="aspect-square w-8 h-auto inline align-middle mx-4" src="/youtube.png" />
         </a>
 
-        <a id="github-link" href="https://github.com/ChristianLisle" target="_blank" title="View my Github account">
+        <a v-if="githubUrl" id="github-link" :href="githubUrl" target="_blank" title="View my Github account">
           <img id="github-logo" class="invert aspect-square w-6 h-auto inline align-middle mx-4" src="/github.png" />
         </a>
       </div>
@@ -39,6 +39,8 @@ export default {
     }
   },
   data: () => ({
+    githubUrl: process.env.NUXT_ENV_GITHUB_PROFILE_URL,
+    youtubeUrl: process.env.NUXT_ENV_YOUTUBE_CHANNEL_URL,
     items: [
       {
         title: 'Blog',

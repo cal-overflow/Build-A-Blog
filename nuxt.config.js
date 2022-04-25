@@ -17,7 +17,8 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: "Software engineer passionate about personal projects, open source, and all things software." },
+        content: "Software engineer passionate about personal projects, open source, and all things software."
+      },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [

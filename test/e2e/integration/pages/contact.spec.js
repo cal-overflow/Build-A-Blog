@@ -45,7 +45,7 @@ describe('Contact page', () => {
       cy.contains('Click here to open the email link')
         .find('a')
         .should('have.attr', 'href')
-        .and('include', 'mailto:lisleachristian@gmail.com');
+        .and('include', `mailto:`);
     });
   });
 });

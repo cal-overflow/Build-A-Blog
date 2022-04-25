@@ -17,13 +17,8 @@ describe('Home page', () => {
   });
 
   describe('introduction card', () => {
-    it('contains a link to the contact page with text "reach out to me"', () => {
-      cy.contains('reach out to me').click();
-      cy.location('pathname').should('eq', '/contact');
-    });
-
-    it('contains a link to the Roxy Seven Salon', () => {
-      cy.contains('Roxy Seven Salon').should('have.attr', 'href', 'https://roxysevensalon.com');
+    it('contains the headshot image', () => {
+      cy.get('img').should('have.attr', 'src', 'headshot.jpg');
     });
   });
 

@@ -127,7 +127,7 @@ The current description is the one that I wrote for my website.
 Remove all of my blog posts, post categories, and the files that are related to those blog posts. This requires the following:
 
 - [ ] Delete all of the blog posts found within the `src/content/posts/` directory.
-- [ ] Delete all of the post categories found within the `src/content/categories/` directory.
+- [ ] Delete all files except `portfolio.md` within the `src/content/categories/` directory.
 - [ ] Delete all contents within the `src/static/blog-images/` directory and any subdirectories.
 - [ ] Create a new `feature/` directory within the `src/static/blog-images/` directory.
 
@@ -136,6 +136,7 @@ Replace the essentials such as my bio and description of my blog/portfolio with 
 
 - [ ] Replace the existing `favicon.ico` and `headshot.jpg` files within the `src/static/` directory.
 - [ ] Replace the contents of `about.md`, `blog-preview.md`, and `portfolio-preview.md` found within the `src/content/` directory.
+- [ ] Replace the description for the Portfolio category by editing the `description` attribute of `src/content/categories/portfolio.md`. Refer to the [Post categories](#post-categories) section.
 
 
 ### 5. Change the color palette
@@ -162,7 +163,7 @@ Re-visit the [Running locally](#running-locally) section for more details on ins
 
 ---
 
-## Blog Posts 📝
+## Blog posts 📝
 Blog posts are written in [markdown](https://www.markdownguide.org/) and convertted to HTML with the [Nuxt Content](https://content.nuxtjs.org/) module.
 
 To write a blog post, create a markdown file within the `src/content/posts/` directory. An [example post](https://www.christianlisle.io/post/download-snapchat-memories) is shown below.
@@ -191,7 +192,7 @@ In this tutorial, you'll find the steps necessary to download all of your Snapch
 
 View the Nuxt docs on [Writing Content](https://content.nuxtjs.org/writing) for a detailed explanation on how to write blog posts.
 
-## Post Categories
+## Post categories
 Post categories allow you to group posts together based on similarities such as topic. Post categories are defined in markdown files, similar to posts themselves.
 
 Categories should be defined within the `src/content/categories/` directory. Each category file should contain a yml section with each of the properties shown in the example below.

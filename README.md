@@ -156,16 +156,16 @@ colors: {
 
 ### 6. Write your first blog post
 
-Now that you've done all the heavy lifting, your website should have a basic home page and be ready to serve some blog posts. Reference the [Blog Posts](#blog-posts) section below for general information on writing a blog post.
+Now that you've done all the heavy lifting, your website should have a basic home page and be ready to serve some blog posts. Reference the [Blog Posts](#blog-posts-) section below for general information on writing a blog post.
 
 Re-visit the [Running locally](#running-locally) section for more details on installing necessary dependencies and launching the application.
 
 ---
 
 ## Blog Posts 📝
-Blog posts are written in markdown and convertted to HTML with the [Nuxt Content](https://content.nuxtjs.org/) module.
+Blog posts are written in [markdown](https://www.markdownguide.org/) and convertted to HTML with the [Nuxt Content](https://content.nuxtjs.org/) module.
 
-To write a blog post, create a markdown file (ending in `.md`) file within the `src/content/posts/` directory. An [example post](https://www.christianlisle.io/post/download-snapchat-memories) is shown below.
+To write a blog post, create a markdown file within the `src/content/posts/` directory. An [example post](https://www.christianlisle.io/post/download-snapchat-memories) is shown below.
 
 ```md
 ---

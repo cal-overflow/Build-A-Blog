@@ -18,7 +18,7 @@ describe('Home page', () => {
 
   describe('introduction card', () => {
     it('contains the headshot image', () => {
-      cy.get('img').should('have.attr', 'src', 'headshot.jpg');
+      cy.get('img').should('have.attr', 'src', 'headshot.png');
     });
   });
 

@@ -134,7 +134,7 @@ Remove all of my blog posts, post categories, and the files that are related to 
 ### 4. Replace essential content
 Replace the essentials such as my bio and description of my blog/portfolio with your own. Complete the following:
 
-- [ ] Replace the existing `favicon.ico` and `headshot.jpg` files within the `src/static/` directory.
+- [ ] Replace the existing `favicon.ico` and `headshot.png` files within the `src/static/` directory.
 - [ ] Replace the contents of `about.md`, `blog-preview.md`, and `portfolio-preview.md` found within the `src/content/` directory.
 - [ ] Replace the description for the Portfolio category by editing the `description` attribute of `src/content/categories/portfolio.md`. Refer to the [Post categories](#post-categories) section.
 

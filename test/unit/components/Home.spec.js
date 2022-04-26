@@ -46,7 +46,7 @@ describe('Home component', () => {
   it('contains an image with the correct source', () => {
     const image = wrapper.find('img[alt="Headshot"]');
     expect(image.exists()).toBeTruthy();
-    expect(image.attributes().src).toContain('headshot.jpg');
+    expect(image.attributes().src).toContain('headshot.png');
   });
 
   it('contains the correct introduction', () => {

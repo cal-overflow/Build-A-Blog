@@ -6,7 +6,7 @@
         :href="signatureHeader.href"
         :active="currentPage === 'Home'"
         class="font-bold">
-        Christian Lisle
+        { signatureHeader.title }
       </nav-item>
         
       <div class="justify-between">
@@ -45,7 +45,7 @@ export default {
   },
   data: () => ({
     signatureHeader: {
-      title: 'Christian Lisle',
+      title: process.env.NUXT_ENV_FULL_NAME,
       href: '/'
     },
     items: [

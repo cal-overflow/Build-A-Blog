@@ -7,7 +7,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Christian Lisle',
+    title: process.env.NUXT_ENV_SITE_TITLE || process.env.NUXT_ENV_FULL_NAME,
     htmlAttrs: {
       lang: 'en'
     },
@@ -17,7 +17,8 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: "Software engineer passionate about personal projects, open source, and all things software." },
+        content: "Software engineer passionate about personal projects, open source, and all things software."
+      },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
@@ -59,9 +60,9 @@ export default {
         const { $content } = require('@nuxt/content');
         
         feed.options = {
-          title: 'Christian Lisle',
-          link: 'https://www.christianlisle.io/feed.xml',
-          description: "Blog posts from Christian Lisle",
+          title: process.env.NUXT_ENV_FULL_NAME,
+          link: `${process.env.NUXT_ENV_SITE_URL}/feed.xml`,
+          description: `Blog posts from ${process.env.NUXT_ENV_FULL_NAME}`,
         };
 
         const posts = await $content('posts').sortBy('createdAt', 'asc').fetch();
@@ -70,7 +71,7 @@ export default {
           feed.addItem({
             title: post.title,
             id: post.slug,
-            link: `https://www.christianlisle.io/post/${post.slug}`,
+            link: `${process.env.NUXT_ENV_SITE_URL}/post/${post.slug}`,
             description: `posted on: ${post.date}`,
           });
         });
@@ -82,15 +83,15 @@ export default {
         });
         
         feed.addContributor({
-          name: 'Christian Lisle',
-          email: 'lisleachristian@gmail.com',
-          link: 'https://www.christianlisle.io'
+          name: process.env.NUXT_ENV_FULL_NAME,
+          email: process.env.NUXT_ENV_EMAIL_ADDRESS,
+          link: process.env.NUXT_ENV_SITE_URL
         });
 
       },
       cacheTime: 1000 * 60 * 15,
       type: 'rss2',
-      data: ["Christian Lisle's Blog Feed"]
+      data: [`${process.env.NUXT_ENV_FULL_NAME}'s Blog Feed`]
     }
   ],
 

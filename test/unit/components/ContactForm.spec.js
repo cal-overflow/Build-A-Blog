@@ -102,6 +102,39 @@ describe('ContactForm', () => {
       expect(wrapper.vm.mailLink).toEqual(expectedLink);
     });
   });
+
+  describe('given there are query params for a pre-defined topic', () => {
+    beforeEach(() => {
+      query = {
+        topic: chance.string()
+      };
+
+      wrapper = mount(ContactForm, {
+        mocks: {
+          $route: {query} 
+        }
+      });
+    });
+    it('renders the topic label and value correctly', () => {
+      expect(wrapper.find('[for="topic"]').element.innerHTML).toEqual('Topic');
+      expect(wrapper.find('[name="topic"]').element.value).toEqual(query.topic);
+    });
+
+    it('computes the correctly formatted mailto link', async () => {
+      const name = chance.string();
+      const message = chance.paragraph();
+      const body = `${message}\n\nFrom: ${name}`;
+
+      const expectedLink = `mailto:${process.env.NUXT_ENV_EMAIL_ADDRESS}?subject=${encodeURIComponent(query.topic)}&body=${encodeURIComponent(body)}`;
+
+      wrapper.find('[name="name"]').setValue(name);
+      wrapper.find('[name="message"]').setValue(message);
+
+      await wrapper.vm.$nextTick();
+      expect(wrapper.vm.mailLink).toEqual(expectedLink);
+    });
+  });
+
   describe('given there are query parameters entailing feedback for the memory-download app', () => {
 
     beforeEach(() => {

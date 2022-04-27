@@ -133,229 +133,228 @@ Remove all of my blog posts, post categories, and the files that are related to 
 
 <details>
   <summary>
-    <strong>Optional:</strong> Delete extra contact form functionality
+    <strong>Optional:</strong> Delete extra <code>ContactForm</code> functionality (advanced)
   </summary>
 
-  The Contact Form is configured to understand special query params that are specific to feedback for projects like my [Snapchat memory downloader](https://github.com/ChristianLisle/memory-download). You can leave this functionality, and it will not cause any problems. However, I have created the following instructions in case you'd like to remove the functionality.
+  The `ContactForm` component is configured to understand special query params that are specific to feedback for projects like my [Snapchat memory downloader](https://github.com/ChristianLisle/memory-download). You can leave this functionality, and it will not cause any problems. However, I have created the following instructions in case you'd like to remove the functionality.
 
-  Make the following changes to the following files. Click the file name to expand the file diff.
+  Make the following changes to the two files below. Click the file name to expand the file diff.
   
   <details markdown="1">
     <summary><code>src/components/ContactForm.vue</code></summary>
 
-    ```diff
-    <template>
-      <div id="contact-form-card" class="bg-card-light dark:bg-card-dark m-6 p-6 shadow-md hover:shadow-none hover:rounded motion-safe:animate-fade-in transition">
-
-        // ...
-
-        <form v-else  @submit.prevent="openMail">
-          <div class="flex flex-wrap md:flex-nowrap">
-
-            // ...
-
-            <div v-if="hasExtraInformation" class="w-full md:w-1/2 mx-auto p-6 mx-auto">
-
-              // ...
-
-              <div v-if="$route.query.detail">
-                <label for="errorDetails">Error detail</label>
-                <br />
-                <textarea
-                  name="errorDetails"
-                  :value="$route.query.detail"
-                  disabled
-                  :class="textInputStyle({classes: 'h-32', disabled: true})"
-                />
-              </div>
-
-    -         <div v-if="$route.query.photos">
-    -           <label for="photoCount">Photos</label>
-    -           <br />
-    -           <input
-    -             name="photoCount"
-    -             :value="$route.query.photos"
-    -             disabled
-    -             :class="textInputStyle({disabled: true})"
-    -           />
-    -         </div>
-    - 
-    -         <div v-if="$route.query.videos">
-    -           <label for="videoCount">Videos</label>
-    -           <br />
-    -           <input
-    -             name="videoCount"
-    -             :value="$route.query.videos"
-    -             disabled
-    -             :class="textInputStyle({disabled: true})"
-    -           />
-    -         </div>
-
-              <div v-if="$route.query.version">
-                <label for="appVersion">Version</label>
-                <br />
-                <input
-                  name="appVersion"
-                  :value="$route.query.version"
-                  disabled
-                  :class="textInputStyle({disabled: true})"
-                />
-              </div>
-            </div>
-          </div>
-
-          // ...
-
-        </form>
-      </div>
-    </template>
-
-    <script>
-    export default {
-      name: 'contact-form',
-
-      // ...
-      
-      computed: {
-        mailLink() {
-          let body;
-
-          if (this.isError) {
-            // ...
-          }
-          else if (this.isAppFeedback) {
-    -       const photos = this.$route?.query.photos ? `Photos: ${this.$route?.query.photos}` : undefined;
-    -       const videos = this.$route?.query.videos ? `Videos: ${this.$route?.query.videos}` : undefined;
-            const appVersion = this.$route?.query.version ? `App Version: ${this.$route?.query.version}` : undefined;
-    -       const appUseInfo = (photos || videos || appVersion) ? `Information from app:\n${photos}\n${videos}\n${appVersion}\n\n` : '';
-    +       const appUseInfo = appVersion ? `Information from app:\n${appVersion}\n\n` : '';
-
-            body =  `${appUseInfo}Feedback:\n${this.message || 'No message provided'}\n\nFrom:\n${this.name || 'anonymous'}`;
-          }
-          else {
-            body = `${this.message || 'No message provided'}\n\nFrom: ${this.name || 'anonymous'}`;
-          }
-          
-          return `mailto:${this.emailAddress}?subject=${encodeURIComponent(this.topic || 'Website Contact Form')}&body=${encodeURIComponent(body)}`;
-        },
-      },
-      mounted() {
-        if (Object.keys(this.$route?.query).length) {
-          if (this.$route?.query.statusCode) {
-            this.isError = this.hasExtraInformation = true;
-            this.topicPlaceholder = `${this.$route.query.statusCode} error`;
-            this.messageLabel = 'Describe what happened when this error occurred';
-            this.messagePlaceholder = 'I saw an error when I tried viewing the blog post about your multiplayer pac-man game, CyRun.';
-            this.extraInfoLabel = 'Error information 🤓';
-            this.extraInfoDescription = 'This information was generated by the error you received.';
-
-            return true;
-          }
-
-    -     if (this.$route?.query.memoryDownload) {
-    -       this.isAppFeedback = true;
-    -       this.topicPlaceholder = 'Memory Downloader feedback';
-    -       this.messageLabel = 'Feedback';
-    -       this.messagePlaceholder = 'I downloaded the app, but my download is stuck at 20%';
-    -       
-    -       this.extraInfoLabel = 'Extra information';
-    -       this.extraInfoDescription = 'This information was generated from the app.';
-    -       this.hasExtraInformation = this.$route.query.photos || this.$route.query.videos || this.$route.query.version;
-    -       
-    -       return true;
-    -     }
-
-          if (this.$route?.query.topic) {
-            this.topic = this.$route.query.topic;
-          }
-        }
-
-        this.topicPlaceholder = '';
-        this.messageLabel = 'Message';
-        this.messagePlaceholder = 'Your website is awesome! 🤩';
-
-        return false;
-      },
-      methods: {
-        // ...
-      }
-    };
-    </script>
-    ```
-
-  </details>
-
+>    ```diff
+>    <template>
+>      <div id="contact-form-card" class="bg-card-light dark:bg-card-dark m-6 p-6 shadow-md hover:shadow-none hover:rounded motion-safe:animate-fade-in transition">
+>
+>        // ...
+>
+>        <form v-else  @submit.prevent="openMail">
+>          <div class="flex flex-wrap md:flex-nowrap">
+>
+>            // ...
+>
+>            <div v-if="hasExtraInformation" class="w-full md:w-1/2 mx-auto p-6 mx-auto">
+>
+>              // ...
+>
+>              <div v-if="$route.query.detail">
+>                <label for="errorDetails">Error detail</label>
+>                <br />
+>                <textarea
+>                  name="errorDetails"
+>                  :value="$route.query.detail"
+>                  disabled
+>                  :class="textInputStyle({classes: 'h-32', disabled: true})"
+>                />
+>              </div>
+>
+>    -         <div v-if="$route.query.photos">
+>    -           <label for="photoCount">Photos</label>
+>    -           <br />
+>    -           <input
+>    -             name="photoCount"
+>    -             :value="$route.query.photos"
+>    -             disabled
+>    -             :class="textInputStyle({disabled: true})"
+>    -           />
+>    -         </div>
+>    - 
+>    -         <div v-if="$route.query.videos">
+>    -           <label for="videoCount">Videos</label>
+>    -           <br />
+>    -           <input
+>    -             name="videoCount"
+>    -             :value="$route.query.videos"
+>    -             disabled
+>    -             :class="textInputStyle({disabled: true})"
+>    -           />
+>    -         </div>
+>
+>              <div v-if="$route.query.version">
+>                <label for="appVersion">Version</label>
+>                <br />
+>                <input
+>                  name="appVersion"
+>                  :value="$route.query.version"
+>                  disabled
+>                  :class="textInputStyle({disabled: true})"
+>                />
+>              </div>
+>            </div>
+>          </div>
+>
+>          // ...
+>
+>        </form>
+>      </div>
+>    </template>
+>
+>    <script>
+>    export default {
+>      name: 'contact-form',
+>
+>      // ...
+>      
+>      computed: {
+>        mailLink() {
+>          let body;
+>
+>          if (this.isError) {
+>            // ...
+>          }
+>          else if (this.isAppFeedback) {
+>    -       const photos = this.$route?.query.photos ? `Photos: ${this.$route?.query.photos}` : undefined;
+>    -       const videos = this.$route?.query.videos ? `Videos: ${this.$route?.query.videos}` : undefined;
+>            const appVersion = this.$route?.query.version ? `App Version: ${this.$route?.query.version}` : undefined;
+>    -       const appUseInfo = (photos || videos || appVersion) ? `Information from app:\n${photos}\n${videos}\n${appVersion}\n\n` : '';
+>    +       const appUseInfo = appVersion ? `Information from app:\n${appVersion}\n\n` : '';
+>
+>            body =  `${appUseInfo}Feedback:\n${this.message || 'No message provided'}\n\nFrom:\n${this.name || 'anonymous'}`;
+>          }
+>          else {
+>            body = `${this.message || 'No message provided'}\n\nFrom: ${this.name || 'anonymous'}`;
+>          }
+>          
+>          return `mailto:${this.emailAddress}?subject=${encodeURIComponent(this.topic || 'Website Contact Form')}&body=${encodeURIComponent(body)}`;
+>        },
+>      },
+>      mounted() {
+>        if (Object.keys(this.$route?.query).length) {
+>          if (this.$route?.query.statusCode) {
+>            this.isError = this.hasExtraInformation = true;
+>            this.topicPlaceholder = `${this.$route.query.statusCode} error`;
+>            this.messageLabel = 'Describe what happened when this error occurred';
+>            this.messagePlaceholder = 'I saw an error when I tried viewing the blog post about your multiplayer pac-man game, CyRun.';
+>            this.extraInfoLabel = 'Error information 🤓';
+>            this.extraInfoDescription = 'This information was generated by the error you received.';
+>
+>            return true;
+>          }
+>
+>    -     if (this.$route?.query.memoryDownload) {
+>    -       this.isAppFeedback = true;
+>    -       this.topicPlaceholder = 'Memory Downloader feedback';
+>    -       this.messageLabel = 'Feedback';
+>    -       this.messagePlaceholder = 'I downloaded the app, but my download is stuck at 20%';
+>    -       
+>    -       this.extraInfoLabel = 'Extra information';
+>    -       this.extraInfoDescription = 'This information was generated from the app.';
+>    -       this.hasExtraInformation = this.$route.query.photos || this.$route.query.videos || this.$route.query.version;
+>    -       
+>    -       return true;
+>    -     }
+>
+>          if (this.$route?.query.topic) {
+>            this.topic = this.$route.query.topic;
+>          }
+>        }
+>
+>        this.topicPlaceholder = '';
+>        this.messageLabel = 'Message';
+>        this.messagePlaceholder = 'Your website is awesome! 🤩';
+>
+>        return false;
+>      },
+>      methods: {
+>        // ...
+>      }
+>    };
+>    </script>
+>    ```
+>
+ </details>
 
   <details markdown="1">
     <summary><code>test/unit/components/ContactForm.spec.js</code></summary>
 
-    ```diff
-      import { mount } from "@vue/test-utils";
-      import Chance from "chance";
-      import ContactForm from '@/components/ContactForm.vue';
-
-      const chance = new Chance();
-
-      describe('ContactForm', () => {
-        // ...
-
-    -   describe('given there are query parameters entailing feedback for the memory-download app', () => {
-    -   
-    -     beforeEach(() => {
-    -       query = {
-    -         memoryDownload: true,
-    -         photos: chance.integer({min: 0}),
-    -         videos: chance.integer({min: 0}),
-    -         version: `${chance.integer({min: 1})}.${chance.integer({min: 1})}.0`
-    -       };
-    -       
-    -       wrapper = mount(ContactForm, {
-    -         mocks: {
-    -           $route: {query} 
-    -         }
-    -       });
-    -     });
-    -     
-    -     it('renders the name label and input', () => {
-    -       expect(wrapper.find('[for="message"]').element.innerHTML).toEqual('Feedback');
-    -       expect(wrapper.find('[name="message"]').element.placeholder).toEqual('I downloaded the app, but my download is stuck at 20%');
-    -     });
-    -     
-    -     it('renders the topic label and placeholder correctly', () => {
-    -       expect(wrapper.find('[for="topic"]').element.innerHTML).toEqual('Topic');
-    -       expect(wrapper.find('[name="topic"]').element.placeholder).toEqual('Memory Downloader feedback');
-    -     });
-    -     
-    -     it('renders the photo and video counts', () => {
-    -       expect(wrapper.find('[name="photoCount"]').element.value).toEqual(`${query.photos}`);
-    -       expect(wrapper.find('[name="videoCount"]').element.value).toEqual(`${query.videos}`);
-    -     });
-    -     
-    -     it('renders the app version', () => {
-    -       expect(wrapper.find('[name="appVersion"]').element.value).toEqual(`${query.version}`);
-    -     });
-    -     
-    -     it('computes the correctly formatted mailto link', async () => {
-    -       const name = chance.string();
-    -       const feedback = chance.paragraph();
-    -       const appUseInfo = `Information from app:\nPhotos: ${query.photos}\nVideos: ${query.videos}\nApp Version: ${query.version}\n\n`;
-    -       const body = `${appUseInfo}Feedback:\n${feedback}\n\nFrom:\n${name}`;
-    -       const expectedLink = `mailto:${process.env.NUXT_ENV_EMAIL_ADDRESS}?subject=${encodeURIComponent('Website Contact Form')}&body=${encodeURIComponent(body)}`;
-    -       
-    -       
-    -       wrapper.find('[name="name"]').setValue(name);
-    -       wrapper.find('[name="message"]').setValue(feedback);
-    -       
-    -       await wrapper.vm.$nextTick();
-    -       expect(wrapper.vm.mailLink).toEqual(expectedLink);
-    -     });
-    -   });
-      });
-    ```
-
-    <strong>Note:</strong> Writing new unit tests for the app versioning is recommended.
+>    ```diff
+>      import { mount } from "@vue/test-utils";
+>      import Chance from "chance";
+>      import ContactForm from '@/components/ContactForm.vue';
+>
+>      const chance = new Chance();
+>
+>      describe('ContactForm', () => {
+>        // ...
+>
+>    -   describe('given there are query parameters entailing feedback for the memory-download app', () => {
+>    -   
+>    -     beforeEach(() => {
+>    -       query = {
+>    -         memoryDownload: true,
+>    -         photos: chance.integer({min: 0}),
+>    -         videos: chance.integer({min: 0}),
+>    -         version: `${chance.integer({min: 1})}.${chance.integer({min: 1})}.0`
+>    -       };
+>    -       
+>    -       wrapper = mount(ContactForm, {
+>    -         mocks: {
+>    -           $route: {query} 
+>    -         }
+>    -       });
+>    -     });
+>    -     
+>    -     it('renders the name label and input', () => {
+>    -       expect(wrapper.find('[for="message"]').element.innerHTML).toEqual('Feedback');
+>    -       expect(wrapper.find('[name="message"]').element.placeholder).toEqual('I downloaded the app, but my download is stuck at 20%');
+>    -     });
+>    -     
+>    -     it('renders the topic label and placeholder correctly', () => {
+>    -       expect(wrapper.find('[for="topic"]').element.innerHTML).toEqual('Topic');
+>    -       expect(wrapper.find('[name="topic"]').element.placeholder).toEqual('Memory Downloader feedback');
+>    -     });
+>    -     
+>    -     it('renders the photo and video counts', () => {
+>    -       expect(wrapper.find('[name="photoCount"]').element.value).toEqual(`${query.photos}`);
+>    -       expect(wrapper.find('[name="videoCount"]').element.value).toEqual(`${query.videos}`);
+>    -     });
+>    -     
+>    -     it('renders the app version', () => {
+>    -       expect(wrapper.find('[name="appVersion"]').element.value).toEqual(`${query.version}`);
+>    -     });
+>    -     
+>    -     it('computes the correctly formatted mailto link', async () => {
+>    -       const name = chance.string();
+>    -       const feedback = chance.paragraph();
+>    -       const appUseInfo = `Information from app:\nPhotos: ${query.photos}\nVideos: ${query.videos}\nApp Version: ${query.version}\n\n`;
+>    -       const body = `${appUseInfo}Feedback:\n${feedback}\n\nFrom:\n${name}`;
+>    -       const expectedLink = `mailto:${process.env.NUXT_ENV_EMAIL_ADDRESS}?subject=${encodeURIComponent('Website Contact Form')}&body=${encodeURIComponent(body)}`;
+>    -       
+>    -       
+>    -       wrapper.find('[name="name"]').setValue(name);
+>    -       wrapper.find('[name="message"]').setValue(feedback);
+>    -       
+>    -       await wrapper.vm.$nextTick();
+>    -       expect(wrapper.vm.mailLink).toEqual(expectedLink);
+>    -     });
+>    -   });
+>      });
+>    ```
 
   </details>
+    
+  **Note:** Writing new unit tests for the app versioning is recommended.
 
 </details>
 

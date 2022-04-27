@@ -170,7 +170,7 @@ export default {
         const appVersion = this.$route?.query.version ? `App Version: ${this.$route?.query.version}` : undefined;
         const appUseInfo = (photos || videos || appVersion) ? `Information from app:\n${photos}\n${videos}\n${appVersion}\n\n` : '';
 
-        body =  `${appUseInfo}Feedback:\n${this.message || 'No message provide'}\n\nFrom:\n${this.name || 'anonymous'}`;
+        body =  `${appUseInfo}Feedback:\n${this.message || 'No message provided'}\n\nFrom:\n${this.name || 'anonymous'}`;
       }
       else {
         body = `${this.message || 'No message provided'}\n\nFrom: ${this.name || 'anonymous'}`;
@@ -203,6 +203,10 @@ export default {
         this.hasExtraInformation = this.$route.query.photos || this.$route.query.videos || this.$route.query.version;
 
         return true;
+      }
+
+      if (this.$route?.query.topic) {
+        this.topic = this.$route.query.topic;
       }
     }
 

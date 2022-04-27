@@ -354,7 +354,7 @@ Remove all of my blog posts, post categories, and the files that are related to 
 
   </details>
     
-  **Note:** Writing new unit tests for the app versioning is recommended.
+  **Note:** Writing new unit tests and functionality for app versioning feedback is recommended.
 
 </details>
 

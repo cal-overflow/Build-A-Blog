@@ -12,8 +12,6 @@ describe('category page', () => {
 
   const nuxtContentMock = {
     $content: jest.fn().mockReturnThis(),
-    where: jest.fn().mockReturnThis(),
-    sortBy: jest.fn().mockReturnThis(),
     search: jest.fn().mockReturnThis(),
     fetch: jest.fn(),
   };
@@ -56,7 +54,7 @@ describe('category page', () => {
 
       nuxtContentMock.fetch.mockImplementation(() => {
         return {
-          catch: () => [fakeCategory]
+          catch: () => ({ categories: [fakeCategory] })
         };
       });
 
@@ -83,11 +81,6 @@ describe('category page', () => {
     });
 
     afterEach(jest.clearAllMocks);
-
-    it('calls nuxt content "where" method with the correct values', () => {
-      expect(nuxtContentMock.where).toBeCalledTimes(1);
-      expect(nuxtContentMock.where).toBeCalledWith({slug: fakeCategory.slug});
-    });
 
     it('calls nuxt content fetch', () => {
       expect(nuxtContentMock.fetch).toBeCalledTimes(1);
@@ -138,12 +131,11 @@ describe('category page', () => {
     let mockErrorFn;
 
     beforeEach(async () => {
-      fakeCategory = undefined;
       mockErrorFn = jest.fn();
 
       nuxtContentMock.fetch.mockImplementation(() => {
         return {
-          catch: () => fakeCategory
+          catch: () => ({ categories: [] })
         };
       });
 
@@ -175,7 +167,7 @@ describe('category page', () => {
 
       nuxtContentMock.fetch.mockImplementation(() => {
         return {
-          catch: () => [fakeCategory]
+          catch: () => ({ categories: [fakeCategory] })
         };
       });
 

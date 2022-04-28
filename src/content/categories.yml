@@ -1,0 +1,28 @@
+categories:
+  - title: Backend
+    slug: backend
+    description: Projects where I primarily designed and developed the backend.
+
+  - title: Frontend
+    slug: frontend
+    description: Projects where I primarily designed and developed the frontend.
+
+  - title: Hackathon
+    slug: hackathon
+    description: My projects and experiences at hackathon events.
+
+  - title: Portfolio
+    slug: portfolio
+    description: My most significant work and experiences. This varies from failed projects to fully functional apps, websites, games, and more.
+
+  - title: Tutorials
+    slug: tutorials
+    description: Thorough guides that I have created to help others.
+
+  - title: University Course
+    slug: university-course
+    description: My experiences taking Computer Science courses at Iowa State University.
+
+  - title: Website Development
+    slug: website-development
+    description: The many websites that I have developed, designed, and/or worked on.

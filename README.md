@@ -1,4 +1,6 @@
-# Portfolio [![Netlify Status](https://api.netlify.com/api/v1/badges/15085e05-f139-4f5f-a673-6bf86682c401/deploy-status)](https://app.netlify.com/sites/christianlisle/deploys)
+[![Picture of home screen](assets/home-page.png)](http://www.christianlisle.io)
+
+# Portfolio
 
 Personal website used for blogging and showcasing work.
 
@@ -69,12 +71,11 @@ Once you've installed the necessary Node modules and configured your environment
 # serve with hot reload at localhost:3000 - ideal for development
 $ npm run dev
 
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
+# generate static site files
 $ npm run generate
+
+# serve the static site
+$ npm run start
 ```
 
 

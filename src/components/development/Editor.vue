@@ -138,28 +138,37 @@ export default {
   }),
   watch: {
     value() {
-      this.file = this.value;
-      this.originalFileObj = matter(this.file);
-      const isPost = this.$nuxt.$route.path === `/post/${this.originalFileObj.data.slug}`;
+      this.isEditingEnabled = !(this.$parent.$attrs.editable === false);
 
-      if (isPost) {
-        this.post = {
-          data: {
-            id: this.originalFileObj.data.id,
-            title: this.originalFileObj.data.title,
-            slug: this.originalFileObj.data.slug,
-            date: this.originalFileObj.data.date,
-            img: this.originalFileObj.data.img,
-            categories: this.originalFileObj.data.categories
-          },
-          body: this.originalFileObj.content
-        };
-
-        if (this.post.data.categories.length === 0) this.categories.push('');  
+      if (this.isEditingEnabled) {
+        this.file = this.value;
+        this.originalFileObj = matter(this.file);
+        const isPost = this.$nuxt.$route.path === `/post/${this.originalFileObj.data.slug}`;
+  
+        if (isPost) {
+          this.post = {
+            data: {
+              id: this.originalFileObj.data.id,
+              title: this.originalFileObj.data.title,
+              slug: this.originalFileObj.data.slug,
+              date: this.originalFileObj.data.date,
+              img: this.originalFileObj.data.img,
+              categories: this.originalFileObj.data.categories
+            },
+            body: this.originalFileObj.content
+          };
+  
+          if (this.post.data.categories.length === 0) this.categories.push('');  
+        }
+      }
+      else {
+        // The nuxt-content that triggered this edit has an attribute called editable set to false. Reload the page
+        alert('This content cannot be edited in live mode.\nThe page will be refreshed');
+        location.reload();
       }
     },
     isEditing() {
-      if (this.isEditing) {
+      if (this.isEditingEnabled) {
         this.$refs.startingInput.focus();
         this.$parent.$emit('startEdit');
       }

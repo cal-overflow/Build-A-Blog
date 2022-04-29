@@ -10,7 +10,7 @@
       <nuxt-link ref="title" :to="`/post/${post.slug}`" class="font-bold text-lg hover:underline">
         {{post.title}}
       </nuxt-link>
-      <nuxt-content ref="excerpt" :document="excerpt" />
+      <nuxt-content ref="excerpt" :document="excerpt" :editable="false" />
       <nuxt-link ref="continue-reading" :to="`/post/${post.slug}`" class="text-extra-gray-dark dark:text-extra-gray-light font-thin text-sm underline hover:no-underline transition">
         Continue reading
       </nuxt-link>

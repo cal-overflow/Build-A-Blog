@@ -104,7 +104,8 @@ export default {
       prism: {
         theme: "@/assets/css/prism-custom-theme.css"
       }
-    }
+    },
+    editor: '@/components/development/Editor.vue'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

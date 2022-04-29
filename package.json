@@ -27,6 +27,7 @@
     "@tailwindcss/typography": "^0.5.0",
     "chance": "^1.1.8",
     "core-js": "^3.15.1",
+    "gray-matter": "^4.0.3",
     "nuxt": "^2.15.8",
     "wait-on": "^6.0.0"
   },

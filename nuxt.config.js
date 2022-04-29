@@ -76,9 +76,9 @@ export default {
           });
         });
 
-        const categories = await $content('categories').fetch();
+        const categoryContent = await $content('categories').fetch();
   
-        categories.forEach((category) => {
+        categoryContent.categories.forEach((category) => {
           feed.addCategory(category.title);
         });
         

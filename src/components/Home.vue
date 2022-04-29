@@ -6,7 +6,9 @@
             <img src="headshot.png" class="rounded-full motion-safe:animate-blur-fade-in-fast transition" alt="Headshot" />
           </div>
           <div class="w-full md:w-3/5 lg:w-2/3 m-4 xs:mb-12 md:mb-0">
-            <p class="text-lg font-bold mb-4">Hi. I'm {{ name }}. <span class="motion-safe:animate-hand-wave animation-inline">👋</span></p>
+            <p v-if="name" id="greeting" class="text-lg font-bold mb-4">Hi. I'm {{ name }}. <span class="motion-safe:animate-hand-wave animation-inline">👋</span></p>
+            <div v-else class="bg-gray-500 w-1/3 h-4 my-2" />
+
             <nuxt-content
               v-if="bio"
               :document="bio"
@@ -25,37 +27,37 @@
 
 
     <div class="flex max-w-screen-lg mx-auto flex-wrap md:flex-nowrap">
-      <portfolio-preview class="motion-safe:animate-fade-in" />
-      <blog-preview class="motion-safe:animate-fade-in" />
+      <page-preview :content="portfolioPreview" class="motion-safe:animate-fade-in" />
+      <page-preview :content="blogPreview" class="motion-safe:animate-fade-in" />
     </div>
   </div>
 </template>
 
 <script>
-import BlogPreview from '@/components/previews/Blog.vue';
-import PortfolioPreview from '@/components/previews/Portfolio.vue';
+import PagePreview from '@/components/previews/Page.vue';
 
 export default {
   name: 'home',
   components: {
-    BlogPreview,
-    PortfolioPreview,
+    PagePreview
+  },
+  props: {
+    bio: {
+      type: Object,
+      default: undefined
+    },
+    portfolioPreview: {
+      type: Object,
+      default: undefined
+    },
+    blogPreview: {
+      type: Object,
+      default: undefined
+    },
   },
   data: () => ({
-    bio: undefined,
     name: process.env.NUXT_ENV_FULL_NAME.split(' ')[0]
-  }),
-  async mounted() {
-    this.bio = await this.$content('about')
-      .fetch()
-      .catch((err) => {
-        this.$nuxt.error({
-          statusCode: 500,
-          message: 'Something went wrong while fetching the "about me" content',
-          error: err
-        });
-      });
-  }
+  })
 };
 </script>
 

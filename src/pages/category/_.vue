@@ -21,9 +21,7 @@ export default {
   async asyncData({ $content, params, error }) {
     const slug = params.pathMatch.toLowerCase();
 
-    const categories = await $content('categories')
-      .where({slug})
-      .sortBy('id', 'desc')
+    const content = await $content('categories')
       .fetch()
       .catch((err) => {
         error({
@@ -33,7 +31,7 @@ export default {
         });
       });
 
-      const category = categories?.find((category) => category.slug === slug);
+      const category = content?.categories?.find((category) => category.slug === slug);
 
       if (!category) {
         return error({ statusCode: 404, message: 'This category could not be found' });

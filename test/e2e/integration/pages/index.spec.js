@@ -10,38 +10,33 @@ describe('Home page', () => {
     cy.get('#footer-bar').should('be.visible');
   });
 
-  it('shows the introduction, portfolio preview, and blog preview cards', () => {
+  it('shows the introduction card and two page-preview cards', () => {
     cy.get('#introduction-card').should('be.visible');
-    cy.get('#portfolio-preview-card').should('be.visible');
-    cy.get('#blog-preview-card').should('be.visible');
+    cy.get('.page-preview-card').should('have.length', 2);
+    cy.get('.page-preview-card').eq(0).should('be.visible');
+    cy.get('.page-preview-card').eq(1).should('be.visible');
   });
 
   describe('introduction card', () => {
     it('contains the headshot image', () => {
       cy.get('img').should('have.attr', 'src', 'headshot.png');
     });
+
+    it('contains the greeting', () => {
+      cy.get('#greeting').should('be.visible');
+    });
   });
 
   describe('portfolio preview card', () => {
-    it('contains a header that takes user to portfolio page on click', () => {
-      cy.get('#portfolio-preview-card').contains('Portfolio').click();
-      cy.location('pathname').should('eq', '/category/portfolio');
-    });
-    
     it('contains a link to the portfolio page', () => {
-      cy.get('#portfolio-preview-card').contains('View my work').click();
+      cy.get('.page-preview-card').eq(0).contains('View my work').click();
       cy.location('pathname').should('eq', '/category/portfolio');
     });
   });
 
   describe('blog preview card', () => {
-    it('contains a header that takes user to blog page on click', () => {
-      cy.get('#blog-preview-card').contains('Blog').click();
-      cy.location('pathname').should('eq', '/blog');
-    });
-    
     it('contains a link to the blog page', () => {
-      cy.get('#blog-preview-card').contains('View my blog').click();
+      cy.get('.page-preview-card').eq(1).contains('View my blog').click();
       cy.location('pathname').should('eq', '/blog');
     });
   });

@@ -76,9 +76,9 @@ export default {
           });
         });
 
-        const categories = await $content('categories').fetch();
+        const categoryContent = await $content('categories').fetch();
   
-        categories.forEach((category) => {
+        categoryContent.categories.forEach((category) => {
           feed.addCategory(category.title);
         });
         
@@ -104,7 +104,8 @@ export default {
       prism: {
         theme: "@/assets/css/prism-custom-theme.css"
       }
-    }
+    },
+    editor: '@/components/development/Editor.vue'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

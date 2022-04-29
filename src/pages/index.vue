@@ -1,7 +1,7 @@
 <template>
   <main>
     <nav-bar current-page="Home" />
-    <home />
+    <home :bio="bio" :portfolio-preview="portfolio" :blog-preview="blog" />
     <footer-bar current-page="Home" />
   </main>
 </template>
@@ -17,6 +17,23 @@ export default {
     NavBar,
     Home,
     FooterBar,
+  },
+  async asyncData({ $content, error }) {
+    const content = await $content('general')
+      .fetch()
+      .catch((err) => {
+        error({
+          statusCode: 500,
+          message: 'Something went wrong while fetching the "about me" content',
+          error: err
+        });
+      });
+
+    return {
+      bio: content.find(({ slug }) => slug === 'about'),
+      portfolio: content.find(({ slug }) => slug === 'portfolio-preview'),
+      blog: content.find(({ slug }) => slug === 'blog-preview')
+    };
   }
 };
 </script>

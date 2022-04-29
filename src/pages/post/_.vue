@@ -4,24 +4,45 @@
     <div class="max-w-screen-lg mx-auto">
       <div v-if="post" id="post-card" class="bg-card-light dark:bg-card-dark m-0 md:m-6 p-4 flex flex-wrap shadow-lg dark:shadow-shadow-dark hover:shadow-none hover:rounded motion-safe:animate-fade-in transition">
         <div class="w-full p-4">
-          <p id="post-title" class="text-4xl md:text-5xl lg:text-6xl font-bold mb-2 !leading-tight">{{post.title}}</p>
-          <div class="text-extra-gray-dark dark:text-extra-gray-light transition">
-            <p id="post-metadata">{{post.date}}
-              <span v-if="post.categories.length">
-                <span class="hidden md:inline">/</span>
-                <br class="md:hidden" />
-                <span
-                  v-for="(category, i) in post.categories"
-                  :key="`categories-${category}`"
-                >
-                  <nuxt-link :to="`/category/${category.toLowerCase().replace(' ', '-')}`" class="hover:underline">{{category}}</nuxt-link>{{(i + 1) === post.categories.length ? '' : ', '}}
+          <div v-if="!isEditing">
+            <p id="post-title" class="text-4xl md:text-5xl lg:text-6xl font-bold mb-2 !leading-tight">{{post.title}}</p>
+
+            <div class="text-extra-gray-dark dark:text-extra-gray-light transition">
+              <p id="post-metadata">{{post.date}}
+                <span v-if="post.categories.length">
+                  <span class="hidden md:inline">/</span>
+                  <br class="md:hidden" />
+                  <span
+                    v-for="(category, i) in post.categories"
+                    :key="`categories-${category}`"
+                  >
+                    <nuxt-link :to="`/category/${category.toLowerCase().replace(' ', '-')}`" class="hover:underline">{{category}}</nuxt-link>{{(i + 1) === post.categories.length ? '' : ', '}}
+                  </span>
                 </span>
-              </span>
-            </p>
+              </p>
+            </div>
           </div>
 
-          <img id="post-feature-image" :src="`/blog-images/feature/${post.img}`" class="object-contain w-full md:w-3/4 3xl:w-3/4 mx-auto lg:mx-auto max-h-screen" />
-          <nuxt-content id="post-content" :document="post" class="prose m-4 mx-auto max-w-none prose-img:w-max prose-img:mx-auto prose-a:underline hover:prose-a:no-underline prose-a:text-primary-light dark:prose-invert dark:prose-a:text-primary-dark transition" />
+          <div v-if="!isEditing">
+            <img id="post-feature-image" :src="`/blog-images/feature/${post.img}`" class="object-contain w-full md:w-3/4 3xl:w-3/4 mx-auto lg:mx-auto max-h-screen" />
+            
+            <div v-if="isDevMode">
+              <divider />
+              <p class="text-sm text-center text-extra-gray-dark dark:text-extra-gray-light">
+                <strong>You're in development mode 🧑‍💻</strong>
+                <br />
+                Double click anywhere on the post body below to edit
+              </p>
+              <divider />
+            </div>
+          </div>
+          <nuxt-content
+            id="post-content"
+            :document="post"
+            class="prose m-4 mx-auto max-w-none prose-img:w-max prose-img:mx-auto prose-a:underline hover:prose-a:no-underline prose-a:text-primary-light dark:prose-invert dark:prose-a:text-primary-dark transition"
+            @startEdit="isEditing = true"
+            @endEdit="isEditing = false"
+          />
         </div>
       </div>
 
@@ -72,7 +93,9 @@ export default {
     }
 
     return {
-      post
+      post,
+      isEditing: false,
+      isDevMode: process.env.NODE_ENV === 'development'
     };
   },
   head() {

@@ -1,20 +1,13 @@
-import { shallowMount, RouterLinkStub } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import Chance from 'chance';
 import Home from '@/components/Home.vue';
-import BlogPreview from '@/components/previews/Blog.vue';
-import PortfolioPreview from '@/components/previews/Portfolio.vue';
+import PagePreview from '@/components/previews/Page.vue';
 
 const chance = new Chance();
 
 describe('Home component', () => {
-  let wrapper;
+  let wrapper, blogPreview, portfolioPreview;
   const oldEnv = process.env;
-
-  const nuxtContentMock = {
-    $content: jest.fn().mockReturnThis(),
-    fetch: jest.fn().mockReturnThis(),
-    catch: () => {}
-  };
 
   beforeAll(() => {
     process.env = {
@@ -28,14 +21,19 @@ describe('Home component', () => {
   });
 
   beforeEach(() => {
+    blogPreview = {
+      body: chance.paragraph()
+    };
+
+    portfolioPreview = {
+      body: chance.paragraph()
+    };
+
     wrapper = shallowMount(Home, {
       stubs: {
-        NuxtLink: RouterLinkStub,
         'nuxt-content': true,
       },
-      mocks: {
-        $content: () => nuxtContentMock
-      }
+      propsData: { blogPreview, portfolioPreview }
     });
   });
 
@@ -53,11 +51,15 @@ describe('Home component', () => {
     expect(wrapper.text()).toContain(`Hi. I'm ${process.env.NUXT_ENV_FULL_NAME.split(' ')[0]}. 👋`);
   });
 
-  it('contains a PortfolioPreview component', () => {
-    expect(wrapper.findComponent(PortfolioPreview).exists()).toBeTruthy();
+  it('contains two PagePreview components', () => {
+    expect(wrapper.findAllComponents(PagePreview)).toHaveLength(2);
   });
 
-  it('contains a BlogPreview component', () => {
-    expect(wrapper.findComponent(BlogPreview).exists()).toBeTruthy();
+  it('passes the portfolio content into one of the PagePreview components', () => {
+    expect(wrapper.findAllComponents(PagePreview).wrappers[0].props('content')).toMatchObject(portfolioPreview);
+  });
+
+  it('passes the blogPreview content into one of the PagePreview components', () => {
+    expect(wrapper.findAllComponents(PagePreview).wrappers[1].props('content')).toMatchObject(blogPreview);
   });
 });

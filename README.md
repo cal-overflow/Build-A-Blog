@@ -1,4 +1,6 @@
-# Portfolio [![Netlify Status](https://api.netlify.com/api/v1/badges/15085e05-f139-4f5f-a673-6bf86682c401/deploy-status)](https://app.netlify.com/sites/christianlisle/deploys)
+[![Picture of home screen](assets/home-page.png)](http://www.christianlisle.io)
+
+# Portfolio
 
 Personal website used for blogging and showcasing work.
 
@@ -20,6 +22,7 @@ Built primarily with [NuxtJS](https://nuxtjs.org/) and [TailwindCSS](https://tai
   6. [Write your first blog post](#6-write-your-first-blog-post)
 - [Blog posts](#blog-posts-)
 - [Post categories](#post-categories)
+- [Editing content in development mode](#editing-content-in-developer-mode-)
 
 ## Running locally
 ### Environment setup
@@ -68,12 +71,11 @@ Once you've installed the necessary Node modules and configured your environment
 # serve with hot reload at localhost:3000 - ideal for development
 $ npm run dev
 
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
+# generate static site files
 $ npm run generate
+
+# serve the static site
+$ npm run start
 ```
 
 
@@ -127,7 +129,7 @@ The current description is the one that I wrote for my website.
 Remove all of my blog posts, post categories, and the files that are related to those blog posts. This requires the following:
 
 - [ ] Delete all of the blog posts found within the `src/content/posts/` directory.
-- [ ] Delete all files except `portfolio.md` within the `src/content/categories/` directory.
+- [ ] Delete all entries except for `Portfolio` within the `src/content/categories.yml` file.
 - [ ] Delete all contents within the `src/static/blog-images/` directory and any subdirectories.
 - [ ] Create a new `feature/` directory within the `src/static/blog-images/` directory.
 
@@ -362,8 +364,8 @@ Remove all of my blog posts, post categories, and the files that are related to 
 Replace the essentials such as my bio and description of my blog/portfolio with your own. Complete the following:
 
 - [ ] Replace the existing `favicon.ico` and `headshot.png` files within the `src/static/` directory.
-- [ ] Replace the contents of `about.md`, `blog-preview.md`, and `portfolio-preview.md` found within the `src/content/` directory.
-- [ ] Replace the description for the Portfolio category by editing the `description` attribute of `src/content/categories/portfolio.md`. Refer to the [Post categories](#post-categories) section.
+- [ ] Replace the contents of `about.md`, `blog-preview.md`, and `portfolio-preview.md` found within the `src/content/general/` directory.
+- [ ] Replace the description for the Portfolio category by editing the `description` attribute of `src/content/categories.yml`. Refer to the [Post categories](#post-categories) section.
 
 
 ### 5. Change the color palette
@@ -391,7 +393,7 @@ Re-visit the [Running locally](#running-locally) section for more details on ins
 ---
 
 ## Blog posts 📝
-Blog posts are written in [markdown](https://www.markdownguide.org/) and convertted to HTML with the [Nuxt Content](https://content.nuxtjs.org/) module.
+Blog posts are written in [Markdown](https://www.markdownguide.org/) and converted to HTML with the [Nuxt Content](https://content.nuxtjs.org/) module.
 
 To write a blog post, create a markdown file within the `src/content/posts/` directory. An [example post](https://www.christianlisle.io/post/download-snapchat-memories) is shown below.
 
@@ -402,7 +404,9 @@ title: How to download your Snapchat memories
 slug: download-snapchat-memories
 date: February 20, 2022
 img: memories.jpg
-categories: ['Portfolio', 'Tutorials']
+categories:
+  - Portfolio
+  - Tutorials
 ---
 
 People nowadays take hundreds, and even thousands, of photos and videos regularly. Millions of people save these images and photos on social networking apps like Snapchat.
@@ -420,18 +424,25 @@ In this tutorial, you'll find the steps necessary to download all of your Snapch
 View the Nuxt docs on [Writing Content](https://content.nuxtjs.org/writing) for a detailed explanation on how to write blog posts.
 
 ## Post categories
-Post categories allow you to group posts together based on similarities such as topic. Post categories are defined in markdown files, similar to posts themselves.
+Post categories allow you to group posts together based on similarities such as topic. Post categories are defined in a [YAML](https://yaml.org) file.
 
-Categories should be defined within the `src/content/categories/` directory. Each category file should contain a yml section with each of the properties shown in the example below.
+Categories should be defined within the `src/content/categories.yml` file. Each category should contain a title, slug, and description attribute. Below is the description I have written for the `Portfolio` category.
 
-```md
----
-title: Tutorials
-slug: tutorials
-description: Thorough guides that I have created to help others.
----
+```yaml
+categories:
+- title: Portfolio
+    slug: portfolio
+    description: My most significant work and experiences. This varies from failed projects to fully functional apps, websites, games, and more.
 ```
 
-Once a category has been created, users can view all posts under that category by visiting the endpoint `/category/slug`, where `slug` is replaced by the value you set.
+Once a category has been created, users can view all posts under that category by visiting the endpoint `/category/slug`, where `slug` is replaced by the value you set. For example, the category defined in the example above is accesible by visting `/category/portfolio`.
 
-For example, the category defined in the example above is accesible by visting `/category/tutorials`.
+### Editing content in developer mode 📃
+
+When in a development environment, you can double click on `<nuxt-content>` components to edit the files in the browser.
+
+I have created a [custom Editor component](src/components/development/Editor.vue) that builds upon the [default nuxt/content live editor](https://content.nuxtjs.org/displaying#live-editing). You can edit most content that is rendered with `<nuxt-content>` components. Below is the picture of my latest blog post being edited next to the post's edit screen.
+
+| Viewing post| Editing Post |
+| :-: | :-: |
+| ![Viewing post](assets/viewing-post-012.png) | ![Editing post](assets/editing-post-012.png) |

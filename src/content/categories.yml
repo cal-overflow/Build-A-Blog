@@ -1,4 +1,8 @@
 categories:
+  - title: Portfolio
+    slug: portfolio
+    description: My most significant work and experiences. This varies from failed projects to fully functional apps, websites, games, and more.
+
   - title: Backend
     slug: backend
     description: Projects where I primarily designed and developed the backend.
@@ -10,10 +14,6 @@ categories:
   - title: Hackathon
     slug: hackathon
     description: My projects and experiences at hackathon events.
-
-  - title: Portfolio
-    slug: portfolio
-    description: My most significant work and experiences. This varies from failed projects to fully functional apps, websites, games, and more.
 
   - title: Tutorials
     slug: tutorials

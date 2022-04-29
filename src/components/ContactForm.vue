@@ -223,7 +223,7 @@ export default {
       this.formSubmitted = true;
     },
     textInputStyle(options) {
-      const classes = 'w-full resize-none px-4 py-2 bg-extra-gray-light dark:bg-extra-gray-dark rounded-lg outline-none focus:ring focus:ring-primary-light focus:dark:ring-primary-dark';
+      const classes = 'w-full resize-none px-4 py-2 bg-extra-gray-light dark:bg-extra-gray-dark rounded-lg outline-none focus:rounded-sm focus:ring focus:ring-primary-light focus:dark:ring-primary-dark transition';
 
       return `${classes} ${options?.classes || ''} ${options?.disabled ? 'disabled' : ''}`;
     },

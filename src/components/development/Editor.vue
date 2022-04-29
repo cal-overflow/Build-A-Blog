@@ -103,7 +103,7 @@
         ref="startingInput"
         v-model="file"
         name="file"
-        :class="textInputStyle({ classes: 'h-64 bg-extra-gray-light dark:bg-extra-gray-dark' })"
+        :class="textInputStyle({ classes: 'h-80 bg-extra-gray-light dark:bg-extra-gray-dark' })"
         @keydown.tab.exact.prevent="onTabRight"
         @keydown.tab.shift.prevent="onTabLeft"
         @compositionstart.prevent="isInComposition = true"

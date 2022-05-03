@@ -30,4 +30,4 @@ What I learned about while working on this project:
 
 [Visit website](http://the9ammeeting.com)
 
-**Note:** Since Cellular Advantage does no longer uses the website, the SSL certificates have been removed, meaning the website is no longer securely encrypted.
+**Note:** Since Cellular Advantage no longer uses the website, the SSL certificates have been removed, meaning the website is no longer securely encrypted.

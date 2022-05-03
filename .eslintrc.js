@@ -18,7 +18,8 @@ module.exports = {
   // add your custom rules here
   rules: {
     semi: ["error", "always"],
-    "vue/component-definition-name-casing": ["error", "kebab-case"]
+    "vue/component-definition-name-casing": ["error", "kebab-case"],
+    "eol-last": ["error", "always"] 
   },
   globals: {
     cy: true

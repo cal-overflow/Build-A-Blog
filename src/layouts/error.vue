@@ -58,11 +58,6 @@ export default {
       required: true,
     },
   },
-  head() {
-    return {
-      script: [{ src: 'initializeTheme.js' }],
-    };
-  },
   computed: {
     message() {
       switch (this.error?.statusCode) {

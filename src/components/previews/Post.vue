@@ -88,7 +88,7 @@ export default {
       if (this.post.img.includes('http://') || this.post.img.includes('https://')) {
         return this.post.img;
       }
-      else return `/blog-images/feature/${this.post.img}`;
+      else return require(`~/assets/images/feature/${this.post.img}`);
     }
   }
 };

@@ -12,11 +12,11 @@
 
       <div>
         <a v-if="youtubeUrl" id="youtube-link" :href="youtubeUrl" target="_blank" title="View my Youtube channel">
-          <img id="youtube-logo" class="aspect-square w-8 h-auto inline align-middle mx-4" src="/youtube.png" />
+          <img id="youtube-logo" class="aspect-square w-8 h-auto inline align-middle mx-4" src="~/assets/images/youtube.png" />
         </a>
 
         <a v-if="githubUrl" id="github-link" :href="githubUrl" target="_blank" title="View my Github account">
-          <img id="github-logo" class="invert aspect-square w-6 h-auto inline align-middle mx-4" src="/github.png" />
+          <img id="github-logo" class="invert aspect-square w-6 h-auto inline align-middle mx-4" src="~/assets/images/github.png" />
         </a>
       </div>
 

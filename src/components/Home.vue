@@ -3,7 +3,7 @@
     <div class="max-w-screen-lg mx-auto">
       <div id="introduction-card" class="bg-card-light dark:bg-card-dark m-6 p-4 flex flex-wrap md:flex-nowrap shadow-lg dark:shadow-shadow-dark hover:shadow-none hover:rounded motion-safe:animate-fade-in-fast transition">
           <div class="max-w-sm md:w-2/5 lg:w-1/3 mx-auto md:my-auto">
-            <img src="headshot.png" class="rounded-full motion-safe:animate-blur-fade-in-fast transition" alt="Headshot" />
+            <img src="~/assets/images/headshot.png" class="rounded-full motion-safe:animate-blur-fade-in-fast transition" alt="Headshot" />
           </div>
           <div class="w-full md:w-3/5 lg:w-2/3 m-4 xs:mb-12 md:mb-0">
             <p v-if="name" id="greeting" class="text-lg font-bold mb-4">Hi. I'm {{ name }}. <span class="motion-safe:animate-hand-wave animation-inline">👋</span></p>

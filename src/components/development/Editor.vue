@@ -73,7 +73,7 @@
           <div class="w-full lg:w-1/2 m-2">
             <label for="img">Feature Image</label>
             <br />
-            <small class="text-xs text-extra-gray-dark dark:text-extra-gray-light">Image located at: <code>src/static/blog-images/feature/</code></small>
+            <small class="text-xs text-extra-gray-dark dark:text-extra-gray-light">Image located at: <code>src/assets/images/feature/</code></small>
             <br />
             <input
               v-model="post.data.img"

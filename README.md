@@ -430,7 +430,7 @@ Categories should be defined within the `src/content/categories.yml` file. Each 
 
 ```yaml
 categories:
-- title: Portfolio
+  - title: Portfolio
     slug: portfolio
     description: My most significant work and experiences. This varies from failed projects to fully functional apps, websites, games, and more.
 ```
@@ -441,7 +441,7 @@ Once a category has been created, users can view all posts under that category b
 
 When in a development environment, you can double click on `<nuxt-content>` components to edit the files in the browser.
 
-I have created a [custom Editor component](src/components/development/Editor.vue) that builds upon the [default nuxt/content live editor](https://content.nuxtjs.org/displaying#live-editing). You can edit most content that is rendered with `<nuxt-content>` components. Below is the picture of my latest blog post being edited next to the post's edit screen.
+I have created a [custom Editor component](src/components/development/Editor.vue) that builds upon the [default nuxt/content live editor](https://content.nuxtjs.org/displaying#live-editing). You can edit most content that is rendered with `<nuxt-content>` components. Below are screenshots of one of my posts being viewed and edited.
 
 | Viewing post| Editing Post |
 | :-: | :-: |

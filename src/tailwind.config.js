@@ -37,6 +37,14 @@ module.exports = {
             opacity: '100%',
           }
         },
+        'zoom-in': {
+          '0%': {
+            transform: 'scale(0%)'
+          },
+          '100%': {
+            transform: 'scale(100%)'
+          }
+        },
         'wave': {
           /* Animation source: https://jarv.is/notes/css-waving-hand-emoji/ */
           '0%': { transform: 'rotate( 0.0deg)' },
@@ -57,11 +65,16 @@ module.exports = {
         'fade-in': 'fade-in 1s ease-in-out',
         'fade-in-slow': 'fade-in 1.5s ease-in-out',
         'hand-wave': 'wave 1.75s 2s 1',
+        'zoom-in-slow': 'zoom-in 1.5s ease-in-out',
+        'zoom-in': 'zoom-in 1s ease-in-out',
+        'zoom-in-fast': 'zoom-in 0.5s ease-in-out',
+        'zoom-out-slow': 'zoom-in reverse 1.5s ease-in-out',
+        'zoom-out': 'zoom-in reverse 1s ease-in-out',
+        'zoom-out-fast': 'zoom-in reverse 0.5s ease-in-out',
       }
     },
   },
   plugins: [
     require('@tailwindcss/typography'),
-  ],
-  darkMode: 'class'
+  ]
 };

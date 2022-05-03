@@ -19,7 +19,7 @@ describe('Home page', () => {
 
   describe('introduction card', () => {
     it('contains the headshot image', () => {
-      cy.get('img').should('have.attr', 'src', 'headshot.png');
+      cy.get('#introduction-card img').should('be.visible');
     });
 
     it('contains the greeting', () => {

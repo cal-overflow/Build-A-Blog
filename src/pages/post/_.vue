@@ -58,19 +58,22 @@
         </div>
       </div>
     </div>
+    <back-to-top-button />
     <footer-bar current-page="Blog" />
   </main>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue';
+import BackToTopButton from '@/components/BackToTopButton.vue';
 import FooterBar from '@/components/FooterBar.vue';
 
 export default {
   name: 'post',
   components: {
     NavBar,
-    FooterBar,
+    BackToTopButton,
+    FooterBar
   },
   async asyncData({ $content, params, error }) {
     const slug = params.pathMatch;

@@ -2,6 +2,7 @@
   <main>
     <nav-bar :current-page="currentPage" />
     <blog-feed :category="category" />
+    <back-to-top-button />
     <footer-bar :current-page="currentPage" />
   </main>
 </template>
@@ -10,13 +11,15 @@
 import NavBar from '@/components/NavBar.vue';
 import BlogFeed from '@/components/BlogFeed.vue';
 import FooterBar from '@/components/FooterBar.vue';
+import BackToTopButton from '@/components/BackToTopButton.vue';
 
 export default {
   name: 'category',
   components: {
     NavBar,
     BlogFeed,
-    FooterBar,
+    BackToTopButton,
+    FooterBar
   },
   async asyncData({ $content, params, error }) {
     const slug = params.pathMatch.toLowerCase();

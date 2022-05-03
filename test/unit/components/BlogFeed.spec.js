@@ -25,10 +25,10 @@ describe('BlogFeed component', () => {
     fetch: jest.fn(),
   };
 
-  describe('given there are no posts (or they have not loaded)', () => {
+  describe('given the posts have not loaded yet', () => {
     beforeEach(() => {
-      fakePosts = [];
-      nuxtContentMock.fetch.mockResolvedValue(fakePosts);
+      // mock nuxt content fetch to never resolve (stuck loading behavior)      
+      nuxtContentMock.fetch.mockReturnValue(new Promise(() => ({})));
 
       wrapper = shallowMount(BlogFeed, {
         mocks: {
@@ -45,6 +45,24 @@ describe('BlogFeed component', () => {
       postPreviews.wrappers.forEach((wrapper) => {
         expect(wrapper.props('post')).toEqual(undefined);
       });
+    });
+  });
+
+  describe('given there are no posts', () => {
+    beforeEach(() => {
+      fakePosts = [];
+      nuxtContentMock.fetch.mockResolvedValue(fakePosts);
+
+      wrapper = shallowMount(BlogFeed, {
+        mocks: {
+          $content: () => nuxtContentMock
+        },
+        stubs,
+      });
+    });
+
+    it('renders a "no posts" message', () => {
+      expect(wrapper.text()).toContain('No posts have been written');
     });
   });
 
@@ -225,7 +243,7 @@ describe('BlogFeed component', () => {
       expect(nuxtMock.error).toBeCalledTimes(1);
       expect(nuxtMock.error).toBeCalledWith({
         statusCode: 500,
-        message: 'Something went wrong',
+        message: 'Something went wrong fetching posts',
         error: fakeError
       });
     });

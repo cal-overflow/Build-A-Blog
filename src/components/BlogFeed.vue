@@ -33,13 +33,22 @@
       </div>
     </div>
 
-    <div v-else class="max-w-screen-lg mx-auto grid md:grid-cols-2">
+    <div v-else-if="isFetchingPosts" class="max-w-screen-lg mx-auto grid md:grid-cols-2">
       <post-preview
         v-for="(n, i) in postCount"
         :key="i"
         :index="i"
         :last="i === (postCount - 1)"
       />
+    </div>
+    
+    <div v-else class="max-w-screen-lg mx-auto grid md:grid-cols-2">
+      <div
+        class="bg-card-light dark:bg-card-dark m-6 p-6 hover:rounded shadow-md dark:shadow-shadow-dark hover:shadow-none motion-safe:animate-fade-in transition col-span-2"
+      >
+        <p class="text-center md:text-left text-2xl font-bold mt-2">No posts 😴</p>
+        <p class="text-center md:text-left">No posts have been written {{ category ? 'for this category' : '😬' }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -97,7 +106,7 @@ export default {
         .catch((err) => {
           this.$nuxt.error({
             statusCode: 500,
-            message: 'Something went wrong',
+            message: 'Something went wrong fetching posts',
             error: err,
           });
         });

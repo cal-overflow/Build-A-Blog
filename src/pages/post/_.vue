@@ -24,7 +24,7 @@
           </div>
 
           <div v-if="!isEditing">
-            <img id="post-feature-image" :src="`/blog-images/feature/${post.img}`" class="object-contain w-full md:w-3/4 3xl:w-3/4 mx-auto lg:mx-auto max-h-screen" />
+            <img id="post-feature-image" :src="image" class="object-contain w-full md:w-3/4 3xl:w-3/4 mx-auto lg:mx-auto max-h-screen" />
             
             <div v-if="isDevMode">
               <divider />
@@ -106,6 +106,15 @@ export default {
       title: this.post.title || 'Christian Lisle',
     };
   },
+  computed: {
+    image() {
+      if (!this.post) return undefined;
+      if (this.post.img.includes('http://') || this.post.img.includes('https://')) {
+        return this.post.img;
+      }
+      else return require(`~/assets/images/feature/${this.post.img}`);
+    }
+  }
 };
 </script>
 

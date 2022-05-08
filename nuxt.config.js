@@ -17,7 +17,7 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: "Enter your site description here"
+        content: "Enter your site description here."
       },
       { name: 'format-detection', content: 'telephone=no' }
     ],

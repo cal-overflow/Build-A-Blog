@@ -5,8 +5,9 @@ Built primarily with [NuxtJS](https://nuxtjs.org/) and [TailwindCSS](https://tai
 
 <details>
 
-<summary>Click here to see an example (<a href="https://www.christianlisle.io">christianlisle.io</a>)</summary>
+<summary>Click here to see an example (<a href="http://www.christianlisle.io">christianlisle.io</a>)</summary>
 
+View the source code for the website [here](https://github.com/ChristianLisle/christianlisle.io)
 #### Light mode
 [![Picture of home screen (light mode)](assets/preview-home-page-light.png)](http://www.christianlisle.io)
 
@@ -93,7 +94,7 @@ Now that you've done all the heavy lifting, your website should have a basic hom
 ## Blog posts 📝
 Blog posts are written in [Markdown](https://www.markdownguide.org/) and converted to HTML with the [Nuxt Content](https://content.nuxtjs.org/) module.
 
-To write a blog post, create a markdown file within a `src/content/posts/` directory. An [example post](https://www.christianlisle.io/post/download-snapchat-memories) is shown below.
+To write a blog post, create a markdown file within a `src/content/posts/` directory. An [example post](http://www.christianlisle.io/post/download-snapchat-memories) is shown below.
 
 ```md
 ---
@@ -121,7 +122,7 @@ In this tutorial, you'll find the steps necessary to download all of your Snapch
 
 View the Nuxt docs on [Writing Content](https://content.nuxtjs.org/writing) for a detailed explanation on how to write blog posts.
 
-Note that feature images should be placed in directory `src/assets/images/feature/`. Other post images should be placed in `src/static/blog-images/`. Reference [christianlisle.io](https://github.com/ChristianLisle/portfolio/tree/christianlisle.io) as an example.
+Note that feature images should be placed in directory `src/assets/images/feature/`. Other post images should be placed in `src/static/blog-images/`. Reference the [source code for christianlisle.io](https://github.com/ChristianLisle/christianlisle.io) as an example.
 
 ## Post categories
 Post categories allow you to group posts together based on similarities such as topic. Post categories are defined in a [YAML](https://yaml.org) file.

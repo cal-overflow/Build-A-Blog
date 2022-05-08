@@ -1,10 +1,21 @@
-[![Picture of home screen](assets/home-page.png)](http://www.christianlisle.io)
-
 # Portfolio
 
 Personal website used for blogging and showcasing work.
 
 Built primarily with [NuxtJS](https://nuxtjs.org/) and [TailwindCSS](https://tailwindcss.com/).
+
+
+<details>
+
+<summary>See preview</summary>
+
+#### Light mode
+[![Picture of home screen (light mode)](assets/preview-home-page-light.png)](http://www.christianlisle.io)
+
+### Dark mode
+[![Picture of home screen (dark mode)](assets/preview-home-page-dark.png)](http://www.christianlisle.io)
+
+</details>
 
 <!-- Table of contents -->
 ### Table of contents

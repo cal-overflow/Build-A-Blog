@@ -89,5 +89,6 @@ sw.*
 # Vim swap files
 *.swp
 
-# e2e test artifacts
+# e2e testing (cypress)
+cypress/downloads
 test/e2e/artifacts

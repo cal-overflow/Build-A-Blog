@@ -17,7 +17,7 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: "Software engineer passionate about personal projects, open source, and all things software."
+        content: "Enter your site description here."
       },
       { name: 'format-detection', content: 'telephone=no' }
     ],

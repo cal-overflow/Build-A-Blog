@@ -5,7 +5,7 @@ Built primarily with [NuxtJS](https://nuxtjs.org/) and [TailwindCSS](https://tai
 
 <details>
 
-<summary>Click here to see an example (<a href="https://www.christianlisle.io" target="_blank">christianlisle.io</a>)</summary>
+<summary>Click here to see an example (<a href="https://www.christianlisle.io">christianlisle.io</a>)</summary>
 
 #### Light mode
 [![Picture of home screen (light mode)](assets/preview-home-page-light.png)](http://www.christianlisle.io)
@@ -19,10 +19,10 @@ Built primarily with [NuxtJS](https://nuxtjs.org/) and [TailwindCSS](https://tai
 ### Table of contents
 - [Make the site your own](#make-the-site-your-own-)
   1. [Set environment variables](#1-set-environment-variables)
-  2. [Change the site description](#2-change-the-site-description)
-  3. [Replace essential content](#4-replace-essential-content)
-  5. [Change the color palette](#5-change-the-color-palette)
-  6. [Write your first blog post](#6-write-your-first-blog-post)
+  2. [Enter a site description](#2-enter-a-site-description)
+  3. [Replace essential content](#3-replace-essential-content)
+  5. [Change the color palette](#4-change-the-color-palette)
+  6. [Write your first blog post](#5-write-your-first-blog-post)
 - [Blog posts](#blog-posts-)
 - [Post categories](#post-categories)
 - [Editing content in development mode](#editing-content-in-development-mode-)
@@ -68,7 +68,7 @@ Replace the essentials such as the bio and description of the blog/portfolio pag
 - [ ] Enter a description for the Portfolio category by editing the `description` attribute of `src/content/categories.yml`. Refer to the [Post categories](#post-categories) section.
 
 
-### 5. Change the color palette
+### 4. Change the color palette
 Change the color scheme of the website by editing `color` object within the `tailwind.config.js` file in the `src/` directory. You can find a small description for some of the properties below.
 
 ```js
@@ -84,7 +84,7 @@ colors: {
 }
 ```
 
-### 6. Write your first blog post
+### 5. Write your first blog post
 
 Now that you've done all the heavy lifting, your website should have a basic home page and be ready to serve some blog posts. Reference the [Blog Posts](#blog-posts-) section below for general information on writing a blog post.
 

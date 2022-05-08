@@ -93,7 +93,7 @@ Now that you've done all the heavy lifting, your website should have a basic hom
 ## Blog posts 📝
 Blog posts are written in [Markdown](https://www.markdownguide.org/) and converted to HTML with the [Nuxt Content](https://content.nuxtjs.org/) module.
 
-To write a blog post, create a markdown file within the `src/content/posts/` directory. An [example post](https://www.christianlisle.io/post/download-snapchat-memories) is shown below.
+To write a blog post, create a markdown file within a `src/content/posts/` directory. An [example post](https://www.christianlisle.io/post/download-snapchat-memories) is shown below.
 
 ```md
 ---

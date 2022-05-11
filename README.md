@@ -63,7 +63,7 @@ head: {
 ### 3. Replace essential content
 Replace the essentials such as the bio and description of the blog/portfolio pages. Complete the following:
 
-- [ ] Replace the existing `headshot.png` file within the `src/assets/` directory.
+- [ ] Replace the existing `headshot.png` file within the `src/assets/images/` directory.
 - [ ] Replace the existing `favicon.ico` file within the `src/static/` directory.
 - [ ] Replace the contents of `about.md`, `blog-preview.md`, and `portfolio-preview.md` found within the `src/content/general/` directory.
 - [ ] Enter a description for the Portfolio category by editing the `description` attribute of `src/content/categories.yml`. Refer to the [Post categories](#post-categories) section.
@@ -142,12 +142,17 @@ Once a category has been created, users can view all posts under that category b
 
 When in a development environment, you can double click on `<nuxt-content>` components to edit the files in the browser.
 
-I have created a [custom Editor component](src/components/development/Editor.vue) that builds upon the [default nuxt/content live editor](https://content.nuxtjs.org/displaying#live-editing). You can edit most content that is rendered with `<nuxt-content>` components. Below are screenshots of one of my posts being viewed and edited.
+I have created a [custom Editor component](src/components/development/Editor.vue) that builds upon the [default nuxt/content live editor](https://content.nuxtjs.org/displaying#live-editing). You can edit most content that is rendered with `<nuxt-content>` components.
 
-| Viewing post| Editing Post |
+<details>
+
+<summary>View the editor in action</summary>
+
+| Viewing post | Editing Post |
 | :-: | :-: |
-| ![Viewing post](assets/viewing-post-012.png) | ![Editing post](assets/editing-post-012.png) |
+| ![Viewing post](assets/viewing-post-example.png) | ![Editing post](assets/editing-post-example.png) |
 
+</details>
 
 ## Running locally
 ### Environment setup

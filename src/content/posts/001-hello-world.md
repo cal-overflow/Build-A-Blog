@@ -1,5 +1,5 @@
 ---
-title: Hello, World!
+title: Hello, World
 slug: hello-world
 date: May 11, 2022
 img: hello-world.png

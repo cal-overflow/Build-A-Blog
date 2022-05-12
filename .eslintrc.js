@@ -11,7 +11,8 @@ module.exports = {
   extends: [
     '@nuxtjs',
     'plugin:nuxt/recommended',
-    'prettier'
+    'prettier',
+    'plugin:cypress/recommended'
   ],
   plugins: [
   ],
@@ -19,7 +20,8 @@ module.exports = {
   rules: {
     semi: ["error", "always"],
     "vue/component-definition-name-casing": ["error", "kebab-case"],
-    "eol-last": ["error", "always"] 
+    "eol-last": ["error", "always"] ,
+    "cypress/no-unnecessary-waiting": "off",
   },
   globals: {
     cy: true

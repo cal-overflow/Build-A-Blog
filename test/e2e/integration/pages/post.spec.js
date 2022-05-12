@@ -17,7 +17,6 @@ describe('Post page', () => {
       else {
         cy.get('#post-feed').find('.post-preview-card').its('length').then((length) => {
           postCount = length;
-          cy.log('posts:', postCount);
         });
       }
     });

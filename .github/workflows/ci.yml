@@ -47,8 +47,5 @@ jobs:
       - name: Run linter 👀
         run: npm run lint
 
-      - name: Print env var (temporary)
-        run: echo "$NUXT_ENV_SITE_URL $NUXT_ENV_FULL_NAME $NUXT_ENV_EMAIL_ADDRESS"
-
       - name: Run unit tests 🧪
         run: npm run unit

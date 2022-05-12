@@ -21,14 +21,14 @@ describe('Footer bar', () => {
   });
 
   it('links to Youtube channel correctly', () => {
-    if (process.env.NUXT_ENV_YOUTUBE_CHANNEL_URL) {
+    if (Cypress.env('NUXT_ENV_YOUTUBE_CHANNEL_URL')) {
       cy.get('#footer-bar > div > #youtube-link').should('have.attr', 'href', 'https://www.youtube.com/channel/UCTfscxyX4CI9SnWdFqK4FJw');
     }
     else cy.log('No Youtube channel url environment variable detected. Skipping Test');
   });
   
   it('links to Github profile correctly', () => {
-    if (process.env.NUXT_ENV_GITHUB_PROFILE_URL) {
+    if (Cypress.env('NUXT_ENV_GITHUB_PROFILE_URL')) {
       cy.get('#footer-bar > div > #github-link').should('have.attr', 'href', 'https://github.com/ChristianLisle');
     }
     else cy.log('No GitHub profile URL environment variable detected. Skipping Test');

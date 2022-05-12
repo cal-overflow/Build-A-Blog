@@ -16,7 +16,16 @@
  * @type {Cypress.PluginConfig}
  */
 // eslint-disable-next-line no-unused-vars
+require('dotenv').config();
+
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
+
+  // copy any needed variables from process.env to config.env
+  config.env.NUXT_ENV_SITE_URL = process.env.NUXT_ENV_SITE_URL;
+  config.env.NUXT_ENV_FULL_NAME = process.env.NUXT_ENV_FULL_NAME;
+  config.env.NUXT_ENV_EMAIL_ADDRESS = process.env.NUXT_ENV_EMAIL_ADDRESS;
+
+  return config;
 };

@@ -4,7 +4,7 @@ const chance = new Chance();
 
 describe('Contact page', () => {
   before(() => {
-    if (!process.env.NUXT_ENV_EMAIL_ADDRESS) {
+    if (!Cypress.env('NUXT_ENV_EMAIL_ADDRESS')) {
       throw new Error('Required Environment Variable NUXT_ENV_EMAIL_ADDRESS is incorrectly set');
     }
   });

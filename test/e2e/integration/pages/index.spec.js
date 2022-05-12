@@ -23,7 +23,7 @@ describe('Home page', () => {
     });
 
     it('contains the greeting', () => {
-      if (process.env.NUXT_ENV_FULL_NAME) {
+      if (Cypress.env('NUXT_ENV_FULL_NAME')) {
         cy.get('#greeting').should('be.visible');
       }
       else cy.log('Full name environment variable not detected. Skipping test');

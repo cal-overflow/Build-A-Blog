@@ -6,8 +6,8 @@ describe('Nav bar', () => {
   });
 
   it('links to the home page correctly', () => {
-    if (process.env.NUXT_ENV_FULL_NAME) {
-      cy.contains(process.env.NUXT_ENV_FULL_NAME).click();
+    if (Cypress.env('NUXT_ENV_FULL_NAME')) {
+      cy.contains(Cypress.env('NUXT_ENV_FULL_NAME')).click();
       cy.location('pathname').should('eq', '/');
     }
     else {

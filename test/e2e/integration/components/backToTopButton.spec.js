@@ -1,4 +1,22 @@
 describe('Back to Top button', () => {
+  let postCount = 0;
+
+  before(() => {
+    cy.visit('/blog');
+    cy.wait(500);
+    
+    cy.get('body').then(($body) => {
+      if ($body.text().includes('No posts have been written')) {
+        postCount = 0;
+      }
+      else {
+        cy.get('#post-feed').find('.post-preview-card').its('length').then((length) => {
+          postCount = length;
+        });
+      }
+    });
+  });
+
   beforeEach(() => {
     cy.visit('/blog');
     cy.wait(500);
@@ -10,27 +28,38 @@ describe('Back to Top button', () => {
 
   describe('after scrolling down the page', () => {
     beforeEach(() => {
-      cy.get('#footer-bar').scrollIntoView({duration: 500 });
+      if (postCount > 10) {
+        cy.get('#footer-bar').scrollIntoView({duration: 500 });
+      }
+      else cy.log('Not enough posts to test backToTopButton on. Skipping test');
     });
 
     it('is visible', () => {
-      cy.wait(500);
-      cy.get('#back-to-top-button').should('be.visible');
+      if (postCount > 10) {
+        cy.wait(500);
+        cy.get('#back-to-top-button').should('be.visible');
+      }
     });
 
     describe('clicking the button', () => {
       beforeEach(() => {
-        cy.wait(500);
-        cy.get('#back-to-top-button').click();
+        if (postCount > 10) {
+          cy.wait(500);
+          cy.get('#back-to-top-button').click();
+        }
       });
 
       it('scrolls to the top of the page after click', () => {
-        cy.get('#nav-bar').should('be.visible');
-        cy.window().its('scrollY').should('equal', 0);
+        if (postCount > 0) {
+          cy.get('#nav-bar').should('be.visible');
+          cy.window().its('scrollY').should('equal', 0);
+        }
       });
 
       it('is invisible again', () => {
-        cy.get('#back-to-top-button').should('not.be.visible');
+        if (postCount > 0) {
+          cy.get('#back-to-top-button').should('not.be.visible');
+        }
       });
     });
 

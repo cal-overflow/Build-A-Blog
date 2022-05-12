@@ -3,6 +3,12 @@ import Chance from "chance";
 const chance = new Chance();
 
 describe('Contact page', () => {
+  before(() => {
+    if (!Cypress.env('NUXT_ENV_EMAIL_ADDRESS')) {
+      throw new Error('Required Environment Variable NUXT_ENV_EMAIL_ADDRESS is incorrectly set');
+    }
+  });
+
   beforeEach(() => {
     cy.visit('/contact');
     cy.wait(500);

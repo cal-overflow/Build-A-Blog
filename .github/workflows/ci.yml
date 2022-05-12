@@ -10,6 +10,11 @@ on:
       - main
       - master
 
+env:
+  NUXT_ENV_SITE_URL: "https://github.com/ChristianLisle/portfolio" # This value does not matter here
+  NUXT_ENV_FULL_NAME: "Acceptance Tests"
+  NUXT_ENV_EMAIL_ADDRESS: "ChristianLisle@users.noreply.github.com"
+
 jobs:
   acceptance:
     runs-on: ${{ matrix.os }}
@@ -44,3 +49,6 @@ jobs:
 
       - name: Run unit tests 🧪
         run: npm run unit
+
+      - name: Run e2e tests 🤖
+        run: npm run e2e:headless

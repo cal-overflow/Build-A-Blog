@@ -10,6 +10,7 @@ describe('Back to Top button', () => {
         postCount = 0;
       }
       else {
+        cy.wait(1000); // ensure there's enough time to fetch content
         cy.get('#post-feed').find('.post-preview-card').its('length').then((length) => {
           postCount = length;
         });

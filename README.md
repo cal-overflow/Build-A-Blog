@@ -11,7 +11,7 @@ View the source code for the website [here](https://github.com/ChristianLisle/ch
 #### Light mode
 [![Picture of home screen (light mode)](assets/preview-home-page-light.png)](http://www.christianlisle.io)
 
-### Dark mode
+#### Dark mode
 [![Picture of home screen (dark mode)](assets/preview-home-page-dark.png)](http://www.christianlisle.io)
 
 </details>

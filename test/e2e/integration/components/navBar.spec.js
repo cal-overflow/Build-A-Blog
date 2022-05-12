@@ -6,8 +6,13 @@ describe('Nav bar', () => {
   });
 
   it('links to the home page correctly', () => {
-    cy.contains('Christian Lisle').click();
-    cy.location('pathname').should('eq', '/');
+    if (process.env.NUXT_ENV_FULL_NAME) {
+      cy.contains(process.env.NUXT_ENV_FULL_NAME).click();
+      cy.location('pathname').should('eq', '/');
+    }
+    else {
+      throw new Error('Required Environment Variable NUXT_ENV_FULL_NAME is incorrectly set');
+    }
   });
 
   it('links to the blog page correctly', () => {

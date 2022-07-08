@@ -103,7 +103,7 @@ export default {
   },
   head() {
     return {
-      title: this.post.title || 'Christian Lisle',
+      title: this.post.title || process.env.NUXT_ENV_SITE_NAME || process.env.NUXT_ENV_FULL_NAME,
     };
   },
   computed: {

@@ -1,7 +1,7 @@
 <template>
   <div class="inline relative" @mouseenter="isHovering = true" @mouseleave="isHovering = false">
     <nav-item
-      class="p-3 align-middle transition dark:text-white"
+      class="p-3 align-middle transition dark:text-white whitespace-nowrap"
       href="/categories"
     >
       Categories

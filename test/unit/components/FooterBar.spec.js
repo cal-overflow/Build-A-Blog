@@ -6,7 +6,7 @@ import NavItem from '@/components/NavItem.vue';
 const chance = new Chance();
 
 describe('FooterBar component', () => {
-  let wrapper;
+  let navItems, wrapper;
   const oldEnv = process.env;
 
   beforeAll(() => {
@@ -23,6 +23,7 @@ describe('FooterBar component', () => {
 
   beforeEach(() => {
     wrapper = shallowMount(FooterBar);
+    navItems = wrapper.findAllComponents(NavItem);
   });
 
   it('is a Vue instance', () => {
@@ -34,21 +35,24 @@ describe('FooterBar component', () => {
   });
 
   it('renders a NavItem for the blog page', () => {
-    const navItem = wrapper.findComponent('[title="Blog"]');
+    const navItem = navItems.filter((el) => el.text() === 'Blog').at(0);
+
     expect(navItem.exists()).toBeTruthy();
     expect(navItem.props('href')).toEqual('/blog');
     expect(navItem.props('active')).not.toBeTruthy();
   });
 
   it('renders a NavItem for the Portfolio page', () => {
-    const navItem = wrapper.findComponent('[title="Portfolio"]');
+    const navItem = navItems.filter((el) => el.text() === 'Portfolio').at(0);
+
     expect(navItem.exists()).toBeTruthy();
     expect(navItem.props('href')).toEqual('/category/portfolio');
     expect(navItem.props('active')).not.toBeTruthy();
   });
 
-  it('renders a NavItem for the contact page', () => {
-    const navItem = wrapper.findComponent('[title="Contact"]');
+  it('renders a NavItem for the Portfolio page', () => {
+    const navItem = navItems.filter((el) => el.text() === 'Contact').at(0);
+
     expect(navItem.exists()).toBeTruthy();
     expect(navItem.props('href')).toEqual('/contact');
     expect(navItem.props('active')).not.toBeTruthy();

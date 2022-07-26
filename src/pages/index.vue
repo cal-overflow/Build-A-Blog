@@ -32,7 +32,7 @@ export default {
     return {
       bio: content.find(({ slug }) => slug === 'about'),
       portfolio: content.find(({ slug }) => slug === 'portfolio-preview'),
-      blog: content.find(({ slug }) => slug === 'blog-preview')
+      blog: content.find(({ slug }) => slug === 'blog-preview'),
     };
   }
 };

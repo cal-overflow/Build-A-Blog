@@ -25,7 +25,6 @@
         </div>
     </div>
 
-
     <div class="flex max-w-screen-lg mx-auto flex-wrap md:flex-nowrap">
       <page-preview :content="portfolioPreview" class="motion-safe:animate-fade-in" />
       <page-preview :content="blogPreview" class="motion-safe:animate-fade-in" />
@@ -39,7 +38,7 @@ import PagePreview from '@/components/previews/Page.vue';
 export default {
   name: 'home',
   components: {
-    PagePreview
+    PagePreview,
   },
   props: {
     bio: {

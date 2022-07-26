@@ -12,12 +12,14 @@ describe('NavItem component', () => {
     fakeLink = chance.url();
     wrapper = mount(NavItem, {
       propsData: {
-        title: fakeTitle,
         href: fakeLink,
         active: false,
       },
       stubs: {
         NuxtLink: RouterLinkStub,
+      },
+      slots: {
+        default: fakeTitle
       }
     });
     nuxtLink = wrapper.findComponent(RouterLinkStub);

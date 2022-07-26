@@ -23,6 +23,14 @@ describe('CategoryDropdown component', () => {
     expect(navItem.props('active')).not.toBeTruthy();
   });
 
+  it('renders the navItem as active given the currentPage is "Categories"', () => {
+    wrapper = shallowMount(CategoryDropdown, {propsData: { currentPage: 'Categories' }});
+    navItems = wrapper.findAllComponents(NavItem);
+
+    const navItem = navItems.filter((el) => el.text().includes('Categories')).at(0);
+    expect(navItem.props('active')).toBeTruthy();
+  });
+
   it('renders the CategoryList component (and is invisible by default)', () => {
     expect(wrapper.findComponent(CategoryList).exists()).toBeTruthy();
   });

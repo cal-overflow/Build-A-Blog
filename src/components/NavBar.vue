@@ -17,7 +17,7 @@
         >
           {{ item.title }}
         </nav-item>
-        <category-dropdown />
+        <category-dropdown :current-page="currentPage" />
       </div>
     </nav>
   </div>

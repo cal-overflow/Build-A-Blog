@@ -3,6 +3,7 @@
     <nav-item
       class="p-3 align-middle transition dark:text-white whitespace-nowrap"
       href="/categories"
+      :active="currentPage === 'Categories'"
     >
       Categories
       <svg
@@ -25,6 +26,12 @@ import NavItem from '@/components/NavItem.vue';
 export default {
   name: 'category-dropdown',
   components: { CategoryList, NavItem },
+    props: {
+    currentPage: {
+      type: String,
+      default: ''
+    }
+  },
   data: () => ({
     isHovering: false
   })

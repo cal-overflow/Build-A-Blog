@@ -64,4 +64,9 @@ describe('NavBar component', () => {
     const dropdown = wrapper.findComponent(CategoryDropdown);
     expect(dropdown.exists()).toBeTruthy();
   });
+  
+  it('passes the currentPage prop into the Category dropdown component', () => {
+    const dropdown = wrapper.findComponent(CategoryDropdown);
+    expect(dropdown.props('currentPage')).toEqual('Home');
+  });
 });

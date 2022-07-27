@@ -67,7 +67,6 @@ export default {
       };
     },
     getCardStyle() {
-      console.log(this.classes);
       let style = `bg-card-light dark:bg-card-dark m-6 p-6 hover:rounded shadow-md dark:shadow-shadow-dark hover:shadow-none motion-safe:animate-fade-in transition ${this.classes}`;
 
       if (!this.post)

@@ -15,7 +15,7 @@
         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
       </svg>
     </nav-item>
-    <category-list v-show="isHovering" classes="absolute top-2 right-0 left-0 z-10 bg-menu-light dark:bg-menu-dark hover:shadow-lg hover:rounded-none" />
+    <category-list v-show="isHovering" :current-page="currentPage" classes="absolute top-2 right-0 left-0 z-10 bg-menu-light dark:bg-menu-dark hover:shadow-lg hover:rounded-none" />
   </div>
 </template>
 
@@ -26,7 +26,7 @@ import NavItem from '@/components/NavItem.vue';
 export default {
   name: 'category-dropdown',
   components: { CategoryList, NavItem },
-    props: {
+  props: {
     currentPage: {
       type: String,
       default: ''

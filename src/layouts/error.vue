@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import FooterBar from '../components/FooterBar.vue';
+import FooterBar from '@/components/FooterBar.vue';
 import NavBar from '@/components/NavBar.vue';
 import Divider from '@/components/Divider.vue';
 

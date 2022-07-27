@@ -7,6 +7,7 @@
       :href="`/category/${category.slug}`"
       class="text-center"
       :style="`animation: fade-in ${((i + 1) * 0.25)}s ease-in-out;`"
+      :active="currentPage === category.title"
     >
       {{ category.title }}
     </nav-item>
@@ -19,6 +20,10 @@ export default {
   name: 'category-list',
   props: {
     classes: {
+      type: String,
+      default: ''
+    },
+    currentPage: {
       type: String,
       default: ''
     }

@@ -1,7 +1,10 @@
 import { shallowMount } from '@vue/test-utils';
+import Chance from 'chance';
 import NavItem from '@/components/NavItem.vue';
 import CategoryDropdown from '@/components/CategoryDropdown.vue';
 import CategoryList from '@/components/CategoryList.vue';
+
+const chance = new Chance();
 
 describe('CategoryDropdown component', () => {
   let navItems, wrapper;
@@ -37,6 +40,12 @@ describe('CategoryDropdown component', () => {
   
   it('CategoryList component is not visible by default', () => {
     expect(wrapper.findComponent(CategoryList).isVisible()).not.toBeTruthy();
+  });
+
+  it('CategoryList component is rendered with correct currentPage prop', () => {
+    const fakeCurrentPage = chance.string();
+    wrapper = shallowMount(CategoryDropdown, {propsData: { currentPage: fakeCurrentPage }});
+    expect(wrapper.findComponent(CategoryList).props('currentPage')).toEqual(fakeCurrentPage);
   });
 
   describe('hovering over the "Categories" navItem', () => {

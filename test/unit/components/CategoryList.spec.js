@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import Chance from 'chance';
-import generateCategories from '../../helpers/categoriesGenerator';
+import generateCategory from '../../helpers/categoryGenerator';
 import CategoryList from '@/components/CategoryList.vue';
 
 const chance = new Chance();
@@ -21,7 +21,7 @@ describe('CategoryList component', () => {
   };
 
   beforeEach(() => {
-    fakeCategories = chance.n(generateCategories, chance.integer({
+    fakeCategories = chance.n(generateCategory, chance.integer({
       min: 1, max: categoryLimit
     }));
 

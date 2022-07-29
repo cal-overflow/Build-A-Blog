@@ -34,6 +34,7 @@
               </div>
               <tool-tip
                 v-show="toolTipPostIndex === i"
+                :ref="post.title"
                 :text="post.title"
                 :max-length="65"
                 class="absolute left-1/2 transform -translate-x-1/2 invisible md:visible"
@@ -51,6 +52,7 @@
   </div>
   <div v-else class="animate-pulse">
     TODO: Lazy-loading stuff here
+    
   </div>
 </template>
 
@@ -92,12 +94,20 @@ export default {
   },
   methods: {
     async getLatestPosts() {
+      if (!this.category) return;
+
       const posts = await this.$content('posts')
         .where({ categories: { $contains: this.category.title }})
         .sortBy('id', 'desc')
         .limit(4)
-        .fetch();
-        // TODO: catch (error handling)
+        .fetch()
+        .catch((err) => {
+          this.$nuxt.error({
+            statusCode: 500,
+            message: `There was an error while trying to fetch posts in ${this.category.title}`,
+            error: err
+          });
+        });
 
       this.latestPosts = posts;
       this.intervalID = setInterval(this.updatePreviewProgress, this.intervalUpdateDuration);

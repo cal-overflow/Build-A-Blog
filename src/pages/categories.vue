@@ -1,21 +1,37 @@
 <template>
   <main>
     <nav-bar current-page="Categories" />
-    <div v-if="categories" class="max-w-screen-lg mx-auto">
+    <div class="max-w-screen-lg mx-auto">
       <div class="bg-card-light dark:bg-card-dark m-6 p-6 shadow-md dark:shadow-shadow-dark hover:shadow-none hover:rounded motion-safe:animate-fade-in-fast transition">
         <p class="text-center text-3xl font-bold">Categories</p>
       </div>
       <divider />
 
-      <category-preview
-        v-for="(category, i) in categories"
-        :key="category.slug"
-        :category="category"
-        :index="i"
-      />
+      <div v-if="categories && categories.length">
+        <category-preview
+          v-for="(category, i) in categories"
+          :key="category.slug"
+          :category="category"
+          :index="i"
+        />
+      </div>
+
+      <div v-else-if="!isDoneFetchingCategories">
+        <category-preview
+          v-for="(n, i) in 3"
+          :key="`category-lazy-loader-${n}`"
+          :index="i"
+        />
+      </div>
+      
+      <div v-else class="bg-card-light dark:bg-card-dark m-6 p-6 hover:rounded shadow-md dark:shadow-shadow-dark hover:shadow-none motion-safe:animate-fade-in transition col-span-2">
+        <p class="text-center md:text-left text-2xl font-bold mt-2">No categories 😴</p>
+        <p class="text-center md:text-left">There are not currently any categories</p>
+      </div>
+
     </div>
     <back-to-top-button />
-    <footer-bar />
+    <footer-bar current-page="Categories" />
   </main>
 </template>
 
@@ -45,9 +61,10 @@ export default {
           error: err
         });
       });
-    
+
     return {
-      categories: content.categories
+      categories: content.categories,
+      isDoneFetchingCategories: true
     };
   },
 };

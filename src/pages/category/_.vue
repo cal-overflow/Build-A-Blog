@@ -51,7 +51,7 @@ export default {
   },
   computed: {
     currentPage() {
-      return this.category?.title;
+      return this.category?.title ?? 'Categories';
     }
   }
 };

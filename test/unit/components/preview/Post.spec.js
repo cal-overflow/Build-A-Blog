@@ -1,12 +1,30 @@
 import { mount, RouterLinkStub } from '@vue/test-utils';
-import Chance from 'chance';
 import generatePost from '../../../helpers/postGenerator';
 import PostPreview from '@/components/previews/Post.vue';
 
-const chance = new Chance();
-
 describe('PostPreview component', () => {
   let wrapper, post;
+
+  const stubs = {
+    'NuxtLink': RouterLinkStub,
+    'nuxt-content': true,
+  };
+
+  describe('given no post is passed in', () => {
+    beforeEach(() => {
+      wrapper = mount(PostPreview, { stubs });
+    });
+
+    afterEach(jest.clearAllMocks);
+
+    it('is a Vue instance', () => {
+      expect(wrapper.vm).toBeTruthy();
+    });
+
+    it('renders the placeholder/lazy-loading content', () => {
+      expect(wrapper.findComponent({ref: 'lazy-load-post-preview'}).exists()).toBeTruthy();
+    });
+  });
 
   describe('given a post is passed in', () => {
 
@@ -14,15 +32,8 @@ describe('PostPreview component', () => {
       post = generatePost();
   
       wrapper = mount(PostPreview, {
-        propsData: {
-          post,
-          index: chance.integer({min: 0, max: 20}),
-          last: false,
-        },
-        stubs: {
-          'NuxtLink': RouterLinkStub,
-          'nuxt-content': true,
-        },
+        propsData: { post },
+        stubs,
       });
     });
 
@@ -68,5 +79,4 @@ describe('PostPreview component', () => {
       expect(continueLink.props('to')).toEqual(`/post/${post.slug}`);
     });
   });
-
 });

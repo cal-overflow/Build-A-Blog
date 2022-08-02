@@ -19,7 +19,7 @@
     </div>
   </div>
 
-  <div v-else :class="`post-preview-card ${getCardStyle}`">
+  <div v-else ref="lazy-load-post-preview" :class="`post-preview-card ${getCardStyle}`">
     <div :class="getImageContainerStyle" style="aspect-ratio: 1 / 1;">
       <div class="bg-gray-500 object-cover w-full h-full" />
     </div>

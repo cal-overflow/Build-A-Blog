@@ -41,7 +41,7 @@ describe('categories page', () => {
   it('contains the FooterBar component', () => {
     const footer = wrapper.findComponent(FooterBar);
     expect(footer.exists()).toBeTruthy();
-    expect(footer.props('currentPage')).toEqual('Categories'); 
+    expect(footer.props('currentPage')).toEqual('Categories');
   });
 
   describe('given the categories have not loaded yet', () => {
@@ -89,8 +89,6 @@ describe('categories page', () => {
       fakeCategories = chance.n(generateCategory, chance.integer({
         min: 1, max: 20
       }));
-      nuxtContentMock.fetch.mockResolvedValue(fakeCategories);
-
       wrapper = shallowMount(categories, {
         mocks: {
           $content: () => nuxtContentMock
@@ -99,14 +97,12 @@ describe('categories page', () => {
       });
 
       nuxtContentMock.fetch.mockResolvedValue({ categories: fakeCategories });
-
       const data = await categories.asyncData({
         $content: () => nuxtContentMock,
         error: jest.fn()
       });
 
       categories.data = () => (data);
-
       wrapper = shallowMount(categories, {
         mocks: {
           $content: () => nuxtContentMock
@@ -114,29 +110,29 @@ describe('categories page', () => {
         stubs,
       });
     });
-  
+
     afterEach(jest.clearAllMocks);
-  
+
     it('is a Vue instance', () => {
       expect(wrapper.vm).toBeTruthy();
     });
-  
+
     it('contains the correct text', () => {
       expect(wrapper.text()).toContain("Categories");
     });
-  
+
     it('contains a Divider component', () => {
       expect(wrapper.findComponent(Divider).exists()).toBeTruthy();
     });
 
-  
+
     it('calls nuxt content fetch', () => {
       expect(nuxtContentMock.fetch).toBeCalledTimes(1);
     });
-  
+
     it('renders a component for each category', () => {
       fakeCategories.forEach((category) => {
-        expect(wrapper.findComponent({ref: category.slug})).toBeTruthy();
+        expect(wrapper.findComponent({ ref: category.slug })).toBeTruthy();
       });
     });
 
@@ -145,9 +141,43 @@ describe('categories page', () => {
     });
   });
 
-  describe('given there was an error fetching categories', () => {
-    
-    // TODODODODODODODODDODO
-    throw new Error('finish these tests');
+  describe('given there is an issue fetching categories', () => {
+    let mockErrorFn, fakeError;
+
+    beforeEach(async () => {
+      fakeCategories = [];
+      fakeError = new Error(chance.sentence());
+      mockErrorFn = jest.fn();
+      
+      // nuxtContentMock.fetch.mockRejectedValue(fakeCategories);
+      nuxtContentMock.fetch.mockImplementation(() => {
+        return {
+          catch: (callback) => {
+            callback(fakeError);
+            return fakeCategories;
+          }
+        };
+      });
+
+      wrapper = shallowMount(categories, {
+        stubs: {
+          'nuxt-content': true
+        }
+      });
+
+      await categories.asyncData({
+        $content: () => nuxtContentMock,
+        error: mockErrorFn,
+      });
+    });
+
+    it('envokes the nuxt error function correctly', () => {
+      expect(mockErrorFn).toBeCalled();
+      expect(mockErrorFn).toBeCalledWith({
+        statusCode: 500,
+        message: 'Something went wrong while fetching categories',
+        error: fakeError
+      });
+    });
   });
 });

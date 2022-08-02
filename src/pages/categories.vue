@@ -43,7 +43,7 @@ import FooterBar from '@/components/FooterBar.vue';
 import BackToTopButton from '@/components/BackToTopButton.vue';
 
 export default {
-  name: 'blog',
+  name: 'categories',
   components: {
     CategoryPreview,
     Divider,

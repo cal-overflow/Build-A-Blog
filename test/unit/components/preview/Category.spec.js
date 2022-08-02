@@ -71,11 +71,14 @@ describe('CategoryPreview component', () => {
   });
 
   describe('given the category and index prop is passed in with multiple posts', () => {
+    let fakeTimePerPostPreview, fakeTimeSinceLastSwitch;
     beforeEach(() => {
       fakeCategory = generateCategory();
       fakeIndex = chance.integer();
       numberFakePosts = chance.integer({ min: 2, max: postLimit });
       fakePosts = chance.n(() => generatePost(fakeCategory.title), numberFakePosts);
+      fakeTimePerPostPreview = chance.integer({min: 3000, max: 7000});
+      fakeTimeSinceLastSwitch = fakeTimePerPostPreview - chance.integer({min: 50, max: 2000});
 
       nuxtContentMock.fetch.mockResolvedValue(fakePosts);
 
@@ -88,9 +91,10 @@ describe('CategoryPreview component', () => {
         },
         propsData: {
           category: fakeCategory,
-          index: fakeIndex
-        }
+          index: fakeIndex,
+        },
       });
+      wrapper.setData({timePerPostPreview: fakeTimePerPostPreview, timeSinceLastSwitch: fakeTimeSinceLastSwitch});
     });
 
     it('contains n number ToolTips', () => {
@@ -109,11 +113,9 @@ describe('CategoryPreview component', () => {
       expect(wrapper.findComponent({ ref: "view-category" }).attributes('to')).toEqual(`/category/${fakeCategory.slug}`);
     });
 
-    it.todo('previewPercentage works', () => {
-      // https://stackoverflow.com/questions/53763440/how-can-i-test-a-computed-property-in-vuejs-using-jest
-      //
-      // use wrapper.vm.setData (or something like that) to set the other values as needed
-      // use wrapper.vm.computedProperty to check the value
+    it('previewPercentage works', () => {
+      const fakePercentage = (fakeTimeSinceLastSwitch / fakeTimePerPostPreview) * 100;
+      expect(wrapper.vm.previewPercentage).toEqual(fakePercentage);
     });
   });
 

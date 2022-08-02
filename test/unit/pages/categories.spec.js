@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { shallowMount, RouterLinkStub } from '@vue/test-utils';
 import Chance from 'chance';
 import generateCategory from '../../helpers/categoryGenerator.js';
 import categories from '@/pages/categories.vue';
@@ -14,7 +14,7 @@ describe('categories page', () => {
   let wrapper, fakeCategories;
 
   const stubs = {
-    'nuxt-link': true,
+    NuxtLink: RouterLinkStub,
     'nuxt-content': true,
   };
 
@@ -25,7 +25,7 @@ describe('categories page', () => {
   };
 
   beforeEach(() => {
-    wrapper = shallowMount(categories);
+    wrapper = shallowMount(categories, { stubs });
   });
 
   it('is a Vue instance', () => {
@@ -67,10 +67,16 @@ describe('categories page', () => {
   });
 
   describe('given there are no categories', () => {
-    beforeEach(() => {
+    beforeEach(async () => {
       fakeCategories = [];
-      nuxtContentMock.fetch.mockResolvedValue(fakeCategories);
+      nuxtContentMock.fetch.mockResolvedValue({ categories: fakeCategories });
 
+      const data = await categories.asyncData({
+        $content: () => nuxtContentMock,
+        error: jest.fn()
+      });
+
+      categories.data = () => (data);
       wrapper = shallowMount(categories, {
         mocks: {
           $content: () => nuxtContentMock
@@ -80,7 +86,7 @@ describe('categories page', () => {
     });
 
     it('renders a "no categories" message', () => {
-      expect(wrapper.text()).toContain('No categories exist');
+      expect(wrapper.text()).toContain('There are not currently any categories');
     });
   });
 
@@ -89,12 +95,6 @@ describe('categories page', () => {
       fakeCategories = chance.n(generateCategory, chance.integer({
         min: 1, max: 20
       }));
-      wrapper = shallowMount(categories, {
-        mocks: {
-          $content: () => nuxtContentMock
-        },
-        stubs,
-      });
 
       nuxtContentMock.fetch.mockResolvedValue({ categories: fakeCategories });
       const data = await categories.asyncData({
@@ -149,7 +149,6 @@ describe('categories page', () => {
       fakeError = new Error(chance.sentence());
       mockErrorFn = jest.fn();
       
-      // nuxtContentMock.fetch.mockRejectedValue(fakeCategories);
       nuxtContentMock.fetch.mockImplementation(() => {
         return {
           catch: (callback) => {

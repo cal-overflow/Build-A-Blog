@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { RouterLinkStub, shallowMount } from '@vue/test-utils';
 import Chance from 'chance';
 import generateCategory from '../../../helpers/categoryGenerator.js';
 import generatePost from '../../../helpers/postGenerator';
@@ -11,6 +11,11 @@ const postLimit = 4;
 
 describe('CategoryPreview component', () => {
   let wrapper, fakeCategory, fakeIndex, fakePosts, numberFakePosts;
+
+  const stubs = {
+    NuxtLink: RouterLinkStub,
+    'nuxt-content': true,
+  };
 
   const nuxtContentMock = {
     $content: jest.fn().mockReturnThis(),
@@ -33,9 +38,7 @@ describe('CategoryPreview component', () => {
         mocks: {
           $content: () => nuxtContentMock
         },
-        stubs: {
-          'nuxt-content': true
-        },
+        stubs,
         propsData: {
           category: fakeCategory,
           index: fakeIndex
@@ -86,9 +89,7 @@ describe('CategoryPreview component', () => {
         mocks: {
           $content: () => nuxtContentMock
         },
-        stubs: {
-          'nuxt-content': true
-        },
+        stubs,
         propsData: {
           category: fakeCategory,
           index: fakeIndex,
@@ -109,8 +110,10 @@ describe('CategoryPreview component', () => {
     });
 
     it('contains a NuxtLink with the correct text and href', () => {
-      expect(wrapper.findComponent({ ref: "view-category" }).text()).toContain("View all posts");
-      expect(wrapper.findComponent({ ref: "view-category" }).attributes('to')).toEqual(`/category/${fakeCategory.slug}`);
+      const link = wrapper.findComponent({ ref: "view-category" });
+
+      expect(link.text()).toContain("View all posts");
+      expect(link.props('to')).toEqual(`/category/${fakeCategory.slug}`);
     });
 
     it('previewPercentage works', () => {

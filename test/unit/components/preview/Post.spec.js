@@ -22,7 +22,7 @@ describe('PostPreview component', () => {
     });
 
     it('renders the placeholder/lazy-loading content', () => {
-      expect(wrapper.findComponent({ref: 'lazy-load-post-preview'}).exists()).toBeTruthy();
+      expect(wrapper.findComponent({ ref: 'lazy-load-post-preview' }).exists()).toBeTruthy();
     });
   });
 

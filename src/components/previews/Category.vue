@@ -50,9 +50,18 @@
         <p class="text-md">There are not currently any posts for this category</p>
       </div>
   </div>
-  <div v-else class="animate-pulse">
-    TODO: Lazy-loading stuff here
-    
+  <div v-else ref="lazy-load-category-preview" class="category-preview-card bg-card-light dark:bg-card-dark m-6 p-6 hover:rounded shadow-md dark:shadow-shadow-dark hover:shadow-none motion-safe:animate-fade-in transition">
+    <div class="bg-gray-500 dark:bg-white w-32 h-4 transition" />
+    <div class="bg-gray-400 w-64 h-2 my-2"/>
+    <br>
+    <divider width="w-4/5"/>
+    <div class="bg-gray-300 w-24 h-3 mx-auto" />
+    <post-preview 
+      :full-width="true"
+      :show-minimal-content="true"
+      :is-reversed="index % 2 === 0"
+      :classes="`shadow-none p-0 m-0 md:p-4 md:m-4`"
+    />
   </div>
 </template>
 
@@ -97,17 +106,11 @@ export default {
       if (!this.category) return;
 
       const posts = await this.$content('posts')
-        .where({ categories: { $contains: this.category.title }})
+        .where({ categories: { $contains: this.category.title } })
         .sortBy('id', 'desc')
         .limit(4)
         .fetch()
-        .catch((err) => {
-          this.$nuxt.error({
-            statusCode: 500,
-            message: `There was an error while trying to fetch posts in ${this.category.title}`,
-            error: err
-          });
-        });
+        .catch();
 
       this.latestPosts = posts;
       this.intervalID = setInterval(this.updatePreviewProgress, this.intervalUpdateDuration);

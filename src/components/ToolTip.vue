@@ -1,7 +1,7 @@
 <template>
   <div :class="`flex flex-col items-center my-2 w-80 text-center transition motion-safe:animate-fade-in ${classes ? classes : ''}`">
     <div class="w-2 h-2 bg-primary-light dark:bg-primary-dark rounded-full"></div>
-    <p>{{content}}</p>
+    <p class="text-sm">{{content}}</p>
   </div>
 </template>
 

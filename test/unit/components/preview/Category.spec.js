@@ -175,5 +175,9 @@ describe('CategoryPreview component', () => {
     it('does not render the nuxt-content', () => {
       expect(wrapper.html()).not.toContain('<nuxt-content-stub');
     });
+
+    it('renders the placeholder/lazy-loading content', () => {
+      expect(wrapper.findComponent({ ref: 'lazy-load-category-preview' }).exists()).toBeTruthy();
+    });
   });
 });

@@ -50,7 +50,7 @@
         <p class="text-md">There are not currently any posts for this category</p>
       </div>
   </div>
-  <div v-else ref="lazy-load-category-preview" class="category-preview-card bg-card-light dark:bg-card-dark m-6 p-6 hover:rounded shadow-md dark:shadow-shadow-dark hover:shadow-none motion-safe:animate-fade-in transition">
+  <div v-else ref="lazy-load-category-preview" class="motion-safe:animate-pulse category-preview-card bg-card-light dark:bg-card-dark m-6 p-6 hover:rounded shadow-md dark:shadow-shadow-dark hover:shadow-none motion-safe:animate-fade-in transition">
     <div class="bg-gray-500 dark:bg-white w-32 h-4 transition" />
     <div class="bg-gray-400 w-64 h-2 my-2"/>
     <br>

@@ -167,8 +167,9 @@ describe('CategoryPreview component', () => {
       expect(wrapper.vm).toBeTruthy();
     });
 
-    it('renders the lazy load content', () => {
-      expect(wrapper.html()).toContain('class="animate-pulse"');
+    it('contains a PostPreview', () => {
+      const postPreviews = wrapper.findAllComponents(PostPreview);
+      expect(postPreviews).toHaveLength(1);
     });
 
     it('does not render the nuxt-content', () => {

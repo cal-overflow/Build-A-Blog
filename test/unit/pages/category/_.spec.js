@@ -32,7 +32,7 @@ describe('category page', () => {
   it('renders the NavBar component with the correct props', () => {
     const navBar = wrapper.findComponent(NavBar);
     expect(navBar.exists()).toBeTruthy();
-    expect(navBar.props('currentPage')).toEqual('Blog');
+    expect(navBar.props('currentPage')).toEqual('Categories');
   });
 
   it('contains the BackToTopButton component', () => {
@@ -43,7 +43,7 @@ describe('category page', () => {
   it('contains the FooterBar component', () => {
     const footer = wrapper.findComponent(FooterBar);
     expect(footer.exists()).toBeTruthy();
-    expect(footer.props('currentPage')).toEqual('Blog'); 
+    expect(footer.props('currentPage')).toEqual('Categories'); 
   });
 
   describe('given a valid category slug', () => {
@@ -87,6 +87,18 @@ describe('category page', () => {
     });
 
     afterEach(jest.clearAllMocks);
+
+    it('renders the NavBar component with the correct props', () => {
+      const navBar = wrapper.findComponent(NavBar);
+      expect(navBar.exists()).toBeTruthy();
+      expect(navBar.props('currentPage')).toEqual(fakeCategory.title);
+    });
+  
+    it('contains the FooterBar component', () => {
+      const footer = wrapper.findComponent(FooterBar);
+      expect(footer.exists()).toBeTruthy();
+      expect(footer.props('currentPage')).toEqual(fakeCategory.title); 
+    });
 
     it('calls nuxt content fetch', () => {
       expect(nuxtContentMock.fetch).toBeCalledTimes(1);

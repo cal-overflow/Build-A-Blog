@@ -16,9 +16,9 @@
         v-for="(post, i) in posts"
         :key="i"
         :ref="post.slug"
+        :full-width="i % 3 === 0 || ((i === (posts.length - 1)) && i % 3 === 1)"
+        :is-reversed="i % 6 === 0 || ((i === (posts.length - 1)) && (i - 1) % 6 !== 0)"
         :post="post"
-        :index="i"
-        :last="i === (posts.length - 1)"
       />
 
       <div
@@ -37,8 +37,8 @@
       <post-preview
         v-for="(n, i) in postCount"
         :key="i"
-        :index="i"
-        :last="i === (postCount - 1)"
+        :full-width="i % 3 === 0 || ((i === (postCount - 1)) && i % 3 === 1)"
+        :is-reversed="i % 6 === 0 || ((i === (postCount - 1)) && (i - 1) % 6 !== 0)"
       />
     </div>
     

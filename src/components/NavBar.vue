@@ -2,31 +2,35 @@
   <div id="nav-bar" class="bg-menu-light dark:bg-menu-dark transition">
     <nav class="mx-auto max-w-6xl flex items-center justify-between flex-wrap p-4 py-6 px-5">
       <nav-item
-        :title="signatureHeader.title"
         :href="signatureHeader.href"
         :active="currentPage === 'Home'"
         class="font-bold">
-        { signatureHeader.title }
+        {{ signatureHeader.title }}
       </nav-item>
         
       <div class="justify-between">
         <nav-item
           v-for="item in items"
           :key="item.title"
-          :title="item.title"
           :href="item.href"
           :active="currentPage === item.title"
-        />
+        >
+          {{ item.title }}
+        </nav-item>
+        <category-dropdown :current-page="currentPage" />
       </div>
     </nav>
   </div>
 </template>
 
 <script>
+import CategoryDropdown from './CategoryDropdown.vue';
 import NavItem from './NavItem.vue';
+
 export default {
   name: 'nav-bar',
   components: {
+    CategoryDropdown,
     NavItem
   },
   props: {

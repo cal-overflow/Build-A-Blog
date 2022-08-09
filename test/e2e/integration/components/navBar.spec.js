@@ -24,4 +24,23 @@ describe('Nav bar', () => {
     cy.contains('Portfolio').click();
     cy.location('pathname').should('eq', '/category/portfolio');
   });
+
+  describe('Categories dropdown', () => {
+    beforeEach(() => {
+      cy.contains('Categories').trigger('mouseenter');
+      cy.wait(500);
+    });
+
+    it('shows the dropdown on mouseenter event', () => {
+      cy.get('#category-list').should('be.visible');
+    });
+    
+    it('stops showing the dropdown on mouseleave event', () => {
+      cy.get('#category-list').should('be.visible');
+
+      cy.contains('Categories').trigger('mouseleave');
+      cy.wait(500);
+      cy.get('#category-list').should('not.be.visible');
+    });
+  });
 });

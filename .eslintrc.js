@@ -22,6 +22,7 @@ module.exports = {
     "vue/component-definition-name-casing": ["error", "kebab-case"],
     "eol-last": ["error", "always"] ,
     "cypress/no-unnecessary-waiting": "off",
+    "object-curly-spacing": ["warn", "always"]
   },
   globals: {
     cy: true

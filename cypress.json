@@ -1,0 +1,10 @@
+{
+  "pluginsFile": "test/e2e/plugins.js",
+  "supportFile": "test/e2e/support.js",
+  "fixturesFolder": "test/e2e/fixtures",
+  "integrationFolder": "test/e2e/integration",
+  "screenshotsFolder": "test/e2e/artifacts/screenshots",
+  "videosFolder": "test/e2e/artifacts/videos",
+  "baseUrl": "http://localhost:3000",
+  "projectId": "wkxpd4"
+}

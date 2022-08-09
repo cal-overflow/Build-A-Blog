@@ -1,0 +1,60 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "prepare": "husky install",
+    "lint": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "npm run unit && npm run e2e:headless",
+    "test:deploy": "npm run unit && npm run e2e:deploy",
+    "unit": "jest",
+    "e2e": "npm run generate && npm run start & wait-on http://localhost:3000 && wait-on cypress open",
+    "e2e:live": "cypress open",
+    "e2e:headless": "npm run generate && npm run start & wait-on http://localhost:3000 && cypress run --headless",
+    "e2e:deploy": "npm run generate && npm run start & wait-on http://localhost:3000 && cypress run --headless --record --key $CYPRESS_RECORD_KEY"
+  },
+  "lint-staged": {
+    "*.{js,vue}": "eslint"
+  },
+  "dependencies": {
+    "@nuxt/content": "^1.14.0",
+    "@nuxtjs/feed": "^2.0.0",
+    "@tailwindcss/typography": "^0.5.0",
+    "chance": "^1.1.8",
+    "core-js": "^3.15.1",
+    "dotenv": "^16.0.1",
+    "gray-matter": "^4.0.3",
+    "nuxt": "^2.15.8",
+    "wait-on": "^6.0.0"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.14.7",
+    "@nuxtjs/eslint-config": "^7.0.0",
+    "@nuxtjs/eslint-module": "^3.0.2",
+    "@nuxtjs/tailwindcss": "^4.2.0",
+    "@vue/test-utils": "^1.2.1",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^27.0.5",
+    "cypress": "^9.2.0",
+    "eslint": "^8.3.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-nuxt": "^2.0.0",
+    "eslint-plugin-vue": "^7.12.1",
+    "husky": "^7.0.4",
+    "jest": "^27.0.5",
+    "lint-staged": "^10.5.4",
+    "postcss": "^8.3.5",
+    "prettier": "^2.3.2",
+    "tailwindcss": "^3.0.24",
+    "vue-jest": "^3.0.4"
+  },
+  "engines": {
+    "node": "16.13.0"
+  }
+}

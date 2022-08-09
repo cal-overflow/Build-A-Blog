@@ -1,0 +1,16 @@
+special-events:
+  - title: QE
+    slug: qe
+    description: "A"
+  - title: Yield Curve Inversion
+    slug: yield-curve-inversion
+    description: "A"
+  - title: Credit Crisis
+    slug: credit-crisis
+    description: "A"
+  - title: Bull Market
+    slug: bull-market
+    description: "A"
+  - title: Bear Market
+    slug: bear-market
+    description: "A"

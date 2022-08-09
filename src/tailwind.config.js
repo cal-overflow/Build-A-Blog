@@ -11,7 +11,7 @@ module.exports = {
         'menu-dark': '#1F1F1F',         // Background color of menu bar in dark mode
         'card-light': '#EAEAEB',        // Background color of each card in light mode
         'card-dark': '#262626',         // Background color of each card in dark mode
-        'primary-light': '#A61E17',     // Primary color in light mode (red)
+        'primary-light': '#276a7d',     // Primary color in light mode (red)
         'primary-dark': '#00B4E6',      // Primary color in dark mode (light blue)
         'extra-gray-light': '#D5D5D7',  // Extra gray color in light mode
         'extra-gray-dark': '#5A5A5E',   // Extra gray color in dark mode

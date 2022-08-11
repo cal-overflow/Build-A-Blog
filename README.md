@@ -25,7 +25,7 @@ View the source code for the website [here](https://github.com/cal-overflow/site
   5. [Change the color palette](#4-change-the-color-palette)
   6. [Write your first blog post](#5-write-your-first-blog-post)
 - [Blog posts](#blog-posts-)
-- [Post categories](#post-categories)
+- [Post tags](#post-tags)
 - [Editing content in development mode](#editing-content-in-development-mode-)
 - [Running locally](#running-locally) 
   - [Environment setup](#environment-setup)
@@ -67,7 +67,7 @@ Replace the essentials such as the bio and description of the blog/portfolio pag
 - [ ] Replace the existing `headshot.png` file within the `src/assets/images/` directory.
 - [ ] Replace the existing `favicon.ico` file within the `src/static/` directory.
 - [ ] Replace the contents of `about.md`, `blog-preview.md`, and `portfolio-preview.md` found within the `src/content/general/` directory.
-- [ ] Enter a description for the Portfolio category by editing the `description` attribute of `src/content/categories.yml`. Refer to the [Post categories](#post-categories) section.
+- [ ] Enter a description for the Portfolio tag by editing the `description` attribute of `src/content/tags.yml`. Refer to the [Post tags](#post-tags) section.
 
 
 ### 4. Change the color palette
@@ -104,7 +104,7 @@ title: How to download your Snapchat memories
 slug: download-snapchat-memories
 date: February 20, 2022
 img: memories.jpg
-categories:
+tags:
   - Portfolio
   - Tutorials
 ---
@@ -125,19 +125,19 @@ View the Nuxt docs on [Writing Content](https://content.nuxtjs.org/writing) for 
 
 Note that feature images should be placed in directory `src/assets/images/feature/`. Other post images should be placed in `src/static/blog-images/`. Reference the [source code for cal-overflow.dev](https://github.com/cal-overflow/site) as an example.
 
-## Post categories
-Post categories allow you to group posts together based on similarities such as topic. Post categories are defined in a [YAML](https://yaml.org) file.
+## Post tags
+Post tags allow you to group posts together based on similarities such as topic. Post tags are defined in a [YAML](https://yaml.org) file.
 
-Categories should be defined within the `src/content/categories.yml` file. Each category should contain a title, slug, and description attribute. Below is an example description written for the `Portfolio` category.
+Tags should be defined within the `src/content/tags.yml` file. Each tag should contain a title, slug, and description attribute. Below is an example description written for the `Portfolio` tag.
 
 ```yaml
-categories:
+tags:
   - title: Portfolio
     slug: portfolio
     description: My most significant work and experiences. This varies from failed projects to fully functional apps, websites, games, and more.
 ```
 
-Once a category has been created, users can view all posts under that category by visiting the endpoint `/category/slug`, where `slug` is replaced by the value you set. For example, the category defined in the example above is accesible by visting `/category/portfolio`.
+Once a tag has been created, users can view all posts under that tag by visiting the endpoint `/tag/slug`, where `slug` is replaced by the value you set. For example, the tag defined in the example above is accesible by visting `/tag/portfolio`.
 
 ### Editing content in development mode 📃
 

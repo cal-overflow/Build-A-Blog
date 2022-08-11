@@ -17,20 +17,20 @@
         >
           {{ item.title }}
         </nav-item>
-        <category-dropdown :current-page="currentPage" />
+        <tag-dropdown :current-page="currentPage" />
       </div>
     </nav>
   </div>
 </template>
 
 <script>
-import CategoryDropdown from './CategoryDropdown.vue';
+import TagDropdown from './TagDropdown.vue';
 import NavItem from './NavItem.vue';
 
 export default {
   name: 'nav-bar',
   components: {
-    CategoryDropdown,
+    TagDropdown,
     NavItem
   },
   props: {
@@ -51,7 +51,7 @@ export default {
       },
       {
         title: 'Portfolio',
-        href: '/category/portfolio'
+        href: '/tag/portfolio'
       }
     ],
   })

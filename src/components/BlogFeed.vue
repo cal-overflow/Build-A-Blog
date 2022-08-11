@@ -2,9 +2,9 @@
   <div id="post-feed">
     <div class="max-w-screen-lg mx-auto">
       <div class="bg-card-light dark:bg-card-dark m-6 p-6 shadow-md dark:shadow-shadow-dark hover:shadow-none hover:rounded motion-safe:animate-fade-in-fast transition">
-        <div v-if="category">
-          <p class="text-center md:text-left text-3xl font-bold">{{category.title}}</p>
-          <p class="text-center md:text-left text-md">{{category.description}}</p>
+        <div v-if="tag">
+          <p class="text-center md:text-left text-3xl font-bold">{{tag.title}}</p>
+          <p class="text-center md:text-left text-md">{{tag.description}}</p>
         </div>
         <p v-else class="text-center text-3xl font-bold">Blog</p>
       </div>
@@ -47,7 +47,7 @@
         class="bg-card-light dark:bg-card-dark m-6 p-6 hover:rounded shadow-md dark:shadow-shadow-dark hover:shadow-none motion-safe:animate-fade-in transition col-span-2"
       >
         <p class="text-center md:text-left text-2xl font-bold mt-2">No posts 😴</p>
-        <p class="text-center md:text-left">No posts have been written {{ category ? 'for this category' : '😬' }}</p>
+        <p class="text-center md:text-left">No posts have been written {{ tag ? 'for this tag' : '😬' }}</p>
       </div>
     </div>
   </div>
@@ -64,7 +64,7 @@ export default {
     PostPreview,
   },
   props: {
-    category: {
+    tag: {
       default: undefined,
       type: Object,
       required: false,
@@ -98,8 +98,8 @@ export default {
         .sortBy('id', 'desc')
         .limit(totalPosts + 1);
       
-      if (this.category) {
-        fetchPosts = fetchPosts.where({categories: { $contains: this.category.title }});
+      if (this.tag) {
+        fetchPosts = fetchPosts.where({tags: { $contains: this.tag.title }});
       }
         
       const tempPosts = await fetchPosts.fetch()

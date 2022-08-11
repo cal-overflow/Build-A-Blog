@@ -33,7 +33,7 @@ describe('Home page', () => {
   describe('portfolio preview card', () => {
     it('contains a link to the portfolio page', () => {
       cy.get('.page-preview-card').eq(0).contains('View my work').click();
-      cy.location('pathname').should('eq', '/category/portfolio');
+      cy.location('pathname').should('eq', '/tag/portfolio');
     });
   });
 

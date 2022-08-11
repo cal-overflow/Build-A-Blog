@@ -1,7 +1,7 @@
 <template>
   <main>
     <nav-bar :current-page="currentPage" />
-    <blog-feed :category="category" />
+    <blog-feed :tag="tag" />
     <back-to-top-button />
     <footer-bar :current-page="currentPage" />
   </main>
@@ -14,7 +14,7 @@ import FooterBar from '@/components/FooterBar.vue';
 import BackToTopButton from '@/components/BackToTopButton.vue';
 
 export default {
-  name: 'category',
+  name: 'tag',
   components: {
     NavBar,
     BlogFeed,
@@ -24,7 +24,7 @@ export default {
   async asyncData({ $content, params, error }) {
     const slug = params.pathMatch.toLowerCase();
 
-    const content = await $content('categories')
+    const content = await $content('tags')
       .fetch()
       .catch((err) => {
         error({
@@ -34,24 +34,24 @@ export default {
         });
       });
 
-      const category = content?.categories?.find((category) => category.slug === slug);
+      const tag = content?.tags?.find((tag) => tag.slug === slug);
 
-      if (!category) {
-        return error({ statusCode: 404, message: 'This category could not be found' });
+      if (!tag) {
+        return error({ statusCode: 404, message: 'This tag could not be found' });
       }
 
     return {
-      category
+      tag
     };
   },
   head() {
     return {
-      title: this.category?.title || process.env.NUXT_ENV_SITE_NAME || process.env.NUXT_ENV_FULL_NAME,
+      title: this.tag?.title || process.env.NUXT_ENV_SITE_NAME || process.env.NUXT_ENV_FULL_NAME,
     };
   },
   computed: {
     currentPage() {
-      return this.category?.title ?? 'Categories';
+      return this.tag?.title ?? 'Tags';
     }
   }
 };

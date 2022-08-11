@@ -2,7 +2,7 @@ import Chance from "chance";
 
 const chance = new Chance();
 
-const generatePost = (categories) => ({
+const generatePost = (tags) => ({
   "id": chance.integer({ min: 1, max: 100 }),
   "dir": `/${chance.string()}`,
   "slug": chance.string(),
@@ -13,7 +13,7 @@ const generatePost = (categories) => ({
   "excerpt": generateExcerpt(),
   "date": chance.date({string: true}),
   "img": "https://picsum.photos/400",
-  "categories": categories ?? chance.n(chance.word, chance.integer({min: 1, max: 10})),
+  "tags": tags ?? chance.n(chance.word, chance.integer({min: 1, max: 10})),
 });
 
 const generateExcerpt = () => ({

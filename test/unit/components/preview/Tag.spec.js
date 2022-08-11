@@ -1,16 +1,16 @@
 import { RouterLinkStub, shallowMount } from '@vue/test-utils';
 import Chance from 'chance';
-import generateCategory from '../../../helpers/categoryGenerator.js';
+import generateTag from '../../../helpers/tagGenerator.js';
 import generatePost from '../../../helpers/postGenerator';
 import PostPreview from '@/components/previews/Post.vue';
-import CategoryPreview from '@/components/previews/Category.vue';
+import TagPreview from '@/components/previews/Tag.vue';
 import ToolTip from '@/components/ToolTip.vue';
 
 const chance = new Chance();
 const postLimit = 4;
 
-describe('CategoryPreview component', () => {
-  let wrapper, fakeCategory, fakeIndex, fakePosts, numberFakePosts;
+describe('TagPreview component', () => {
+  let wrapper, fakeTag, fakeIndex, fakePosts, numberFakePosts;
 
   const stubs = {
     NuxtLink: RouterLinkStub,
@@ -26,21 +26,21 @@ describe('CategoryPreview component', () => {
     catch: jest.fn().mockReturnThis(),
   };
 
-  describe('given the category and index prop is passed in with a single post', () => {
+  describe('given the tag and index prop is passed in with a single post', () => {
     beforeEach(() => {
-      fakeCategory = generateCategory();
+      fakeTag = generateTag();
       fakeIndex = chance.integer();
-      fakePosts = chance.n(() => generatePost(fakeCategory.title), 1);
+      fakePosts = chance.n(() => generatePost(fakeTag.title), 1);
 
       nuxtContentMock.fetch.mockResolvedValue(fakePosts);
 
-      wrapper = shallowMount(CategoryPreview, {
+      wrapper = shallowMount(TagPreview, {
         mocks: {
           $content: () => nuxtContentMock
         },
         stubs,
         propsData: {
-          category: fakeCategory,
+          tag: fakeTag,
           index: fakeIndex
         }
       });
@@ -52,12 +52,12 @@ describe('CategoryPreview component', () => {
 
     it('contains the correctly linked title', () => {
       const title = wrapper.findComponent({ ref: 'title' });
-      expect(title.text()).toContain(fakeCategory.title);
-      expect(title.props('to')).toEqual(`/category/${fakeCategory.slug}`);
+      expect(title.text()).toContain(fakeTag.title);
+      expect(title.props('to')).toEqual(`/tag/${fakeTag.slug}`);
     });
 
-    it('contains the correct category description', () => {
-      expect(wrapper.text()).toContain(fakeCategory.description);
+    it('contains the correct tag description', () => {
+      expect(wrapper.text()).toContain(fakeTag.description);
     });
 
     it('contains the text "Latest Posts"', () => {
@@ -75,25 +75,25 @@ describe('CategoryPreview component', () => {
     });
   });
 
-  describe('given the category and index prop is passed in with multiple posts', () => {
+  describe('given the tag and index prop is passed in with multiple posts', () => {
     let fakeTimePerPostPreview, fakeTimeSinceLastSwitch;
     beforeEach(() => {
-      fakeCategory = generateCategory();
+      fakeTag = generateTag();
       fakeIndex = chance.integer();
       numberFakePosts = chance.integer({ min: 2, max: postLimit });
-      fakePosts = chance.n(() => generatePost(fakeCategory.title), numberFakePosts);
+      fakePosts = chance.n(() => generatePost(fakeTag.title), numberFakePosts);
       fakeTimePerPostPreview = chance.integer({min: 3000, max: 7000});
       fakeTimeSinceLastSwitch = fakeTimePerPostPreview - chance.integer({min: 50, max: 2000});
 
       nuxtContentMock.fetch.mockResolvedValue(fakePosts);
 
-      wrapper = shallowMount(CategoryPreview, {
+      wrapper = shallowMount(TagPreview, {
         mocks: {
           $content: () => nuxtContentMock
         },
         stubs,
         propsData: {
-          category: fakeCategory,
+          tag: fakeTag,
           index: fakeIndex,
         },
       });
@@ -112,10 +112,10 @@ describe('CategoryPreview component', () => {
     });
 
     it('contains a NuxtLink with the correct text and href', () => {
-      const link = wrapper.findComponent({ ref: "view-category" });
+      const link = wrapper.findComponent({ ref: "view-tag" });
 
       expect(link.text()).toContain("View all posts");
-      expect(link.props('to')).toEqual(`/category/${fakeCategory.slug}`);
+      expect(link.props('to')).toEqual(`/tag/${fakeTag.slug}`);
     });
 
     it('previewPercentage works', () => {
@@ -124,16 +124,16 @@ describe('CategoryPreview component', () => {
     });
   });
 
-  describe('given the category and index prop is passed in with no posts', () => {
+  describe('given the tag and index prop is passed in with no posts', () => {
     beforeEach(() => {
-      fakeCategory = generateCategory();
+      fakeTag = generateTag();
       fakeIndex = chance.integer();
       numberFakePosts = 0;
-      fakePosts = chance.n(() => generatePost(fakeCategory.title), numberFakePosts);
+      fakePosts = chance.n(() => generatePost(fakeTag.title), numberFakePosts);
 
       nuxtContentMock.fetch.mockResolvedValue(fakePosts);
 
-      wrapper = shallowMount(CategoryPreview, {
+      wrapper = shallowMount(TagPreview, {
         mocks: {
           $content: () => nuxtContentMock
         },
@@ -141,25 +141,25 @@ describe('CategoryPreview component', () => {
           'nuxt-content': true
         },
         propsData: {
-          category: fakeCategory,
+          tag: fakeTag,
           index: fakeIndex
         }
       });
     });
 
-    it('contains the correct category title', () => {
-      expect(wrapper.text()).toContain("There are not currently any posts for this category");
+    it('contains the correct tag title', () => {
+      expect(wrapper.text()).toContain("There are not currently any posts for this tag");
     });
   });
 
-  describe('given the category or index prop is not yet passed in', () => {
+  describe('given the tag or index prop is not yet passed in', () => {
     beforeEach(() => {
-      wrapper = shallowMount(CategoryPreview, {
+      wrapper = shallowMount(TagPreview, {
         stubs: {
           'nuxt-content': true
         },
         props: {
-          category: undefined,
+          tag: undefined,
           index: undefined
         }
       });
@@ -179,7 +179,7 @@ describe('CategoryPreview component', () => {
     });
 
     it('renders the placeholder/lazy-loading content', () => {
-      expect(wrapper.findComponent({ ref: 'lazy-load-category-preview' }).exists()).toBeTruthy();
+      expect(wrapper.findComponent({ ref: 'lazy-load-tag-preview' }).exists()).toBeTruthy();
     });
   });
 });

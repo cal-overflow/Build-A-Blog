@@ -76,10 +76,10 @@ export default {
           });
         });
 
-        const categoryContent = await $content('categories').fetch();
+        const tagContent = await $content('tags').fetch();
   
-        categoryContent.categories.forEach((category) => {
-          feed.addCategory(category.title);
+        tagContent.tags.forEach((tag) => {
+          feed.addCategory(tag.title);
         });
         
         feed.addContributor({
@@ -99,7 +99,7 @@ export default {
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {
-    nestedProperties: ['post.categories'],
+    nestedProperties: ['post.tags'],
     markdown: {
       prism: {
         theme: "@/assets/css/prism-custom-theme.css"

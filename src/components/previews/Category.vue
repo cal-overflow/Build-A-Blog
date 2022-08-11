@@ -10,7 +10,7 @@
     <br>
       <divider width="w-4/5"/>
       <div v-if="latestPosts.length" class="relative">
-        <p class="text-center text-lg text-primary-light font-bold">Latest Posts</p>
+        <p class="text-center text-lg text-primary-light dark:text-primary-dark font-bold">Latest Posts</p>
         <post-preview 
           :post="latestPosts[previewedPostIndex]"
           :full-width="true"

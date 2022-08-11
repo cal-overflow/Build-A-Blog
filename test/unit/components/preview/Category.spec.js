@@ -50,8 +50,10 @@ describe('CategoryPreview component', () => {
       expect(wrapper.vm).toBeTruthy();
     });
 
-    it('contains the correct category title', () => {
-      expect(wrapper.text()).toContain(fakeCategory.title);
+    it('contains the correctly linked title', () => {
+      const title = wrapper.findComponent({ ref: 'title' });
+      expect(title.text()).toContain(fakeCategory.title);
+      expect(title.props('to')).toEqual(`/category/${fakeCategory.slug}`);
     });
 
     it('contains the correct category description', () => {

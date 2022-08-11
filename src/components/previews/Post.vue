@@ -11,7 +11,7 @@
         {{post.title}}
       </nuxt-link>
       <div :class="showMinimalContent ? 'hidden md:block' : ''">
-        <nuxt-content ref="excerpt" :document="excerpt" :editable="false" class="text-ellipsis w-100 max-h-[167px] truncate text-primary-light " />
+        <nuxt-content ref="excerpt" :document="excerpt" :editable="false" :class="`prose leading-snug prose-a:text-inherit prose-a:no-underline dark:prose-invert transition ${showMinimalContent ? 'minimal-preview-text' : ''}`" />
         <nuxt-link ref="continue-reading" :to="`/post/${post.slug}`" :class="`text-extra-gray-dark dark:text-extra-gray-light font-thin text-sm underline hover:no-underline transition ${showMinimalContent ? 'hidden md:block': ''}`">
           Continue reading
         </nuxt-link>
@@ -99,3 +99,14 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.minimal-preview-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* number of lines to show */
+          line-clamp: 5; 
+  -webkit-box-orient: vertical;
+}
+</style>

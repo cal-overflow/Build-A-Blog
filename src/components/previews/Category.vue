@@ -3,12 +3,14 @@
     v-if="category" 
     class="category-preview-card bg-card-light dark:bg-card-dark m-6 p-6 hover:rounded shadow-md dark:shadow-shadow-dark hover:shadow-none motion-safe:animate-fade-in transition"
   >
-    <p class="text-2xl font-bold">{{category.title}}</p>
+    <nuxt-link ref="title" :to="`/category/${category.slug}`" class="font-bold text-2xl hover:underline">
+      {{category.title}}
+    </nuxt-link>
     <p class="text-md">{{category.description}}</p>
     <br>
       <divider width="w-4/5"/>
       <div v-if="latestPosts.length" class="relative">
-        <p class="text-center text-lg text-primary-light font-bold">Latest Posts</p>
+        <p class="text-center text-lg text-primary-light dark:text-primary-dark font-bold">Latest Posts</p>
         <post-preview 
           :post="latestPosts[previewedPostIndex]"
           :full-width="true"

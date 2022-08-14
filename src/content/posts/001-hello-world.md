@@ -29,6 +29,10 @@ If you're not trying to build this website, and don't know what you've stumbled 
 
 This website was generated from Christian's portfolio template repository. View the template repository on GitHub [here](https://github.com/cal-overflow/portfolio).
 
+Here is a step-by-step tutorial to making a website using the template repository.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/O3ctZ6SdSLA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="youtube-embed"></iframe>
+
 ---
 
 ```javascript

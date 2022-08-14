@@ -1,0 +1,16 @@
+markets:
+  - title: UST
+    slug: ust
+    description: "A"
+  - title: Housing
+    slug: housing
+    description: "A"
+  - title: Stock
+    slug: stock
+    description: "A"
+  - title: Growth
+    slug: growth
+    description: "A"
+  - title: Forex
+    slug: forex
+    description: "A"

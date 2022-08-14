@@ -1,0 +1,10 @@
+sections:
+  - title: Blog
+    slug: blog
+    description: "Blog section. Let's go!"
+  - title: History
+    slug: history
+    description: "History section. Let's go!"
+  - title: Concepts
+    slug: concepts
+    description: "Concepts section. Let's go!"

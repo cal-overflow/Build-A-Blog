@@ -1,0 +1,22 @@
+categories:
+  - title: Foundational Information
+    slug: foundational-information
+    description: "All Articles here are for basic understanding of a product, entity, or system."
+  - title: Yields
+    slug: yields
+    description: "Section for Yields, yield curve, QE, YCC, and all effects on an economy."
+  - title: Psychology 
+    slug: psychology
+    description: "What is the wealth effect? Why are markets irrational? What makes the stock market hard to predict? Why do financial bubbles happen?"
+  - title: The Flations
+    slug: the-flations
+    description: "Inflation, Deflation, Dis-inflation, or Reflation?"
+  - title: Economics of Nations
+    slug: economics-of-nations
+    description: "Capitalism, Socialism, or Communism? Command or free markets? Inequality and Demographics."
+  - title: Debt
+    slug: debt
+    description: "Sweet then Sour. Debt Cycles, Debt Traps, Credit Crises, and real world examples (RIP Europe and China)."
+  - title: Investing
+    slug: investing
+    description: "Section for Yields, yield curve, QE, YCC, and all effects on an economy."

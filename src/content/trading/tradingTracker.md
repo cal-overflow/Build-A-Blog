@@ -3,7 +3,7 @@ title: Trading
 slug: trading
 date: 'July 25th, 2022'
 img: Vix-072622.png
-categories:
+tags:
   - Investing
 ---
 

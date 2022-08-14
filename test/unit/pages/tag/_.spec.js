@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
 import Chance from 'chance';
-import category from '@/pages/category/_.vue';
+import tag from '@/pages/tag/_.vue';
 import BlogFeed from '@/components/BlogFeed.vue';
 import NavBar from '@/components/NavBar.vue';
 import BackToTopButton from '@/components/BackToTopButton.vue';
@@ -8,8 +8,8 @@ import FooterBar from '@/components/FooterBar.vue';
 
 const chance = new Chance();
 
-describe('category page', () => {
-  let wrapper, fakeCategory;
+describe('tag page', () => {
+  let wrapper, fakeTag;
 
   const nuxtContentMock = {
     $content: jest.fn().mockReturnThis(),
@@ -18,7 +18,7 @@ describe('category page', () => {
   };
 
   beforeEach(() => {
-    wrapper = shallowMount(category, {
+    wrapper = shallowMount(tag, {
       stubs: {
       'nuxt-content': true
       }
@@ -32,7 +32,7 @@ describe('category page', () => {
   it('renders the NavBar component with the correct props', () => {
     const navBar = wrapper.findComponent(NavBar);
     expect(navBar.exists()).toBeTruthy();
-    expect(navBar.props('currentPage')).toEqual('Categories');
+    expect(navBar.props('currentPage')).toEqual('Tags');
   });
 
   it('contains the BackToTopButton component', () => {
@@ -43,43 +43,43 @@ describe('category page', () => {
   it('contains the FooterBar component', () => {
     const footer = wrapper.findComponent(FooterBar);
     expect(footer.exists()).toBeTruthy();
-    expect(footer.props('currentPage')).toEqual('Categories'); 
+    expect(footer.props('currentPage')).toEqual('Tags'); 
   });
 
-  describe('given a valid category slug', () => {
-    let fakeCategorySlug;
+  describe('given a valid tag slug', () => {
+    let fakeTagSlug;
 
     beforeEach(async () => {
-      fakeCategorySlug = chance.string();
+      fakeTagSlug = chance.string();
 
-      fakeCategory = {
+      fakeTag = {
         title: chance.string(),
         description: chance.paragraph(),
-        slug: fakeCategorySlug.toLowerCase()
+        slug: fakeTagSlug.toLowerCase()
       };
 
       nuxtContentMock.fetch.mockImplementation(() => {
         return {
-          catch: () => ({ categories: [fakeCategory] })
+          catch: () => ({ tags: [fakeTag] })
         };
       });
 
       // Source: https://github.com/nuxt/docs/issues/1600#issuecomment-535994612
       
-      const originalData = category?.data?.() || {};
-      const data = await category.asyncData({
+      const originalData = tag?.data?.() || {};
+      const data = await tag.asyncData({
         $content: () => nuxtContentMock,
         params: {
-          pathMatch: fakeCategorySlug,
+          pathMatch: fakeTagSlug,
         },
         error: jest.fn(),
       });
 
-      category.data = () => {
+      tag.data = () => {
         return { ...originalData, ...data };
       };
 
-      wrapper = shallowMount(category, {
+      wrapper = shallowMount(tag, {
         stubs: {
           'nuxt-content': true
         }
@@ -91,13 +91,13 @@ describe('category page', () => {
     it('renders the NavBar component with the correct props', () => {
       const navBar = wrapper.findComponent(NavBar);
       expect(navBar.exists()).toBeTruthy();
-      expect(navBar.props('currentPage')).toEqual(fakeCategory.title);
+      expect(navBar.props('currentPage')).toEqual(fakeTag.title);
     });
   
     it('contains the FooterBar component', () => {
       const footer = wrapper.findComponent(FooterBar);
       expect(footer.exists()).toBeTruthy();
-      expect(footer.props('currentPage')).toEqual(fakeCategory.title); 
+      expect(footer.props('currentPage')).toEqual(fakeTag.title); 
     });
 
     it('calls nuxt content fetch', () => {
@@ -108,7 +108,7 @@ describe('category page', () => {
       const feed = wrapper.findComponent(BlogFeed);
       
       expect(feed.exists()).toBeTruthy();
-      expect(feed.props('category')).toEqual(fakeCategory);
+      expect(feed.props('tag')).toEqual(fakeTag);
     });
 
     describe('given there is an issue fetching data', () => {
@@ -125,10 +125,10 @@ describe('category page', () => {
           };
         });
 
-        await category.asyncData({
+        await tag.asyncData({
           $content: () => nuxtContentMock,
           params: {
-            pathMatch: fakeCategory.slug,
+            pathMatch: fakeTag.slug,
           },
           error: mockErrorFn,
         });
@@ -153,11 +153,11 @@ describe('category page', () => {
 
       nuxtContentMock.fetch.mockImplementation(() => {
         return {
-          catch: () => ({ categories: [] })
+          catch: () => ({ tags: [] })
         };
       });
 
-      await category.asyncData({
+      await tag.asyncData({
         $content: () => nuxtContentMock,
         params: {
           pathMatch: chance.string(),
@@ -170,14 +170,14 @@ describe('category page', () => {
       expect(mockErrorFn).toBeCalled();
       expect(mockErrorFn).toBeCalledWith({
         statusCode: 404,
-        message: 'This category could not be found',
+        message: 'This tag could not be found',
       });
     });
   });
 
-  describe('given a category is "Portfolio"', () => {
+  describe('given a tag is "Portfolio"', () => {
     beforeEach(async () => {
-      fakeCategory = {
+      fakeTag = {
         title: 'Portfolio',
         description: chance.paragraph(),
         slug: 'portfolio'
@@ -185,14 +185,14 @@ describe('category page', () => {
 
       nuxtContentMock.fetch.mockImplementation(() => {
         return {
-          catch: () => ({ categories: [fakeCategory] })
+          catch: () => ({ tags: [fakeTag] })
         };
       });
 
       // Source: https://github.com/nuxt/docs/issues/1600#issuecomment-535994612
       
-      const originalData = category?.data?.() || {};
-      const data = await category.asyncData({
+      const originalData = tag?.data?.() || {};
+      const data = await tag.asyncData({
         $content: () => nuxtContentMock,
         params: {
           pathMatch: 'portfolio',
@@ -200,11 +200,11 @@ describe('category page', () => {
         error: jest.fn(),
       });
 
-      category.data = () => {
+      tag.data = () => {
         return { ...originalData, ...data };
       };
 
-      wrapper = shallowMount(category, {
+      wrapper = shallowMount(tag, {
         stubs: {
           'nuxt-content': true
         }

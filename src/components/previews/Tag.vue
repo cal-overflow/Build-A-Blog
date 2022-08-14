@@ -1,12 +1,12 @@
 <template>
   <div 
-    v-if="category" 
-    class="category-preview-card bg-card-light dark:bg-card-dark m-6 p-6 hover:rounded shadow-md dark:shadow-shadow-dark hover:shadow-none motion-safe:animate-fade-in transition"
+    v-if="tag" 
+    class="tag-preview-card bg-card-light dark:bg-card-dark m-6 p-6 hover:rounded shadow-md dark:shadow-shadow-dark hover:shadow-none motion-safe:animate-fade-in transition"
   >
-    <nuxt-link ref="title" :to="`/category/${category.slug}`" class="font-bold text-2xl hover:underline">
-      {{category.title}}
+    <nuxt-link ref="title" :to="`/tag/${tag.slug}`" class="font-bold text-2xl hover:underline">
+      {{tag.title}}
     </nuxt-link>
-    <p class="text-md">{{category.description}}</p>
+    <p class="text-md">{{tag.description}}</p>
     <br>
       <divider width="w-4/5"/>
       <div v-if="latestPosts.length" class="relative">
@@ -43,16 +43,16 @@
               />
             </div>
           </div>
-          <nuxt-link ref="view-category" :to="`/category/${category.slug}`" class="text-extra-gray-dark dark:text-extra-gray-light text-md underline hover:no-underline transition">
+          <nuxt-link ref="view-tag" :to="`/tag/${tag.slug}`" class="text-extra-gray-dark dark:text-extra-gray-light text-md underline hover:no-underline transition">
             View all posts
           </nuxt-link>
         </div>
       </div>
       <div v-else>
-        <p class="text-md">There are not currently any posts for this category</p>
+        <p class="text-md">There are not currently any posts for this tag</p>
       </div>
   </div>
-  <div v-else ref="lazy-load-category-preview" class="motion-safe:animate-pulse category-preview-card bg-card-light dark:bg-card-dark m-6 p-6 hover:rounded shadow-md dark:shadow-shadow-dark hover:shadow-none motion-safe:animate-fade-in transition">
+  <div v-else ref="lazy-load-tag-preview" class="motion-safe:animate-pulse tag-preview-card bg-card-light dark:bg-card-dark m-6 p-6 hover:rounded shadow-md dark:shadow-shadow-dark hover:shadow-none motion-safe:animate-fade-in transition">
     <div class="bg-gray-500 dark:bg-white w-32 h-4 transition" />
     <div class="bg-gray-400 w-64 h-2 my-2"/>
     <br>
@@ -73,10 +73,10 @@ import PostPreview from '@/components/previews/Post.vue';
 import ToolTip from '@/components/ToolTip.vue';
 
 export default {
-  name: 'category-preview',
+  name: 'tag-preview',
   components: { Divider, PostPreview, ToolTip },
   props: {
-    category: {
+    tag: {
       type: Object,
       default: undefined,
       required: false,
@@ -105,10 +105,10 @@ export default {
   },
   methods: {
     async getLatestPosts() {
-      if (!this.category) return;
+      if (!this.tag) return;
 
       const posts = await this.$content('posts')
-        .where({ categories: { $contains: this.category.title } })
+        .where({ tags: { $contains: this.tag.title } })
         .sortBy('id', 'desc')
         .limit(4)
         .fetch()

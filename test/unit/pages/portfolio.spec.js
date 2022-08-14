@@ -9,7 +9,7 @@ describe('portfolio page', () => {
     portfolio.asyncData({ redirect });
   });
 
-  it('redirects to the portfolio category page', () => {
-    expect(redirect).toBeCalledWith('/category/portfolio');
+  it('redirects to the portfolio tag page', () => {
+    expect(redirect).toBeCalledWith('/tag/portfolio');
   });
 });

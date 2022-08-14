@@ -49,24 +49,24 @@
 
         <div class="flex flex-wrap lg:flex-nowrap">
           <div class="w-full lg:w-1/2 m-2">
-            <label for="categories">Categories</label>
+            <label for="tags">Tags</label>
             <br />
-            <small class="text-xs text-extra-gray-dark dark:text-extra-gray-light">Must match Category title</small>
+            <small class="text-xs text-extra-gray-dark dark:text-extra-gray-light">Must match Tag title</small>
             <br />
             <input
-              v-for="(_, i) in post.data.categories.length"
-              :id="`category-${i}`"
-              :key="`category-${i}`"
-              v-model="post.data.categories[i]"
-              name="categories"
+              v-for="(_, i) in post.data.tags.length"
+              :id="`tag-${i}`"
+              :key="`tag-${i}`"
+              v-model="post.data.tags[i]"
+              name="tags"
               :class="textInputStyle({ classes: 'bg-extra-gray-light dark:bg-extra-gray-dark my-1' })"
             />
             <input
-              :disabled="post.data.categories.includes('')"
+              :disabled="post.data.tags.includes('')"
               type="button"
-              value="Add Category"
-              :class="`rounded-md py-1 px-2 align-right bg-primary-light dark:bg-primary-dark text-white  transition duration-500 ${post.data.categories.includes('') ? 'opacity-25' : 'cursor-pointer'}`"
-              @click="post.data.categories.push('')"
+              value="Add Tag"
+              :class="`rounded-md py-1 px-2 align-right bg-primary-light dark:bg-primary-dark text-white  transition duration-500 ${post.data.tags.includes('') ? 'opacity-25' : 'cursor-pointer'}`"
+              @click="post.data.tags.push('')"
             />
           </div>
 
@@ -153,12 +153,12 @@ export default {
               slug: this.originalFileObj.data.slug,
               date: this.originalFileObj.data.date,
               img: this.originalFileObj.data.img,
-              categories: this.originalFileObj.data.categories
+              tags: this.originalFileObj.data.tags
             },
             body: this.originalFileObj.content
           };
   
-          if (this.post.data.categories.length === 0) this.categories.push('');  
+          if (this.post.data.tags.length === 0) this.tags.push('');  
         }
       }
       else {
@@ -240,7 +240,7 @@ export default {
     },
     endEdit() {
       if (this.post) {
-        this.post.data.categories = this.post.data.categories.filter((category) => category !== '');
+        this.post.data.tags = this.post.data.tags.filter((tag) => tag !== '');
         this.file = matter.stringify(this.post.body, { ...this.post.data });
       }
 

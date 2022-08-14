@@ -1,8 +1,8 @@
 import { shallowMount, RouterLinkStub } from '@vue/test-utils';
 import Chance from 'chance';
-import generateCategory from '../../helpers/categoryGenerator.js';
-import categories from '@/pages/categories.vue';
-import CategoryPreview from '@/components/previews/Category.vue';
+import generateTag from '../../helpers/tagGenerator.js';
+import tags from '@/pages/tags.vue';
+import TagPreview from '@/components/previews/Tag.vue';
 import NavBar from '@/components/NavBar.vue';
 import FooterBar from '@/components/FooterBar.vue';
 import Divider from '@/components/Divider.vue';
@@ -10,8 +10,8 @@ import Divider from '@/components/Divider.vue';
 
 const chance = new Chance();
 
-describe('categories page', () => {
-  let wrapper, fakeCategories;
+describe('tags page', () => {
+  let wrapper, fakeTags;
 
   const stubs = {
     NuxtLink: RouterLinkStub,
@@ -25,7 +25,7 @@ describe('categories page', () => {
   };
 
   beforeEach(() => {
-    wrapper = shallowMount(categories, { stubs });
+    wrapper = shallowMount(tags, { stubs });
   });
 
   it('is a Vue instance', () => {
@@ -35,21 +35,21 @@ describe('categories page', () => {
   it('renders the NavBar component with the correct props', () => {
     const navBar = wrapper.findComponent(NavBar);
     expect(navBar.exists()).toBeTruthy();
-    expect(navBar.props('currentPage')).toEqual('Categories');
+    expect(navBar.props('currentPage')).toEqual('Tags');
   });
 
   it('contains the FooterBar component', () => {
     const footer = wrapper.findComponent(FooterBar);
     expect(footer.exists()).toBeTruthy();
-    expect(footer.props('currentPage')).toEqual('Categories');
+    expect(footer.props('currentPage')).toEqual('Tags');
   });
 
-  describe('given the categories have not loaded yet', () => {
+  describe('given the tags have not loaded yet', () => {
     beforeEach(() => {
       // mock nuxt content fetch to never resolve (stuck loading behavior)      
       nuxtContentMock.fetch.mockReturnValue(new Promise(() => ({})));
 
-      wrapper = shallowMount(categories, {
+      wrapper = shallowMount(tags, {
         mocks: {
           $content: () => nuxtContentMock
         },
@@ -57,27 +57,27 @@ describe('categories page', () => {
       });
     });
 
-    it('renders CategoryPreview components with no post prop', () => {
-      const categoryPreviews = wrapper.findAllComponents(CategoryPreview);
+    it('renders TagPreview components with no post prop', () => {
+      const tagPreviews = wrapper.findAllComponents(TagPreview);
 
-      categoryPreviews.wrappers.forEach((wrapper) => {
-        expect(wrapper.props('category')).toEqual(undefined);
+      tagPreviews.wrappers.forEach((wrapper) => {
+        expect(wrapper.props('tag')).toEqual(undefined);
       });
     });
   });
 
-  describe('given there are no categories', () => {
+  describe('given there are no tags', () => {
     beforeEach(async () => {
-      fakeCategories = [];
-      nuxtContentMock.fetch.mockResolvedValue({ categories: fakeCategories });
+      fakeTags = [];
+      nuxtContentMock.fetch.mockResolvedValue({ tags: fakeTags });
 
-      const data = await categories.asyncData({
+      const data = await tags.asyncData({
         $content: () => nuxtContentMock,
         error: jest.fn()
       });
 
-      categories.data = () => (data);
-      wrapper = shallowMount(categories, {
+      tags.data = () => (data);
+      wrapper = shallowMount(tags, {
         mocks: {
           $content: () => nuxtContentMock
         },
@@ -85,25 +85,25 @@ describe('categories page', () => {
       });
     });
 
-    it('renders a "no categories" message', () => {
-      expect(wrapper.text()).toContain('There are not currently any categories');
+    it('renders a "no tags" message', () => {
+      expect(wrapper.text()).toContain('There are not currently any tags');
     });
   });
 
-  describe('given there are categories', () => {
+  describe('given there are tags', () => {
     beforeEach(async () => {
-      fakeCategories = chance.n(generateCategory, chance.integer({
+      fakeTags = chance.n(generateTag, chance.integer({
         min: 1, max: 20
       }));
 
-      nuxtContentMock.fetch.mockResolvedValue({ categories: fakeCategories });
-      const data = await categories.asyncData({
+      nuxtContentMock.fetch.mockResolvedValue({ tags: fakeTags });
+      const data = await tags.asyncData({
         $content: () => nuxtContentMock,
         error: jest.fn()
       });
 
-      categories.data = () => (data);
-      wrapper = shallowMount(categories, {
+      tags.data = () => (data);
+      wrapper = shallowMount(tags, {
         mocks: {
           $content: () => nuxtContentMock
         },
@@ -118,7 +118,7 @@ describe('categories page', () => {
     });
 
     it('contains the correct text', () => {
-      expect(wrapper.text()).toContain("Categories");
+      expect(wrapper.text()).toContain("Tags");
     });
 
     it('contains a Divider component', () => {
@@ -130,22 +130,22 @@ describe('categories page', () => {
       expect(nuxtContentMock.fetch).toBeCalledTimes(1);
     });
 
-    it('renders a component for each category', () => {
-      fakeCategories.forEach((category) => {
-        expect(wrapper.findComponent({ ref: category.slug })).toBeTruthy();
+    it('renders a component for each tag', () => {
+      fakeTags.forEach((tag) => {
+        expect(wrapper.findComponent({ ref: tag.slug })).toBeTruthy();
       });
     });
 
-    it('renders the correct number of CategoryPreview components', () => {
-      expect(wrapper.findAllComponents(CategoryPreview).wrappers).toHaveLength(fakeCategories.length);
+    it('renders the correct number of TagPreview components', () => {
+      expect(wrapper.findAllComponents(TagPreview).wrappers).toHaveLength(fakeTags.length);
     });
   });
 
-  describe('given there is an issue fetching categories', () => {
+  describe('given there is an issue fetching tags', () => {
     let mockErrorFn, fakeError;
 
     beforeEach(async () => {
-      fakeCategories = [];
+      fakeTags = [];
       fakeError = new Error(chance.sentence());
       mockErrorFn = jest.fn();
       
@@ -153,18 +153,18 @@ describe('categories page', () => {
         return {
           catch: (callback) => {
             callback(fakeError);
-            return fakeCategories;
+            return fakeTags;
           }
         };
       });
 
-      wrapper = shallowMount(categories, {
+      wrapper = shallowMount(tags, {
         stubs: {
           'nuxt-content': true
         }
       });
 
-      await categories.asyncData({
+      await tags.asyncData({
         $content: () => nuxtContentMock,
         error: mockErrorFn,
       });
@@ -174,7 +174,7 @@ describe('categories page', () => {
       expect(mockErrorFn).toBeCalled();
       expect(mockErrorFn).toBeCalledWith({
         statusCode: 500,
-        message: 'Something went wrong while fetching categories',
+        message: 'Something went wrong while fetching tags',
         error: fakeError
       });
     });

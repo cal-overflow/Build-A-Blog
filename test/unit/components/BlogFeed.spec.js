@@ -177,15 +177,15 @@ describe('BlogFeed component', () => {
     });
   });
 
-  describe('given a category prop is given', () => {
-    let category;
+  describe('given a tag prop is given', () => {
+    let tag;
 
     beforeEach(() => {
       fakePosts = chance.n(generatePost, chance.integer({
         min: 1, max: postLimit
       }));
 
-      category = {
+      tag = {
         title: chance.string(),
         description: chance.paragraph(),
       };
@@ -196,22 +196,22 @@ describe('BlogFeed component', () => {
         mocks: {
           $content: () => nuxtContentMock
         },
-        propsData: { category },
+        propsData: { tag },
         stubs,
       });
     });
 
     afterEach(jest.clearAllMocks);
     
-    it('contains the category title and description', () => {
-      expect(wrapper.text()).toContain(category.title);
-      expect(wrapper.text()).toContain(category.description);
+    it('contains the tag title and description', () => {
+      expect(wrapper.text()).toContain(tag.title);
+      expect(wrapper.text()).toContain(tag.description);
     });
 
     it('envokes the nuxt content "where" method to find the correct posts', () => {
       expect(nuxtContentMock.where).toBeCalledTimes(1);
       expect(nuxtContentMock.where).toBeCalledWith({
-        categories: {$contains: category.title}
+        tags: {$contains: tag.title}
       });
     });
   });

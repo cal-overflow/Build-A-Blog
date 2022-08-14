@@ -49,7 +49,7 @@ export default {
       },
       {
         title: 'Portfolio',
-        href: '/category/portfolio'
+        href: '/tag/portfolio'
       },
       {
         title: 'Contact',

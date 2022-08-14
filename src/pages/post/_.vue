@@ -9,14 +9,14 @@
 
             <div class="text-extra-gray-dark dark:text-extra-gray-light transition">
               <p id="post-metadata">{{post.date}}
-                <span v-if="post.categories.length">
+                <span v-if="post.tags.length">
                   <span class="hidden md:inline">/</span>
                   <br class="md:hidden" />
                   <span
-                    v-for="(category, i) in post.categories"
-                    :key="`categories-${category}`"
+                    v-for="(tag, i) in post.tags"
+                    :key="`tags-${tag}`"
                   >
-                    <nuxt-link :to="`/category/${category.toLowerCase().replace(' ', '-')}`" class="hover:underline">{{category}}</nuxt-link>{{(i + 1) === post.categories.length ? '' : ', '}}
+                    <nuxt-link :to="`/tag/${tag.toLowerCase().replace(' ', '-')}`" class="hover:underline">{{tag}}</nuxt-link>{{(i + 1) === post.tags.length ? '' : ', '}}
                   </span>
                 </span>
               </p>

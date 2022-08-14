@@ -1,7 +1,7 @@
 <script>
 export default {
   asyncData({ redirect }) {
-    return redirect('/category/portfolio');
+    return redirect('/tag/portfolio');
   }
 };
 </script>

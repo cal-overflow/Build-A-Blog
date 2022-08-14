@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils';
 import Chance from 'chance';
 import NavBar from '@/components/NavBar.vue';
 import NavItem from '@/components/NavItem.vue';
-import CategoryDropdown from '@/components/CategoryDropdown.vue';
+import TagDropdown from '@/components/TagDropdown.vue';
 
 const chance = new Chance();
 describe('NavBar component', () => {
@@ -56,17 +56,17 @@ describe('NavBar component', () => {
     const navItem = navItems.filter((el) => el.text() === 'Portfolio').at(0);
 
     expect(navItem.exists()).toBeTruthy();
-    expect(navItem.props('href')).toEqual('/category/portfolio');
+    expect(navItem.props('href')).toEqual('/tag/portfolio');
     expect(navItem.props('active')).not.toBeTruthy();
   });
 
-  it('renders the Category dropdown', () => {
-    const dropdown = wrapper.findComponent(CategoryDropdown);
+  it('renders the Tag dropdown', () => {
+    const dropdown = wrapper.findComponent(TagDropdown);
     expect(dropdown.exists()).toBeTruthy();
   });
   
-  it('passes the currentPage prop into the Category dropdown component', () => {
-    const dropdown = wrapper.findComponent(CategoryDropdown);
+  it('passes the currentPage prop into the Tag dropdown component', () => {
+    const dropdown = wrapper.findComponent(TagDropdown);
     expect(dropdown.props('currentPage')).toEqual('Home');
   });
 });

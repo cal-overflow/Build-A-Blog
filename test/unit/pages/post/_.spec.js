@@ -96,22 +96,22 @@ describe('post page', () => {
       expect(wrapper.text()).toContain(fakePost.date);
     });
 
-    it('renders the post tags correctly', () => {
+    it('renders the post categories correctly', () => {
       expect(wrapper.text()).toContain(fakePost.title);
       expect(wrapper.text()).toContain(fakePost.date);
       
-      fakePost.tags.forEach((tag) => {
-        expect(wrapper.text()).toContain(tag);
+      fakePost.categories.forEach((category) => {
+        expect(wrapper.text()).toContain(category);
       });
     });
 
-    it('renders the post tags with the correct link', () => {
+    it('renders the post categories with the correct link', () => {
       const linkComponents = wrapper.findAllComponents(RouterLinkStub);
 
-      fakePost.tags.forEach((tag) => {
-        const expectedPath = `/tag/${tag.toLowerCase().replace(' ', '-')}`;
+      fakePost.categories.forEach((category) => {
+        const expectedPath = `/category/${category.toLowerCase().replace(' ', '-')}`;
 
-        const component = linkComponents.wrappers.find((el) => el.text() === tag);
+        const component = linkComponents.wrappers.find((el) => el.text() === category);
         expect(component.props('to')).toEqual(expectedPath);
       });
     });

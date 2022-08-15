@@ -5,7 +5,7 @@ slug: schizo-sunday-monkeypox
 section: Blog
 date: 'July 24th, 2022'
 img: Monkeypox-1.png
-tags:
+categories:
   - Psychology
   - The Flations
   - Economics of Nations

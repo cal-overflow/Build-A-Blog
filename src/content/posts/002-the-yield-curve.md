@@ -5,7 +5,7 @@ slug: the-yield-curve
 section: Concepts
 date: 'July 22nd, 2022'
 img: Yield-Curve-Inversion.png
-tags:
+categories:
   - Foundational Information
   - Yields
   - The Flations

@@ -251,3 +251,16 @@ $ npm run e2e:deploy
 # run unit and e2e tests (recording enabled)
 $ npm run test:deploy
 ```
+
+#### Updating your website with new features in the template
+
+If you want to bring new changes from the template repository into your website, utilize mutliple remote repositories with Git.
+
+```bash
+git remote add template <git@github.com:cal-overflow/portfolio.git>
+# OR
+git remote add template <https://github.com/cal-overflow/portfolio.git>
+
+git fetch --all
+git merge template/master
+```

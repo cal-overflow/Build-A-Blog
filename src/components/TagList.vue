@@ -8,6 +8,7 @@
       class="text-center mx-4 transition"
       :style="`animation: fade-in ${((i + 1) * 0.25)}s ease-in-out;`"
       :active="currentPage === tag.title"
+      :title="tag.description || tag.title"
     >
       {{ tag.title }}
     </nav-item>

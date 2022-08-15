@@ -119,8 +119,17 @@ export default {
 </script>
 
 <style>
+@media only screen and (max-width: 600px) {
+  .youtube-embed {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 601px) {
+  .youtube-embed {
+    width: 70%;
+  }
+}
 .youtube-embed {
-  width: 70%;
   height: auto;
   aspect-ratio: 16/ 9;
   margin: 0 auto;

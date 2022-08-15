@@ -5,7 +5,7 @@ slug: what-are-bonds
 section: Concepts
 date: 'July 21st, 2022'
 img: Financial-Bonds.png
-categories:
+tags:
   - Foundational Information
   - Yields
   - Investing

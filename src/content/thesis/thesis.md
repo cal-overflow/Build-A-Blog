@@ -3,7 +3,7 @@ title: Thesis
 slug: thesis
 date: 'July 25th, 2022'
 img: Bird-In-A-Cage.png #FIX
-categories:
+tags:
   - Psychology
   - The Flations
   - Economics of Nations

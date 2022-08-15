@@ -5,7 +5,7 @@ slug: schizo-sunday-monkeypox-3
 section: Blog
 date: 'August 7th, 2022'
 img: Monkeypox-3.png
-categories:
+tags:
   - Psychology
 ---
 <!-- cases: https://ourworldindata.org/monkeypox Cases up 23% week over week: 28,735/23,256-->

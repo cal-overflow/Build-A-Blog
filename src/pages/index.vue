@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import NavBar from '@/components/NavBar.vue';
-import Home from '@/components/Home.vue';
-import FooterBar from '@/components/FooterBar.vue';
+import NavBar from '@/components/structural/NavBar.vue';
+import Home from '@/components/views/Home.vue';
+import FooterBar from '@/components/structural/FooterBar.vue';
 
 export default {
   name: 'index',

@@ -1,10 +1,10 @@
 import { shallowMount } from '@vue/test-utils';
 import Chance from 'chance';
 import tag from '@/pages/tag/_.vue';
-import BlogFeed from '@/components/BlogFeed.vue';
-import NavBar from '@/components/NavBar.vue';
-import BackToTopButton from '@/components/BackToTopButton.vue';
-import FooterBar from '@/components/FooterBar.vue';
+import BlogFeed from '@/components/views/BlogFeed.vue';
+import NavBar from '@/components/structural/NavBar.vue';
+import BackToTopButton from '@/components/helpers/BackToTopButton.vue';
+import FooterBar from '@/components/structural/FooterBar.vue';
 
 const chance = new Chance();
 

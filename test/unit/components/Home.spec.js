@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
 import Chance from 'chance';
-import Home from '@/components/Home.vue';
+import Home from '@/components/views/Home.vue';
 import PagePreview from '@/components/previews/Page.vue';
 
 const chance = new Chance();

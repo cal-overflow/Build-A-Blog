@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils';
 import Chance from 'chance';
 import generatePost from '../../helpers/postGenerator';
-import BlogFeed from '@/components/BlogFeed.vue';
+import BlogFeed from '@/components/views/BlogFeed.vue';
 import PostPreview from '@/components/previews/Post.vue';
-import Divider from '@/components/Divider.vue';
+import Divider from '@/components/helpers/Divider.vue';
 
 const chance = new Chance();
 

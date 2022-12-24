@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils';
 import blog from '@/pages/blog.vue';
-import BlogFeed from '@/components/BlogFeed.vue';
-import NavBar from '@/components/NavBar.vue';
-import BackToTopButton from '@/components/BackToTopButton.vue';
-import FooterBar from '@/components/FooterBar.vue';
+import BlogFeed from '@/components/views/BlogFeed.vue';
+import NavBar from '@/components/structural/NavBar.vue';
+import BackToTopButton from '@/components/helpers/BackToTopButton.vue';
+import FooterBar from '@/components/structural/FooterBar.vue';
 
 describe('blog page', () => {
   let wrapper;

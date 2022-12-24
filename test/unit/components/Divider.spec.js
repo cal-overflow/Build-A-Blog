@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import Chance from 'chance';
-import Divider from '@/components/Divider.vue';
+import Divider from '@/components/helpers/Divider.vue';
 
 const chance = new Chance();
 

@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils';
 import Chance from 'chance';
 import index from '@/pages/index.vue';
-import Home from '@/components/Home.vue';
-import NavBar from '@/components/NavBar.vue';
-import FooterBar from '@/components/FooterBar.vue';
+import Home from '@/components/views/Home.vue';
+import NavBar from '@/components/structural/NavBar.vue';
+import FooterBar from '@/components/structural/FooterBar.vue';
 
 const chance = new Chance();
 

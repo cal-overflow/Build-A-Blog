@@ -64,9 +64,9 @@
 </template>
 
 <script>
-import NavBar from '@/components/NavBar.vue';
-import BackToTopButton from '@/components/BackToTopButton.vue';
-import FooterBar from '@/components/FooterBar.vue';
+import NavBar from '@/components/structural/NavBar.vue';
+import BackToTopButton from '@/components/helpers/BackToTopButton.vue';
+import FooterBar from '@/components/structural/FooterBar.vue';
 
 export default {
   name: 'post',

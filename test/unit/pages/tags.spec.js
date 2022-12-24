@@ -3,9 +3,9 @@ import Chance from 'chance';
 import generateTag from '../../helpers/tagGenerator.js';
 import tags from '@/pages/tags.vue';
 import TagPreview from '@/components/previews/Tag.vue';
-import NavBar from '@/components/NavBar.vue';
-import FooterBar from '@/components/FooterBar.vue';
-import Divider from '@/components/Divider.vue';
+import NavBar from '@/components/structural/NavBar.vue';
+import FooterBar from '@/components/structural/FooterBar.vue';
+import Divider from '@/components/helpers/Divider.vue';
 
 
 const chance = new Chance();

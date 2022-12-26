@@ -41,9 +41,9 @@
 </template>
 
 <script>
-import FooterBar from '@/components/FooterBar.vue';
-import NavBar from '@/components/NavBar.vue';
-import Divider from '@/components/Divider.vue';
+import FooterBar from '@/components/structural/FooterBar.vue';
+import NavBar from '@/components/structural/NavBar.vue';
+import Divider from '@/components/helpers/Divider.vue';
 
 export default {
   name: 'error',

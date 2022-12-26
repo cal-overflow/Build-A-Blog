@@ -2,9 +2,9 @@ import { shallowMount, RouterLinkStub } from '@vue/test-utils';
 import Chance from 'chance';
 import generatePost from '../../../helpers/postGenerator';
 import post from '@/pages/post/_.vue';
-import NavBar from '@/components/NavBar.vue';
-import BackToTopButton from '@/components/BackToTopButton.vue';
-import FooterBar from '@/components/FooterBar.vue';
+import NavBar from '@/components/structural/NavBar.vue';
+import BackToTopButton from '@/components/helpers/BackToTopButton.vue';
+import FooterBar from '@/components/structural/FooterBar.vue';
 
 const chance = new Chance();
 

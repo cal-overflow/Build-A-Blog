@@ -21,7 +21,7 @@
 
 <script>
 import TagList from './TagList.vue';
-import NavItem from '@/components/NavItem.vue';
+import NavItem from '@/components/navigation/NavItem.vue';
 
 export default {
   name: 'tag-dropdown',

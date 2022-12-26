@@ -1,8 +1,8 @@
 import { shallowMount } from '@vue/test-utils';
 import contact from '@/pages/contact.vue';
-import ContactForm from '@/components/ContactForm.vue';
-import NavBar from '@/components/NavBar.vue';
-import FooterBar from '@/components/FooterBar.vue';
+import ContactForm from '@/components/forms/ContactForm.vue';
+import NavBar from '@/components/structural/NavBar.vue';
+import FooterBar from '@/components/structural/FooterBar.vue';
 
 describe('contact page', () => {
   let wrapper;

@@ -36,11 +36,11 @@
 </template>
 
 <script>
-import Divider from '@/components/Divider.vue';
+import Divider from '@/components/helpers/Divider.vue';
 import TagPreview from '@/components/previews/Tag.vue';
-import NavBar from '@/components/NavBar.vue';
-import FooterBar from '@/components/FooterBar.vue';
-import BackToTopButton from '@/components/BackToTopButton.vue';
+import NavBar from '@/components/structural/NavBar.vue';
+import FooterBar from '@/components/structural/FooterBar.vue';
+import BackToTopButton from '@/components/helpers/BackToTopButton.vue';
 
 export default {
   name: 'tags',

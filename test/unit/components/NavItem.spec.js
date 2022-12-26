@@ -1,6 +1,6 @@
 import { mount, RouterLinkStub } from '@vue/test-utils';
 import Chance from 'chance';
-import NavItem from '@/components/NavItem.vue';
+import NavItem from '@/components/navigation/NavItem.vue';
 
 const chance = new Chance();
 

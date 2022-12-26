@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 import Chance from "chance";
-import ContactForm from '@/components/ContactForm.vue';
+import ContactForm from '@/components/forms/ContactForm.vue';
 
 const chance = new Chance();
 

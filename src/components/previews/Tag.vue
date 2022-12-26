@@ -68,9 +68,9 @@
 </template>
 
 <script>
-import Divider from '@/components/Divider.vue';
+import Divider from '@/components/helpers/Divider.vue';
 import PostPreview from '@/components/previews/Post.vue';
-import ToolTip from '@/components/ToolTip.vue';
+import ToolTip from '@/components/helpers/ToolTip.vue';
 
 export default {
   name: 'tag-preview',

@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import NavBar from '@/components/NavBar.vue';
-import BlogFeed from '@/components/BlogFeed.vue';
-import FooterBar from '@/components/FooterBar.vue';
-import BackToTopButton from '@/components/BackToTopButton.vue';
+import NavBar from '@/components/structural/NavBar.vue';
+import BlogFeed from '@/components/views/BlogFeed.vue';
+import FooterBar from '@/components/structural/FooterBar.vue';
+import BackToTopButton from '@/components/helpers/BackToTopButton.vue';
 
 export default {
   name: 'blog',

@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import TagDropdown from './TagDropdown.vue';
-import NavItem from './NavItem.vue';
+import TagDropdown from '../navigation/TagDropdown.vue';
+import NavItem from '../navigation/NavItem.vue';
 
 export default {
   name: 'nav-bar',

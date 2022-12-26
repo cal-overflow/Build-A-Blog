@@ -1,8 +1,8 @@
 import { shallowMount } from '@vue/test-utils';
 import Chance from 'chance';
-import NavItem from '@/components/NavItem.vue';
-import TagDropdown from '@/components/TagDropdown.vue';
-import TagList from '@/components/TagList.vue';
+import NavItem from '@/components/navigation/NavItem.vue';
+import TagDropdown from '@/components/navigation/TagDropdown.vue';
+import TagList from '@/components/navigation/TagList.vue';
 
 const chance = new Chance();
 

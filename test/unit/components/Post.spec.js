@@ -2,7 +2,7 @@ import { shallowMount, RouterLinkStub } from '@vue/test-utils';
 import generatePost from '../../helpers/postGenerator';
 import PostView from '@/components/views/Post.vue';
 
-describe('post page', () => {
+describe('post component', () => {
   let wrapper;
   const post = generatePost();
 

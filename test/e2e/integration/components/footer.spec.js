@@ -2,7 +2,7 @@ describe('Footer bar', () => {
   beforeEach(() => {
     cy.visit('/');
     cy.wait(500);
-    cy.get('#footer-bar').scrollIntoView({duration: 500 });
+    cy.get('#footer-bar').scrollIntoView({ duration: 500 });
   });
 
   it('links to the blog page correctly', () => {

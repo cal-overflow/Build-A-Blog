@@ -14,7 +14,7 @@ describe('PagePreview component', () => {
       },
       propsData: {
         content: {
-          body: `${chance.sentence()}\n\n${chance.paragraph()}`}
+          body: `${chance.sentence()}\n\n${chance.paragraph()}` }
       }
     });
   });

@@ -35,7 +35,7 @@ describe('Post page', () => {
   it('shows the menu and footer bar', () => {
     if (postCount > 0) {
       cy.get('#nav-bar').should('be.visible');
-      cy.get('#footer-bar').scrollIntoView({duration: 500 });
+      cy.get('#footer-bar').scrollIntoView({ duration: 500 });
       cy.get('#footer-bar').should('be.visible');
     }
   });

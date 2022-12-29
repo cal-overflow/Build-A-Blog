@@ -27,7 +27,7 @@ describe('TagDropdown component', () => {
   });
 
   it('renders the navItem as active given the currentPage is "Tags"', () => {
-    wrapper = shallowMount(TagDropdown, {propsData: { currentPage: 'Tags' }});
+    wrapper = shallowMount(TagDropdown, { propsData: { currentPage: 'Tags' } });
     navItems = wrapper.findAllComponents(NavItem);
 
     const navItem = navItems.filter((el) => el.text().includes('Tags')).at(0);
@@ -44,7 +44,7 @@ describe('TagDropdown component', () => {
 
   it('TagList component is rendered with correct currentPage prop', () => {
     const fakeCurrentPage = chance.string();
-    wrapper = shallowMount(TagDropdown, {propsData: { currentPage: fakeCurrentPage }});
+    wrapper = shallowMount(TagDropdown, { propsData: { currentPage: fakeCurrentPage } });
     expect(wrapper.findComponent(TagList).props('currentPage')).toEqual(fakeCurrentPage);
   });
 

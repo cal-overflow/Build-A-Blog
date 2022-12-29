@@ -104,7 +104,7 @@ export default {
         .limit(totalPosts + 1);
       
       if (this.tag) {
-        fetchPosts = fetchPosts.where({tags: { $contains: this.tag.title }});
+        fetchPosts = fetchPosts.where({ tags: { $contains: this.tag.title } });
       }
         
       const tempPosts = await fetchPosts.fetch()

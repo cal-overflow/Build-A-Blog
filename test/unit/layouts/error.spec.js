@@ -9,7 +9,7 @@ describe('error layout', () => {
 
   beforeEach(() => {
     mockError = {
-      statusCode: chance.integer({min: 400, max: 599}),
+      statusCode: chance.integer({ min: 400, max: 599 }),
       message: chance.sentence(),
       error: new Error(chance.sentence(0))
     };
@@ -43,11 +43,11 @@ describe('error layout', () => {
   });
 
   it('renders a link to the home page', () => {
-    expect(wrapper.findComponent({ref: 'back-home'}).props('to')).toEqual('/');
+    expect(wrapper.findComponent({ ref: 'back-home' }).props('to')).toEqual('/');
   });
 
   it('renders a link to the contact page with the correct query parameters', () => {
     const expectedContactLink = `/contact?statusCode=${mockError.statusCode}&path=${encodeURIComponent(mockPath)}&detail=${encodeURIComponent(mockError.error.message)}`;
-    expect(wrapper.findComponent({ref: 'contact-link'}).props('to')).toEqual(expectedContactLink);
+    expect(wrapper.findComponent({ ref: 'contact-link' }).props('to')).toEqual(expectedContactLink);
   });
 });

@@ -30,7 +30,7 @@ describe('Back to Top button', () => {
   describe('after scrolling down the page', () => {
     beforeEach(() => {
       if (postCount > 10) {
-        cy.get('#footer-bar').scrollIntoView({duration: 500 });
+        cy.get('#footer-bar').scrollIntoView({ duration: 500 });
       }
       else cy.log('Not enough posts to test backToTopButton on. Skipping test');
     });

@@ -6,7 +6,7 @@
           <p class="text-center md:text-left text-3xl font-bold">{{tag.title}}</p>
           <p class="text-center md:text-left text-md">{{tag.description}}</p>
         </div>
-        <p v-else class="text-center text-3xl font-bold">Blog</p>
+        <p v-else class="text-center text-3xl font-bold">{{title}}</p>
       </div>
     </div>
     <divider />
@@ -58,7 +58,7 @@ import Divider from '@/components/helpers/Divider.vue';
 import PostPreview from '@/components/previews/Post.vue';
 
 export default {
-  name: 'blog-feed',
+  name: 'post-feed',
   components: {
     Divider,
     PostPreview,
@@ -67,6 +67,11 @@ export default {
     tag: {
       default: undefined,
       type: Object,
+      required: false,
+    },
+    title: {
+      default: 'Feed',
+      type: String,
       required: false,
     }
   },
@@ -113,7 +118,7 @@ export default {
 
       if (tempPosts) {
         this.isMorePosts = tempPosts.length > totalPosts;
-        if (this.isMorePosts) tempPosts.pop(); // Remove last blog post
+        if (this.isMorePosts) tempPosts.pop(); // Remove last post
 
         this.posts = tempPosts;
         this.page++;

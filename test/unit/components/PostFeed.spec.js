@@ -1,15 +1,14 @@
 import { shallowMount } from '@vue/test-utils';
 import Chance from 'chance';
 import generatePost from '../../helpers/postGenerator';
-import BlogFeed from '@/components/views/BlogFeed.vue';
+import PostFeed from '@/components/views/PostFeed.vue';
 import PostPreview from '@/components/previews/Post.vue';
 import Divider from '@/components/helpers/Divider.vue';
 
 const chance = new Chance();
-
 const postLimit = 10;
 
-describe('BlogFeed component', () => {
+describe('PostFeed component', () => {
   let wrapper, fakePosts;
 
   const stubs = {
@@ -30,7 +29,7 @@ describe('BlogFeed component', () => {
       // mock nuxt content fetch to never resolve (stuck loading behavior)      
       nuxtContentMock.fetch.mockReturnValue(new Promise(() => ({})));
 
-      wrapper = shallowMount(BlogFeed, {
+      wrapper = shallowMount(PostFeed, {
         mocks: {
           $content: () => nuxtContentMock
         },
@@ -53,7 +52,7 @@ describe('BlogFeed component', () => {
       fakePosts = [];
       nuxtContentMock.fetch.mockResolvedValue(fakePosts);
 
-      wrapper = shallowMount(BlogFeed, {
+      wrapper = shallowMount(PostFeed, {
         mocks: {
           $content: () => nuxtContentMock
         },
@@ -66,18 +65,20 @@ describe('BlogFeed component', () => {
     });
   });
 
-  describe('given there are posts', () => {
+  describe('given there are posts and a title prop is given', () => {
+    const title = chance.string();
     beforeEach(() => {
       fakePosts = chance.n(generatePost, chance.integer({
         min: 1, max: postLimit
       }));
       nuxtContentMock.fetch.mockResolvedValue(fakePosts);
 
-      wrapper = shallowMount(BlogFeed, {
+      wrapper = shallowMount(PostFeed, {
         mocks: {
           $content: () => nuxtContentMock
         },
         stubs,
+        propsData: { title }
       });
     });
   
@@ -88,7 +89,7 @@ describe('BlogFeed component', () => {
     });
   
     it('contains the correct text', () => {
-      expect(wrapper.text()).toContain("Blog");
+      expect(wrapper.text()).toContain(title);
     });
   
     it('contains a Divider component', () => {
@@ -120,6 +121,16 @@ describe('BlogFeed component', () => {
     });
   });
 
+  describe('given no title prop is given', () => {  
+    beforeEach(() => {
+      wrapper = shallowMount(PostFeed);
+    });
+
+    it('contains the correct text', () => {
+      expect(wrapper.text()).toContain("Feed");
+    });
+  });
+
   describe('given there are more posts than can possibly be displayed on the page', () => {
     beforeEach(() => {
       fakePosts = chance.n(generatePost, chance.integer({
@@ -128,7 +139,7 @@ describe('BlogFeed component', () => {
       }));
       nuxtContentMock.fetch.mockResolvedValue(fakePosts);
 
-      wrapper = shallowMount(BlogFeed, {
+      wrapper = shallowMount(PostFeed, {
         mocks: {
           $content: () => nuxtContentMock,
         },
@@ -192,7 +203,7 @@ describe('BlogFeed component', () => {
 
       nuxtContentMock.fetch.mockResolvedValue(fakePosts);
 
-      wrapper = shallowMount(BlogFeed, {
+      wrapper = shallowMount(PostFeed, {
         mocks: {
           $content: () => nuxtContentMock
         },
@@ -228,7 +239,7 @@ describe('BlogFeed component', () => {
 
       nuxtContentMock.fetch.mockRejectedValue(fakeError);
 
-      wrapper = shallowMount(BlogFeed, {
+      wrapper = shallowMount(PostFeed, {
         mocks: {
           $content: () => nuxtContentMock,
           $nuxt: nuxtMock

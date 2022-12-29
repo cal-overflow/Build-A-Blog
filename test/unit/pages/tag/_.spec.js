@@ -1,7 +1,7 @@
 import { shallowMount } from '@vue/test-utils';
 import Chance from 'chance';
 import tag from '@/pages/tag/_.vue';
-import BlogFeed from '@/components/views/BlogFeed.vue';
+import PostFeed from '@/components/views/PostFeed.vue';
 import NavBar from '@/components/structural/NavBar.vue';
 import BackToTopButton from '@/components/helpers/BackToTopButton.vue';
 import FooterBar from '@/components/structural/FooterBar.vue';
@@ -104,8 +104,8 @@ describe('tag page', () => {
       expect(nuxtContentMock.fetch).toBeCalledTimes(1);
     });
 
-    it('renders a BlogFeed component with the correct prop', () => {
-      const feed = wrapper.findComponent(BlogFeed);
+    it('renders a PostFeed component with the correct prop', () => {
+      const feed = wrapper.findComponent(PostFeed);
       
       expect(feed.exists()).toBeTruthy();
       expect(feed.props('tag')).toEqual(fakeTag);

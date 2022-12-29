@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
 import blog from '@/pages/blog.vue';
-import BlogFeed from '@/components/views/BlogFeed.vue';
+import PostFeed from '@/components/views/PostFeed.vue';
 import NavBar from '@/components/structural/NavBar.vue';
 import BackToTopButton from '@/components/helpers/BackToTopButton.vue';
 import FooterBar from '@/components/structural/FooterBar.vue';
@@ -22,8 +22,8 @@ describe('blog page', () => {
     expect(navBar.props('currentPage')).toEqual('Blog');
   });
 
-  it('contains the BlogFeed component', () => {
-    expect(wrapper.findComponent(BlogFeed).exists()).toBeTruthy();
+  it('contains the PostFeed component', () => {
+    expect(wrapper.findComponent(PostFeed).exists()).toBeTruthy();
   });
 
   it('contains the BackToTopButton component', () => {

@@ -21,7 +21,7 @@ describe('contact page', () => {
     expect(navBar.props('currentPage')).toEqual('Contact');
   });
 
-  it('contains the BlogFeed component', () => {
+  it('contains the PostFeed component', () => {
     expect(wrapper.findComponent(ContactForm).exists()).toBeTruthy();
   });
 

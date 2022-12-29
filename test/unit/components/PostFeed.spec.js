@@ -112,7 +112,7 @@ describe('PostFeed component', () => {
   
     it('renders a component for each post', () => {
       fakePosts.forEach((post) => {
-        expect(wrapper.findComponent({ref: post.slug})).toBeTruthy();
+        expect(wrapper.findComponent({ ref: post.slug })).toBeTruthy();
       });
     });
 
@@ -174,7 +174,7 @@ describe('PostFeed component', () => {
     });
 
     it('renders a "loadMorePosts" element that retrieves more posts on press', async () => {
-      const loadMoreWrapper = wrapper.findComponent({ref: 'loadMorePosts'});
+      const loadMoreWrapper = wrapper.findComponent({ ref: 'loadMorePosts' });
 
       expect(loadMoreWrapper.text()).toContain('Load more');
 
@@ -222,7 +222,7 @@ describe('PostFeed component', () => {
     it('envokes the nuxt content "where" method to find the correct posts', () => {
       expect(nuxtContentMock.where).toBeCalledTimes(1);
       expect(nuxtContentMock.where).toBeCalledWith({
-        tags: {$contains: tag.title}
+        tags: { $contains: tag.title }
       });
     });
   });

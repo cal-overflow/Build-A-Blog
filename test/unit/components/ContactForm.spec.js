@@ -23,7 +23,7 @@ describe('ContactForm', () => {
     beforeEach(() => {
       wrapper = mount(ContactForm, {
         mocks: {
-          $route: {query: []}
+          $route: { query: [] }
         }
       });
     });
@@ -61,14 +61,14 @@ describe('ContactForm', () => {
   describe('given there are query params entailing an error', () => {
     beforeEach(() => {
       query = {
-        statusCode: chance.integer({min: 400, max: 599}),
+        statusCode: chance.integer({ min: 400, max: 599 }),
         path: chance.string(),
         detail: chance.sentence(),
       };
 
       wrapper = mount(ContactForm, {
         mocks: {
-          $route: {query} 
+          $route: { query } 
         }
       });
     });
@@ -111,7 +111,7 @@ describe('ContactForm', () => {
 
       wrapper = mount(ContactForm, {
         mocks: {
-          $route: {query} 
+          $route: { query } 
         }
       });
     });

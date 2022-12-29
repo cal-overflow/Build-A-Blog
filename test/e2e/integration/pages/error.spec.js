@@ -6,14 +6,14 @@ describe('Error page', () => {
   let path;
 
   beforeEach(() => {
-    path = `/${chance.string({pool: 'abcdef'})}`;
+    path = `/${chance.string({ pool: 'abcdef' })}`;
     cy.visit(path);
     cy.wait(500);
   });
 
   it('shows the menu and footer bar', () => {
     cy.get('#nav-bar').should('be.visible');
-    cy.get('#footer-bar').scrollIntoView({duration: 500 });
+    cy.get('#footer-bar').scrollIntoView({ duration: 500 });
     cy.get('#footer-bar').should('be.visible');
   });
 

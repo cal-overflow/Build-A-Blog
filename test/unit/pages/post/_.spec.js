@@ -2,6 +2,7 @@ import { shallowMount, RouterLinkStub } from '@vue/test-utils';
 import Chance from 'chance';
 import generatePost from '../../../helpers/postGenerator';
 import post from '@/pages/post/_.vue';
+import PostView from '@/components/views/Post.vue';
 import NavBar from '@/components/structural/NavBar.vue';
 import BackToTopButton from '@/components/helpers/BackToTopButton.vue';
 import FooterBar from '@/components/structural/FooterBar.vue';
@@ -91,37 +92,9 @@ describe('post page', () => {
       expect(nuxtContentMock.fetch).toBeCalledTimes(1);
     });
 
-    it('renders the post title and date correctly', () => {
-      expect(wrapper.text()).toContain(fakePost.title);
-      expect(wrapper.text()).toContain(fakePost.date);
-    });
-
-    it('renders the post tags correctly', () => {
-      expect(wrapper.text()).toContain(fakePost.title);
-      expect(wrapper.text()).toContain(fakePost.date);
-      
-      fakePost.tags.forEach((tag) => {
-        expect(wrapper.text()).toContain(tag);
-      });
-    });
-
-    it('renders the post tags with the correct link', () => {
-      const linkComponents = wrapper.findAllComponents(RouterLinkStub);
-
-      fakePost.tags.forEach((tag) => {
-        const expectedPath = `/tag/${tag.toLowerCase().replace(' ', '-')}`;
-
-        const component = linkComponents.wrappers.find((el) => el.text() === tag);
-        expect(component.props('to')).toEqual(expectedPath);
-      });
-    });
-
-    it('renders the post feature image correctly', () => {
-      expect(wrapper.html()).toContain(`<img id="post-feature-image" src="${fakePost.img}"`);
-    });
-
-    it('contains nuxt content element for the post body', () => {
-      expect(wrapper.html()).toContain('<nuxt-content-stub');
+    it('contains the PostView component', () => {
+      const postView = wrapper.findComponent(PostView);
+      expect(postView.exists()).toBeTruthy();
     });
 
     describe('given there is an issue fetching data', () => {

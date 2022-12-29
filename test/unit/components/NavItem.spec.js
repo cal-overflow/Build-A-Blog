@@ -47,7 +47,7 @@ describe('NavItem component', () => {
   });
 
   it('has the correct classes (styling) when on current page', async () => {
-    await wrapper.setProps({active: true});
+    await wrapper.setProps({ active: true });
     nuxtLink = wrapper.findComponent(RouterLinkStub);
 
     expect(nuxtLink.html()).toContain('class="p-3 hover:underline align-middle transition text-primary-light dark:text-primary-dark"');

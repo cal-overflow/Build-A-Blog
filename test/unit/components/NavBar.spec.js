@@ -23,7 +23,7 @@ describe('NavBar component', () => {
 
   beforeEach(() => {
     wrapper = shallowMount(NavBar, {
-      propsData: {currentPage: 'Home'},
+      propsData: { currentPage: 'Home' },
     });
     navItems = wrapper.findAllComponents(NavItem);
   });

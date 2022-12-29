@@ -82,8 +82,8 @@ describe('TagPreview component', () => {
       fakeIndex = chance.integer();
       numberFakePosts = chance.integer({ min: 2, max: postLimit });
       fakePosts = chance.n(() => generatePost(fakeTag.title), numberFakePosts);
-      fakeTimePerPostPreview = chance.integer({min: 3000, max: 7000});
-      fakeTimeSinceLastSwitch = fakeTimePerPostPreview - chance.integer({min: 50, max: 2000});
+      fakeTimePerPostPreview = chance.integer({ min: 3000, max: 7000 });
+      fakeTimeSinceLastSwitch = fakeTimePerPostPreview - chance.integer({ min: 50, max: 2000 });
 
       nuxtContentMock.fetch.mockResolvedValue(fakePosts);
 
@@ -97,7 +97,7 @@ describe('TagPreview component', () => {
           index: fakeIndex,
         },
       });
-      wrapper.setData({timePerPostPreview: fakeTimePerPostPreview, timeSinceLastSwitch: fakeTimeSinceLastSwitch});
+      wrapper.setData({ timePerPostPreview: fakeTimePerPostPreview, timeSinceLastSwitch: fakeTimeSinceLastSwitch });
     });
 
     it('contains n number ToolTips', () => {

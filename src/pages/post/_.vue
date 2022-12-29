@@ -67,13 +67,15 @@
 import NavBar from '@/components/structural/NavBar.vue';
 import BackToTopButton from '@/components/helpers/BackToTopButton.vue';
 import FooterBar from '@/components/structural/FooterBar.vue';
+import Divider from '@/components/helpers/Divider.vue';
 
 export default {
   name: 'post',
   components: {
     NavBar,
     BackToTopButton,
-    FooterBar
+    FooterBar,
+    Divider
   },
   async asyncData({ $content, params, error }) {
     const slug = params.pathMatch;

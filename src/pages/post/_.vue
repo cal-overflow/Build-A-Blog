@@ -1,7 +1,7 @@
 <template>
   <main>
     <nav-bar current-page="Blog" />
-    <post-view :post="post" />
+    <post-view :route="$router.history.current.path" />
     <back-to-top-button />
     <footer-bar current-page="Blog" />
   </main>
@@ -43,8 +43,6 @@ export default {
 
     return {
       post,
-      isEditing: false,
-      isDevMode: process.env.NODE_ENV === 'development'
     };
   },
   head() {

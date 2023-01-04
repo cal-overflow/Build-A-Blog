@@ -3,18 +3,18 @@
     <div v-if="post" id="post-card" class="bg-card-light dark:bg-card-dark m-0 md:m-6 p-4 flex flex-wrap shadow-lg dark:shadow-shadow-dark hover:shadow-none hover:rounded motion-safe:animate-fade-in transition">
       <div class="w-full p-4">
         <div v-if="!isEditing">
-          <p id="post-title" class="text-4xl md:text-5xl lg:text-6xl font-bold mb-2 !leading-tight">{{post.title}}</p>
+          <p id="post-title" class="text-4xl md:text-5xl lg:text-6xl font-bold mb-2 !leading-tight">{{ post.title }}</p>
 
           <div class="text-extra-gray-dark dark:text-extra-gray-light transition">
-            <p id="post-metadata">{{post.date}}
+            <p id="post-metadata">{{ post.date }}
               <span v-if="post.tags.length">
                 <span class="hidden md:inline">/</span>
                 <br class="md:hidden" />
-                <span
-                  v-for="(tag, i) in post.tags"
+                <span 
+                  v-for="(tag, i) in post.tags" 
                   :key="`tags-${tag}`"
                 >
-                  <nuxt-link :to="`/tag/${tag.toLowerCase().replace(' ', '-')}`" class="hover:underline">{{tag}}</nuxt-link>{{(i + 1) === post.tags.length ? '' : ', '}}
+                  <nuxt-link :to="`/tag/${tag.toLowerCase().replace(' ', '-')}`" class="hover:underline">{{ tag }}</nuxt-link>{{ (i + 1) === post.tags.length ? '' : ', ' }}
                 </span>
               </span>
             </p>
@@ -23,7 +23,7 @@
 
         <div v-if="!isEditing">
           <img id="post-feature-image" :src="image" class="object-contain w-full md:w-3/4 3xl:w-3/4 mx-auto lg:mx-auto max-h-screen" />
-          
+
           <div v-if="isDevMode">
             <divider />
             <p class="text-sm text-center text-extra-gray-dark dark:text-extra-gray-light">
@@ -34,12 +34,12 @@
             <divider />
           </div>
         </div>
-        <nuxt-content
-          id="post-content"
-          :document="post"
+        <nuxt-content 
+          id="post-content" 
+          :document="post" 
           class="prose m-4 mx-auto max-w-none prose-img:w-max prose-img:mx-auto prose-a:underline hover:prose-a:no-underline prose-a:text-primary-light dark:prose-invert dark:prose-a:text-primary-dark transition"
-          @startEdit="isEditing = true"
-          @endEdit="isEditing = false"
+          @startEdit="isEditing = true" 
+          @endEdit="isEditing = false" 
         />
       </div>
     </div>
@@ -49,9 +49,9 @@
         <div class="bg-white w-80 lg:w-96 h-16 mb-2" />
         <div class="bg-gray-300 w-60 h-4 mb-1" />
 
-      <div class="bg-gray-500 w-full md:w-3/4 lg:w-8/12 mx-auto lg:mx-auto h-96 max-h-screen" />
-      <div v-for="i in 20" :key="i" class="bg-gray-400 w-full h-3 my-2" />
-      <div class="bg-gray-400 w-60 h-3 mb-2"/>
+        <div class="bg-gray-500 w-full md:w-3/4 lg:w-8/12 mx-auto lg:mx-auto h-96 max-h-screen" />
+        <div v-for="i in 20" :key="i" class="bg-gray-400 w-full h-3 my-2" />
+        <div class="bg-gray-400 w-60 h-3 mb-2" />
 
       </div>
     </div>
@@ -67,11 +67,30 @@ export default {
     Divider
   },
   props: {
-    post: {
+    route: {
       default: undefined,
-      type: Object,
+      type: String,
       required: true,
     },
+  },
+  data: () => ({
+    post: undefined,
+    isEditing: false,
+    isDevMode: process.env.NODE_ENV === 'development'
+  }),
+  async fetch() {
+    const lastIndex = this.route.lastIndexOf('/');
+    // The +s exists here because the page is on /post but the content is in /posts. This issue will not exist with the wildcard PR. 
+    const directory = this.route.slice(0, lastIndex).substring(1) + "s";
+    const slug = this.route.slice(lastIndex + 1);
+
+    const posts = await this.$content(directory)
+      .search('slug', slug)
+      .fetch();
+
+    this.post = posts?.find((post) => post.slug === slug);
+    this.isEditing = false;
+    this.isDevMode = process.env.NODE_ENV === 'development';
   },
   computed: {
     image() {

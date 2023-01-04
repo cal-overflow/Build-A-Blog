@@ -46,13 +46,13 @@ describe('PostPreview component', () => {
     it('contains the correctly linked title', () => {
       const title = wrapper.findComponent({ ref: 'title' });
       expect(title.text()).toEqual(post.title);
-      expect(title.props('to')).toEqual(`/post/${post.slug}`);
+      expect(title.props('to')).toEqual(`/posts/${post.slug}`);
     });
 
     it('contains correctly linked feature image', () => {
       const imageWrapper = wrapper.findComponent({ ref: 'feature-image' });
 
-      expect(imageWrapper.props('to')).toEqual(`/post/${post.slug}`);
+      expect(imageWrapper.props('to')).toEqual(`/posts/${post.slug}`);
       expect(imageWrapper.html()).toContain(`<img src="${post.img}"`);
     });
     
@@ -76,7 +76,7 @@ describe('PostPreview component', () => {
       const continueLink = wrapper.findComponent({ ref: 'continue-reading' });
 
       expect(continueLink.text()).toEqual('Continue reading');
-      expect(continueLink.props('to')).toEqual(`/post/${post.slug}`);
+      expect(continueLink.props('to')).toEqual(`/posts/${post.slug}`);
     });
   });
 });

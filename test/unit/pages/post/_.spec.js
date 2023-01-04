@@ -1,7 +1,7 @@
 // import { shallowMount, RouterLinkStub } from '@vue/test-utils';
 // import Chance from 'chance';
 // import generatePost from '../../../helpers/postGenerator';
-// import post from '@/pages/post/_.vue';
+// import post from '@/pages/posts/_.vue';
 // import PostView from '@/components/views/Post.vue';
 // import NavBar from '@/components/structural/NavBar.vue';
 // import BackToTopButton from '@/components/helpers/BackToTopButton.vue';

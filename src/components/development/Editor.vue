@@ -143,7 +143,7 @@ export default {
       if (this.isEditingEnabled) {
         this.file = this.value;
         this.originalFileObj = matter(this.file);
-        const isPost = this.$nuxt.$route.path === `/post/${this.originalFileObj.data.slug}`;
+        const isPost = this.$nuxt.$route.path === `/posts/${this.originalFileObj.data.slug}`;
   
         if (isPost) {
           this.post = {
@@ -249,7 +249,7 @@ export default {
       this.$parent.$emit('endEdit');
 
       if (this.post && this.post.data.slug !== this.originalFileObj.data.slug) {
-        const path = `/post/${this.slug}`;
+        const path = `/posts/${this.slug}`;
 
         this.$nuxt.error({
           statusCode: 303,

@@ -80,8 +80,7 @@ export default {
   }),
   async fetch() {
     const lastIndex = this.route.lastIndexOf('/');
-    // The +s exists here because the page is on /post but the content is in /posts. This issue will not exist with the wildcard PR. 
-    const directory = this.route.slice(0, lastIndex).substring(1) + "s";
+    const directory = this.route.slice(0, lastIndex).substring(1);
     const slug = this.route.slice(lastIndex + 1);
 
     const posts = await this.$content(directory)

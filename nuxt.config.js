@@ -71,7 +71,7 @@ export default {
           feed.addItem({
             title: post.title,
             id: post.slug,
-            link: `${process.env.NUXT_ENV_SITE_URL}/post/${post.slug}`,
+            link: `${process.env.NUXT_ENV_SITE_URL}/posts/${post.slug}`,
             description: `posted on: ${post.date}`,
           });
         });

@@ -54,45 +54,46 @@ export default {
   ],
 
   feed: [
-    { // (mostly) default feed object from feed module
-      path: '/feed.xml',
-      async create(feed) {
-        const { $content } = require('@nuxt/content');
+    // TODO - fix (issue #132)
+    // { // (mostly) default feed object from feed module
+    //   path: '/feed.xml',
+    //   async create(feed) {
+    //     const { $content } = require('@nuxt/content');
         
-        feed.options = {
-          title: process.env.NUXT_ENV_FULL_NAME,
-          link: `${process.env.NUXT_ENV_SITE_URL}/feed.xml`,
-          description: `Blog posts from ${process.env.NUXT_ENV_FULL_NAME}`,
-        };
+    //     feed.options = {
+    //       title: process.env.NUXT_ENV_FULL_NAME,
+    //       link: `${process.env.NUXT_ENV_SITE_URL}/feed.xml`,
+    //       description: `Blog posts from ${process.env.NUXT_ENV_FULL_NAME}`,
+    //     };
 
-        const posts = await $content('posts').sortBy('createdAt', 'asc').fetch();
+    //     const posts = await $content('posts').sortBy('createdAt', 'asc').fetch();
 
-        posts.forEach((post) => {
-          feed.addItem({
-            title: post.title,
-            id: post.slug,
-            link: `${process.env.NUXT_ENV_SITE_URL}/posts/${post.slug}`,
-            description: `posted on: ${post.date}`,
-          });
-        });
+    //     posts.forEach((post) => {
+    //       feed.addItem({
+    //         title: post.title,
+    //         id: post.slug,
+    //         link: `${process.env.NUXT_ENV_SITE_URL}/posts/${post.slug}`,
+    //         description: `posted on: ${post.date}`,
+    //       });
+    //     });
 
-        const tagContent = await $content('tags').fetch();
+    //     const tagContent = await $content('tags').fetch();
   
-        tagContent.tags.forEach((tag) => {
-          feed.addCategory(tag.title);
-        });
+    //     tagContent.tags.forEach((tag) => {
+    //       feed.addCategory(tag.title);
+    //     });
         
-        feed.addContributor({
-          name: process.env.NUXT_ENV_FULL_NAME,
-          email: process.env.NUXT_ENV_EMAIL_ADDRESS,
-          link: process.env.NUXT_ENV_SITE_URL
-        });
+    //     feed.addContributor({
+    //       name: process.env.NUXT_ENV_FULL_NAME,
+    //       email: process.env.NUXT_ENV_EMAIL_ADDRESS,
+    //       link: process.env.NUXT_ENV_SITE_URL
+    //     });
 
-      },
-      cacheTime: 1000 * 60 * 15,
-      type: 'rss2',
-      data: [`${process.env.NUXT_ENV_FULL_NAME}'s Blog Feed`]
-    }
+    //   },
+    //   cacheTime: 1000 * 60 * 15,
+    //   type: 'rss2',
+    //   data: [`${process.env.NUXT_ENV_FULL_NAME}'s Blog Feed`]
+    // }
   ],
 
   srcDir: 'src',

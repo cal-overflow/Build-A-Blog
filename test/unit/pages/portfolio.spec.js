@@ -10,6 +10,6 @@ describe('portfolio page', () => {
   });
 
   it('redirects to the portfolio tag page', () => {
-    expect(redirect).toBeCalledWith('/tag/portfolio');
+    expect(redirect).toBeCalledWith('/tags/portfolio');
   });
 });

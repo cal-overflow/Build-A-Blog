@@ -3,7 +3,7 @@
     v-if="tag" 
     class="tag-preview-card bg-card-light dark:bg-card-dark m-6 p-6 hover:rounded shadow-md dark:shadow-shadow-dark hover:shadow-none motion-safe:animate-fade-in transition"
   >
-    <nuxt-link ref="title" :to="`/tag/${tag.slug}`" class="font-bold text-2xl hover:underline">
+    <nuxt-link ref="title" :to="`/tags/${tag.slug}`" class="font-bold text-2xl hover:underline">
       {{tag.title}}
     </nuxt-link>
     <p class="text-md">{{tag.description}}</p>
@@ -43,7 +43,7 @@
               />
             </div>
           </div>
-          <nuxt-link ref="view-tag" :to="`/tag/${tag.slug}`" class="text-extra-gray-dark dark:text-extra-gray-light text-md underline hover:no-underline transition">
+          <nuxt-link ref="view-tag" :to="`/tags/${tag.slug}`" class="text-extra-gray-dark dark:text-extra-gray-light text-md underline hover:no-underline transition">
             View all posts
           </nuxt-link>
         </div>

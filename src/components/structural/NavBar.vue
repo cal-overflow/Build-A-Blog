@@ -51,7 +51,7 @@ export default {
       },
       {
         title: 'Portfolio',
-        href: '/tag/portfolio'
+        href: '/tags/portfolio'
       }
     ],
   })

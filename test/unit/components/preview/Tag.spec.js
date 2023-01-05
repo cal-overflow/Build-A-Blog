@@ -53,7 +53,7 @@ describe('TagPreview component', () => {
     it('contains the correctly linked title', () => {
       const title = wrapper.findComponent({ ref: 'title' });
       expect(title.text()).toContain(fakeTag.title);
-      expect(title.props('to')).toEqual(`/tag/${fakeTag.slug}`);
+      expect(title.props('to')).toEqual(`/tags/${fakeTag.slug}`);
     });
 
     it('contains the correct tag description', () => {
@@ -115,7 +115,7 @@ describe('TagPreview component', () => {
       const link = wrapper.findComponent({ ref: "view-tag" });
 
       expect(link.text()).toContain("View all posts");
-      expect(link.props('to')).toEqual(`/tag/${fakeTag.slug}`);
+      expect(link.props('to')).toEqual(`/tags/${fakeTag.slug}`);
     });
 
     it('previewPercentage works', () => {

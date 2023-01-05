@@ -1,6 +1,6 @@
 describe('Portfolio page', () => {
   beforeEach(() => {
-    cy.visit('/tag/portfolio');
+    cy.visit('/tags/portfolio');
     cy.wait(500);
   });
   it('shows the menu and footer bar', () => {

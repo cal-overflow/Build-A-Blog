@@ -4,7 +4,7 @@
       v-for="(tag, i) in tags"
       :key="tag.title"
       :ref="tag.slug"
-      :href="`/tag/${tag.slug}`"
+      :href="`/tags/${tag.slug}`"
       class="text-center mx-4 transition"
       :style="`animation: fade-in ${((i + 1) * 0.25)}s ease-in-out;`"
       :active="currentPage === tag.title"

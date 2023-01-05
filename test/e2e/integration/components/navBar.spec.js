@@ -22,7 +22,7 @@ describe('Nav bar', () => {
   
   it('links to the portfolio page correctly', () => {
     cy.contains('Portfolio').click();
-    cy.location('pathname').should('eq', '/tag/portfolio');
+    cy.location('pathname').should('eq', '/tags/portfolio');
   });
 
   describe('Tags dropdown', () => {

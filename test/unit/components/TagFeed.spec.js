@@ -19,7 +19,8 @@ describe('TagFeed component', () => {
     $content: jest.fn().mockReturnThis(),
     where: jest.fn().mockReturnThis(),
     sortBy: jest.fn().mockReturnThis(),
-    fetch: jest.fn(),
+    fetch: jest.fn().mockReturnThis(),
+    limit: jest.fn().mockReturnThis(),
   };
 
 

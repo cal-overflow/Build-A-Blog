@@ -14,7 +14,7 @@
                   v-for="(tag, i) in post.tags" 
                   :key="`tags-${tag}`"
                 >
-                  <nuxt-link :to="`/tag/${tag.toLowerCase().replace(' ', '-')}`" class="hover:underline">{{ tag }}</nuxt-link>{{ (i + 1) === post.tags.length ? '' : ', ' }}
+                  <nuxt-link :to="`/tags/${tag.toLowerCase().replace(' ', '-')}`" class="hover:underline">{{ tag }}</nuxt-link>{{ (i + 1) === post.tags.length ? '' : ', ' }}
                 </span>
               </span>
             </p>

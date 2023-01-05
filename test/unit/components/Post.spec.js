@@ -56,7 +56,7 @@ describe('post component', () => {
   //   const linkComponents = wrapper.findAllComponents(RouterLinkStub);
 
   //   post.tags.forEach((tag) => {
-  //     const expectedPath = `/tag/${tag.toLowerCase().replace(' ', '-')}`;
+  //     const expectedPath = `/tags/${tag.toLowerCase().replace(' ', '-')}`;
 
   //     const component = linkComponents.wrappers.find((el) => el.text() === tag);
   //     expect(component.props('to')).toEqual(expectedPath);

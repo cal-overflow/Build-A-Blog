@@ -52,7 +52,7 @@ describe('TagList component', () => {
 
   it('Renders each NavItem component with the correct href', () => {
     fakeTags.forEach((tag) => {
-      expect(wrapper.findComponent({ ref: tag.slug }).attributes('href')).toEqual(`/tag/${tag.slug}`);
+      expect(wrapper.findComponent({ ref: tag.slug }).attributes('href')).toEqual(`/tags/${tag.slug}`);
     });
   });
 });

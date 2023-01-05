@@ -17,20 +17,17 @@
         >
           {{ item.title }}
         </nav-item>
-        <tag-dropdown :current-page="currentPage" />
       </div>
     </nav>
   </div>
 </template>
 
 <script>
-import TagDropdown from '../navigation/TagDropdown.vue';
 import NavItem from '../navigation/NavItem.vue';
 
 export default {
   name: 'nav-bar',
   components: {
-    TagDropdown,
     NavItem
   },
   props: {

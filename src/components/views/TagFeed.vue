@@ -54,7 +54,7 @@ export default {
         });
       });
 
-    this.tags = content.tags;
+    this.tags = content;
     this.isDoneFetchingTags = true;
   },
 };

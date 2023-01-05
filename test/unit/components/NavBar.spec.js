@@ -2,7 +2,6 @@ import { shallowMount } from '@vue/test-utils';
 import Chance from 'chance';
 import NavBar from '@/components/structural/NavBar.vue';
 import NavItem from '@/components/navigation/NavItem.vue';
-import TagDropdown from '@/components/navigation/TagDropdown.vue';
 
 const chance = new Chance();
 describe('NavBar component', () => {
@@ -58,15 +57,5 @@ describe('NavBar component', () => {
     expect(navItem.exists()).toBeTruthy();
     expect(navItem.props('href')).toEqual('/tags/portfolio');
     expect(navItem.props('active')).not.toBeTruthy();
-  });
-
-  it('renders the Tag dropdown', () => {
-    const dropdown = wrapper.findComponent(TagDropdown);
-    expect(dropdown.exists()).toBeTruthy();
-  });
-  
-  it('passes the currentPage prop into the Tag dropdown component', () => {
-    const dropdown = wrapper.findComponent(TagDropdown);
-    expect(dropdown.props('currentPage')).toEqual('Home');
   });
 });

@@ -61,30 +61,17 @@ jobs:
 
       - name: Build and deploy static site
         run: |
-          npm ci
-          npm run generate
-
-          BUCKET=$(aws cloudformation describe-stacks --stack-name=$STACK_NAME --region $REGION --query 'Stacks[0].Outputs[?OutputKey==`S3BucketName`].OutputValue' --output text)
-
           mkdir example_content
           git clone https://github.com/cal-overflow/example-portfolio-content.git example_content
           cp -r example_content/content/* src/content
           cp -r example_content/assets/* src/assets
+
+          npm ci
+          npm run generate
+
+          BUCKET=$(aws cloudformation describe-stacks --stack-name=$STACK_NAME --region $REGION --query 'Stacks[0].Outputs[?OutputKey==`S3BucketName`].OutputValue' --output text)
           aws s3 sync dist s3://$BUCKET
-
-          # The below should only happen when we want to run e2e tests right after
       
-      - name: Invalidate cloudfront cache
-        run: |
-          DISTRO_ID=$(aws cloudformation describe-stacks --stack-name=$STACK_NAME --region $REGION --query 'Stacks[0].Outputs[?OutputKey==`CloudFrontDistributionId`].OutputValue' --output text)
-          WWW_DISTRO_ID=$(aws cloudformation describe-stacks --stack-name=$STACK_NAME --region $REGION --query 'Stacks[0].Outputs[?OutputKey==`CloudFrontDistributionId`].OutputValue' --output text)
-
-          aws create-invalidation --distribution-id $DISTRO_ID --paths "/*"
-          aws create-invalidation --distribution-id $WWW_DISTRO_ID --paths "/*"
-
-          aws invalidation-completed --distribution-id $DISTRO_ID
-          aws invalidation-completed --distribution-id $WWW_DISTRO_ID
-
 
       # NOTE: being worked on in another branch
       # - name: Run e2e tests 🤖

@@ -1,6 +1,14 @@
-## Files specific to the template:
-src/content/*
+## Template files:
 !.gitkeep
+src/content/*
+src/static/*
+
+src/assets/*
+!src/assets/css/prism-custom-theme.css
+!src/assets/images/github.png
+!src/assets/images/youtube.png
+
+
 
 
 

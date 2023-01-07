@@ -96,8 +96,6 @@ export default {
     // }
   ],
 
-  srcDir: 'src',
-
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {
     nestedProperties: ['post.tags'],
@@ -116,4 +114,6 @@ export default {
   generate: {
     fallback: true,
   },
+
+  srcDir: 'src',
 };

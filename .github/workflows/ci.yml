@@ -55,7 +55,7 @@ jobs:
           mkdir content
           git clone https://github.com/cal-overflow/example-portfolio-content.git content
 
-          mv -f content src
+          cp -r content src
           echo "Contents in src folder:"
           ls src
           echo "Contents in src/content folder:"

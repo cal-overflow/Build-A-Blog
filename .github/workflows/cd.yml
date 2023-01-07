@@ -12,6 +12,7 @@ permissions:
   contents: read
 
 env:
+  STACK_NAME: portfolio-template
   REGION: us-east-1
   DOMAIN: portfolio.cal-overflow.dev
   NUXT_ENV_SITE_URL: https://portfolio.cal-overflow.dev # This value does not matter here

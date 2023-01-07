@@ -8,8 +8,9 @@ on:
       - deploy-aws # TODO - remove
 
 env:
-  DOMAIN: "portfolio.cal-overflow.dev"
-  NUXT_ENV_SITE_URL: "https://portfolio.cal-overflow.dev" # This value does not matter here
+  REGION: us-east-1
+  DOMAIN: portfolio.cal-overflow.dev
+  NUXT_ENV_SITE_URL: https://portfolio.cal-overflow.dev # This value does not matter here
   NUXT_ENV_FULL_NAME: Example Portfolio
   NUXT_ENV_EMAIL_ADDRESS: cal-overflow@users.noreply.github.com
 

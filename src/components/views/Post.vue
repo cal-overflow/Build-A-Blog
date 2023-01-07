@@ -66,22 +66,16 @@ export default {
   components: {
     Divider
   },
-  props: {
-    route: {
-      default: undefined,
-      type: String,
-      required: true,
-    },
-  },
   data: () => ({
     post: undefined,
     isEditing: false,
     isDevMode: process.env.NODE_ENV === 'development'
   }),
   async fetch() {
-    const lastIndex = this.route.lastIndexOf('/');
-    const directory = this.route.slice(0, lastIndex).substring(1);
-    const slug = this.route.slice(lastIndex + 1);
+    const currentRoute = this.$route.fullPath;
+    const lastIndex = currentRoute.lastIndexOf('/');
+    const directory = currentRoute.slice(0, lastIndex).substring(1);
+    const slug = currentRoute.slice(lastIndex + 1);
 
     const posts = await this.$content(directory)
       .search('slug', slug)

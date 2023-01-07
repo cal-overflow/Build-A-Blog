@@ -22,6 +22,6 @@ describe('Nav bar', () => {
   
   it('links to the portfolio page correctly', () => {
     cy.contains('Portfolio').click();
-    cy.location('pathname').should('eq', '/tags/portfolio');
+    cy.location('pathname').should('eq', '/portfolio');
   });
 });

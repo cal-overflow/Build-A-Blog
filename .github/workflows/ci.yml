@@ -1,4 +1,4 @@
-name: ci
+name: PR Validator
 
 on:
   pull_request:
@@ -59,7 +59,7 @@ jobs:
 
       - name: Deploy stack
         run: |
-          sam deploy --stack-name $STACK_NAME --region $REGION
+          sam deploy --stack-name $STACK_NAME --region $REGION -t pr.template.yml
 
       - name: Build and deploy static site
         run: |
@@ -73,17 +73,6 @@ jobs:
 
           BUCKET=$(aws cloudformation describe-stacks --stack-name=$STACK_NAME --region $REGION --query 'Stacks[0].Outputs[?OutputKey==`S3BucketName`].OutputValue' --output text)
           aws s3 sync dist s3://$BUCKET
-
-      - name: Invalidate cloudfront cache
-        run: |
-          DISTRO_ID=$(aws cloudformation describe-stacks --stack-name=$STACK_NAME --region $REGION --query 'Stacks[0].Outputs[?OutputKey==`CloudFrontDistributionId`].OutputValue' --output text)
-          WWW_DISTRO_ID=$(aws cloudformation describe-stacks --stack-name=$STACK_NAME --region $REGION --query 'Stacks[0].Outputs[?OutputKey==`CloudFrontDistributionId`].OutputValue' --output text)
-
-          aws create-invalidation --distribution-id $DISTRO_ID --paths "/*"
-          aws create-invalidation --distribution-id $WWW_DISTRO_ID --paths "/*"
-
-          aws invalidation-completed --distribution-id $DISTRO_ID
-          aws invalidation-completed --distribution-id $WWW_DISTRO_ID
       
       - name: Generate Github Actions summary
         id: generate-summary

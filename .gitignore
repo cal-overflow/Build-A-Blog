@@ -1,6 +1,5 @@
 ## Template files:
 src/content/*
-src/static/*
 
 !.gitkeep
 !.gitignore

@@ -63,12 +63,12 @@ head: {
 
 ### 3. Create essential content
 The `src/content` folder will contain not only the content of the website, but also define the site's structure.
-You can get started by copying the contents of a sample content folder [here]().
+You can get started by copying the contents of a sample content folder [here](https://github.com/cal-overflow/example-portfolio-content).
 
 Learn more about sections [here](#sections).
 
 **Note:** The following sections must be properly defined in the content folder (the website will not function properly without them).
-- Home (`src/content/Home`) - the index page of the website. See an example [here]().
+- Home (`src/content/Home`) - the index page of the website. See an example [here](https://github.com/cal-overflow/example-portfolio-content/tree/main/content/home).
 
 
 

@@ -12,7 +12,7 @@ describe('Footer bar', () => {
   
   it('links to the portfolio page correctly', () => {
     cy.get('#footer-bar').contains('Portfolio').click();
-    cy.location('pathname').should('eq', '/tags/portfolio');
+    cy.location('pathname').should('eq', '/portfolio');
   });
 
   it('links to the home page correctly', () => {

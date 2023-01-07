@@ -48,7 +48,7 @@ export default {
       },
       {
         title: 'Portfolio',
-        href: '/tags/portfolio'
+        href: '/portfolio'
       }
     ],
   })

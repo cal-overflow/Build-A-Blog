@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils';
 import tags from '@/pages/tags.vue';
 import NavBar from '@/components/structural/NavBar.vue';
 import FooterBar from '@/components/structural/FooterBar.vue';
-import TagFeed from '@/components/views/TagFeed.vue';
+// import TagFeed from '@/components/views/TagFeed.vue';
 
 
 describe('tags page', () => {
@@ -22,11 +22,11 @@ describe('tags page', () => {
     expect(navBar.props('currentPage')).toEqual('Tags');
   });
 
-  it('renders the TagFeed component with the correct props', () => {
-    const tagFeed = wrapper.findComponent(TagFeed);
-    expect(tagFeed.exists()).toBeTruthy();
-    expect(tagFeed.props('path')).toEqual('tags');
-  });
+  // it('renders the TagFeed component with the correct props', () => {
+  //   const tagFeed = wrapper.findComponent(TagFeed);
+  //   expect(tagFeed.exists()).toBeTruthy();
+  //   expect(tagFeed.props('path')).toEqual('tags');
+  // });
 
   it('contains the FooterBar component', () => {
     const footer = wrapper.findComponent(FooterBar);

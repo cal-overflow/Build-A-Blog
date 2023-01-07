@@ -19,7 +19,7 @@ export default {
     FooterBar,
   },
   async asyncData({ $content, error }) {
-    const content = await $content('general')
+    const content = await $content('home')
       .fetch()
       .catch((err) => {
         error({

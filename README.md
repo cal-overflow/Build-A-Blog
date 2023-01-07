@@ -66,7 +66,7 @@ Replace the essentials such as the bio and description of the blog/portfolio pag
 
 - [ ] Replace the existing `headshot.png` file within the `src/assets/images/` directory.
 - [ ] Replace the existing `favicon.ico` file within the `src/static/` directory.
-- [ ] Replace the contents of `about.md`, `blog-preview.md`, and `portfolio-preview.md` found within the `src/content/general/` directory.
+- [ ] Replace the contents of `about.md`, `blog-preview.md`, and `portfolio-preview.md` found within the `src/content/home/` directory.
 - [ ] Enter a description for the Portfolio tag by editing the `description` attribute of `src/content/tags.yml`. Refer to the [Post tags](#post-tags) section.
 
 

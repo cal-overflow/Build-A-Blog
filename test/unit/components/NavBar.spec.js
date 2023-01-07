@@ -55,7 +55,7 @@ describe('NavBar component', () => {
     const navItem = navItems.filter((el) => el.text() === 'Portfolio').at(0);
 
     expect(navItem.exists()).toBeTruthy();
-    expect(navItem.props('href')).toEqual('/tags/portfolio');
+    expect(navItem.props('href')).toEqual('/portfolio');
     expect(navItem.props('active')).not.toBeTruthy();
   });
 });

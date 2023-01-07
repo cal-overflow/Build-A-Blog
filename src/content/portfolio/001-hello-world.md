@@ -1,10 +1,9 @@
 ---
-title: Hello, World
+title: PORTFOLIO - Hello, World
 slug: hello-world
 date: May 11, 2022
 img: hello-world.png
-tags:
-  - Portfolio
+tags: []
 ---
 
 *Sample post*

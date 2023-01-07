@@ -32,30 +32,24 @@ export default {
     TagPreview,
     Divider,
   },
-  props: {
-    path: {
-      default: undefined,
-      type: String,
-      required: true,
-    },
-  },
   data: () => ({
     tags: [],
     isDoneFetchingTags: false,
   }),
-  async fetch() {
-    const content = await this.$content(this.path)
-      .fetch()
-      .catch((err) => {
-        this.$error({
-          statusCode: 500,
-          message: 'Something went wrong while fetching tags',
-          error: err
-        });
-      });
+  // TODO - come back to this
+  // async fetch() {
+  //   const content = await this.$content(this.path)
+  //     .fetch()
+  //     .catch((err) => {
+  //       this.$error({
+  //         statusCode: 500,
+  //         message: 'Something went wrong while fetching tags',
+  //         error: err
+  //       });
+  //     });
 
-    this.tags = content;
-    this.isDoneFetchingTags = true;
-  },
+  //   this.tags = content;
+  //   this.isDoneFetchingTags = true;
+  // },
 };
 </script>

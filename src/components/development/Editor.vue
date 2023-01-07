@@ -136,6 +136,11 @@ export default {
     post: undefined,
     isInComposition: false,
   }),
+  computed: {
+    currentRoute() {
+      return this.$route.fullPath;
+    },
+  },
   watch: {
     value() {
       this.isEditingEnabled = !(this.$parent.$attrs.editable === false);
@@ -143,7 +148,8 @@ export default {
       if (this.isEditingEnabled) {
         this.file = this.value;
         this.originalFileObj = matter(this.file);
-        const isPost = this.$nuxt.$route.path === `/posts/${this.originalFileObj.data.slug}`;
+        // TODO - make this work
+        const isPost = this.$nuxt.$route.path === `/blog/${this.originalFileObj.data.slug}`;
   
         if (isPost) {
           this.post = {
@@ -249,7 +255,7 @@ export default {
       this.$parent.$emit('endEdit');
 
       if (this.post && this.post.data.slug !== this.originalFileObj.data.slug) {
-        const path = `/posts/${this.slug}`;
+        const path = `/blog/${this.slug}`;
 
         this.$nuxt.error({
           statusCode: 303,

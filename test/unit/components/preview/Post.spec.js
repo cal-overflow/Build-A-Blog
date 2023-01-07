@@ -1,6 +1,9 @@
 import { mount, RouterLinkStub } from '@vue/test-utils';
+import { Chance } from 'chance';
 import generatePost from '../../../helpers/postGenerator';
 import PostPreview from '@/components/previews/Post.vue';
+
+const chance = new Chance();
 
 describe('PostPreview component', () => {
   let wrapper, post;
@@ -9,10 +12,15 @@ describe('PostPreview component', () => {
     'NuxtLink': RouterLinkStub,
     'nuxt-content': true,
   };
+  const mocks = {
+    '$route': {
+      'fullPath': `/${chance.string({ pool: 'abcdef' })}`
+    }
+  };
 
   describe('given no post is passed in', () => {
     beforeEach(() => {
-      wrapper = mount(PostPreview, { stubs });
+      wrapper = mount(PostPreview, { stubs, mocks });
     });
 
     afterEach(jest.clearAllMocks);
@@ -34,6 +42,7 @@ describe('PostPreview component', () => {
       wrapper = mount(PostPreview, {
         propsData: { post },
         stubs,
+        mocks,
       });
     });
 
@@ -46,13 +55,13 @@ describe('PostPreview component', () => {
     it('contains the correctly linked title', () => {
       const title = wrapper.findComponent({ ref: 'title' });
       expect(title.text()).toEqual(post.title);
-      expect(title.props('to')).toEqual(`/posts/${post.slug}`);
+      expect(title.props('to')).toEqual(`${mocks.$route.fullPath}/${post.slug}`);
     });
 
     it('contains correctly linked feature image', () => {
       const imageWrapper = wrapper.findComponent({ ref: 'feature-image' });
 
-      expect(imageWrapper.props('to')).toEqual(`/posts/${post.slug}`);
+      expect(imageWrapper.props('to')).toEqual(`${mocks.$route.fullPath}/${post.slug}`);
       expect(imageWrapper.html()).toContain(`<img src="${post.img}"`);
     });
     
@@ -76,7 +85,7 @@ describe('PostPreview component', () => {
       const continueLink = wrapper.findComponent({ ref: 'continue-reading' });
 
       expect(continueLink.text()).toEqual('Continue reading');
-      expect(continueLink.props('to')).toEqual(`/posts/${post.slug}`);
+      expect(continueLink.props('to')).toEqual(`${mocks.$route.fullPath}/${post.slug}`);
     });
   });
 });

@@ -3,6 +3,7 @@ src/content/*
 src/static/*
 
 !.gitkeep
+!.gitignore
 
 
 

@@ -1,11 +1,12 @@
 ## Template files:
 src/content/*
 src/static/*
-
 src/assets/*
-!css/prism-custom-theme.css
-!images/github.png
-!images/youtube.png
+
+
+!src/assets/images/github.png
+!src/assets/images/youtube.png
+!src/assets/css/prism-custom-theme.css
 
 
 !.gitkeep

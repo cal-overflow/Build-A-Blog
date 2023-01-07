@@ -3,9 +3,9 @@ src/content/*
 src/static/*
 
 src/assets/*
-!src/assets/css/prism-custom-theme.css
-!src/assets/images/github.png
-!src/assets/images/youtube.png
+!css/prism-custom-theme.css
+!images/github.png
+!images/youtube.png
 
 
 !.gitkeep

@@ -58,10 +58,17 @@ jobs:
 
           cp -r e2e_specific_src_files/content src/content
           cp -r e2e_specific_src_files/assets src/assets
-          
-          echo "Contents in src folder:"
+
+          echo "ls src"
           ls src
-          echo "Contents in src/content folder:"
+
+          echo "ls src/content"
           ls src/content
+          
+          echo "ls src/assets"
+          ls src/assets
+          
+          echo "ls src/assets/images"
+          ls src/assets/images
 
           npm run e2e:headless

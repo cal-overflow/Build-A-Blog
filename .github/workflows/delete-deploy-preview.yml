@@ -8,6 +8,8 @@ on:
 permissions:
   id-token: write
   contents: read
+  pull-requests: write
+  
 
 env:
   STACK_NAME: portfolio-template-pr-${{ github.event.number }}

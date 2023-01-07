@@ -159,3 +159,11 @@ Outputs:
   S3BucketName:
     Value: !Ref S3Bucket
     Description: The name of the stacks S3 bucket where the static site is hosted.
+  
+  CloudFrontDistributionId:
+    Value: !Ref CloudFrontDistribution
+    Description: The Id of the CloudFront Distribution
+  
+  WWWCloudFrontDistributionId:
+    Value: !Ref WWWCloudFrontDistribution
+    Description: The Id of the WWW CloudFront Distribution

@@ -1,5 +1,4 @@
 ## Template files:
-!.gitkeep
 src/content/*
 src/static/*
 
@@ -9,6 +8,7 @@ src/assets/*
 !src/assets/images/youtube.png
 
 
+!.gitkeep
 
 
 

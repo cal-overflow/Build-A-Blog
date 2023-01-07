@@ -1,5 +1,6 @@
 ## Files specific to the template:
-src/content*
+src/content/*
+!.gitkeep
 
 
 

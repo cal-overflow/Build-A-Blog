@@ -54,21 +54,9 @@ jobs:
         run: |
           mkdir e2e_specific_src_files
           git clone https://github.com/cal-overflow/example-portfolio-content.git e2e_specific_src_files
-          rm e2e_specific_src_files/README.md
-
           cp -r e2e_specific_src_files/content/* src/content
           cp -r e2e_specific_src_files/assets/* src/assets
 
-          echo "ls src"
-          ls src
+          export CYPRESS_RECORD_KEY=${{ secrets.CYPRESS_RECORD_KEY }}
 
-          echo "ls src/content"
-          ls src/content
-          
-          echo "ls src/assets"
-          ls src/assets
-          
-          echo "ls src/assets/images"
-          ls src/assets/images
-
-          npm run e2e:headless
+          npm run e2e:headless:record

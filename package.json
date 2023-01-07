@@ -10,13 +10,11 @@
     "prepare": "husky install",
     "lint": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint:fix": "npm run lint -- --fix",
-    "test": "npm run unit && npm run e2e:headless",
-    "test:deploy": "npm run unit && npm run e2e:deploy",
     "unit": "jest",
     "e2e": "npm run generate && npm run start & wait-on http://localhost:3000 && wait-on cypress open",
     "e2e:live": "cypress open",
     "e2e:headless": "npm run generate && npm run start & wait-on http://localhost:3000 && cypress run --headless",
-    "e2e:deploy": "npm run generate && npm run start & wait-on http://localhost:3000 && cypress run --headless --record --key $CYPRESS_RECORD_KEY"
+    "e2e:headless:record": "npm run generate && npm run start & wait-on http://localhost:3000 && cypress run --headless --record --key $CYPRESS_RECORD_KEY"
   },
   "lint-staged": {
     "*.{js,vue}": "eslint"

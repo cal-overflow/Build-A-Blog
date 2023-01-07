@@ -52,10 +52,13 @@ jobs:
 
       - name: Run e2e tests 🤖
         run: |
-          mkdir content
-          git clone https://github.com/cal-overflow/example-portfolio-content.git content
+          mkdir e2e_specific_src_files
+          git clone https://github.com/cal-overflow/example-portfolio-content.git e2e_specific_src_files
+          rm e2e_specific_src_files/README.md
 
-          cp -r content src
+          cp -r e2e_specific_src_files/content src/content
+          cp -r e2e_specific_src_files/assets src/assets
+          
           echo "Contents in src folder:"
           ls src
           echo "Contents in src/content folder:"

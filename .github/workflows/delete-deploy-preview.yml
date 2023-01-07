@@ -12,7 +12,6 @@ permissions:
 env:
   STACK_NAME: portfolio-template-pr-${{ github.event.number }}
   REGION: us-east-1
-  NUXT_ENV_FULL_NAME: PR ${{ github.event.number }}
 
 jobs:
   delete:
@@ -29,6 +28,9 @@ jobs:
 
       - name: Delete stack
         run: |
+          BUCKET=$(aws cloudformation describe-stacks --stack-name=$STACK_NAME --region $REGION --query 'Stacks[0].Outputs[?OutputKey==`S3BucketName`].OutputValue' --output text)
+          aws s3 rm s3://$BUCKET --recursive
+          
           sam delete --stack-name $STACK_NAME --region $REGION --no-prompts
 
       - name: Comment deploy results on PR

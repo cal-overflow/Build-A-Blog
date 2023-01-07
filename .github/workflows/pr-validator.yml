@@ -14,7 +14,7 @@ permissions:
 env:
   STACK_NAME: portfolio-template-pr-${{ github.event.number }}
   REGION: us-east-1
-  NUXT_ENV_FULL_NAME: PR ${{ github.event.number }}
+  NUXT_ENV_FULL_NAME: 'Pull Request #${{ github.event.number }}'
   NUXT_ENV_EMAIL_ADDRESS: cal-overflow@users.noreply.github.com
 
 jobs:

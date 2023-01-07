@@ -57,6 +57,13 @@ jobs:
           cp -r e2e_specific_src_files/content/* src/content
           cp -r e2e_specific_src_files/assets/* src/assets
 
+          echo "ls src/"
+          ls src/
+          echo "ls src/content/"
+          ls src/content/
+          echo "ls src/content/blog/"
+          ls src/content/blog/
+
           export CYPRESS_RECORD_KEY=${{ secrets.CYPRESS_RECORD_KEY }}
 
           npm run e2e:headless:record

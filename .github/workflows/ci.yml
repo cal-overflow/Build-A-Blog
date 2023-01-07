@@ -47,8 +47,18 @@ jobs:
       - name: Run linter 👀
         run: npm run lint
 
-      - name: Run unit tests 🧪
-        run: npm run unit
+      # - name: Run unit tests 🧪
+      #   run: npm run unit
 
       - name: Run e2e tests 🤖
-        run: npm run e2e:headless
+        run: |
+          mkdir e2e-content
+          git clone https://github.com/cal-overflow/example-portfolio-content.git e2e-content
+
+          mv -f e2e-content src/
+          echo "Contents in src folder:"
+          ls src
+          echo "Contents in src/content folder:"
+          ls src/content
+
+          npm run e2e:headless

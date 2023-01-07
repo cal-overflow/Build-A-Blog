@@ -1,4 +1,4 @@
-name: PR Validator
+name: Validate PR & Create deploy preview
 
 on:
   pull_request:
@@ -9,6 +9,7 @@ on:
 permissions:
   id-token: write
   contents: read
+  pull-requests: write
 
 env:
   STACK_NAME: portfolio-template-pr-${{ github.event.number }}
@@ -90,8 +91,8 @@ jobs:
           pr_number: ${{ github.event.number }}
           comment_tag: execution # update the same comment instead of creating a new one
           message: |
-            Preview deploy status: ${{ steps.sam-deploy.outcome }}
-            Preview Url: [$URL]($URL)
+            **Preview deploy status:** ${{ steps.sam-deploy.outcome }}
+            **Preview Url:** [${{steps.run_tests.outputs.URL }}](${{steps.run_tests.outputs.URL }})
       
 
   run_e2e_tests:

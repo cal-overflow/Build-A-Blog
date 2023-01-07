@@ -115,7 +115,4 @@ jobs:
         run: npm ci --prefer-offline --no-audit
 
       - name: Run e2e tests 🤖
-        run: |
-          export CYPRESS_RECORD_KEY=${{ secrets.CYPRESS_RECORD_KEY }}
-
-          CYPRESS_baseUrl=$URL npm run e2e:headless:record
+        run: CYPRESS_baseUrl=$URL npm run e2e:headless

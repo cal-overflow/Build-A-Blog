@@ -37,7 +37,7 @@ jobs:
         run: npm run unit
 
   deploy:
-    # needs: acceptance
+    needs: acceptance
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎
@@ -71,4 +71,22 @@ jobs:
           BUCKET=$(aws cloudformation describe-stacks --stack-name=$STACK_NAME --region $REGION --query 'Stacks[0].Outputs[?OutputKey==`S3BucketName`].OutputValue' --output text)
           aws s3 sync dist s3://$BUCKET
 
+  run_e2e_tests:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@master
 
+      - name: Setup node env 🏗
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Install dependencies 👨🏻‍💻
+        run: npm ci --prefer-offline --no-audit
+
+      - name: Run e2e tests 🤖
+        run: |
+          export CYPRESS_RECORD_KEY=${{ secrets.CYPRESS_RECORD_KEY }}
+          CYPRESS_baseUrl=$NUXT_ENV_SITE_URL npm run e2e:headless:record

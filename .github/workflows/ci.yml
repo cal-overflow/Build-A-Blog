@@ -52,7 +52,7 @@ jobs:
 
       - name: Run e2e tests 🤖
         run: |
-          mkdir e2e-content
+          mkdir content
           git clone https://github.com/cal-overflow/example-portfolio-content.git content
 
           mv -f content src

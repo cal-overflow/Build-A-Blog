@@ -83,7 +83,7 @@ jobs:
           echo "URL=$URL" >> $GITHUB_OUTPUT # Output for later jobs to use
 
           echo "### Deploy status: ${{steps.sam-deploy.outcome}}" >> $GITHUB_STEP_SUMMARY
-          echo "Frontend: [$URL]($URL)" >> $GITHUB_STEP_SUMMARY
+          echo "Deploy Preview: [$URL]($URL)" >> $GITHUB_STEP_SUMMARY
             
       - name: Comment deploy results on PR
         if: always()
@@ -92,9 +92,9 @@ jobs:
           pr_number: ${{ github.event.number }}
           comment_tag: execution # update the same comment instead of creating a new one
           message: |
-            ### Preview deploy
+            ### Deploy Preview
             **Status:** ${{ steps.sam-deploy.outcome }}
-            **Url:** [${{ env.URL }}](${{ env.URL}})
+            **URL:** [${{ env.URL }}](${{ env.URL}})
       
 
   run_e2e_tests:

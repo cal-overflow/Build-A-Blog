@@ -1,18 +1,19 @@
 name: ci
 
 on:
-  push:
-    branches:
-      - main
-      - master
   pull_request:
     branches:
       - main
       - master
 
+permissions:
+  id-token: write
+  contents: read
+
 env:
-  NUXT_ENV_SITE_URL: "https://github.com/cal-overflow/portfolio" # This value does not matter here
-  NUXT_ENV_FULL_NAME: Acceptance Tests
+  STACK_NAME: portfolio-template-pr-${{ github.event.number }}
+  REGION: us-east-1
+  NUXT_ENV_FULL_NAME: PR ${{ github.event.number }}
   NUXT_ENV_EMAIL_ADDRESS: cal-overflow@users.noreply.github.com
 
 jobs:
@@ -36,21 +37,77 @@ jobs:
       - name: Run unit tests 🧪
         run: npm run unit
 
-      # NOTE: being worked on in another branch
-      # - name: Run e2e tests 🤖
-      #   run: |
-      #     mkdir e2e_specific_src_files
-      #     git clone https://github.com/cal-overflow/example-portfolio-content.git e2e_specific_src_files
-      #     cp -r e2e_specific_src_files/content/* src/content
-      #     cp -r e2e_specific_src_files/assets/* src/assets
+  deploy:
+    needs: acceptance
+    runs-on: ubuntu-latest
+    outputs:
+      URL: ${{ steps.generate-summary.outputs.URL }}
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@master
 
-      #     echo "ls src/"
-      #     ls src/
-      #     echo "ls src/content/"
-      #     ls src/content/
-      #     echo "ls src/content/blog/"
-      #     ls src/content/blog/
+      - name: Setup node env 🏗
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
 
-      #     export CYPRESS_RECORD_KEY=${{ secrets.CYPRESS_RECORD_KEY }}
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1-node16
+        with:
+          role-to-assume: ${{ secrets.IAM_ROLE_ARN }}
+          aws-region: ${{ env.REGION }}
 
-      #     npm run e2e:headless:record
+      - name: Deploy stack
+        run: |
+          sam deploy --stack-name $STACK_NAME --region $REGION
+
+      - name: Build and deploy static site
+        run: |
+          mkdir example_content
+          git clone https://github.com/cal-overflow/example-portfolio-content.git example_content
+          cp -r example_content/content/* src/content
+          cp -r example_content/assets/* src/assets
+
+          npm ci
+          npm run generate
+
+          BUCKET=$(aws cloudformation describe-stacks --stack-name=$STACK_NAME --region $REGION --query 'Stacks[0].Outputs[?OutputKey==`S3BucketName`].OutputValue' --output text)
+          aws s3 sync dist s3://$BUCKET
+
+      - name: Invalidate cloudfront cache
+        run: |
+          DISTRO_ID=$(aws cloudformation describe-stacks --stack-name=$STACK_NAME --region $REGION --query 'Stacks[0].Outputs[?OutputKey==`CloudFrontDistributionId`].OutputValue' --output text)
+          WWW_DISTRO_ID=$(aws cloudformation describe-stacks --stack-name=$STACK_NAME --region $REGION --query 'Stacks[0].Outputs[?OutputKey==`CloudFrontDistributionId`].OutputValue' --output text)
+
+          aws create-invalidation --distribution-id $DISTRO_ID --paths "/*"
+          aws create-invalidation --distribution-id $WWW_DISTRO_ID --paths "/*"
+
+          aws invalidation-completed --distribution-id $DISTRO_ID
+          aws invalidation-completed --distribution-id $WWW_DISTRO_ID
+      
+      - name: Generate Github Actions summary
+        id: generate-summary
+        run: |
+          URL=$(aws cloudformation describe-stacks --stack-name=$STACK_NAME --region $REGION --query 'Stacks[0].Outputs[?OutputKey==`Url`].OutputValue' --output text)
+          echo "URL=$URL" >> $GITHUB_OUTPUT
+
+          echo "### Deploy Successful ✅" >> $GITHUB_STEP_SUMMARY
+          echo "Frontend: [$URL]($URL)" >> $GITHUB_STEP_SUMMARY
+
+  run_e2e_tests:
+    needs: deploy
+    runs-on: ubuntu-latest
+    env:
+      URL: ${{ needs.deploy.outputs.URL }}
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@master
+
+      - name: Run e2e tests 🤖
+        run: |
+          export CYPRESS_RECORD_KEY=${{ secrets.CYPRESS_RECORD_KEY }}
+
+          CYPRESS_baseUrl=$URL npm run e2e:headless:record
+
+
+

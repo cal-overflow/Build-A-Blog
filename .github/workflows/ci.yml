@@ -33,23 +33,24 @@ jobs:
       - name: Run linter 👀
         run: npm run lint
 
-      # - name: Run unit tests 🧪
-      #   run: npm run unit
+      - name: Run unit tests 🧪
+        run: npm run unit
 
-      - name: Run e2e tests 🤖
-        run: |
-          mkdir e2e_specific_src_files
-          git clone https://github.com/cal-overflow/example-portfolio-content.git e2e_specific_src_files
-          cp -r e2e_specific_src_files/content/* src/content
-          cp -r e2e_specific_src_files/assets/* src/assets
+      # NOTE: being worked on in another branch
+      # - name: Run e2e tests 🤖
+      #   run: |
+      #     mkdir e2e_specific_src_files
+      #     git clone https://github.com/cal-overflow/example-portfolio-content.git e2e_specific_src_files
+      #     cp -r e2e_specific_src_files/content/* src/content
+      #     cp -r e2e_specific_src_files/assets/* src/assets
 
-          echo "ls src/"
-          ls src/
-          echo "ls src/content/"
-          ls src/content/
-          echo "ls src/content/blog/"
-          ls src/content/blog/
+      #     echo "ls src/"
+      #     ls src/
+      #     echo "ls src/content/"
+      #     ls src/content/
+      #     echo "ls src/content/blog/"
+      #     ls src/content/blog/
 
-          export CYPRESS_RECORD_KEY=${{ secrets.CYPRESS_RECORD_KEY }}
+      #     export CYPRESS_RECORD_KEY=${{ secrets.CYPRESS_RECORD_KEY }}
 
-          npm run e2e:headless:record
+      #     npm run e2e:headless:record

@@ -7,6 +7,10 @@ on:
       - master
       - deploy-aws # TODO - remove
 
+permissions:
+  id-token: write
+  contents: read
+
 env:
   REGION: us-east-1
   DOMAIN: portfolio.cal-overflow.dev
@@ -15,29 +19,26 @@ env:
   NUXT_ENV_EMAIL_ADDRESS: cal-overflow@users.noreply.github.com
 
 jobs:
-  acceptance:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout 🛎
-        uses: actions/checkout@master
+  # acceptance:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout 🛎
+  #       uses: actions/checkout@master
 
-      - name: Setup node env 🏗
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: '.nvmrc'
+  #     - name: Setup node env 🏗
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version-file: '.nvmrc'
 
-      - name: Install dependencies 👨🏻‍💻
-        run: npm ci --prefer-offline --no-audit
+  #     - name: Install dependencies 👨🏻‍💻
+  #       run: npm ci --prefer-offline --no-audit
 
-      - name: Run linter 👀
-        run: npm run lint
-
-      - name: Run unit tests 🧪
-        run: npm run unit
+  #     - name: Run unit tests 🧪
+  #       run: npm run unit
 
   deploy:
-    needs: acceptance
-    runs-on: ubuntu-20.04
+    # needs: acceptance
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@master

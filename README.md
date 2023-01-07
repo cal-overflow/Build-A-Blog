@@ -32,7 +32,6 @@ View the source code for the website [here](https://github.com/cal-overflow/site
   - [Environment variables](#environment-variables)
   - [Run or generate the website](#run-or-generate-the-website)
   - [Testing](#testing-)
-    - [End-to-end test recording](#end-to-end-test-recording)
 
 ## Make the site your own 👨‍💻
 This portfolio has been built to be "modular" so that most of the content is seperate from the components themselves.
@@ -227,47 +226,14 @@ $ npm run start
 
 ### Testing 🧪
 
-Unit tests can be run with the [Jest](https://jestjs.io/) test runner. End-to-end tests are run with [Cypress](https://www.cypress.io/).
+Unit tests can be run with the [Jest](https://jestjs.io/) test runner. End-to-end tests are run with [Cypress](https://www.cypress.io/). Note that the e2e tests are not recommended for use outside of the template itself (because it depends so heavily on the `src/content` folder).
 
 ```bash
 # run unit tests
 $ npm run unit
-
-# run e2e tests
-$ npm run e2e
-
-# run e2e in headless mode
-$ npm run e2e:headless
-
-# run e2e by connecting to an already-running server
-$ npm run e2e:live
 ``` 
 
-#### End-to-end test recording
-Cypress enables for recording your tests. This is ideal for CI/CD, since it allows you to view and troubleshoot recordings of failed tests. \
-If you would like to enable e2e test recording,  follow the steps below.
-
-##### 1. Create a Cypress project
-Follow the [Cypress project documentation](https://docs.cypress.io/guides/dashboard/projects#Set-up-a-project-to-record) to create a Cypress project for your website.
-
-##### 2. Enter Cypress project ID
-Enter your Project ID in the `projectId` field of [`cypress.json`](cypress.json).
-
-##### 3. Copy the project record key
-From your Cypress project dashboard, Copy a "Record Key" and paste it into in an environment variable called `CYPRESS_RECORD_KEY`.
-
-##### 4. Run tests with recording enabled
-Now, you can run one of the following commands and the e2e tests will be recorded. The recordings are accessible on your Cypress project dashboard.
-
-```bash
-# run only e2e tests (recording enabled)
-$ npm run e2e:deploy
-
-# run unit and e2e tests (recording enabled)
-$ npm run test:deploy
-```
-
-#### Updating your website with new features in the template
+### Updating your website with new features in the template
 
 If you want to bring new changes from the template repository into your website, utilize mutliple remote repositories with Git.
 

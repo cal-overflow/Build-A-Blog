@@ -65,7 +65,7 @@ Resources:
       DomainName: !Sub 'www.${Domain}'
       ValidationMethod: DNS
 
-  CloudFrontDistro:
+  CloudFrontDistribution:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
@@ -101,7 +101,7 @@ Resources:
           MinimumProtocolVersion: TLSv1
           SslSupportMethod: sni-only
 
-  WWWCloudFrontDistro:
+  WWWCloudFrontDistribution:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:

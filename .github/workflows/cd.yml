@@ -1,0 +1,85 @@
+name: cd
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - deploy-aws # TODO - remove
+
+env:
+  DOMAIN: "portfolio.cal-overflow.dev"
+  NUXT_ENV_SITE_URL: "https://portfolio.cal-overflow.dev" # This value does not matter here
+  NUXT_ENV_FULL_NAME: Example Portfolio
+  NUXT_ENV_EMAIL_ADDRESS: cal-overflow@users.noreply.github.com
+
+jobs:
+  acceptance:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@master
+
+      - name: Setup node env 🏗
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Install dependencies 👨🏻‍💻
+        run: npm ci --prefer-offline --no-audit
+
+      - name: Run linter 👀
+        run: npm run lint
+
+      - name: Run unit tests 🧪
+        run: npm run unit
+
+  deploy:
+    needs: acceptance
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@master
+
+      - name: Setup node env 🏗
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1-node16
+        with:
+          role-to-assume: ${{ secrets.IAM_ROLE_ARN }}
+          aws-region: ${{ env.REGION }}
+
+      - name: Deploy stack
+        run: |
+          sam deploy --stack-name $STACK_NAME --region $REGION --parameter-overrides "Domain=$DOMAIN"
+
+      - name: Build and deploy static site
+        run: |
+          npm ci
+          npm run generate
+
+          BUCKET=$(aws cloudformation describe-stacks --stack-name=$STACK_NAME --region $REGION --query 'Stacks[0].Outputs[?OutputKey==`S3BucketName`].OutputValue' --output text)
+          aws s3 sync dist s3://$BUCKET
+
+
+      # NOTE: being worked on in another branch
+      # - name: Run e2e tests 🤖
+      #   run: |
+      #     mkdir e2e_specific_src_files
+      #     git clone https://github.com/cal-overflow/example-portfolio-content.git e2e_specific_src_files
+      #     cp -r e2e_specific_src_files/content/* src/content
+      #     cp -r e2e_specific_src_files/assets/* src/assets
+
+      #     echo "ls src/"
+      #     ls src/
+      #     echo "ls src/content/"
+      #     ls src/content/
+      #     echo "ls src/content/blog/"
+      #     ls src/content/blog/
+
+      #     export CYPRESS_RECORD_KEY=${{ secrets.CYPRESS_RECORD_KEY }}
+
+      #     npm run e2e:headless:record

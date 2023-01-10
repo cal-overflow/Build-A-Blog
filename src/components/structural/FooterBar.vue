@@ -1,6 +1,6 @@
 <template>
   <div class="bg-footer text-white">
-    <nav id="footer-bar" class="w-full max-w-screen-lg mx-auto px-8 py-6 px-5 flex items-center justify-between flex-wrap motion-safe:animate-fade-in-slow">
+    <nav id="footer-bar" class="w-full max-w-screen-lg mx-auto px-8 py-6 flex flex-wrap items-center justify-center sm:justify-between gap-y-4 motion-safe:animate-fade-in-slow">
       <div>
         <nav-item
           v-for="item in items"
@@ -11,7 +11,7 @@
         </nav-item>
       </div>
 
-      <div>
+      <div class="justify-center flex items-center">
         <a v-if="youtubeUrl" id="youtube-link" :href="youtubeUrl" target="_blank" title="View my Youtube channel">
           <img id="youtube-logo" class="aspect-square w-8 h-auto inline align-middle mx-4" src="~/assets/images/youtube.png" />
         </a>

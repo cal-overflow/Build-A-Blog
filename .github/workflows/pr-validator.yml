@@ -1,0 +1,118 @@
+name: Validate PR & Create deploy preview
+
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
+
+env:
+  STACK_NAME: portfolio-template-pr-${{ github.event.number }}
+  REGION: us-east-1
+  NUXT_ENV_FULL_NAME: 'Pull Request #${{ github.event.number }}'
+  NUXT_ENV_EMAIL_ADDRESS: cal-overflow@users.noreply.github.com
+
+jobs:
+  acceptance:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@master
+
+      - name: Setup node env 🏗
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Install dependencies 👨🏻‍💻
+        run: npm ci --prefer-offline --no-audit
+
+      - name: Run linter 👀
+        run: npm run lint
+
+      - name: Run unit tests 🧪
+        run: npm run unit
+
+  deploy:
+    needs: acceptance
+    runs-on: ubuntu-latest
+    outputs:
+      URL: ${{ steps.generate-summary.outputs.URL }}
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@master
+
+      - name: Setup node env 🏗
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1-node16
+        with:
+          role-to-assume: ${{ secrets.IAM_ROLE_ARN }}
+          aws-region: ${{ env.REGION }}
+
+      - name: Deploy stack & publish site
+        id: sam-deploy
+        run: |
+          sam deploy --stack-name $STACK_NAME --region $REGION -t pr.template.yml
+
+          mkdir example_content
+          git clone https://github.com/cal-overflow/example-portfolio-content.git example_content
+          cp -r example_content/content/* src/content
+          cp -r example_content/assets/* src/assets
+
+          npm ci
+          npm run generate
+
+          BUCKET=$(aws cloudformation describe-stacks --stack-name=$STACK_NAME --region $REGION --query 'Stacks[0].Outputs[?OutputKey==`S3BucketName`].OutputValue' --output text)
+          aws s3 sync dist s3://$BUCKET
+      
+      - name: Generate Github Actions summary
+        id: generate-summary
+        if: always()
+        run: |
+          URL=$(aws cloudformation describe-stacks --stack-name=$STACK_NAME --region $REGION --query 'Stacks[0].Outputs[?OutputKey==`Url`].OutputValue' --output text)
+          echo "URL=$URL" >> $GITHUB_ENV # set environment for later steps to use
+          echo "URL=$URL" >> $GITHUB_OUTPUT # Output for later jobs to use
+
+          echo "### Deploy status: ${{steps.sam-deploy.outcome}}" >> $GITHUB_STEP_SUMMARY
+          echo "Deploy Preview: [$URL]($URL)" >> $GITHUB_STEP_SUMMARY
+            
+      - name: Comment deploy results on PR
+        if: always()
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          pr_number: ${{ github.event.number }}
+          comment_tag: execution # update the same comment instead of creating a new one
+          message: |
+            ### Deploy Preview
+            **Status:** ${{ steps.sam-deploy.outcome }}
+            **URL:** [${{ env.URL }}](${{ env.URL}})
+      
+
+  run_e2e_tests:
+    needs: deploy
+    runs-on: ubuntu-latest
+    env:
+      URL: ${{ needs.deploy.outputs.URL }}
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@master
+
+      - name: Setup node env 🏗
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Install dependencies 👨🏻‍💻
+        run: npm ci --prefer-offline --no-audit
+
+      - name: Run e2e tests 🤖
+        run: CYPRESS_baseUrl=$URL npm run e2e:headless

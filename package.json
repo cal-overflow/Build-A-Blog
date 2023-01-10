@@ -13,8 +13,8 @@
     "unit": "jest",
     "e2e": "npm run generate && npm run start & wait-on http://localhost:3000 && wait-on cypress open",
     "e2e:live": "cypress open",
-    "e2e:headless": "npm run generate && npm run start & wait-on http://localhost:3000 && cypress run --headless",
-    "e2e:headless:record": "npm run generate && npm run start & wait-on http://localhost:3000 && cypress run --headless --record --key $CYPRESS_RECORD_KEY"
+    "e2e:headless": "cypress run --headless",
+    "e2e:headless:record": "cypress run --headless --record --key $CYPRESS_RECORD_KEY"
   },
   "lint-staged": {
     "*.{js,vue}": "eslint"

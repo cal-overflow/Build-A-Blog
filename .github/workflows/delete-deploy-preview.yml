@@ -1,0 +1,46 @@
+name: Delete deploy preview
+
+on:
+  pull_request:
+    branches: [ master, main ]
+    types: [ closed ]
+
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
+  
+
+env:
+  STACK_NAME: portfolio-template-pr-${{ github.event.number }}
+  REGION: us-east-1
+
+jobs:
+  delete:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@master
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1-node16
+        with:
+          role-to-assume: ${{ secrets.IAM_ROLE_ARN }}
+          aws-region: ${{ env.REGION }}
+
+      - name: Delete stack
+        run: |
+          BUCKET=$(aws cloudformation describe-stacks --stack-name=$STACK_NAME --region $REGION --query 'Stacks[0].Outputs[?OutputKey==`S3BucketName`].OutputValue' --output text)
+          aws s3 rm s3://$BUCKET --recursive
+          
+          sam delete --stack-name $STACK_NAME --region $REGION --no-prompts
+
+      - name: Comment deploy results on PR
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          pr_number: ${{ github.event.number }}
+          comment_tag: execution # update the same comment instead of creating a new one
+          message: |
+            ### Deploy Preview
+            **Status:** Closed
+            **URL:** N/A

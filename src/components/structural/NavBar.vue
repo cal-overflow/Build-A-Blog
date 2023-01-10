@@ -1,10 +1,10 @@
 <template>
   <div id="nav-bar" class="bg-menu-light dark:bg-menu-dark transition">
-    <nav class="mx-auto max-w-6xl flex items-center justify-between flex-wrap p-4 py-6 px-5">
+    <nav class="mx-auto max-w-6xl flex flex-wrap items-center sm:justify-between justify-center p-4 py-6 px-5 text-center">
       <nav-item
         :href="signatureHeader.href"
         :active="currentPage === 'Home'"
-        class="font-bold">
+        class="font-bold w-full sm:w-auto">
         {{ signatureHeader.title }}
       </nav-item>
         

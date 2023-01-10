@@ -21,18 +21,17 @@ View the source code for the website [here](https://github.com/cal-overflow/site
 - [Make the site your own](#make-the-site-your-own-)
   1. [Set environment variables](#1-set-environment-variables)
   2. [Enter a site description](#2-enter-a-site-description)
-  3. [Replace essential content](#3-replace-essential-content)
+  3. [Create essential content](#3-create-essential-content)
   5. [Change the color palette](#4-change-the-color-palette)
   6. [Write your first blog post](#5-write-your-first-blog-post)
+- [Sections](#sections)
 - [Blog posts](#blog-posts-)
-- [Post tags](#post-tags)
 - [Editing content in development mode](#editing-content-in-development-mode-)
 - [Running locally](#running-locally) 
   - [Environment setup](#environment-setup)
   - [Environment variables](#environment-variables)
   - [Run or generate the website](#run-or-generate-the-website)
   - [Testing](#testing-)
-    - [End-to-end test recording](#end-to-end-test-recording)
 
 ## Make the site your own 👨‍💻
 This portfolio has been built to be "modular" so that most of the content is seperate from the components themselves.
@@ -61,13 +60,22 @@ head: {
 }
 ```
 
-### 3. Replace essential content
-Replace the essentials such as the bio and description of the blog/portfolio pages. Complete the following:
+### 3. Create essential content
+The `src/content` folder will contain not only the content of the website, but also define the site's structure.
+You can get started by copying the contents of a sample content folder [here](https://github.com/cal-overflow/example-portfolio-content).
+
+Learn more about sections [here](#sections).
+
+**Note:** The following sections must be properly defined in the content folder (the website will not function properly without them).
+- Home (`src/content/Home`) - the index page of the website. See an example [here](https://github.com/cal-overflow/example-portfolio-content/tree/main/content/home).
+
+
+
+#### Replace other essential content:
+Placeholders of the remaining content have been provided for simplicity. Complete the following to overwrite the placehoolders.
 
 - [ ] Replace the existing `headshot.png` file within the `src/assets/images/` directory.
 - [ ] Replace the existing `favicon.ico` file within the `src/static/` directory.
-- [ ] Replace the contents of `about.md`, `blog-preview.md`, and `portfolio-preview.md` found within the `src/content/home/` directory.
-- [ ] Enter a description for the Portfolio tag by editing the `description` attribute of `src/content/tags.yml`. Refer to the [Post tags](#post-tags) section.
 
 
 ### 4. Change the color palette
@@ -92,32 +100,47 @@ Now that you've done all the heavy lifting, your website should have a basic hom
 
 ---
 
+## Sections
+Sections are defined as folders within the `src/content` folder. For instance, creating a `src/content/blog` folder will define a blog section within your website. Each section must include the following:
+1. `info.yml` file defining basic information and metadata for the section.
+
+An example `info.yml` is shown below.
+```yml
+title: Blog
+description: This is the blog section.
+primary-view: post-feed # What view to show on /blog page
+secondary-view: post-view # What is shown on pages like /blog/create-a-portfolio-site
+tags:
+  - Software engineering
+  - Tutorial
+  - Econ
+  - UI/UX
+```
+Notice that the secondary view will be rendered for markdown files contained in the `src/content/blog` folder.
+
 ## Blog posts 📝
 Blog posts are written in [Markdown](https://www.markdownguide.org/) and converted to HTML with the [Nuxt Content](https://content.nuxtjs.org/) module.
 
-To write a blog post, create a markdown file within a `src/content/posts/` directory. An [example post](http://www.cal-overflow.dev/post/download-snapchat-memories) is shown below.
+To write a blog post, create a markdown file within a section (i.e., `src/content/blog/`) directory. An [example post](http://www.cal-overflow.dev/post/download-snapchat-memories) is shown below.
 
 ```md
 ---
 id: 12
-title: How to download your Snapchat memories
-slug: download-snapchat-memories
-date: February 20, 2022
-img: memories.jpg
+title: How to create a really cool portfolio website
+slug: create-a-portfolio-site
+date: Janurary 7, 2023
+img: awesome-website.jpg
 tags:
-  - Portfolio
-  - Tutorials
+  - Software Engineering
+  - Tutorial
 ---
 
-People nowadays take hundreds, and even thousands, of photos and videos regularly. Millions of people save these images and photos on social networking apps like Snapchat.
+As software engineers, we often create tons of really cool projects and want a place where we can show off our work.
 
-
-Platforms such as Snapchat are wonderful for a variety of reasons. However, having photos and videos stored in different places can make it difficult to keep your precious memories organized.
-
+Let's take a step-by-step look into how I made my portfolio.
 <!--more-->
 
-In this tutorial, you'll find the steps necessary to download all of your Snapchat memories to your computer.
-
+Step 1: Clone the [template repository](https://github.com/cal-overflow/portfolio).
 ...
 ```
 
@@ -126,18 +149,9 @@ View the Nuxt docs on [Writing Content](https://content.nuxtjs.org/writing) for 
 Note that feature images should be placed in directory `src/assets/images/feature/`. Other post images should be placed in `src/static/blog-images/`. Reference the [source code for cal-overflow.dev](https://github.com/cal-overflow/site) as an example.
 
 ## Post tags
-Post tags allow you to group posts together based on similarities such as topic. Post tags are defined in a [YAML](https://yaml.org) file.
+Post tags allow you to group posts within the same section together based on similarities such as topic. Post tags are defined in the sections `info.yml` file.
 
-Tags should be defined within the `src/content/tags.yml` file. Each tag should contain a title, slug, and description attribute. Below is an example description written for the `Portfolio` tag.
-
-```yaml
-tags:
-  - title: Portfolio
-    slug: portfolio
-    description: My most significant work and experiences. This varies from failed projects to fully functional apps, websites, games, and more.
-```
-
-Once a tag has been created, users can view all posts under that tag by visiting the endpoint `/tag/slug`, where `slug` is replaced by the value you set. For example, the tag defined in the example above is accesible by visting `/tag/portfolio`.
+Refer to the [sections](#sections) documentation above for more information on defining tags within a section.
 
 ### Editing content in development mode 📃
 
@@ -212,47 +226,14 @@ $ npm run start
 
 ### Testing 🧪
 
-Unit tests can be run with the [Jest](https://jestjs.io/) test runner. End-to-end tests are run with [Cypress](https://www.cypress.io/).
+Unit tests can be run with the [Jest](https://jestjs.io/) test runner. End-to-end tests are run with [Cypress](https://www.cypress.io/). Note that the e2e tests are not recommended for use outside of the template itself (because it depends so heavily on the `src/content` folder).
 
 ```bash
 # run unit tests
 $ npm run unit
-
-# run e2e tests
-$ npm run e2e
-
-# run e2e in headless mode
-$ npm run e2e:headless
-
-# run e2e by connecting to an already-running server
-$ npm run e2e:live
 ``` 
 
-#### End-to-end test recording
-Cypress enables for recording your tests. This is ideal for CI/CD, since it allows you to view and troubleshoot recordings of failed tests. \
-If you would like to enable e2e test recording,  follow the steps below.
-
-##### 1. Create a Cypress project
-Follow the [Cypress project documentation](https://docs.cypress.io/guides/dashboard/projects#Set-up-a-project-to-record) to create a Cypress project for your website.
-
-##### 2. Enter Cypress project ID
-Enter your Project ID in the `projectId` field of [`cypress.json`](cypress.json).
-
-##### 3. Copy the project record key
-From your Cypress project dashboard, Copy a "Record Key" and paste it into in an environment variable called `CYPRESS_RECORD_KEY`.
-
-##### 4. Run tests with recording enabled
-Now, you can run one of the following commands and the e2e tests will be recorded. The recordings are accessible on your Cypress project dashboard.
-
-```bash
-# run only e2e tests (recording enabled)
-$ npm run e2e:deploy
-
-# run unit and e2e tests (recording enabled)
-$ npm run test:deploy
-```
-
-#### Updating your website with new features in the template
+### Updating your website with new features in the template
 
 If you want to bring new changes from the template repository into your website, utilize mutliple remote repositories with Git.
 

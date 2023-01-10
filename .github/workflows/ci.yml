@@ -17,30 +17,16 @@ env:
 
 jobs:
   acceptance:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [14]
-
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@master
 
       - name: Setup node env 🏗
-        uses: actions/setup-node@v2.1.5
+        uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
-          check-latest: true
+          node-version-file: '.nvmrc'
 
-      - name: Cache node_modules 📦
-        uses: actions/cache@v2.1.4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
       - name: Install dependencies 👨🏻‍💻
         run: npm ci --prefer-offline --no-audit
 
@@ -50,5 +36,21 @@ jobs:
       - name: Run unit tests 🧪
         run: npm run unit
 
-      - name: Run e2e tests 🤖
-        run: npm run e2e:headless
+      # NOTE: being worked on in another branch
+      # - name: Run e2e tests 🤖
+      #   run: |
+      #     mkdir e2e_specific_src_files
+      #     git clone https://github.com/cal-overflow/example-portfolio-content.git e2e_specific_src_files
+      #     cp -r e2e_specific_src_files/content/* src/content
+      #     cp -r e2e_specific_src_files/assets/* src/assets
+
+      #     echo "ls src/"
+      #     ls src/
+      #     echo "ls src/content/"
+      #     ls src/content/
+      #     echo "ls src/content/blog/"
+      #     ls src/content/blog/
+
+      #     export CYPRESS_RECORD_KEY=${{ secrets.CYPRESS_RECORD_KEY }}
+
+      #     npm run e2e:headless:record

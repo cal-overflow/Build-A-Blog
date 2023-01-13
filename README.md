@@ -9,10 +9,10 @@ Built primarily with [NuxtJS](https://nuxtjs.org/) and [TailwindCSS](https://tai
 
 View the source code for the website [here](https://github.com/cal-overflow/site)
 #### Light mode
-[![Picture of home screen (light mode)](template-files/assets/preview-home-page-light.png)](http://www.cal-overflow.dev)
+[![Picture of home screen (light mode)](template/assets/preview-home-page-light.png)](http://www.cal-overflow.dev)
 
 #### Dark mode
-[![Picture of home screen (dark mode)](template-files/assets/preview-home-page-dark.png)](http://www.cal-overflow.dev)
+[![Picture of home screen (dark mode)](template/assets/preview-home-page-dark.png)](http://www.cal-overflow.dev)
 
 </details>
 
@@ -165,7 +165,7 @@ I have created a [custom Editor component](src/components/development/Editor.vue
 
 | Viewing post | Editing Post |
 | :-: | :-: |
-| ![Viewing post](template-files/assets/viewing-post-example.png) | ![Editing post](template-files/assets/editing-post-example.png) |
+| ![Viewing post](template/assets/viewing-post-example.png) | ![Editing post](template/assets/editing-post-example.png) |
 
 </details>
 

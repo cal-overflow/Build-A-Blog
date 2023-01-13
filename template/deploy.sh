@@ -2,7 +2,7 @@
 sam deploy \
   -t $STACK_TEMPLATE_FILE \
   --stack-name $STACK_NAME \
-  --config-file template/samconfig.toml \
+  --config-file ./template/samconfig.toml \
   --region $REGION \
   --parameter-overrides $PARAMETER_OVERRIDES
 

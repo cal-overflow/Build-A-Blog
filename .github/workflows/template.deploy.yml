@@ -13,12 +13,11 @@ permissions:
 env:
   STACK_NAME: portfolio-template
   REGION: us-east-1
-  DOMAIN: portfolio.cal-overflow.dev
   NUXT_ENV_SITE_URL: https://portfolio.cal-overflow.dev # This value does not matter here
   NUXT_ENV_FULL_NAME: Example Portfolio
   NUXT_ENV_EMAIL_ADDRESS: cal-overflow@users.noreply.github.com
   STACK_TEMPLATE_FILE: template/stack.yml
-  PARAMETER_OVERRIDES: "\"Domain=${{ env.DOMAIN }}"\"
+  PARAMETER_OVERRIDES: "\"Domain=portfolio.cal-overflow.dev"\"
 
 jobs:
   acceptance:

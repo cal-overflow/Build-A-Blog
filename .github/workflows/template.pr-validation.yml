@@ -17,7 +17,6 @@ env:
   NUXT_ENV_FULL_NAME: 'Pull Request #${{ github.event.number }}'
   NUXT_ENV_EMAIL_ADDRESS: cal-overflow@users.noreply.github.com
   STACK_TEMPLATE_FILE: template/pr.stack.yml
-  PARAMETER_OVERRIDES: "\"\""
 
 jobs:
   acceptance:

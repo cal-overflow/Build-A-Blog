@@ -4,7 +4,7 @@ Description: "AWS resources for a static website with a custom domain"
 Parameters:
   Domain:
     Type: String
-    Default: cal-overflow.dev
+    Default: portfolio.cal-overflow.dev
 
   HostedZone:
     Type: String

@@ -16,6 +16,7 @@ env:
   REGION: us-east-1
   NUXT_ENV_FULL_NAME: 'Pull Request #${{ github.event.number }}'
   NUXT_ENV_EMAIL_ADDRESS: cal-overflow@users.noreply.github.com
+  STACK_TEMPLATE_FILE: template/pr.stack.yml
 
 jobs:
   acceptance:
@@ -60,19 +61,8 @@ jobs:
 
       - name: Deploy stack & publish site
         id: sam-deploy
-        run: |
-          sam deploy --stack-name $STACK_NAME --region $REGION -t pr.template.yml
-
-          mkdir example_content
-          git clone https://github.com/cal-overflow/example-portfolio-content.git example_content
-          cp -r example_content/content/* src/content
-          cp -r example_content/assets/* src/assets
-
-          npm ci
-          npm run generate
-
-          BUCKET=$(aws cloudformation describe-stacks --stack-name=$STACK_NAME --region $REGION --query 'Stacks[0].Outputs[?OutputKey==`S3BucketName`].OutputValue' --output text)
-          aws s3 sync dist s3://$BUCKET
+        run: ./template/deploy.sh
+        shell: bash
       
       - name: Generate Github Actions summary
         id: generate-summary
@@ -94,7 +84,7 @@ jobs:
           message: |
             ### Deploy Preview
             **Status:** ${{ steps.sam-deploy.outcome }}
-            **URL:** [${{ env.URL }}](${{ env.URL}})
+            **URL:** [${{ env.URL }}](${{ env.URL }})
       
 
   run_e2e_tests:

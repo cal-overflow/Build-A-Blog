@@ -3,8 +3,7 @@ sam deploy \
   -t $STACK_TEMPLATE_FILE \
   --stack-name $STACK_NAME \
   --config-file ./samconfig.toml \
-  --region $REGION \
-  --parameter-overrides $PARAMETER_OVERRIDES
+  --region $REGION
 
 mkdir example_content
 git clone https://github.com/cal-overflow/example-portfolio-content.git example_content

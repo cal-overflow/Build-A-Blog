@@ -4,7 +4,11 @@
     <nav-bar :current-page="currentPage" />
 
     <post-view v-if="metadata.view === 'post-view'" />
-    <post-feed v-if="metadata.view === 'post-feed'" :title="metadata.title" :content="content" />
+    <post-feed
+      v-if="metadata.view === 'post-feed'"
+      :metadata="metadata"
+      :content="content"
+    />
 
     <back-to-top-button />
     <footer-bar :current-page="currentPage" />

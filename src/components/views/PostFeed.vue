@@ -32,7 +32,8 @@
       </div>
       <div
         v-if="!isMorePosts"
-        ref="loadMorePosts"
+        ref="rss-card"
+        id="rss-card"
         :class="`bg-card-light dark:bg-card-dark m-6 px-6 hover:bg-extra-gray-light dark:hover:bg-extra-gray-dark hover:rounded shadow-md hover:shadow-none md:col-span-2 cursor-pointer transition`"
         @mouseup="openRSSLink"
       >

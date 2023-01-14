@@ -48,6 +48,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    'nuxt-content-body-html',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
     '@nuxtjs/feed',
@@ -87,7 +88,7 @@ export default {
     return sections.map(({ title, description, dir, posts, tags }) => {
 
       return {
-        path: `${dir}.xml`, // Note `dir` begins with /
+        path: `${dir}.xml`, // `dir` begins with /
         create(feed) {
           feed.options = {
             title: `${title} - ${process.env.NUXT_ENV_SITE_NAME}`,
@@ -100,11 +101,12 @@ export default {
 
           posts.forEach((post) => {
              const postUrl = `${process.env.NUXT_ENV_SITE_URL}${dir}/${post.slug}`;
+
             feed.addItem({
               title: post.title,
               id: postUrl,
               link: postUrl,
-              // content: post.text,
+              content: post.bodyHtml
             });
           });
 

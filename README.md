@@ -101,22 +101,37 @@ Now that you've done all the heavy lifting, your website should have a basic hom
 ---
 
 ## Sections
-Sections are defined as folders within the `src/content` folder. For instance, creating a `src/content/blog` folder will define a blog section within your website. Each section must include the following:
-1. `info.yml` file defining basic information and metadata for the section.
+Sections are defined as folders within the `src/content` folder. For instance, creating a `src/content/blog` folder will define a blog section within your website. **Each section must include an `index.md` defining metadata for the section.**
 
-An example `info.yml` is shown below.
+### Metadata
+#### Required
+1. A title for the section
+1. A `primary-view` in which to render for the section's default route (i.e., `/blog/` for `src/content/blog/index.md`)
+1. A `secondary-view` in which to render for the section's default route (i.e., `/blog/post-1` for `src/content/blog/post-1.md`)
+
+
+#### Optional
+1. A description for the section
+1. A list of tags for the section. This can be an empty array if no tags are.
+
+
+An example `index.md` metadata is shown below.
 ```yml
+---
+# Required
 title: Blog
-description: This is the blog section.
 primary-view: post-feed # What view to show on /blog page
 secondary-view: post-view # What is shown on pages like /blog/create-a-portfolio-site
+
+# Optional
+description: This is the blog section.
 tags:
   - Software engineering
   - Tutorial
   - Econ
   - UI/UX
+---
 ```
-Notice that the secondary view will be rendered for markdown files contained in the `src/content/blog` folder.
 
 ## Blog posts 📝
 Blog posts are written in [Markdown](https://www.markdownguide.org/) and converted to HTML with the [Nuxt Content](https://content.nuxtjs.org/) module.
@@ -149,7 +164,7 @@ View the Nuxt docs on [Writing Content](https://content.nuxtjs.org/writing) for 
 Note that feature images should be placed in directory `src/assets/images/feature/`. Other post images should be placed in `src/static/blog-images/`. Reference the [source code for cal-overflow.dev](https://github.com/cal-overflow/site) as an example.
 
 ## Post tags
-Post tags allow you to group posts within the same section together based on similarities such as topic. Post tags are defined in the sections `info.yml` file.
+Post tags allow you to group posts within the same section together based on similarities such as topic. Post tags are defined in the sections `index.md` file.
 
 Refer to the [sections](#sections) documentation above for more information on defining tags within a section.
 

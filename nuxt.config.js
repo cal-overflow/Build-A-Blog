@@ -41,6 +41,7 @@ export default {
     '~/components/development',
     '~/components/forms',
     '~/components/helpers',
+    '~/components/misc',
     '~/components/navigation',
     '~/components/previews',
     '~/components/structural',

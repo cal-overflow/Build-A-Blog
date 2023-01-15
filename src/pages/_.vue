@@ -5,7 +5,11 @@
 
     <custom-view v-if="metadata.view === 'custom-view'" :content="content" />
     <post-view v-if="metadata.view === 'post-view'" />
-    <post-feed v-if="metadata.view === 'post-feed'" :title="metadata.title" :content="content" />
+    <post-feed
+      v-if="metadata.view === 'post-feed'"
+      :metadata="metadata"
+      :content="content"
+    />
 
 
     <back-to-top-button />

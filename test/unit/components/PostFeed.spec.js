@@ -30,9 +30,7 @@ describe('PostFeed component', () => {
 
       wrapper = shallowMount(PostFeed, {
         stubs,
-        propsData: {
-          content: fakePosts
-        }
+        propsData: { content: fakePosts }
       });
     });
 
@@ -41,8 +39,9 @@ describe('PostFeed component', () => {
     });
   });
 
-  describe('given there are posts and a title prop is given', () => {
+  describe('given there are posts and the metadata prop is given', () => {
     const title = chance.string();
+    const description = chance.string();
     beforeEach(() => {
       fakePosts = chance.n(generatePost, chance.integer({
         min: 1, max: postLimit
@@ -51,7 +50,10 @@ describe('PostFeed component', () => {
       wrapper = shallowMount(PostFeed, {
         stubs,
         propsData: {
-          title,
+          metadata: {
+            title,
+            description
+          },
           content: fakePosts
         }
       });
@@ -65,6 +67,10 @@ describe('PostFeed component', () => {
   
     it('contains the correct text', () => {
       expect(wrapper.text()).toContain(title);
+    });
+
+    it('contains the correct text', () => {
+      expect(wrapper.text()).toContain(description);
     });
   
     it('contains a Divider component', () => {
@@ -92,7 +98,7 @@ describe('PostFeed component', () => {
     });
   });
 
-  describe('given no title prop is given', () => {  
+  describe('given no metadata prop is given', () => {  
     beforeEach(() => {
       wrapper = shallowMount(PostFeed, {
         propsData: {

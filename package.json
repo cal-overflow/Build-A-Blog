@@ -28,6 +28,7 @@
     "dotenv": "^16.0.1",
     "gray-matter": "^4.0.3",
     "nuxt": "^2.15.8",
+    "nuxt-content-body-html": "^2.0.0",
     "wait-on": "^6.0.0"
   },
   "devDependencies": {

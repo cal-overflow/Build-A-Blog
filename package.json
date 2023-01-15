@@ -6,7 +6,7 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate && touch dist/index.html",
+    "generate": "nuxt generate",
     "prepare": "husky install",
     "lint": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint:fix": "npm run lint -- --fix",

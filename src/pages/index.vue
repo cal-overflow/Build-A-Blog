@@ -1,18 +1,7 @@
 <template>
   <main>
-    <!-- TODO - fix the current page -->
     <nav-bar :current-page="currentPage" />
-
-    <home-view v-if="metadata.view === 'home-view'" :dir="directory" :content="content" :metadata="metadata" />
-    <post-view v-if="metadata.view === 'post-view'" />
-    <post-feed
-      v-if="metadata.view === 'post-feed'"
-      :metadata="metadata"
-      :content="content"
-    />
-
-
-    <back-to-top-button />
+    <home-view :dir="directory" :content="content" :metadata="metadata" />
     <footer-bar :current-page="currentPage" />
   </main>
 </template>
@@ -27,22 +16,14 @@ import HomeView from '@/components/views/Home.vue';
 import HandWave from '@/components/misc/HandWave.vue';
 
 export default {
-  name: 'wildcard',
+  name: 'index',
   components: {
     Divider,
     HomeView,
     HandWave,
   },
   async asyncData({ $content, params, error }) {
-    const lastIndex = params.pathMatch.includes('/') ? params.pathMatch.lastIndexOf('/') : params.pathMatch.length;
-    let directory = params.pathMatch.slice(0, lastIndex); 
-    const slug = params.pathMatch.slice(lastIndex + 1);
-
-
-    if (!directory) {
-      directory = 'home';
-    }
-
+    const directory = '/home';
     const nuxtContent = await $content(directory)
       .fetch()
       .catch((err) => {
@@ -55,7 +36,7 @@ export default {
 
     const isMetadata = ({ slug, extension }) => slug === "index" && extension === ".md";
     const metadata = nuxtContent?.find(isMetadata);
-    let content = nuxtContent?.filter((item) => !isMetadata(item));
+    const content = nuxtContent?.filter((item) => !isMetadata(item));
 
 
     if (!content) {
@@ -63,20 +44,10 @@ export default {
     }
 
     if (!metadata || !metadata.primaryView || !metadata.secondaryView) {
-      return error({ statusCode: 500, message: 'This section does not contain valid metadata' });
+      return error({ statusCode: 500, message: 'The home section does not contain valid metadata' });
     }
 
-
-    // TODO - This will be an issue if the metadata is not an object 
-    //        consider 
     metadata.view = metadata.primaryView;
-    
-    if (slug) {
-      content = content?.find((item) => item.slug === slug);
-      metadata.view = metadata.secondaryView;
-    }
-
-    console.log(content);
 
     if (!content) {
       return error({ statusCode: 404, message: 'This resource does not exist' });
@@ -85,9 +56,8 @@ export default {
     return {
       content,
       metadata,
-      slug,
       directory,
-      currentPage: slug ? slug.charAt(0).toUpperCase() + slug.slice(1) : directory.charAt(0).toUpperCase() + directory.slice(1)
+      currentPage: 'Home'
     };
   },
   head() {

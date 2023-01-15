@@ -120,7 +120,7 @@ export default {
 
         feed.addContributor(author);
 
-          tags.forEach((tag) => {
+          tags?.forEach((tag) => {
             feed.addCategory(tag.title);
           });
         },

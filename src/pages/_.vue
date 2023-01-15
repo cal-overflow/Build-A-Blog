@@ -3,8 +3,10 @@
     <!-- TODO - fix the current page -->
     <nav-bar :current-page="currentPage" />
 
+    <custom-view v-if="metadata.view === 'custom-view'" :content="content" />
     <post-view v-if="metadata.view === 'post-view'" />
     <post-feed v-if="metadata.view === 'post-feed'" :title="metadata.title" :content="content" />
+
 
     <back-to-top-button />
     <footer-bar :current-page="currentPage" />
@@ -15,6 +17,7 @@
 import NavBar from '@/components/structural/NavBar.vue';
 import BackToTopButton from '@/components/helpers/BackToTopButton.vue';
 import FooterBar from '@/components/structural/FooterBar.vue';
+import CustomView from '@/components/views/Custom.vue';
 import PostFeed from '@/components/views/PostFeed.vue';
 import PostView from '@/components/views/Post.vue';
 
@@ -24,13 +27,19 @@ export default {
     NavBar,
     BackToTopButton,
     FooterBar,
+    CustomView,
     PostView,
     PostFeed,
   },
   async asyncData({ $content, params, error }) {
     const lastIndex = params.pathMatch.includes('/') ? params.pathMatch.lastIndexOf('/') : params.pathMatch.length;
-    const directory = params.pathMatch.slice(0, lastIndex); 
+    let directory = params.pathMatch.slice(0, lastIndex); 
     const slug = params.pathMatch.slice(lastIndex + 1);
+
+
+    if (!directory) {
+      directory = 'home';
+    }
 
     const nuxtContent = await $content(directory)
       .fetch()
@@ -42,17 +51,21 @@ export default {
         });
       });
 
-    const isMetadata = ({ slug, extension }) => slug === "info" && extension === ".yml";
-
+    const isMetadata = ({ slug, extension }) => slug === "index" && extension === ".md";
     const metadata = nuxtContent?.find(isMetadata);
-    let content = nuxtContent?.filter((item) => !isMetadata(item));
+    let content = nuxtContent;
+
+    if (!slug && content.length !== 1) {
+      content = nuxtContent?.filter((item) => !isMetadata(item));
+    }
+
 
     if (!content) {
       return error({ statusCode: 404, message: 'This resource does not exist' });
     }
 
     if (!metadata || !metadata['primary-view'] || !metadata['secondary-view']) {
-      return error({ statusCode: 500, message: 'This section does not contain a valid info.yml' });
+      return error({ statusCode: 500, message: 'This section does not contain valid metadata' });
     }
 
 
@@ -64,6 +77,8 @@ export default {
       content = content?.find((item) => item.slug === slug);
       metadata.view = metadata['secondary-view'];
     }
+
+    console.log(content);
 
     if (!content) {
       return error({ statusCode: 404, message: 'This resource does not exist' });

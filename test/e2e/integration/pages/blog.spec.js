@@ -32,15 +32,20 @@ describe('Blog page', () => {
   it('shows at most 10 post preview cards', () => {
     cy.get('#post-feed').find('.post-preview-card').should('have.length.lte', 10);
   });
+
+  it('shows a RSS feed subscription card at the bottom', () => {
+    cy.get('#rss-card').should('exist');
+  });
+  
   
   describe('given there are 10 posts rendered initially', () => {
     it('shows greater than or exactly 10 post preview cards when scrolling down the page', () => {
       if (postCount === 10) {
-          cy.get('#post-feed').find('.post-preview-card').should('have.length', 10);
+        cy.get('#post-feed').find('.post-preview-card').should('have.length', 10);
       
-          cy.get('#footer-bar').scrollIntoView({ duration: 1000 });
-      
-          cy.get('#post-feed').find('.post-preview-card').should('have.length.gte', 10);
+        cy.get('#footer-bar').scrollIntoView({ duration: 1000 });
+    
+        cy.get('#post-feed').find('.post-preview-card').should('have.length.gte', 10);
       }
     });
   });

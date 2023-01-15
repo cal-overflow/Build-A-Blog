@@ -14,7 +14,8 @@ env:
   STACK_NAME: portfolio-template
   REGION: us-east-1
   NUXT_ENV_SITE_URL: https://portfolio.cal-overflow.dev
-  NUXT_ENV_FULL_NAME: Example Portfolio
+  NUXT_ENV_SITE_NAME: Example portfolio
+  NUXT_ENV_FULL_NAME: Example Developer
   NUXT_ENV_EMAIL_ADDRESS: cal-overflow@users.noreply.github.com
   STACK_TEMPLATE_FILE: template/stack.yml
 

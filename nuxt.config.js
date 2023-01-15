@@ -48,57 +48,83 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    'nuxt-content-body-html',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
     '@nuxtjs/feed',
   ],
 
-  feed: [
-    // TODO - fix (issue #132)
-    // { // (mostly) default feed object from feed module
-    //   path: '/feed.xml',
-    //   async create(feed) {
-    //     const { $content } = require('@nuxt/content');
-        
-    //     feed.options = {
-    //       title: process.env.NUXT_ENV_FULL_NAME,
-    //       link: `${process.env.NUXT_ENV_SITE_URL}/feed.xml`,
-    //       description: `Blog posts from ${process.env.NUXT_ENV_FULL_NAME}`,
-    //     };
+  feed: async () => {
+    const author = {
+      name: process.env.NUXT_ENV_FULL_NAME,
+      email: process.env.NUXT_ENV_EMAIL_ADDRESS,
+      link: process.env.NUXT_ENV_SITE_URL,
+    };
 
-    //     const posts = await $content('posts').sortBy('createdAt', 'asc').fetch();
+    const { $content } = require('@nuxt/content');
+    const nuxtContent = await $content('', { deep: true, text: true }).sortBy('createdAt', 'asc').fetch();
 
-    //     posts.forEach((post) => {
-    //       feed.addItem({
-    //         title: post.title,
-    //         id: post.slug,
-    //         link: `${process.env.NUXT_ENV_SITE_URL}/posts/${post.slug}`,
-    //         description: `posted on: ${post.date}`,
-    //       });
-    //     });
 
-    //     const tagContent = await $content('tags').fetch();
-  
-    //     tagContent.tags.forEach((tag) => {
-    //       feed.addCategory(tag.title);
-    //     });
-        
-    //     feed.addContributor({
-    //       name: process.env.NUXT_ENV_FULL_NAME,
-    //       email: process.env.NUXT_ENV_EMAIL_ADDRESS,
-    //       link: process.env.NUXT_ENV_SITE_URL
-    //     });
+    const sections = [...new Set(
+                          nuxtContent
+                          .filter(({ extension }) => extension === '.yml')
+                          .map((section) => ({ ...section, posts: [] })))];
 
-    //   },
-    //   cacheTime: 1000 * 60 * 15,
-    //   type: 'rss2',
-    //   data: [`${process.env.NUXT_ENV_FULL_NAME}'s Blog Feed`]
-    // }
-  ],
+    nuxtContent.forEach((item) => {
+      if (item.extension !== '.md') {
+        return;
+      }
+
+      for (const section of sections) {
+        if (section.dir === item.dir) {
+          section.posts.push(item);
+          break;
+        }
+      }
+    });
+
+    
+
+    return sections.map(({ title, description, dir, posts, tags }) => {
+
+      return {
+        path: `${dir}.xml`, // `dir` begins with /
+        create(feed) {
+          feed.options = {
+            title: `${title} - ${process.env.NUXT_ENV_SITE_NAME}`,
+            id: process.env.NUXT_ENV_SITE_URL,
+            link: `${process.env.NUXT_ENV_SITE_URL}${dir}`,
+            favicon: `${process.env.NUXT_ENV_SITE_URL}/favicon.ico`,
+            description,
+            author,
+          };
+
+          posts.forEach((post) => {
+             const postUrl = `${process.env.NUXT_ENV_SITE_URL}${dir}/${post.slug}`;
+
+            feed.addItem({
+              title: post.title,
+              id: postUrl,
+              link: postUrl,
+              content: post.bodyHtml
+            });
+          });
+
+        feed.addContributor(author);
+
+          tags.forEach((tag) => {
+            feed.addCategory(tag.title);
+          });
+        },
+        cacheTime: 1000 * 60 * 15,
+        type: 'rss2'
+      };
+    });
+  },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {
-    nestedProperties: ['post.tags'],
+    // nestedProperties: ['post.tags'],
     markdown: {
       prism: {
         theme: "@/assets/css/prism-custom-theme.css"

@@ -106,8 +106,8 @@ Sections are defined as folders within the `src/content` folder. For instance, c
 ### Metadata
 #### Required
 1. A title for the section
-1. A `primary-view` in which to render for the section's default route (i.e., `/blog/` for `src/content/blog/index.md`)
-1. A `secondary-view` in which to render for the section's default route (i.e., `/blog/post-1` for `src/content/blog/post-1.md`)
+1. A `primaryView` in which to render for the section's default route (i.e., `/blog/` for `src/content/blog/index.md`)
+1. A `secondaryView` in which to render for the section's default route (i.e., `/blog/post-1` for `src/content/blog/post-1.md`)
 
 
 #### Optional
@@ -120,8 +120,8 @@ An example `index.md` metadata is shown below.
 ---
 # Required
 title: Blog
-primary-view: post-feed # What view to show on /blog page
-secondary-view: post-view # What is shown on pages like /blog/create-a-portfolio-site
+primaryView: post-feed # What view to show on /blog page
+secondaryView: post-view # What is shown on pages like /blog/create-a-portfolio-site
 
 # Optional
 description: This is the blog section.

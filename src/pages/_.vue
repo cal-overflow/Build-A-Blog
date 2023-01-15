@@ -3,7 +3,16 @@
     <!-- TODO - fix the current page -->
     <nav-bar :current-page="currentPage" />
 
-    <custom-view v-if="metadata.view === 'custom-view'" :content="content" />
+    <home-view v-if="metadata.view === 'home-view'" :dir=directory :content="content" :metadata="metadata" />
+    
+    <!-- <div v-if="metadata.view === 'custom-view'">
+      <nuxt-content
+        v-for="item in content"
+        :key="item.slug"
+        :document="item"
+        class="prose prose-a:underline hover:prose-a:no-underline prose-a:text-primary-light dark:prose-invert dark:prose-a:text-primary-dark leading-normal transition" 
+      />
+    </div> -->
     <post-view v-if="metadata.view === 'post-view'" />
     <post-feed
       v-if="metadata.view === 'post-feed'"
@@ -18,22 +27,20 @@
 </template>
 
 <script>
-import NavBar from '@/components/structural/NavBar.vue';
-import BackToTopButton from '@/components/helpers/BackToTopButton.vue';
-import FooterBar from '@/components/structural/FooterBar.vue';
-import CustomView from '@/components/views/Custom.vue';
-import PostFeed from '@/components/views/PostFeed.vue';
-import PostView from '@/components/views/Post.vue';
+/* eslint-disable no-unused-vars */
+/* eslint-disable vue/no-unused-components */
+
+// must import components that are not directly used so that they are accessible within nuxt/content
+import Divider from '@/components/helpers/Divider.vue';
+import HomeView from '@/components/views/Home.vue';
+import HandWave from '@/components/misc/HandWave.vue';
 
 export default {
   name: 'wildcard',
   components: {
-    NavBar,
-    BackToTopButton,
-    FooterBar,
-    CustomView,
-    PostView,
-    PostFeed,
+    Divider,
+    HomeView,
+    HandWave,
   },
   async asyncData({ $content, params, error }) {
     const lastIndex = params.pathMatch.includes('/') ? params.pathMatch.lastIndexOf('/') : params.pathMatch.length;
@@ -57,29 +64,25 @@ export default {
 
     const isMetadata = ({ slug, extension }) => slug === "index" && extension === ".md";
     const metadata = nuxtContent?.find(isMetadata);
-    let content = nuxtContent;
-
-    if (!slug && content.length !== 1) {
-      content = nuxtContent?.filter((item) => !isMetadata(item));
-    }
+    let content = nuxtContent?.filter((item) => !isMetadata(item));
 
 
     if (!content) {
       return error({ statusCode: 404, message: 'This resource does not exist' });
     }
 
-    if (!metadata || !metadata['primary-view'] || !metadata['secondary-view']) {
+    if (!metadata || !metadata.primaryView || !metadata.secondaryView) {
       return error({ statusCode: 500, message: 'This section does not contain valid metadata' });
     }
 
 
     // TODO - This will be an issue if the metadata is not an object 
     //        consider 
-    metadata.view = metadata['primary-view'];
+    metadata.view = metadata.primaryView;
     
     if (slug) {
       content = content?.find((item) => item.slug === slug);
-      metadata.view = metadata['secondary-view'];
+      metadata.view = metadata.secondaryView;
     }
 
     console.log(content);

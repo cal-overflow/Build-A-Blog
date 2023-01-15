@@ -30,6 +30,9 @@ describe('PostFeed component', () => {
 
       wrapper = shallowMount(PostFeed, {
         stubs,
+        propsData: {
+          content: fakePosts
+        }
       });
     });
 
@@ -91,7 +94,11 @@ describe('PostFeed component', () => {
 
   describe('given no title prop is given', () => {  
     beforeEach(() => {
-      wrapper = shallowMount(PostFeed);
+      wrapper = shallowMount(PostFeed, {
+        propsData: {
+          content: fakePosts
+        }
+      });
     });
 
     it('contains the correct text', () => {

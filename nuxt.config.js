@@ -37,7 +37,6 @@ export default {
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: [
-    '~/components/cards',
     '~/components/development',
     '~/components/forms',
     '~/components/helpers',
@@ -74,10 +73,9 @@ export default {
     const { $content } = require('@nuxt/content');
     const nuxtContent = await $content('', { deep: true, text: true }).sortBy('createdAt', 'asc').fetch();
 
-
     const sections = [...new Set(
                           nuxtContent
-                          .filter(({ extension }) => extension === '.yml')
+                          .filter(({ path, extension }) => path.endsWith('/index') && extension === '.md')
                           .map((section) => ({ ...section, posts: [] })))];
 
     nuxtContent.forEach((item) => {

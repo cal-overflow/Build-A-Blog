@@ -24,6 +24,7 @@
 // must import components that are not directly used so that they are accessible within nuxt/content
 import Divider from '@/components/helpers/Divider.vue';
 import HomeView from '@/components/views/Home.vue';
+import PostView from '@/components/views/Post.vue';
 import HandWave from '@/components/misc/HandWave.vue';
 
 export default {
@@ -31,6 +32,7 @@ export default {
   components: {
     Divider,
     HomeView,
+    PostView,
     HandWave,
   },
   async asyncData({ $content, params, error }) {

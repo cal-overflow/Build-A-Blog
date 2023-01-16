@@ -22,8 +22,8 @@ export default {
     HomeView,
     HandWave,
   },
-  async asyncData({ $content, params, error }) {
-    const directory = '/home';
+  async asyncData({ $content, error }) {
+    const directory = 'home';
     const nuxtContent = await $content(directory)
       .fetch()
       .catch((err) => {

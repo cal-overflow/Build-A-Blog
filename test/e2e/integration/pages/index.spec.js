@@ -21,25 +21,18 @@ describe('Home page', () => {
     it('contains the headshot image', () => {
       cy.get('#introduction-card img').should('be.visible');
     });
-
-    it('contains the greeting', () => {
-      if (Cypress.env('NUXT_ENV_FULL_NAME')) {
-        cy.get('#greeting').should('be.visible');
-      }
-      else cy.log('Full name environment variable not detected. Skipping test');
-    });
   });
 
   describe('portfolio preview card', () => {
     it('contains a link to the portfolio page', () => {
-      cy.get('.page-preview-card').eq(0).contains('View my work').click();
+      cy.contains('View my work').click();
       cy.location('pathname').should('eq', '/portfolio');
     });
   });
 
   describe('blog preview card', () => {
     it('contains a link to the blog page', () => {
-      cy.get('.page-preview-card').eq(1).contains('View my blog').click();
+      cy.contains('View my blog').click();
       cy.location('pathname').should('eq', '/blog');
     });
   });

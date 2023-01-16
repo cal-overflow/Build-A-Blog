@@ -74,7 +74,6 @@ Learn more about sections [here](#sections).
 #### Replace other essential content:
 Placeholders of the remaining content have been provided for simplicity. Complete the following to overwrite the placehoolders.
 
-- [ ] Replace the existing `headshot.png` file within the `src/assets/images/` directory.
 - [ ] Replace the existing `favicon.ico` file within the `src/static/` directory.
 
 
@@ -215,7 +214,7 @@ NUXT_ENV_YOUTUBE_CHANNEL_URL=
   | Variable | Description | Required |
   | ----: | ------ | :--: |
   | `SITE_URL` | Utilized by the RSS feed generator to let readers know where they can find your site. | ✅ |
-  | `FULL_NAME` | Utilized throughout the site in places like the introduction "Hi. I'm ___." and the NavBar's home page title.  | ✅ |
+  | `FULL_NAME` | Utilized throughout the site in places like the NavBar's home page title.  | ✅ |
   | `EMAIL_ADDRESS` | Utilized for contact requests. | ✅ |
   | `SITE_NAME` | Utilized by the site to change the site title. If left blank, the `FULL_NAME` value is used. |  |
   | `GITHUB_PROFILE_URL` | When present, a link to GitHub is shown in the FooterBar. |  |

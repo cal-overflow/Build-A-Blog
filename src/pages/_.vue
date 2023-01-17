@@ -3,6 +3,7 @@
     <!-- TODO - fix the current page -->
     <nav-bar :current-page="currentPage" />
 
+    <home-view v-if="metadata.view === 'home-view'" :dir="directory" :content="content" :metadata="metadata" />
     <post-view v-if="metadata.view === 'post-view'" />
     <post-feed
       v-if="metadata.view === 'post-feed'"
@@ -10,31 +11,39 @@
       :content="content"
     />
 
+
     <back-to-top-button />
     <footer-bar :current-page="currentPage" />
   </main>
 </template>
 
 <script>
-import NavBar from '@/components/structural/NavBar.vue';
-import BackToTopButton from '@/components/helpers/BackToTopButton.vue';
-import FooterBar from '@/components/structural/FooterBar.vue';
-import PostFeed from '@/components/views/PostFeed.vue';
+/* eslint-disable no-unused-vars */
+/* eslint-disable vue/no-unused-components */
+
+// must import components that are not directly used so that they are accessible within nuxt/content
+import Divider from '@/components/helpers/Divider.vue';
+import HomeView from '@/components/views/Home.vue';
 import PostView from '@/components/views/Post.vue';
+import HandWave from '@/components/misc/HandWave.vue';
 
 export default {
   name: 'wildcard',
   components: {
-    NavBar,
-    BackToTopButton,
-    FooterBar,
+    Divider,
+    HomeView,
     PostView,
-    PostFeed,
+    HandWave,
   },
   async asyncData({ $content, params, error }) {
     const lastIndex = params.pathMatch.includes('/') ? params.pathMatch.lastIndexOf('/') : params.pathMatch.length;
-    const directory = params.pathMatch.slice(0, lastIndex); 
+    let directory = params.pathMatch.slice(0, lastIndex); 
     const slug = params.pathMatch.slice(lastIndex + 1);
+
+
+    if (!directory) {
+      directory = 'home';
+    }
 
     const nuxtContent = await $content(directory)
       .fetch()
@@ -46,28 +55,30 @@ export default {
         });
       });
 
-    const isMetadata = ({ slug, extension }) => slug === "info" && extension === ".yml";
-
+    const isMetadata = ({ slug, extension }) => slug === "index" && extension === ".md";
     const metadata = nuxtContent?.find(isMetadata);
     let content = nuxtContent?.filter((item) => !isMetadata(item));
+
 
     if (!content) {
       return error({ statusCode: 404, message: 'This resource does not exist' });
     }
 
-    if (!metadata || !metadata['primary-view'] || !metadata['secondary-view']) {
-      return error({ statusCode: 500, message: 'This section does not contain a valid info.yml' });
+    if (!metadata || !metadata.primaryView || !metadata.secondaryView) {
+      return error({ statusCode: 500, message: 'This section does not contain valid metadata' });
     }
 
 
     // TODO - This will be an issue if the metadata is not an object 
     //        consider 
-    metadata.view = metadata['primary-view'];
+    metadata.view = metadata.primaryView;
     
     if (slug) {
       content = content?.find((item) => item.slug === slug);
-      metadata.view = metadata['secondary-view'];
+      metadata.view = metadata.secondaryView;
     }
+
+    console.log(content);
 
     if (!content) {
       return error({ statusCode: 404, message: 'This resource does not exist' });

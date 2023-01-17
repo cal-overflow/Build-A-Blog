@@ -1,39 +1,72 @@
 <template>
   <main>
-    <nav-bar current-page="Home" />
-    <home :bio="bio" :portfolio-preview="portfolio" :blog-preview="blog" />
-    <footer-bar current-page="Home" />
+    <nav-bar :current-page="currentPage" />
+    <home-view :dir="directory" :content="content" :metadata="metadata" />
+    <footer-bar :current-page="currentPage" />
   </main>
 </template>
 
 <script>
-import NavBar from '@/components/structural/NavBar.vue';
-import Home from '@/components/views/Home.vue';
-import FooterBar from '@/components/structural/FooterBar.vue';
+/* eslint-disable no-unused-vars */
+/* eslint-disable vue/no-unused-components */
+
+// must import components that are not directly used so that they are accessible within nuxt/content
+import Divider from '@/components/helpers/Divider.vue';
+import HomeView from '@/components/views/Home.vue';
+import HandWave from '@/components/misc/HandWave.vue';
 
 export default {
   name: 'index',
   components: {
-    NavBar,
-    Home,
-    FooterBar,
+    Divider,
+    HomeView,
+    HandWave,
   },
   async asyncData({ $content, error }) {
-    const content = await $content('home')
+    const directory = 'home';
+    const nuxtContent = await $content(directory)
       .fetch()
       .catch((err) => {
         error({
           statusCode: 500,
-          message: 'Something went wrong while fetching the "about me" content',
-          error: err
+          message: 'Something went wrong',
+          error: err,
         });
       });
 
+    const isMetadata = ({ slug, extension }) => slug === "index" && extension === ".md";
+    const metadata = nuxtContent?.find(isMetadata);
+    const content = nuxtContent?.filter((item) => !isMetadata(item));
+
+
+    if (!content) {
+      return error({ statusCode: 404, message: 'This resource does not exist' });
+    }
+
+    if (!metadata || !metadata.primaryView || !metadata.secondaryView) {
+      return error({ statusCode: 500, message: 'The home section does not contain valid metadata' });
+    }
+
+    metadata.view = metadata.primaryView;
+
+    if (!content) {
+      return error({ statusCode: 404, message: 'This resource does not exist' });
+    }
+
     return {
-      bio: content.find(({ slug }) => slug === 'about'),
-      portfolio: content.find(({ slug }) => slug === 'portfolio-preview'),
-      blog: content.find(({ slug }) => slug === 'blog-preview'),
+      content,
+      metadata,
+      directory,
+      currentPage: 'Home'
     };
-  }
+  },
+  head() {
+    return {
+      title:
+      this.content?.title ||
+      process.env.NUXT_ENV_SITE_NAME ||
+      process.env.NUXT_ENV_FULL_NAME,
+    };
+  },
 };
 </script>

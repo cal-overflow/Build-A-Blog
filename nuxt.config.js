@@ -36,7 +36,16 @@ export default {
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  components: [
+    '~/components/development',
+    '~/components/forms',
+    '~/components/helpers',
+    '~/components/misc',
+    '~/components/navigation',
+    '~/components/previews',
+    '~/components/structural',
+    '~/components/views',
+  ],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -64,10 +73,9 @@ export default {
     const { $content } = require('@nuxt/content');
     const nuxtContent = await $content('', { deep: true, text: true }).sortBy('createdAt', 'asc').fetch();
 
-
     const sections = [...new Set(
                           nuxtContent
-                          .filter(({ extension }) => extension === '.yml')
+                          .filter(({ path, extension }) => path.endsWith('/index') && extension === '.md')
                           .map((section) => ({ ...section, posts: [] })))];
 
     nuxtContent.forEach((item) => {
@@ -112,7 +120,7 @@ export default {
 
         feed.addContributor(author);
 
-          tags.forEach((tag) => {
+          tags?.forEach((tag) => {
             feed.addCategory(tag.title);
           });
         },

@@ -66,6 +66,12 @@ export default {
   components: {
     Divider
   },
+  props: {
+    dir: {
+      type: String,
+      required: true
+    }
+  },
   data: () => ({
     post: undefined,
     isEditing: false,
@@ -91,7 +97,7 @@ export default {
       if (this.post.img.includes('http://') || this.post.img.includes('https://')) {
         return this.post.img;
       }
-      else return require(`~/assets/images/feature/${this.post.img}`);
+      else return require(`~/content/${this.dir}/${this.post.img}`);
     }
   }
 };

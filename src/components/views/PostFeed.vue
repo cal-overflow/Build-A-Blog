@@ -18,6 +18,7 @@
         :full-width="i % 3 === 0 || ((i === (posts.length - 1)) && i % 3 === 1)"
         :is-reversed="i % 6 === 0 || ((i === (posts.length - 1)) && (i - 1) % 6 !== 0)"
         :post="post"
+        :dir="dir"
       />
 
       <div
@@ -82,7 +83,11 @@ export default {
       default: undefined,
       type: Array,
       required: true,
-    }
+    },
+    dir: {
+      type: String,
+      required: true
+    },
   },
   data: () => ({
     posts: [],

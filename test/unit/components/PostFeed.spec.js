@@ -30,7 +30,7 @@ describe('PostFeed component', () => {
 
       wrapper = shallowMount(PostFeed, {
         stubs,
-        propsData: { content: fakePosts }
+        propsData: { content: fakePosts, dir: chance.string() }
       });
     });
 
@@ -52,9 +52,10 @@ describe('PostFeed component', () => {
         propsData: {
           metadata: {
             title,
-            description
+            description,
           },
-          content: fakePosts
+          content: fakePosts,
+          dir: chance.string()
         }
       });
     });
@@ -102,7 +103,8 @@ describe('PostFeed component', () => {
     beforeEach(() => {
       wrapper = shallowMount(PostFeed, {
         propsData: {
-          content: fakePosts
+          content: fakePosts,
+          dir: chance.string()
         }
       });
     });
@@ -174,7 +176,7 @@ describe('PostFeed component', () => {
   //   let tag;
 
   //   beforeEach(() => {
-  //     fakePosts = chance.n(generatePost, chance.integer({
+  //     fakePosts = chance.n(generatePost, chance.integer({`
   //       min: 1, max: postLimit
   //     }));
 

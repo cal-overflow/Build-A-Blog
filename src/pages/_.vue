@@ -3,10 +3,11 @@
     <nav-bar :content="navigation.navbar" :current-page="currentPage" />
 
     <home-view v-if="metadata.view === 'home-view'" :dir="directory" :content="content" :metadata="metadata" />
-    <post-view v-if="metadata.view === 'post-view'" />
+    <post-view v-if="metadata.view === 'post-view'" :dir="directory" />
     <post-feed
       v-if="metadata.view === 'post-feed'"
       :metadata="metadata"
+      :dir="directory"
       :content="content"
     />
 

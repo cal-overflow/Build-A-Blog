@@ -1,13 +1,24 @@
 import { mount, RouterLinkStub } from '@vue/test-utils';
 import Chance from 'chance';
+import generateNavigation from '../../helpers/navigationGenerator.js';
 import error from '@/layouts/error.vue';
 
 const chance = new Chance();
 
 describe('error layout', () => {
-  let wrapper, mockError, mockPath;
+  let wrapper, content, mockError, mockPath;
+
+  const nuxtContentMock = {
+    $content: jest.fn().mockReturnThis(),
+    where: jest.fn().mockReturnThis(),
+    fetch: jest.fn(),
+  };
+
 
   beforeEach(() => {
+    content = generateNavigation();
+    nuxtContentMock.fetch.mockResolvedValue([content]);
+
     mockError = {
       statusCode: chance.integer({ min: 400, max: 599 }),
       message: chance.sentence(),
@@ -28,7 +39,8 @@ describe('error layout', () => {
           $route: {
             path: mockPath
           }
-        }
+        },
+        $content: () => nuxtContentMock
       }
     });
   

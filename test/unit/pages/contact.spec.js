@@ -1,14 +1,40 @@
-import { shallowMount } from '@vue/test-utils';
+import { shallowMount, RouterLinkStub } from '@vue/test-utils';
+import generateNavigation from '../../helpers/navigationGenerator.js';
 import contact from '@/pages/contact.vue';
 import ContactForm from '@/components/forms/ContactForm.vue';
 import NavBar from '@/components/structural/NavBar.vue';
 import FooterBar from '@/components/structural/FooterBar.vue';
 
 describe('contact page', () => {
-  let wrapper;
+  let wrapper, content;
 
-  beforeEach(() => {
-    wrapper = shallowMount(contact);
+  const stubs = {
+    NuxtLink: RouterLinkStub,
+    'nuxt-content': true,
+  };
+
+  const nuxtContentMock = {
+    $content: jest.fn().mockReturnThis(),
+    where: jest.fn().mockReturnThis(),
+    fetch: jest.fn(),
+  };
+
+  beforeEach(async () => {
+    content = generateNavigation();
+    nuxtContentMock.fetch.mockResolvedValue([content]);
+
+    const data = await contact.asyncData({
+      $content: () => nuxtContentMock,
+      error: jest.fn()
+    });
+
+    contact.data = () => (data);
+    wrapper = shallowMount(contact, {
+      mocks: {
+        $content: () => nuxtContentMock
+      },
+      stubs,
+    });
   });
 
   it('is a Vue instance', () => {

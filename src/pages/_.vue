@@ -1,7 +1,6 @@
 <template>
   <main>
-    <!-- TODO - fix the current page -->
-    <nav-bar :current-page="currentPage" />
+    <nav-bar :content="navigation.navbar" :current-page="currentPage" />
 
     <home-view v-if="metadata.view === 'home-view'" :dir="directory" :content="content" :metadata="metadata" />
     <post-view v-if="metadata.view === 'post-view'" />
@@ -13,7 +12,7 @@
 
 
     <back-to-top-button />
-    <footer-bar :current-page="currentPage" />
+    <footer-bar :content="navigation.footer" :current-page="currentPage" />
   </main>
 </template>
 
@@ -84,10 +83,31 @@ export default {
       return error({ statusCode: 404, message: 'This resource does not exist' });
     }
 
+    const navigationContent = await $content().where({ path: '/navigation', extension: '.yml' })
+      .fetch()
+      .catch((err) => {
+        error({
+          statusCode: 500,
+          message: 'Something went wrong',
+          error: err,
+        });
+      });
+
+    if (navigationContent.length !== 1) {
+      return error({ statusCode: 500, message: 'The navigation has been configured incorrectly.' });
+    }
+
+    const navigation = navigationContent[0];
+
+    if (!navigation || !navigation.footer || !navigation.navbar) {
+      return error({ statusCode: 500, message: 'The navigation has not been configured.' });
+    }
+
     return {
       content,
       metadata,
       slug,
+      navigation,
       directory,
       currentPage: slug ? slug.charAt(0).toUpperCase() + slug.slice(1) : directory.charAt(0).toUpperCase() + directory.slice(1)
     };

@@ -1,6 +1,6 @@
 <template>
   <main>
-    <nav-bar />
+    <nav-bar :content="navigation.navbar" />
     <div class="max-w-screen-lg mx-auto">
       <div id="error-header-card" class="bg-card-light dark:bg-card-dark text-center m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in-fast transition">
         <p class="text-3xl md:text-5xl font-bold">This is embarrassing {{error.statusCode == '500' ? '🐢' : '😳'}}</p>
@@ -36,7 +36,7 @@
 
     </div>
 
-    <footer-bar />
+    <footer-bar :content="navigation.footer" />
   </main>
 </template>
 
@@ -57,6 +57,46 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  data: () => ({
+    navigation: {
+      navbar: {
+        signatureNavItem: {
+          title: 'Error',
+          href: '/'
+        },
+      },
+      footer: {
+        navItems: [
+          {
+            title: 'Help',
+            href: 'https://github.com/cal-overflow/portfolio'
+          }
+        ],
+        imageNavItems: {}
+      }
+    },
+  }),
+  mounted() {
+    this.$content().where({ path: '/navigation', extension: '.yml' })
+      .fetch()
+      .then((navigationContent) => {
+        if (navigationContent.length !== 1) {
+          return;
+        }
+
+        const navigation = navigationContent[0];
+
+        if (!navigation || !navigation.footer || !navigation.navbar) {
+          return;
+        }
+        
+        this.navigation = navigation;
+      })
+      .catch((err) => {
+        // TODO - don't error here. Instead do something default since on error page
+        console.log(err);
+      });
   },
   computed: {
     message() {

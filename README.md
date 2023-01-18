@@ -70,6 +70,28 @@ Learn more about sections [here](#sections).
 - Home (`src/content/Home`) - the index page of the website. See an example [here](https://github.com/cal-overflow/example-portfolio-content/tree/main/content/home).
 
 
+#### Navigation content:
+The navigation (nav-bar and footer-bar) are dynamically generated. The navigation components will load the content defined within the `src/content/navigation.yml` file. The file should look like this:
+
+```yaml
+navbar: # required
+  signatureNavItem: # optional
+    title: 'cal overflow'
+    href: '/'
+  navItems:  # required
+    - title: 'Blog'
+      href: '/blog'
+    - title: 'Portfolio'
+      href: '/portfolio'
+footer: # required
+  navItems: # required
+    - title: 'Contact Me'
+      href: '/contact'
+  imageNavItems: # optional
+    youtubeUrl: 'https://youtube.com/c/channel'
+    githubUrl: 'https://github.com/cal-overflow/portfolio'
+```
+
 
 #### Replace other essential content:
 Placeholders of the remaining content have been provided for simplicity. Complete the following to overwrite the placehoolders.
@@ -204,8 +226,6 @@ NUXT_ENV_SITE_URL=
 NUXT_ENV_FULL_NAME=
 NUXT_ENV_EMAIL_ADDRESS=
 NUXT_ENV_SITE_NAME=
-NUXT_ENV_GITHUB_PROFILE_URL=
-NUXT_ENV_YOUTUBE_CHANNEL_URL=
 ```
 <details>
   <summary>The purpose of each environment variable</summary>
@@ -214,11 +234,9 @@ NUXT_ENV_YOUTUBE_CHANNEL_URL=
   | Variable | Description | Required |
   | ----: | ------ | :--: |
   | `SITE_URL` | Utilized by the RSS feed generator to let readers know where they can find your site. | ✅ |
-  | `FULL_NAME` | Utilized throughout the site in places like the NavBar's home page title.  | ✅ |
+  | `FULL_NAME` | Utilized throughout the site.  | ✅ |
   | `EMAIL_ADDRESS` | Utilized for contact requests. | ✅ |
   | `SITE_NAME` | Utilized by the site to change the site title. If left blank, the `FULL_NAME` value is used. |  |
-  | `GITHUB_PROFILE_URL` | When present, a link to GitHub is shown in the FooterBar. |  |
-  | `YOUTUBE_CHANNEL_URL` | When present, a link to Youtube is shown in the FooterBar. |  |
 
   Note that each environment variable name is preceded by `NUXT_ENV_` so that it is easily accessible by the nuxt application. Refer to Nuxt's [Environment Variables documentation](https://nuxtjs.org/docs/configuration-glossary/configuration-env/#automatic-injection-of-environment-variables).
 </details>

@@ -1,8 +1,8 @@
 <template>
   <main>
-    <nav-bar :current-page="currentPage" />
+    <nav-bar :content="navigation.navbar" :current-page="currentPage" />
     <home-view :dir="directory" :content="content" :metadata="metadata" />
-    <footer-bar :current-page="currentPage" />
+    <footer-bar :content="navigation.footer" :current-page="currentPage" />
   </main>
 </template>
 
@@ -53,9 +53,31 @@ export default {
       return error({ statusCode: 404, message: 'This resource does not exist' });
     }
 
+
+    const navigationContent = await $content().where({ path: '/navigation', extension: '.yml' })
+      .fetch()
+      .catch((err) => {
+        error({
+          statusCode: 500,
+          message: 'Something went wrong',
+          error: err,
+        });
+      });
+
+    if (navigationContent.length !== 1) {
+      return error({ statusCode: 500, message: 'The navigation has not been configured.' });
+    }
+
+    const navigation = navigationContent[0];
+
+    if (!navigation || !navigation.footer || !navigation.navbar) {
+      return error({ statusCode: 500, message: 'The navigation has not been configured.' });
+    }
+
     return {
       content,
       metadata,
+      navigation,
       directory,
       currentPage: 'Home'
     };

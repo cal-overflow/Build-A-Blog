@@ -20,7 +20,7 @@ describe('PostPreview component', () => {
 
   describe('given no post is passed in', () => {
     beforeEach(() => {
-      wrapper = mount(PostPreview, { stubs, mocks });
+      wrapper = mount(PostPreview, { stubs, mocks, propsData: { dir: chance.string() } });
     });
 
     afterEach(jest.clearAllMocks);
@@ -40,7 +40,7 @@ describe('PostPreview component', () => {
       post = generatePost();
   
       wrapper = mount(PostPreview, {
-        propsData: { post },
+        propsData: { post, dir: chance.string() },
         stubs,
         mocks,
       });

@@ -22,7 +22,7 @@ describe('post component', () => {
         'nuxt-content': true,
         NuxtLink: RouterLinkStub,
       },
-      propsData: { fakeRoute },
+      propsData: { fakeRoute, dir: chance.string() },
       mocks: {
         $content: () => nuxtContentMock
       },

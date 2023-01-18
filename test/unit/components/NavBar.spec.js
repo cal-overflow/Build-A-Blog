@@ -1,28 +1,20 @@
 import { shallowMount } from '@vue/test-utils';
-import Chance from 'chance';
+import generateNavigation from '../../helpers/navigationGenerator.js';
 import NavBar from '@/components/structural/NavBar.vue';
 import NavItem from '@/components/navigation/NavItem.vue';
 
-const chance = new Chance();
 describe('NavBar component', () => {
-  let navItems, wrapper;
-  const oldEnv = process.env;
-
-  beforeAll(() => {
-    process.env = {
-      ...oldEnv,
-      NUXT_ENV_FULL_NAME: chance.name()
-    };
-  });
-
-  afterAll(() => {
-    process.env = oldEnv;
-  });
+  let navItems, wrapper, navbar;
 
 
   beforeEach(() => {
+    ({ navbar } = generateNavigation());
+    
     wrapper = shallowMount(NavBar, {
-      propsData: { currentPage: 'Home' },
+      propsData: {
+        currentPage: 'Home',
+        content: navbar
+      },
     });
     navItems = wrapper.findAllComponents(NavItem);
   });
@@ -31,31 +23,21 @@ describe('NavBar component', () => {
     expect(wrapper.vm).toBeTruthy();
   });
 
-  it('renders a NavItem for each of the links', () => {
-    expect(wrapper.findAllComponents(NavItem)).toHaveLength(3);
-  });
-
-  it('correctly renders the NavItem for the signature header (home page)', () => {
-    const navItem = navItems.filter((el) => el.text() === process.env.NUXT_ENV_FULL_NAME).at(0);
+  it('correctly renders the NavItem for the signature header', () => {
+    const navItem = navItems.filter((el) => el.text() === navbar.signatureNavItem.title).at(0);
 
     expect(navItem.exists()).toBeTruthy();
-    expect(navItem.props('href')).toEqual('/');
+    expect(navItem.props('href')).toEqual(navbar.signatureNavItem.href);
     expect(navItem.props('active')).toBeTruthy();
   });
 
-  it('renders a NavItem for the blog page', () => {
-    const navItem = navItems.filter((el) => el.text() === 'Blog').at(0);
-
-    expect(navItem.exists()).toBeTruthy();
-    expect(navItem.props('href')).toEqual('/blog');
-    expect(navItem.props('active')).not.toBeTruthy();
-  });
-
-  it('renders a NavItem for the Portfolio page', () => {
-    const navItem = navItems.filter((el) => el.text() === 'Portfolio').at(0);
-
-    expect(navItem.exists()).toBeTruthy();
-    expect(navItem.props('href')).toEqual('/portfolio');
-    expect(navItem.props('active')).not.toBeTruthy();
+  it('renders a NavItem for the each navItem passed in', () => {
+    navbar.navItems.forEach(({ title, href }) => {
+      const navItem = navItems.filter((el) => el.text() === title).at(0);
+      
+      expect(navItem.exists()).toBeTruthy();
+      expect(navItem.props('href')).toEqual(href);
+      expect(navItem.props('active')).not.toBeTruthy();
+    });
   });
 });

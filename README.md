@@ -70,6 +70,28 @@ Learn more about sections [here](#sections).
 - Home (`src/content/Home`) - the index page of the website. See an example [here](https://github.com/cal-overflow/example-portfolio-content/tree/main/content/home).
 
 
+#### Navigation content:
+The navigation (nav-bar and footer-bar) are dynamically generated. The navigation components will load the content defined within the `src/content/navigation.yml` file. The file should look like this:
+
+```yaml
+navbar: # required
+  signatureNavItem: # optional
+    title: 'cal overflow'
+    href: '/'
+  navItems:  # required
+    - title: 'Blog'
+      href: '/blog'
+    - title: 'Portfolio'
+      href: '/portfolio'
+footer: # required
+  navItems: # required
+    - title: 'Contact Me'
+      href: '/contact'
+  imageNavItems: # optional
+    youtubeUrl: 'https://youtube.com/c/channel'
+    githubUrl: 'https://github.com/cal-overflow/portfolio'
+```
+
 
 #### Replace other essential content:
 Placeholders of the remaining content have been provided for simplicity. Complete the following to overwrite the placehoolders.

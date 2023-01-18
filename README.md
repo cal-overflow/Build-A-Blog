@@ -226,8 +226,6 @@ NUXT_ENV_SITE_URL=
 NUXT_ENV_FULL_NAME=
 NUXT_ENV_EMAIL_ADDRESS=
 NUXT_ENV_SITE_NAME=
-NUXT_ENV_GITHUB_PROFILE_URL=
-NUXT_ENV_YOUTUBE_CHANNEL_URL=
 ```
 <details>
   <summary>The purpose of each environment variable</summary>
@@ -236,11 +234,9 @@ NUXT_ENV_YOUTUBE_CHANNEL_URL=
   | Variable | Description | Required |
   | ----: | ------ | :--: |
   | `SITE_URL` | Utilized by the RSS feed generator to let readers know where they can find your site. | ✅ |
-  | `FULL_NAME` | Utilized throughout the site in places like the NavBar's home page title.  | ✅ |
+  | `FULL_NAME` | Utilized throughout the site.  | ✅ |
   | `EMAIL_ADDRESS` | Utilized for contact requests. | ✅ |
   | `SITE_NAME` | Utilized by the site to change the site title. If left blank, the `FULL_NAME` value is used. |  |
-  | `GITHUB_PROFILE_URL` | When present, a link to GitHub is shown in the FooterBar. |  |
-  | `YOUTUBE_CHANNEL_URL` | When present, a link to Youtube is shown in the FooterBar. |  |
 
   Note that each environment variable name is preceded by `NUXT_ENV_` so that it is easily accessible by the nuxt application. Refer to Nuxt's [Environment Variables documentation](https://nuxtjs.org/docs/configuration-glossary/configuration-env/#automatic-injection-of-environment-variables).
 </details>

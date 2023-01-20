@@ -17,6 +17,7 @@ env:
   NUXT_ENV_SITE_NAME: Example portfolio
   NUXT_ENV_FULL_NAME: Example Developer
   NUXT_ENV_EMAIL_ADDRESS: cal-overflow@users.noreply.github.com
+  NUXT_ENV_GOOGLE_ANALYTICS_ID: G-VCCBJ50CTJ
   STACK_TEMPLATE_FILE: template/stack.yml
 
 jobs:

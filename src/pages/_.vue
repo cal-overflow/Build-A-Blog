@@ -46,6 +46,7 @@ export default {
     }
 
     const nuxtContent = await $content(directory)
+      .sortBy('id', 'desc')
       .fetch()
       .catch((err) => {
         error({

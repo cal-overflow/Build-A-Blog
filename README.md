@@ -161,11 +161,11 @@ To write a blog post, create a markdown file within a section (i.e., `src/conten
 
 ```md
 ---
-id: 12
+id: 2
 title: How to create a really cool portfolio website
 slug: create-a-portfolio-site
 date: Janurary 7, 2023
-img: awesome-website.jpg
+img: website-layout.png
 tags:
   - Software Engineering
   - Tutorial
@@ -176,7 +176,8 @@ As software engineers, we often create tons of really cool projects and want a p
 Let's take a step-by-step look into how I made my portfolio.
 <!--more-->
 
-Step 1: Clone the [template repository](https://github.com/cal-overflow/portfolio).
+Steps: 
+1. Clone the [template repository](https://github.com/cal-overflow/portfolio).
 ...
 ```
 

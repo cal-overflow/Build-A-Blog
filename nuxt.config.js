@@ -27,6 +27,11 @@ export default {
     ],
   },
 
+  // Tracking ID for Google Analytics
+  googleAnalytics: {
+    id: process.env.NUXT_ENV_GOOGLE_ANALYTICS_ID,
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
@@ -53,6 +58,8 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    // https://google-analytics.nuxtjs.org
+    '@nuxtjs/google-analytics',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

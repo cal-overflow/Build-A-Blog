@@ -227,6 +227,7 @@ NUXT_ENV_SITE_URL=
 NUXT_ENV_FULL_NAME=
 NUXT_ENV_EMAIL_ADDRESS=
 NUXT_ENV_SITE_NAME=
+NUXT_ENV_GOOGLE_ANALYTICS_ID=
 ```
 <details>
   <summary>The purpose of each environment variable</summary>
@@ -238,6 +239,7 @@ NUXT_ENV_SITE_NAME=
   | `FULL_NAME` | Utilized throughout the site.  | ✅ |
   | `EMAIL_ADDRESS` | Utilized for contact requests. | ✅ |
   | `SITE_NAME` | Utilized by the site to change the site title. If left blank, the `FULL_NAME` value is used. |  |
+  | `GOOGLE_ANALYTICS_ID` | The tracking ID utilized for streaming user usage & event analytics to [Google Analytics](https://marketingplatform.google.com/about/analytics/). |  |
 
   Note that each environment variable name is preceded by `NUXT_ENV_` so that it is easily accessible by the nuxt application. Refer to Nuxt's [Environment Variables documentation](https://nuxtjs.org/docs/configuration-glossary/configuration-env/#automatic-injection-of-environment-variables).
 </details>
@@ -271,9 +273,9 @@ $ npm run unit
 If you want to bring new changes from the template repository into your website, utilize mutliple remote repositories with Git.
 
 ```bash
-git remote add template <git@github.com:cal-overflow/portfolio.git>
+git remote add template git@github.com:cal-overflow/portfolio.git
 # OR
-git remote add template <https://github.com/cal-overflow/portfolio.git>
+git remote add template https://github.com/cal-overflow/portfolio.git
 
 git fetch --all
 git merge template/master

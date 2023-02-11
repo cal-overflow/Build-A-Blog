@@ -27,11 +27,6 @@ export default {
     ],
   },
 
-  // Tracking ID for Google Analytics
-  googleAnalytics: {
-    id: process.env.NUXT_ENV_GOOGLE_ANALYTICS_ID,
-  },
-
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],

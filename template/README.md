@@ -19,3 +19,6 @@ The [AWS SAM](https://aws.amazon.com/serverless/sam/) configuration file.
 #### `deploy.sh`
 Bash script reused by workflows when deploying the Cloudformation stack and syncing the static website in an S3 bucket.
 
+#### `google-analytics-tag.html`
+A file containing the google analytics tag information for the [portfolio.cal-overflow.dev](https://portfolio.cal-overflow.dev) template site.
+

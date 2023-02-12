@@ -25,6 +25,7 @@ export default {
   async asyncData({ $content, error }) {
     const directory = 'home';
     const nuxtContent = await $content(directory)
+      .sortBy('id', 'desc')
       .fetch()
       .catch((err) => {
         error({

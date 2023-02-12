@@ -3,7 +3,7 @@
     <nav-bar :content="navigation.navbar" :current-page="currentPage" />
 
     <home-view v-if="metadata.view === 'home-view'" :dir="directory" :content="content" :metadata="metadata" />
-    <post-view v-if="metadata.view === 'post-view'" :dir="directory" />
+    <post-view v-if="metadata.view === 'post-view'" :dir="directory" :content="content" />
     <post-feed
       v-if="metadata.view === 'post-feed'"
       :metadata="metadata"
@@ -36,9 +36,11 @@ export default {
     HandWave,
   },
   async asyncData({ $content, params, error }) {
-    const lastIndex = params.pathMatch.includes('/') ? params.pathMatch.lastIndexOf('/') : params.pathMatch.length;
-    let directory = params.pathMatch.slice(0, lastIndex); 
-    const slug = params.pathMatch.slice(lastIndex + 1);
+    const lastForwardSlashIndex = params.pathMatch.includes('/') ? params.pathMatch.lastIndexOf('/') : params.pathMatch.length;
+    let directory = params.pathMatch.slice(0, lastForwardSlashIndex);
+    const anchorIndex = params.pathMatch.indexOf('#');
+    const lastIndex = anchorIndex === -1 ? params.pathMatch.length : anchorIndex;
+    const slug = params.pathMatch.substring(lastForwardSlashIndex + 1, lastIndex + 1);
 
 
     if (!directory) {
@@ -78,8 +80,6 @@ export default {
       content = content?.find((item) => item.slug === slug);
       metadata.view = metadata.secondaryView;
     }
-
-    console.log(content);
 
     if (!content) {
       return error({ statusCode: 404, message: 'This resource does not exist' });

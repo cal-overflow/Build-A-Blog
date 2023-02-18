@@ -18,6 +18,7 @@ This document contains the steps necessary to generate your own website using th
   - [Environment variables](#environment-variables)
   - [Run or generate the website](#run-or-generate-the-website)
   - [Testing](#testing-)
+- [Fetching new features](#updating-your-website-with-new-features-in-the-template) 
 
 ## 1. Generate a repository
 Through GitHub you can use a template repository such as this to generate your own repository. \
@@ -129,7 +130,8 @@ colors: {
 
 ## 6. Write your first blog post (optional)
 
-Now that you've done all the heavy lifting, your website should have a basic home page and be ready to serve some blog posts. Reference the [Posts section of the README](./README.md#posts-) for general information on writing a post.
+Now that you've done all the heavy lifting, your website should have a basic home page and be ready to serve some blog posts. \
+If you haven't already, create a blog [section](./README.md#sections). Next, reference the [Posts section of the README](./README.md#posts-) for general information on writing a post.
 
 
 ## Running locally
@@ -169,6 +171,8 @@ Unit tests can be run with the [Jest](https://jestjs.io/) test runner. End-to-en
 # run unit tests
 $ npm run unit
 ``` 
+
+---
 
 ### Updating your website with new features in the template
 

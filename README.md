@@ -111,7 +111,7 @@ Each post is a markdown file within a section (i.e., `src/content/blog/` directo
 
 <small>
 
-  File: [`src/content/blog/004-com-s-309.md`](https://github.com/cal-overflow/site/blob/main/src/content/blog/004-com-s-309.md)
+  File: [`src/content/blog/004-com-s-309.md`](https://github.com/cal-overflow/site/blob/main/src/content/blog/004-com-s-309.md?plain=1)
 </small>
 ```md
 ---

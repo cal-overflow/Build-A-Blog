@@ -49,6 +49,8 @@ A high-level overview of how the website is structured. The different pieces inv
 - [Posts](#posts)
 - [Tags](#tags)
 
+---
+
 ### Sections
 Sections are defined as folders within the `src/content` folder. For instance, creating a `src/content/blog` folder will define a blog section within your website. **Each section must include an `index.md` defining metadata for the section.**
 
@@ -82,6 +84,8 @@ tags:
 ---
 ```
 
+---
+
 ### Views
 Views are layouts assigned to a section. \
 Many sections include two views: A **primary view**, and a **secondary view**. Note that not all sections require a secondary-view (i.e., the home page of [cal-overflow.dev](https://cal-overflow.dev) - defined [here](https://github.com/cal-overflow/site/blob/a790b98d32ce3fa3087e75f878ee6b9002d6e300/src/content/home/index.md?plain=1#L3-L4))
@@ -99,11 +103,16 @@ In this example, the views are:
 
 View example sections and their definitions [here](https://github.com/cal-overflow/site/tree/main/src/content).
 
+---
+
 ### Posts 📝
-Posts are written in [Markdown](https://www.markdownguide.org/) and converted to HTML with the [Nuxt Content](https://content.nuxtjs.org/) module.
+Posts are written in [Markdown](https://www.markdownguide.org/) and converted to HTML with the [Nuxt Content](https://content.nuxtjs.org/) module. \
+Each post is a markdown file within a section (i.e., `src/content/blog/` directory). An [example post](http://www.cal-overflow.dev/blog/com-s-309) is shown below.
 
-Posts are defined as markdown files in a section (i.e., `src/content/blog/`) directory. An [example post](http://www.cal-overflow.dev/blog/com-s-309) is shown below.
+<small>
 
+  File: [`src/content/blog/004-com-s-309.md`](https://github.com/cal-overflow/site/blob/main/src/content/blog/004-com-s-309.md)
+</small>
 ```md
 ---
 id: 4
@@ -129,6 +138,8 @@ View the Nuxt docs on [Writing Content](https://content.nuxtjs.org/writing) for 
 
 #### Images
 Feature images are placed within the same folder as the blog post (i.e., `src/content/blog/feature-images/com-s-309.png`). Other post images should be placed in `src/static/blog-images/`. See the [source code](https://github.com/cal-overflow/site) for [cal-overflow.dev](https://cal-overflow.dev) as an example.
+
+---
 
 ### Tags
 Tags are currently being re-worked. This documentation will be updated when the changes are complete.

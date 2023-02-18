@@ -1,6 +1,6 @@
 # Portfolio
 
-Website for blogging and showcasing work. \
+A template website for blogging and showcasing work. \
 Built primarily with [NuxtJS](https://nuxtjs.org/) and [TailwindCSS](https://tailwindcss.com/).
 
 <details>
@@ -18,110 +18,24 @@ View the source code for the website [here](https://github.com/cal-overflow/site
 
 <!-- Table of contents -->
 ### Table of contents
-- [Make the site your own](#make-the-site-your-own-)
-  1. [Set environment variables](#1-set-environment-variables)
-  2. [Enter a site description](#2-enter-a-site-description)
-  3. [Create essential content](#3-create-essential-content)
-  5. [Change the color palette](#4-change-the-color-palette)
-  6. [Write your first blog post](#5-write-your-first-blog-post)
+- [Getting Started](#make-the-site-your-own-)
 - [Sections](#sections)
 - [Blog posts](#blog-posts-)
-- [Editing content in development mode](#editing-content-in-development-mode-)
+<!--
 - [Running locally](#running-locally) 
   - [Environment setup](#environment-setup)
   - [Environment variables](#environment-variables)
   - [Run or generate the website](#run-or-generate-the-website)
   - [Testing](#testing-)
+-->
 
-## Make the site your own 👨‍💻
-This portfolio has been built to be "modular" so that most of the content is seperate from the components themselves.
+## Getting Started
+**Make the site your own 👨‍💻** \
+This portfolio was built to be "modular" so that the content and site structure is separate from the components themselves.
 
-If you'd like a website similar to mine ([cal-overflow.dev](http://www.cal-overflow.dev)), you can do so without needing to build it from scratch. Simply [use this repository as a template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template) and follow the steps below.
+If you'd like a website similar to the author's ([cal-overflow.dev](http://www.cal-overflow.dev)), you can create one without needing to build it from scratch. 
 
-### 1. Set environment variables
-
-Reference the [Environment variables](#environment-variables) section.
-
-### 2. Enter a site description
-
-Find the `head` object within the `nuxt.config.js` file. Change the value of `content` in the object named `description`.
-
-```diff
-head: {
-  meta: [
-    // ...
-    {
-      hid: 'description',
-      name: 'description',
--     content: "Enter your site description here."
-+     content: "YOUR SITE DESCRIPTION"
-    },
-  ],
-}
-```
-
-### 3. Create essential content
-The `src/content` folder will contain not only the content of the website, but also define the site's structure.
-You can get started by copying the contents of a sample content folder [here](https://github.com/cal-overflow/example-portfolio-content).
-
-Learn more about sections [here](#sections).
-
-**Note:** The following sections must be properly defined in the content folder (the website will not function properly without them).
-- Home (`src/content/Home`) - the index page of the website. See an example [here](https://github.com/cal-overflow/example-portfolio-content/tree/main/content/home).
-
-
-#### Navigation content:
-The navigation (nav-bar and footer-bar) are dynamically generated. The navigation components will load the content defined within the `src/content/navigation.yml` file. The file should look like this:
-
-```yaml
-navbar: # required
-  signatureNavItem: # optional
-    title: 'cal overflow'
-    href: '/'
-  navItems:  # required
-    - title: 'Blog'
-      href: '/blog'
-    - title: 'Portfolio'
-      href: '/portfolio'
-footer: # required
-  navItems: # required
-    - title: 'Contact Me'
-      href: '/contact'
-  imageNavItems: # optional
-    twitterUrl: 'https://twitter.com/'
-    facebookUrl: 'https://facebook.com/'
-    linkedinUrl: 'https://linkedin.com/'
-    instagramUrl: 'https://instagram.com/'
-    youtubeUrl: 'https://youtube.com/'
-    githubUrl: 'https://github.com/'
-```
-
-
-#### Replace other essential content:
-Placeholders of the remaining content have been provided for simplicity. Complete the following to overwrite the placehoolders.
-
-- [ ] Replace the existing `favicon.ico` file within the `src/static/` directory.
-
-
-### 4. Change the color palette
-Change the color scheme of the website by editing `color` object within the `tailwind.config.js` file in the `src/` directory. You can find a small description for some of the properties below.
-
-```js
-colors: {
-  'footer': '#292929',        // Background color of footer
-  'menu-light': '#E0E0E1',    // Background color of menu bar in light mode
-  'menu-dark': '#1F1F1F',     // Background color of menu bar in dark mode
-  'card-light': '#EAEAEB',    // Background color of each card in light mode
-  'card-dark': '#262626',     // Background color of each card in dark mode
-  'primary-light': '#A61E17', // Primary color in light mode (red)
-  'primary-dark': '#00B4E6',  // Primary color in dark mode (light blue)
-  // ...
-}
-```
-
-### 5. Write your first blog post
-
-Now that you've done all the heavy lifting, your website should have a basic home page and be ready to serve some blog posts. Reference the [Blog Posts](#blog-posts-) section below for general information on writing a blog post.
+[Click here to get started](./getting-started.md)
 
 ---
 
@@ -193,22 +107,6 @@ Note that feature images should be placed in directory `src/assets/images/featur
 Post tags allow you to group posts within the same section together based on similarities such as topic. Post tags are defined in the sections `index.md` file.
 
 Refer to the [sections](#sections) documentation above for more information on defining tags within a section.
-
-### Editing content in development mode 📃
-
-When in a development environment, you can double click on `<nuxt-content>` components to edit the files in the browser.
-
-I have created a [custom Editor component](src/components/development/Editor.vue) that builds upon the [default nuxt/content live editor](https://content.nuxtjs.org/displaying#live-editing). You can edit most content that is rendered with `<nuxt-content>` components.
-
-<details>
-
-<summary>View the editor in action</summary>
-
-| Viewing post | Editing Post |
-| :-: | :-: |
-| ![Viewing post](template/assets/viewing-post-example.png) | ![Editing post](template/assets/editing-post-example.png) |
-
-</details>
 
 ## Running locally
 ### Environment setup

@@ -10,8 +10,8 @@ This document contains the steps necessary to generate your own website using th
   2. [Set environment variables](#2-set-environment-variables)
   3. [Enter a site description](#3-enter-a-site-description)
   4. [Create essential content](#4-create-essential-content)
-  5. [Change the color palette](#5-change-the-color-palette)
-  6. [Write your first blog post](#6-write-your-first-blog-post)
+  5. [Change the color palette](#5-change-the-color-palette-optional) (optional)
+  6. [Write your first blog post](#6-write-your-first-blog-post-optional) (optional)
 #### General
 - [Running locally](#running-locally) 
   - [Environment setup](#environment-setup)
@@ -127,7 +127,7 @@ colors: {
 }
 ```
 
-## 6. Write your first blog post
+## 6. Write your first blog post (optional)
 
 Now that you've done all the heavy lifting, your website should have a basic home page and be ready to serve some blog posts. Reference the [Posts section of the README](./README.md#posts-) for general information on writing a post.
 

@@ -6,12 +6,12 @@ This document contains the steps necessary to generate your own website using th
 <!-- Table of contents -->
 ### Table of contents
 #### Create your own website
-  1. [Generate repository](#generate-a-repository)
-  2. [Set environment variables](#1-set-environment-variables)
-  3. [Enter a site description](#2-enter-a-site-description)
-  4. [Create essential content](#3-create-essential-content)
-  5. [Change the color palette](#4-change-the-color-palette)
-  6. [Write your first blog post](#5-write-your-first-blog-post)
+  1. [Generate repository](#1-generate-a-repository)
+  2. [Set environment variables](#2-set-environment-variables)
+  3. [Enter a site description](#3-enter-a-site-description)
+  4. [Create essential content](#4-create-essential-content)
+  5. [Change the color palette](#5-change-the-color-palette)
+  6. [Write your first blog post](#6-write-your-first-blog-post)
 #### General
 - [Running locally](#running-locally) 
   - [Environment setup](#environment-setup)

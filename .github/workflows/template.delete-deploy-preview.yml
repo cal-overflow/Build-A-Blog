@@ -14,7 +14,7 @@ permissions:
   
 
 env:
-  STACK_NAME: portfolio-template-pr-${{ github.event.number }}
+  STACK_NAME: build-a-blog-pr-${{ github.event.number }}
   REGION: us-east-1
 
 jobs:

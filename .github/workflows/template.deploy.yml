@@ -1,4 +1,4 @@
-name: Deploy portfolio
+name: Deploy website
 
 on:
   push:
@@ -10,11 +10,11 @@ permissions:
   contents: read
 
 env:
-  STACK_NAME: portfolio-template
+  STACK_NAME: build-a-blog-template
   REGION: us-east-1
-  NUXT_ENV_SITE_URL: https://portfolio.cal-overflow.dev
-  NUXT_ENV_SITE_NAME: Example portfolio
-  NUXT_ENV_FULL_NAME: Example Developer
+  NUXT_ENV_SITE_URL: https://build-a-blog.cal-overflow.dev
+  NUXT_ENV_SITE_NAME: Build-A-Blog Example
+  NUXT_ENV_FULL_NAME: cal overflow
   NUXT_ENV_EMAIL_ADDRESS: cal-overflow@users.noreply.github.com
   NUXT_ENV_GOOGLE_ANALYTICS_ID: G-VCCBJ50CTJ
   STACK_TEMPLATE_FILE: template/stack.yml

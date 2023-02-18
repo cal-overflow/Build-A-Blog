@@ -34,16 +34,16 @@ View the source code for the website [here](https://github.com/cal-overflow/site
 
 ## Getting Started
 **Make the site your own 👨‍💻** \
-This portfolio was built to be "modular" so that the content and site structure is separate from the components themselves.
+This portfolio is "modular" so that the content and site structure is separate from the components themselves.
 
 If you'd like a website similar to the author's ([cal-overflow.dev](http://www.cal-overflow.dev)), you can create one without needing to build it from scratch. 
 
-[Click here to get started](./getting-started.md)
+**[Click here to get started](./getting-started.md)**
 
 ---
 
-## Project Overview
-This section is a high-level overview of how the website is structured. The different pieces involved are:
+## Structure Overview
+A high-level overview of how the website is structured. The different pieces involved are:
 - [Sections](#sections)
 - [Views](#views)
 - [Posts](#posts)
@@ -70,14 +70,15 @@ An example `index.md` metadata is shown below.
 # Required
 title: Blog
 primaryView: post-feed # What view to show on /blog page
-secondaryView: post-view # What is shown on pages like /blog/create-a-portfolio-site
+secondaryView: post-view # What is shown on pages like /blog/post-1, /blog/post-2, etc.
 
 # Optional
 description: This is the blog section.
 tags:
-  - Software engineering
-  - Tutorial
-  - UI/UX
+  - Software Engineering
+  - University Course
+  - Backend
+  - Frontend
 ---
 ```
 
@@ -115,7 +116,8 @@ tags:
   - Backend
 ---
 
-Computer Science 309 (Software Development Practices) is a course at Iowa State University that provides most students with their first software development-project experience. Students are taught the basics of GitLab (version control platform), MySQL databases, Android Studio, and Spring Boot.
+Computer Science 309 (Software Development Practices) is a course at Iowa State University that provides most students with their first software development-project experience.
+Students are taught the basics of GitLab (version control platform), MySQL databases, Android Studio, and Spring Boot.
 
 <!--more-->
 

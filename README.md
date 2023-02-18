@@ -1,4 +1,4 @@
-# Portfolio
+# Build-A-Blog
 
 A template website for blogging and showcasing work. \
 Built primarily with [NuxtJS](https://nuxtjs.org/) and [TailwindCSS](https://tailwindcss.com/).
@@ -34,7 +34,7 @@ View the source code for the website [here](https://github.com/cal-overflow/site
 
 ## Getting Started
 **Make the site your own 👨‍💻** \
-This portfolio is "modular" so that the content and site structure is separate from the components themselves.
+This website is "modular" so that the content and site structure is separate from the components themselves.
 
 If you'd like a website similar to the author's ([cal-overflow.dev](http://www.cal-overflow.dev)), you can create one without needing to build it from scratch. 
 

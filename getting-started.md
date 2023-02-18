@@ -1,4 +1,4 @@
-# Portfolio
+# Build-A-Blog
 
 A template website for blogging and showcasing work. \
 This document contains the steps necessary to generate your own website using this template.
@@ -138,7 +138,7 @@ If you haven't already, create a blog [section](./README.md#sections). Next, ref
 ### Environment setup
 First, navigate to the project directory and ensure you're using the correct version of Node. Then, install the Node dependencies with [npm](https://www.npmjs.com/).
 ```bash
-$ cd portfolio
+$ cd Build-A-Blog
 
 # ensure node version is correct
 $ nvm use
@@ -179,9 +179,9 @@ $ npm run unit
 If you want to bring new changes from the template repository into your website, utilize mutliple remote repositories with Git.
 
 ```bash
-git remote add template git@github.com:cal-overflow/portfolio.git
+git remote add template git@github.com:cal-overflow/Build-A-Blog.git
 # OR
-git remote add template https://github.com/cal-overflow/portfolio.git
+git remote add template https://github.com/cal-overflow/Build-A-Blog.git
 
 git fetch --all
 git merge template/main

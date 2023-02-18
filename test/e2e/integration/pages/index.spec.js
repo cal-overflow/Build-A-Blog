@@ -10,11 +10,12 @@ describe('Home page', () => {
     cy.get('#footer-bar').should('be.visible');
   });
 
-  it('shows the introduction card and two page-preview cards', () => {
+  it('shows the introduction card and three page-preview cards', () => {
     cy.get('#introduction-card').should('be.visible');
-    cy.get('.page-preview-card').should('have.length', 2);
+    cy.get('.page-preview-card').should('have.length', 3);
     cy.get('.page-preview-card').eq(0).should('be.visible');
     cy.get('.page-preview-card').eq(1).should('be.visible');
+    cy.get('.page-preview-card').eq(2).should('be.visible');
   });
 
   describe('introduction card', () => {
@@ -34,6 +35,13 @@ describe('Home page', () => {
     it('contains a link to the blog page', () => {
       cy.contains('View my blog').click();
       cy.location('pathname').should('eq', '/blog');
+    });
+  });
+
+  describe('cloud preview card', () => {
+    it('contains a link to the cloud page', () => {
+      cy.contains('Learn more').click();
+      cy.location('pathname').should('eq', '/cloud');
     });
   });
 });

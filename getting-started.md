@@ -19,9 +19,8 @@ This document contains the steps necessary to generate your own website using th
   - [Run or generate the website](#run-or-generate-the-website)
   - [Testing](#testing-)
 
-If you'd like a website similar to mine ([cal-overflow.dev](http://www.cal-overflow.dev)), you can do so without needing to build it from scratch. 
 ## 1. Generate a repository
-Through GitHub, you can use a repository as a template to generate your own repository. \
+Through GitHub you can use a template repository such as this to generate your own repository. \
 Use this repository as a template by following [these steps](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template).
 
 Once your repository has been generated, follow the below steps.
@@ -49,9 +48,6 @@ NUXT_ENV_SITE_NAME=
   Note that each environment variable name is preceded by `NUXT_ENV_` so that it is easily accessible by the nuxt application. Refer to Nuxt's [Environment Variables documentation](https://nuxtjs.org/docs/configuration-glossary/configuration-env/#automatic-injection-of-environment-variables).
 </details>
 
-
-Reference the [Environment variables](#environment-variables) section.
-
 ## 3. Enter a site description
 
 Find the `head` object within the `nuxt.config.js` file. Change the value of `content` in the object named `description`.
@@ -77,10 +73,12 @@ View the `src/content` folder for [cal-overflow.dev](https://cal-overflow.dev) (
 Learn more about sections [here](./README.md#sections).
 
 ### Required content
-The following **must be properly defined** in the content folder or the website will not function properly.
-#### Home page content (`src/content/Home` folder) - the index (home) page of the website. See an example [here](https://github.com/cal-overflow/site/tree/main/src/content/home).
+The following content **must be properly defined or the website will not function properly**.
 
-### Navigation content
+#### Home page content
+Defined within the `src/content/Home` folder, is the index (home) page of the website. See an example [here](https://github.com/cal-overflow/site/tree/main/src/content/home).
+
+#### Navigation content
 The navigation (nav-bar and footer-bar) are dynamically generated. The navigation components will load the content defined within the `src/content/navigation.yml` file. The file should look like this:
 
 ```yaml
@@ -108,7 +106,7 @@ footer: # required
 
 
 #### Replace other essential content:
-Placeholders of the remaining content have been provided for simplicity. Complete the following to overwrite the placehoolders.
+Placeholders of the following have been provided for simplicity. Complete the following to overwrite the placeholders.
 
 - [ ] Replace the existing `favicon.ico` file within the `src/static/` directory.
 
@@ -131,8 +129,7 @@ colors: {
 
 ## 6. Write your first blog post
 
-Now that you've done all the heavy lifting, your website should have a basic home page and be ready to serve some blog posts. Reference the [Blog Posts](./README.md#posts-) section below for general information on writing a blog post.
-
+Now that you've done all the heavy lifting, your website should have a basic home page and be ready to serve some blog posts. Reference the [Posts section of the README](./README.md#posts-) for general information on writing a post.
 
 
 ## Running locally
@@ -185,3 +182,4 @@ git remote add template https://github.com/cal-overflow/portfolio.git
 git fetch --all
 git merge template/main
 ```
+

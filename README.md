@@ -60,6 +60,8 @@ Sections are defined as folders within the `src/content` folder. For instance, c
 1. A `primaryView` in which to render for the section's default route (i.e., `/blog/` for `src/content/blog/index.md`)
 1. A `secondaryView` in which to render for the section's default route (i.e., `/blog/post-1` for `src/content/blog/post-1.md`)
 
+See more information on [views](#views) below.
+
 
 ##### Optional
 1. A description for the section
@@ -87,13 +89,11 @@ tags:
 ---
 
 ### Views
-Views are layouts assigned to a section. \
+Views are layouts assigned to a [section](#sections). \
 Many sections include two views: A **primary view**, and a **secondary view**. Note that not all sections require a secondary-view (i.e., the home page of [cal-overflow.dev](https://cal-overflow.dev) - defined [here](https://github.com/cal-overflow/site/blob/a790b98d32ce3fa3087e75f878ee6b9002d6e300/src/content/home/index.md?plain=1#L3-L4))
 
-An example use of views is the author's portfolio ([cal-overflow.dev/portfolio](https://cal-overflow.dev/portfolio))
-
-The primary view of this section is shown when viewing [cal-overflow.dev/portfolio](https://cal-overflow.dev/portfolio).
-
+An example use of views is the author's **portfolio section**. \
+The primary view of this section is shown when viewing [cal-overflow.dev/portfolio](https://cal-overflow.dev/portfolio). \
 The secondary view of the section is shown when viewing a specific item within the section. (i.e., [cal-overflow.dev/portfolio/we-all-start-somewhere](https://cal-overflow.dev/portfolio/we-all-start-somewhere)).
 
 In this example, the views are:

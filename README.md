@@ -280,5 +280,5 @@ git remote add template git@github.com:cal-overflow/portfolio.git
 git remote add template https://github.com/cal-overflow/portfolio.git
 
 git fetch --all
-git merge template/master
+git merge template/main
 ```

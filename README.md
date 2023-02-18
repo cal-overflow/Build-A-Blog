@@ -88,8 +88,12 @@ footer: # required
     - title: 'Contact Me'
       href: '/contact'
   imageNavItems: # optional
-    youtubeUrl: 'https://youtube.com/c/channel'
-    githubUrl: 'https://github.com/cal-overflow/portfolio'
+    twitterUrl: 'https://twitter.com/'
+    facebookUrl: 'https://facebook.com/'
+    linkedinUrl: 'https://linkedin.com/'
+    instagramUrl: 'https://instagram.com/'
+    youtubeUrl: 'https://youtube.com/'
+    githubUrl: 'https://github.com/'
 ```
 
 

@@ -24,17 +24,10 @@ View the source code for the website [here](https://github.com/cal-overflow/site
   - [Views](#views)
   - [Posts](#posts-)
   - [Tags](#tags)
-<!--
-- [Running locally](#running-locally) 
-  - [Environment setup](#environment-setup)
-  - [Environment variables](#environment-variables)
-  - [Run or generate the website](#run-or-generate-the-website)
-  - [Testing](#testing-)
--->
 
 ## Getting Started
-**Make the site your own 👨‍💻** \
-This website is "modular" so that the content and site structure is separate from the components themselves.
+**Make your own website 👨‍💻** \
+This website is modular so that the content and site structure is separate from the messy Vue components and JavaScript.
 
 If you'd like a website similar to the author's ([cal-overflow.dev](http://www.cal-overflow.dev)), you can create one without needing to build it from scratch. 
 

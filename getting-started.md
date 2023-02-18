@@ -11,8 +11,6 @@ This document contains the steps necessary to generate your own website using th
   4. [Create essential content](#3-create-essential-content)
   5. [Change the color palette](#4-change-the-color-palette)
   6. [Write your first blog post](#5-write-your-first-blog-post)
-- [Sections](#sections)
-- [Blog posts](#blog-posts-)
 - [Running locally](#running-locally) 
   - [Environment setup](#environment-setup)
   - [Environment variables](#environment-variables)
@@ -113,7 +111,7 @@ Placeholders of the remaining content have been provided for simplicity. Complet
 - [ ] Replace the existing `favicon.ico` file within the `src/static/` directory.
 
 
-### 5. Change the color palette (optional)
+## 5. Change the color palette (optional)
 Change the color scheme of the website by editing `color` object within the `tailwind.config.js` file in the `src/` directory. You can find a small description for some of the properties below.
 
 ```js
@@ -131,85 +129,10 @@ colors: {
 
 ## 6. Write your first blog post
 
-Now that you've done all the heavy lifting, your website should have a basic home page and be ready to serve some blog posts. Reference the [Blog Posts](./README.md#blog-posts-) section below for general information on writing a blog post.
+Now that you've done all the heavy lifting, your website should have a basic home page and be ready to serve some blog posts. Reference the [Blog Posts](./README.md#posts-) section below for general information on writing a blog post.
 
 
-<!--
 
----
-
-## Sections
-Sections are defined as folders within the `src/content` folder. For instance, creating a `src/content/blog` folder will define a blog section within your website. **Each section must include an `index.md` defining metadata for the section.**
-
-### Metadata
-#### Required
-1. A title for the section
-1. A `primaryView` in which to render for the section's default route (i.e., `/blog/` for `src/content/blog/index.md`)
-1. A `secondaryView` in which to render for the section's default route (i.e., `/blog/post-1` for `src/content/blog/post-1.md`)
-
-
-#### Optional
-1. A description for the section
-1. A list of tags for the section. This can be an empty array if no tags are.
-
-
-An example `index.md` metadata is shown below.
-```yml
----
-# Required
-title: Blog
-primaryView: post-feed # What view to show on /blog page
-secondaryView: post-view # What is shown on pages like /blog/create-a-portfolio-site
-
-# Optional
-description: This is the blog section.
-tags:
-  - Software engineering
-  - Tutorial
-  - Econ
-  - UI/UX
----
-```
-
-## Blog posts 📝
-Blog posts are written in [Markdown](https://www.markdownguide.org/) and converted to HTML with the [Nuxt Content](https://content.nuxtjs.org/) module.
-
-To write a blog post, create a markdown file within a section (i.e., `src/content/blog/`) directory. An [example post](http://www.cal-overflow.dev/post/download-snapchat-memories) is shown below.
-
-```md
----
-id: 2
-title: How to create a really cool portfolio website
-slug: create-a-portfolio-site
-date: Janurary 7, 2023
-img: website-layout.png
-tags:
-  - Software Engineering
-  - Tutorial
----
-
-As software engineers, we often create tons of really cool projects and want a place where we can show off our work.
-
-Let's take a step-by-step look into how I made my portfolio.
-<!--more-->
-
-<!-- REMOVE THIS?????
-Steps: 
-1. Clone the [template repository](https://github.com/cal-overflow/portfolio).
-...
-```
-
-View the Nuxt docs on [Writing Content](https://content.nuxtjs.org/writing) for a detailed explanation on how to write blog posts.
-
-Note that feature images should be placed in directory `src/assets/images/feature/`. Other post images should be placed in `src/static/blog-images/`. Reference the [source code for cal-overflow.dev](https://github.com/cal-overflow/site) as an example.
-
-## Post tags
-Post tags allow you to group posts within the same section together based on similarities such as topic. Post tags are defined in the sections `index.md` file.
-
-Refer to the [sections](#sections) documentation above for more information on defining tags within a section.
-
-
--->
 ## Running locally
 ### Environment setup
 First, navigate to the project directory and ensure you're using the correct version of Node. Then, install the Node dependencies with [npm](https://www.npmjs.com/).
@@ -248,3 +171,15 @@ Unit tests can be run with the [Jest](https://jestjs.io/) test runner. End-to-en
 $ npm run unit
 ``` 
 
+### Updating your website with new features in the template
+
+If you want to bring new changes from the template repository into your website, utilize mutliple remote repositories with Git.
+
+```bash
+git remote add template git@github.com:cal-overflow/portfolio.git
+# OR
+git remote add template https://github.com/cal-overflow/portfolio.git
+
+git fetch --all
+git merge template/main
+```

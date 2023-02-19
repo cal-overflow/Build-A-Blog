@@ -46,7 +46,7 @@ Resources:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
-        Comment: !Sub 'A CloudFront distribution for the static frontend hosted in the ${S3Bucket} bucket.'
+        Comment: !Sub '${AWS::StackName} Cloudformation Distribution'
         DefaultCacheBehavior:
           ViewerProtocolPolicy: redirect-to-https
           AllowedMethods:

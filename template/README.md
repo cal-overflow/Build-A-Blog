@@ -8,7 +8,7 @@ The files within this folder are specific to the template. You can safely ignore
 Images used in the template repository [README.md](../README.md)
 
 #### `stack.yml`
-The AWS Cloudformation stack for the [portfolio.cal-overflow.dev](https://portfolio.cal-overflow.dev) template site.
+The AWS Cloudformation stack for the [build-a-blog.cal-overflow.dev](https://build-a-blog.cal-overflow.dev) template site.
 
 #### `pr.stack.yml`
 The AWS Cloudformation stack for the PR deploy previews.

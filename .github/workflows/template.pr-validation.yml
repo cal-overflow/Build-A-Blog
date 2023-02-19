@@ -4,7 +4,6 @@ on:
   pull_request:
     branches:
       - main
-      - master
 
 permissions:
   id-token: write
@@ -12,11 +11,11 @@ permissions:
   pull-requests: write
 
 env:
-  STACK_NAME: portfolio-template-pr-${{ github.event.number }}
+  STACK_NAME: build-a-blog-pr-${{ github.event.number }}
   REGION: us-east-1
   NUXT_ENV_FULL_NAME: 'Pull Request #${{ github.event.number }}'
   NUXT_ENV_SITE_NAME: 'Deploy preview - Pull Request ${{ github.event.number }}'
-  NUXT_ENV_SITE_URL: https://portfolio.cal-overflow.dev
+  NUXT_ENV_SITE_URL: https://build-a-blog.cal-overflow.dev
   NUXT_ENV_EMAIL_ADDRESS: cal-overflow@users.noreply.github.com
   STACK_TEMPLATE_FILE: template/pr.stack.yml
 

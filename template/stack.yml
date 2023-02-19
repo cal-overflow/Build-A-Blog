@@ -4,7 +4,7 @@ Description: "AWS resources for a static website with a custom domain"
 Parameters:
   Domain:
     Type: String
-    Default: portfolio.cal-overflow.dev
+    Default: build-a-blog.cal-overflow.dev
 
   HostedZone:
     Type: String
@@ -69,7 +69,7 @@ Resources:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
-        Comment: !Sub 'A CloudFront distribution for the static frontend hosted in the ${S3Bucket} bucket.'
+        Comment: !Sub 'Build-A-Blog ${Domain} CloudFront Distro.'
         Aliases: [ !Ref Domain ]
         DefaultCacheBehavior:
           ViewerProtocolPolicy: redirect-to-https
@@ -105,7 +105,7 @@ Resources:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
-        Comment: !Sub 'A CloudFront distribution for the static frontend hosted in the ${S3Bucket} bucket.'
+        Comment: !Sub 'Build-A-Blog www.${Domain} CloudFront Distro.'
         Aliases: [ !Sub 'www.${Domain}' ]
         DefaultCacheBehavior:
           ViewerProtocolPolicy: redirect-to-https

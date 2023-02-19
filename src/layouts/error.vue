@@ -70,7 +70,7 @@ export default {
         navItems: [
           {
             title: 'Help',
-            href: 'https://github.com/cal-overflow/portfolio'
+            href: 'https://github.com/cal-overflow/Build-A-Blog'
           }
         ],
         imageNavItems: {}

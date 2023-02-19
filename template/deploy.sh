@@ -5,10 +5,10 @@ sam deploy \
   --config-file ./samconfig.toml \
   --region $REGION
 
-mkdir example_content
-git clone https://github.com/cal-overflow/example-portfolio-content.git example_content
-cp -r example_content/content/* src/content
-cp -r example_content/assets/* src/assets
+mkdir example_site_repo
+git clone https://github.com/cal-overflow/site.git example_site_repo
+cp -r example_site_repo/src/content/* src/content
+cp -r example_site_repo/src/assets/* src/assets
 
 npm ci
 npm run generate

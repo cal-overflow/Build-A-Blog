@@ -11,7 +11,7 @@
         {{post.title}}
       </nuxt-link>
       <div :class="showMinimalContent ? 'hidden md:block' : ''">
-        <nuxt-content ref="excerpt" :document="excerpt" :editable="false" :class="`prose leading-snug prose-a:text-inherit prose-a:no-underline dark:prose-invert transition ${showMinimalContent ? 'minimal-preview-text' : ''}`" />
+        <nuxt-content ref="excerpt" :document="excerpt" :editable="false" :class="`prose leading-snug prose-a:text-inherit prose-a:no-underline pointer-events-none dark:prose-invert transition ${showMinimalContent ? 'minimal-preview-text' : ''}`" />
         <nuxt-link ref="continue-reading" :to="`${currentRoute}/${post.slug}`" :class="`text-extra-gray-dark dark:text-extra-gray-light font-thin text-sm underline hover:no-underline transition ${showMinimalContent ? 'hidden md:block': ''}`">
           Continue reading
         </nuxt-link>

@@ -195,11 +195,11 @@ export default {
         key: 'ascending-alphabet',
       },
     ],
-    selectedSortingStrategy: 'descending-date'
+    selectedSortingStrategy: 'descending-date',
   }),
   computed: {
     currentRoute() {
-      return this.$route.fullPath;
+      return this.$route.fullPath.split('?')[0];
     }
   },
   watch: {
@@ -211,7 +211,12 @@ export default {
     this.startScrollListener();
     this.getPosts();
     this.filteredPosts = [...this.posts];
-    this.enableAllTags();
+    if (this.$route.query.tag_filter) {
+      this.disableAllTags();
+      this.visibleTags = [decodeURIComponent(this.$route.query.tag_filter)];
+      this.isShowingFilter = true;
+    }
+    else this.enableAllTags();
   },
   destroyed() {
     window.removeEventListener('scroll', this.handleScroll);

@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-screen-lg mx-auto">
-    <div id="post-card" class="bg-card-light dark:bg-card-dark m-0 md:m-6 p-4 flex flex-wrap shadow-lg dark:shadow-shadow-dark hover:shadow-none hover:rounded motion-safe:animate-fade-in transition">
+    <card id="post-card" class="m-0 md:m-6 p-4 flex flex-wrap">
       <div class="w-full p-4">
         <div v-if="!isEditing">
           <p id="post-title" class="text-4xl md:text-5xl lg:text-6xl font-bold mb-2 !leading-tight">{{ content.title }}</p>
@@ -42,17 +42,19 @@
           @endEdit="isEditing = false" 
         />
       </div>
-    </div>
+    </card>
   </div>
 </template>
 
 <script>
+import Card from '@/components/cards/Card.vue';
 import Divider from '@/components/misc/Divider.vue';
 
 export default {
   name: 'post-view',
   components: {
-    Divider
+    Card,
+    Divider,
   },
   props: {
     dir: {

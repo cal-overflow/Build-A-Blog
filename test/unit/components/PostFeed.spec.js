@@ -15,6 +15,9 @@ describe('PostFeed component', () => {
     'nuxt-link': true,
     'nuxt-content': true,
   };
+  const mocks = {
+    $route: { query: {} },
+  };
 
   // const nuxtContentMock = {
   //   $content: jest.fn().mockReturnThis(),
@@ -30,6 +33,7 @@ describe('PostFeed component', () => {
 
       wrapper = shallowMount(PostFeed, {
         stubs,
+        mocks,
         propsData: { content: fakePosts, dir: chance.string() }
       });
     });
@@ -49,6 +53,7 @@ describe('PostFeed component', () => {
 
       wrapper = shallowMount(PostFeed, {
         stubs,
+        mocks,
         propsData: {
           metadata: {
             title,
@@ -102,6 +107,7 @@ describe('PostFeed component', () => {
   describe('given no metadata prop is given', () => {  
     beforeEach(() => {
       wrapper = shallowMount(PostFeed, {
+        mocks,
         propsData: {
           content: fakePosts,
           dir: chance.string()

@@ -138,7 +138,7 @@ export default {
   }),
   computed: {
     currentRoute() {
-      return this.$route.fullPath;
+      return this.$route.fullPath.split('?')[0];
     },
   },
   watch: {

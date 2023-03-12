@@ -4,21 +4,96 @@
       <div class="bg-card-light dark:bg-card-dark m-6 p-6 shadow-md dark:shadow-shadow-dark hover:shadow-none hover:rounded motion-safe:animate-fade-in-fast transition">
         <div class="flex sm:justify-between text-center sm:text-left">
           <p class="grow text-3xl font-bold">{{metadata.title}}</p>
+          <button class="text-white rounded-lg" @click="isShowingFilter = !isShowingFilter">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
+            </svg>
+          </button>
         </div>
-        <p v-if="metadata.description" class="text-center sm:text-left">{{metadata.description}}</p>
+        <div v-if="isShowingFilter">
+          <divider class="mt-8" />
+          <div class="flex justify-between">
+            <p class="font-bold text-lg">Tags</p>
+            <div v-if="metadata.tags && metadata.tags.length">
+              <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="inline w-8 h-8 cursor-pointer pr-2"
+                  @click="enableAllTags"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="inline w-8 h-8 cursor-pointer pr-2 text-extra-gray-light dark:text-extra-gray-dark"
+                  @click="disableAllTags"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </div>
+          </div>
+          <div v-if="metadata.tags && metadata.tags.length" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+              <button
+                v-for="tag in metadata.tags"
+                :key="tag"
+                :class="`m-4 rounded-lg flex items-center ${visibleTags.includes(tag) ? '' : 'text-extra-gray-light dark:text-extra-gray-dark'} transition duration-250`"
+                @click="toggleTag(tag)"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="inline w-6 h-6 pr-2"
+                >
+                  <path v-if="!visibleTags.includes(tag)" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  <path v-else stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+
+                {{tag}}
+              </button>
+          </div>
+          <div v-else>
+            <p class="text-extra-gray-dark dark:text-extra-gray-light">No tags defined for this section</p>
+          </div>
+
+          <divider />
+          <div>
+            <p class="font-bold text-lg">Sort by</p>
+            <div class="grid grid-cols-1 md:grid-cols-3">
+              <button
+                v-for="sortingStrategy in sortingStrategies"
+                :key="sortingStrategy.key"
+                :class="`m-4 rounded-lg text-left md:text-center ${selectedSortingStrategy === sortingStrategy.key ? '' : 'text-extra-gray-light dark:text-extra-gray-dark'} transition duration-250`"
+                @click="sort(sortingStrategy)"
+              >
+                {{sortingStrategy.title}}
+              </button>
+            </div>
+          </div>
+        </div>
+        <p v-if="metadata.description && !isShowingFilter" class="text-center sm:text-left">{{metadata.description}}</p>
       </div>
     </div>
     <divider />
 
-    <div v-if="posts.length" class="max-w-screen-lg mx-auto grid md:grid-cols-2">
+    <div v-if="filteredPosts.length" class="max-w-screen-lg mx-auto grid md:grid-cols-2">
       <post-preview
-        v-for="(post, i) in posts"
-        :key="i"
+        v-for="(post, i) in filteredPosts" :key="i"
         :ref="post.slug"
-        :full-width="i % 3 === 0 || ((i === (posts.length - 1)) && i % 3 === 1)"
-        :is-reversed="i % 6 === 0 || ((i === (posts.length - 1)) && (i - 1) % 6 !== 0)"
+        :full-width="i % 3 === 0 || ((i === (filteredPosts.length - 1)) && i % 3 === 1)"
+        :is-reversed="i % 6 === 0 || ((i === (filteredPosts.length - 1)) && (i - 1) % 6 !== 0)"
         :post="post"
         :dir="dir"
+        :section-metadata="metadata"
       />
 
       <div
@@ -49,12 +124,20 @@
 
     </div>
     
+    <div v-else-if="posts.length !== 0" class="max-w-screen-lg mx-auto grid md:grid-cols-2">
+      <div
+        class="bg-card-light dark:bg-card-dark m-6 p-6 hover:rounded shadow-md dark:shadow-shadow-dark hover:shadow-none motion-safe:animate-fade-in transition col-span-2"
+      >
+        <p class="text-center md:text-left text-2xl font-bold mt-2">No posts 🚫</p>
+        <p class="text-center md:text-left">No posts in this section match the given filter.</p>
+      </div>
+    </div>
     <div v-else class="max-w-screen-lg mx-auto grid md:grid-cols-2">
       <div
         class="bg-card-light dark:bg-card-dark m-6 p-6 hover:rounded shadow-md dark:shadow-shadow-dark hover:shadow-none motion-safe:animate-fade-in transition col-span-2"
       >
         <p class="text-center md:text-left text-2xl font-bold mt-2">No posts 😴</p>
-        <p class="text-center md:text-left">No posts have been written for this section</p>
+        <p class="text-center md:text-left">No posts have been written for this section.</p>
       </div>
     </div>
   </div>
@@ -91,13 +174,49 @@ export default {
   },
   data: () => ({
     posts: [],
+    visibleTags: [],
+    sortedPosts: [],
+    filteredPosts: [],
     page: 1,
     postCount: 10,
     isMorePosts: false,
+    isShowingFilter: false,
+    sortingStrategies: [
+      {
+        title: 'Newest first',
+        key: 'descending-date',
+      },
+      {
+        title: 'Oldest first',
+        key: 'ascending-date',
+      },
+      {
+        title: 'A-Z',
+        key: 'ascending-alphabet',
+      },
+    ],
+    selectedSortingStrategy: 'descending-date',
   }),
+  computed: {
+    currentRoute() {
+      return this.$route.fullPath.split('?')[0];
+    }
+  },
+  watch: {
+    visibleTags(updatedVisibleTags) {
+      this.computeFilteredPosts(updatedVisibleTags);
+    },
+  },
   created() {
     this.startScrollListener();
     this.getPosts();
+    this.filteredPosts = [...this.posts];
+    if (this.$route.query.tag_filter) {
+      this.disableAllTags();
+      this.visibleTags = [decodeURIComponent(this.$route.query.tag_filter)];
+      this.isShowingFilter = true;
+    }
+    else this.enableAllTags();
   },
   destroyed() {
     window.removeEventListener('scroll', this.handleScroll);
@@ -128,14 +247,58 @@ export default {
         if (this.isMorePosts) await this.getPosts();
       }
     },
+    enableAllTags() {
+      this.visibleTags = [...(this.metadata.tags ?? [])];
+    },
+    toggleTag(tag) {
+      const index = this.visibleTags.indexOf(tag);
+      if (index > -1) {
+        this.visibleTags.splice(index, 1);
+      }
+      else this.visibleTags.push(tag);
+    },
+    disableAllTags() {
+      this.visibleTags = [];
+    },
     openRSSLink() {
       window.open(
       `${this.currentRoute}.xml`, '_blank');
-    }
-  },
-  computed: {
-    currentRoute() {
-      return this.$route.fullPath;
+    },
+    computeFilteredPosts(visibleTags) {
+      if (!this.metadata.tags || this.metadata.tags.length === 0) {
+        this.filteredPosts = [...this.posts];
+        return;
+      }
+      this.filteredPosts = this.posts.filter(({ tags }) => {
+        for (let i = 0; i < tags.length; i++) {
+          if (visibleTags.includes(tags[i])) {
+            return true;
+          }
+        }
+        return false;
+      });
+    },
+    sort(sortingStrategy) {
+      let isInvalidSort = false;
+      switch (sortingStrategy.key) {
+        case 'descending-date':
+          this.posts.sort((a, b) => b.id - a.id);
+          break;
+        case 'ascending-date':
+          this.posts.sort((a, b) => a.id - b.id);
+          break;
+        case 'ascending-alphabet':
+          this.posts.sort((a, b) => a.title.localeCompare(b.title));
+          break;
+        default:
+          isInvalidSort = true;
+          break;
+      };
+
+      if (isInvalidSort) return;
+      this.selectedSortingStrategy = sortingStrategy.key;
+
+      this.computeFilteredPosts(this.visibleTags);
     },
   }
 };

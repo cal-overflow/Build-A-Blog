@@ -51,14 +51,14 @@ Sections are defined as folders within the `src/content` folder. For instance, c
 ##### Required
 1. A title for the section
 1. A `primaryView` in which to render for the section's default route (i.e., `/blog/` for `src/content/blog/index.md`)
-1. A `secondaryView` in which to render for the section's default route (i.e., `/blog/post-1` for `src/content/blog/post-1.md`)
+1. A `secondaryView` in which to render for the section's sub routes (i.e., `/blog/post-1` for `src/content/blog/post-1.md`)
 
 See more information on [views](#views) below.
 
 
 ##### Optional
 1. A description for the section
-1. A list of tags for the section. This can be an empty array if no tags are.
+1. A list of tags for the section
 
 
 An example `index.md` metadata is shown below.
@@ -135,9 +135,7 @@ Feature images are placed within the same folder as the blog post (i.e., `src/co
 ---
 
 ### Tags
-Tags are currently being re-worked. This documentation will be updated when the changes are complete.
-<!--Post tags allow you to group posts within the same section together based on similarities such as topic. Post tags are defined in the sections `index.md` file.
+Post tags allow you to group posts within the same section together based on similarities such as topic. Post tags are defined in the sections `index.md` file.
 
-Refer to the [sections](#sections) documentation above for more information on defining tags within a section.
--->
+Refer to the [sections](#sections) documentation above for more information on defining tags within a section. See the documentation for [posts](#posts-) to learn how to reference tags within a post.
 

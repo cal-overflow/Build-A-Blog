@@ -14,7 +14,7 @@
                   v-for="(tag, i) in content.tags" 
                   :key="`tags-${tag}`"
                 >
-                  <nuxt-link :to="`/tags/${tag.toLowerCase().replace(' ', '-')}`" class="hover:underline">{{ tag }}</nuxt-link>{{ (i + 1) === content.tags.length ? '' : ', ' }}
+                  <nuxt-link :to="`/${dir}?tag_filter=${encodeURIComponent(tag)}`" class="hover:underline">{{ tag }}</nuxt-link>{{ (i + 1) === content.tags.length ? '' : ', ' }}
                 </span>
               </span>
             </p>

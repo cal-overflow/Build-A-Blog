@@ -1,9 +1,9 @@
 import { mount, RouterLinkStub } from '@vue/test-utils';
 import Chance from 'chance';
-import generateTag from '../../helpers/tagGenerator.js';
+import generateTag from '../../../helpers/tagGenerator.js';
 import TagFeed from '@/components/views/TagFeed.vue';
 import TagPreview from '@/components/previews/Tag.vue';
-import Divider from '@/components/helpers/Divider.vue';
+import Divider from '@/components/misc/Divider.vue';
 
 const chance = new Chance();
 

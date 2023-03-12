@@ -37,13 +37,12 @@ export default {
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: [
+    '~/components/cards',
     '~/components/development',
     '~/components/forms',
-    '~/components/helpers',
     '~/components/misc',
     '~/components/navigation',
     '~/components/previews',
-    '~/components/structural',
     '~/components/views',
   ],
 

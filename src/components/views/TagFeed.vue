@@ -23,7 +23,7 @@
 </template>
   
 <script>
-import Divider from '@/components/helpers/Divider.vue';
+import Divider from '@/components/misc/Divider.vue';
 import TagPreview from '@/components/previews/Tag.vue';
 
 export default {

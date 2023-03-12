@@ -4,7 +4,7 @@ import generateTag from '../../../helpers/tagGenerator.js';
 import generatePost from '../../../helpers/postGenerator';
 import PostPreview from '@/components/previews/Post.vue';
 import TagPreview from '@/components/previews/Tag.vue';
-import ToolTip from '@/components/helpers/ToolTip.vue';
+import ToolTip from '@/components/misc/ToolTip.vue';
 
 const chance = new Chance();
 const postLimit = 4;

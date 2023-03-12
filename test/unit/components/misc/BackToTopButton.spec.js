@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import Chance from 'chance';
-import BackToTopButton from '@/components/helpers/BackToTopButton.vue';
+import BackToTopButton from '@/components/misc/BackToTopButton.vue';
 
 const chance = new Chance();
 

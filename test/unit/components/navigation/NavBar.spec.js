@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
-import generateNavigation from '../../helpers/navigationGenerator.js';
-import NavBar from '@/components/structural/NavBar.vue';
+import generateNavigation from '../../../helpers/navigationGenerator.js';
+import NavBar from '@/components/navigation/NavBar.vue';
 import NavItem from '@/components/navigation/NavItem.vue';
 
 describe('NavBar component', () => {

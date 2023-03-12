@@ -15,7 +15,7 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 m-6 max-w-screen-lg flex-wrap md:flex-nowrap">
-      <basic-card
+      <content-card
         v-for="(item, i) in content"
         :key="item.title"
         :content="item"
@@ -26,12 +26,12 @@
 </template>
 
 <script>
-import BasicCard from '@/components/helpers/Card.vue';
+import ContentCard from '@/components/cards/ContentCard.vue';
 
 export default {
   name: 'home-view',
   components: {
-    BasicCard,
+    ContentCard,
   },
   props: {
     metadata: {

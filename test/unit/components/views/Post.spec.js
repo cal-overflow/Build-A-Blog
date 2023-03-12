@@ -1,6 +1,6 @@
 import { shallowMount, RouterLinkStub } from '@vue/test-utils';
 import Chance from "chance";
-import generatePost from '../../helpers/postGenerator';
+import generatePost from '../../../helpers/postGenerator';
 import PostView from '@/components/views/Post.vue';
 
 const chance = new Chance();

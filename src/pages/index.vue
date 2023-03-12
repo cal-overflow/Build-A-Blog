@@ -11,7 +11,7 @@
 /* eslint-disable vue/no-unused-components */
 
 // must import components that are not directly used so that they are accessible within nuxt/content
-import Divider from '@/components/helpers/Divider.vue';
+import Divider from '@/components/misc/Divider.vue';
 import HomeView from '@/components/views/Home.vue';
 import HandWave from '@/components/misc/HandWave.vue';
 

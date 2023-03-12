@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import Chance from 'chance';
-import ToolTip from '@/components/helpers/ToolTip.vue';
+import ToolTip from '@/components/misc/ToolTip.vue';
 
 const chance = new Chance();
 

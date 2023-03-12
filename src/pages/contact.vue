@@ -17,10 +17,10 @@
 </template>
 
 <script>
-import NavBar from '@/components/structural/NavBar.vue';
-import Divider from '@/components/helpers/Divider.vue';
+import NavBar from '@/components/navigation/NavBar.vue';
+import Divider from '@/components/misc/Divider.vue';
 import ContactForm from '@/components/forms/ContactForm.vue';
-import FooterBar from '@/components/structural/FooterBar.vue';
+import FooterBar from '@/components/navigation/FooterBar.vue';
 
 export default {
   name: 'contact',

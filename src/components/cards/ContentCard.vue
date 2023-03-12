@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'basic-card',
+  name: 'content-card',
   props: {
     content: {
       type: Object,

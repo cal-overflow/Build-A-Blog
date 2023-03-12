@@ -9,7 +9,7 @@
         {{ content.signatureNavItem.title }}
       </nav-item>
         
-      <div class="justify-between">
+      <div class="justify-between flex sm:flex-none flex-wrap">
         <nav-item
           v-for="item in content.navItems"
           :key="item.title"

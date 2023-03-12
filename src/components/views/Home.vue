@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-screen-lg mx-auto">
-    <card id="introduction-card">
+    <card id="introduction-card" class="md:pt-3">
       <div class="max-w-sm md:w-2/5 lg:w-1/3 mx-auto md:my-auto">
         <img :src="image" class="rounded-full motion-safe:animate-blur-fade-in-fast transition" alt="Headshot" />
       </div>

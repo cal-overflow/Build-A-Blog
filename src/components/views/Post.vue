@@ -47,8 +47,15 @@
 </template>
 
 <script>
+import Card from '@/components/cards/Card.vue';
+import Divider from '@/components/misc/Divider.vue';
+
 export default {
   name: 'post-view',
+  components: {
+    Card,
+    Divider,
+  },
   props: {
     dir: {
       type: String,

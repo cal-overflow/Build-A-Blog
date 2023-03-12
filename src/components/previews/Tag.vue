@@ -68,14 +68,14 @@
 </template>
 
 <script>
-
-
-
-
+import Card from '@/components/cards/Card.vue';
+import Divider from '@/components/misc/Divider.vue';
+import PostPreview from '@/components/previews/Post.vue';
+import ToolTip from '@/components/misc/ToolTip.vue';
 
 export default {
   name: 'tag-preview',
-  
+  components: { Card, Divider, PostPreview, ToolTip },
   props: {
     tag: {
       type: Object,

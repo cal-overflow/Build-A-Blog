@@ -19,8 +19,21 @@
 </template>
 
 <script>
+import Card from '@/components/cards/Card.vue';
+import NavBar from '@/components/navigation/NavBar.vue';
+import Divider from '@/components/misc/Divider.vue';
+import ContactForm from '@/components/forms/ContactForm.vue';
+import FooterBar from '@/components/navigation/FooterBar.vue';
+
 export default {
   name: 'contact',
+  components: {
+    Card,
+    NavBar,
+    Divider,
+    ContactForm,
+    FooterBar
+  },
   async asyncData({ $content, params, error }) {
     const navigationContent = await $content().where({ path: '/navigation', extension: '.yml' })
       .fetch()

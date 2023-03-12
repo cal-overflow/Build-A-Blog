@@ -35,8 +35,13 @@
 </template>
 
 <script>
+import Card from '@/components/cards/Card.vue';
+
 export default {
   name: 'post-preview',
+  components: {
+    Card,
+  },
   props: {
     post: {
       type: Object,

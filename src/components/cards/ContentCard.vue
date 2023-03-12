@@ -8,8 +8,13 @@
 </template>
 
 <script>
+import Card from '@/components/cards/Card.vue';
+
 export default {
   name: 'content-card',
+  components: {
+    Card,
+  },
   props: {
     content: {
       type: Object,

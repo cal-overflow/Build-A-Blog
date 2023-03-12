@@ -23,8 +23,15 @@
 </template>
   
 <script>
+import Divider from '@/components/misc/Divider.vue';
+import TagPreview from '@/components/previews/Tag.vue';
+
 export default {
   name: 'tags-feed',
+  components: {
+    TagPreview,
+    Divider,
+  },
   data: () => ({
     tags: [],
     isDoneFetchingTags: false,

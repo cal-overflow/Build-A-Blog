@@ -17,11 +17,11 @@
 </template>
 
 <script>
-
+import NavItem from '@/components/navigation/NavItem.vue';
 
 export default {
   name: 'tag-list',
-  
+  components: { NavItem },
   props: {
     classes: {
       type: String,

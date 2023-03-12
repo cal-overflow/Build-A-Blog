@@ -106,7 +106,7 @@
         >
           <card
             ref="loadMorePosts"
-            :class="`bg-card-light dark:bg-card-dark m-6 px-6 hover:bg-extra-gray-light dark:hover:bg-extra-gray-dark hover:rounded shadow-md hover:shadow-none md:col-span-2 cursor-pointer motion-safe:animate-fade-in-slow transition`"
+            :class="`m-6 px-6 hover:bg-extra-gray-light dark:hover:bg-extra-gray-dark shadow-md hover:shadow-none md:col-span-2 cursor-pointer`"
           >
             <p class="m-4 underline hover:no-underline text-center text-lg">
               Load more

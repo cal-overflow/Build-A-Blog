@@ -2,8 +2,8 @@ import { shallowMount, RouterLinkStub } from '@vue/test-utils';
 import generateNavigation from '../../helpers/navigationGenerator.js';
 import contact from '@/pages/contact.vue';
 import ContactForm from '@/components/forms/ContactForm.vue';
-import NavBar from '@/components/structural/NavBar.vue';
-import FooterBar from '@/components/structural/FooterBar.vue';
+import NavBar from '@/components/navigation/NavBar.vue';
+import FooterBar from '@/components/navigation/FooterBar.vue';
 
 describe('contact page', () => {
   let wrapper, content;

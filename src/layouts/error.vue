@@ -2,29 +2,33 @@
   <main>
     <nav-bar :content="navigation.navbar" />
     <div class="max-w-screen-lg mx-auto">
-      <div id="error-header-card" class="bg-card-light dark:bg-card-dark text-center m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in-fast transition">
-        <p class="text-3xl md:text-5xl font-bold">This is embarrassing {{error.statusCode == '500' ? '🐢' : '😳'}}</p>
-      </div>
+      <card id="error-header-card">
+        <div class="w-full text-center">
+          <p class="text-3xl md:text-5xl font-bold">This is embarrassing {{error.statusCode == '500' ? '🐢' : '😳'}}</p>
+        </div>
+      </card>
       
       <divider />
 
-      <div id="error-main-info-card" class="bg-card-light dark:bg-card-dark m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in transition">
-        <div class="text-center">
-          <p class="text-sm mb-2">Status code</p>
-          <p class="text-5xl font-bold motion-safe:animate-blur-fade-in">{{error.statusCode}}</p>
+      <card id="error-main-info-card">
+        <div class="w-full">
+          <div class="text-center">
+            <p class="text-sm mb-2">Status code</p>
+            <p class="text-5xl font-bold motion-safe:animate-blur-fade-in">{{error.statusCode}}</p>
+            </div>
+
+          <p class="text-3xl my-6 text-center">{{message}}</p>
+
+          <divider />
+
+          <div class="text-center">
+            <nuxt-link ref="back-home" to="/" class="text-primary-light underline hover:no-underline dark:text-primary-dark transition">Take me home</nuxt-link>
           </div>
-
-        <p class="text-3xl my-6 text-center">{{message}}</p>
-
-        <divider />
-
-        <div class="text-center">
-          <nuxt-link ref="back-home" to="/" class="text-primary-light underline hover:no-underline dark:text-primary-dark transition">Take me home</nuxt-link>
         </div>
-      </div>
+      </card>
 
-      <div id="error-more-info-card" class="bg-card-light dark:bg-card-dark m-6 p-4 px-6 flex-wrap shadow-lg hover:shadow-none hover:rounded motion-safe:animate-fade-in transition">
-        <div>
+      <card id="error-more-info-card">
+        <div class="w-full">
           <p class="font-bold text-2xl">More information 🤓</p>
           <pre class="text-extra-gray-dark dark:text-extra-gray-light whitespace-normal transition">
             {{extraInfo}}
@@ -32,8 +36,7 @@
 
           <p class="mt-2">If you believe there has been a mistake, please don't hesitate to <nuxt-link ref="contact-link" :to="contactLink" class="text-primary-light underline hover:no-underline dark:text-primary-dark transition">reach out to me</nuxt-link>.</p>
         </div>
-      </div>
-
+      </card>
     </div>
 
     <footer-bar :content="navigation.footer" />
@@ -41,9 +44,9 @@
 </template>
 
 <script>
-import FooterBar from '@/components/structural/FooterBar.vue';
-import NavBar from '@/components/structural/NavBar.vue';
-import Divider from '@/components/helpers/Divider.vue';
+import FooterBar from '@/components/navigation/FooterBar.vue';
+import NavBar from '@/components/navigation/NavBar.vue';
+import Divider from '@/components/misc/Divider.vue';
 
 export default {
   name: 'error',

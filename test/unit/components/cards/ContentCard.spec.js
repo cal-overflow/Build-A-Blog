@@ -1,8 +1,8 @@
 import { mount, RouterLinkStub } from '@vue/test-utils';
-import generatePost from '../../helpers/postGenerator';
-import Card from '@/components/helpers/Card.vue';
+import generatePost from '../../../helpers/postGenerator';
+import ContentCard from '@/components/cards/ContentCard.vue';
 
-describe('Card component', () => {
+describe('ContentCard component', () => {
   let wrapper, content;
 
   const stubs = {
@@ -12,7 +12,7 @@ describe('Card component', () => {
   
   beforeEach(() => {
     content = generatePost();
-    wrapper = mount(Card, {
+    wrapper = mount(ContentCard, {
       stubs,
       mocks: { content }
     });

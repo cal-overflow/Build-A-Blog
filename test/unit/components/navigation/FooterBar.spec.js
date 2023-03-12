@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
-import generateNavigation from '../../helpers/navigationGenerator.js';
-import FooterBar from '@/components/structural/FooterBar.vue';
+import generateNavigation from '../../../helpers/navigationGenerator.js';
+import FooterBar from '@/components/navigation/FooterBar.vue';
 import NavItem from '@/components/navigation/NavItem.vue';
 
 

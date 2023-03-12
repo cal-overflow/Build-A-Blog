@@ -1,5 +1,5 @@
 <template>
-  <div id="contact-form-card" class="bg-card-light dark:bg-card-dark m-6 p-6 shadow-md hover:shadow-none hover:rounded motion-safe:animate-fade-in transition">
+  <card id="contact-form-card">
     <div v-if="formSubmitted" class="flex min-h-80 motion-safe:animate-fade-in">
       <div class="m-auto">
         <p class="mb-4">
@@ -99,12 +99,17 @@
         </p>
       </div>
     </form>
-  </div>
+  </card>
 </template>
 
 <script>
+import Card from '@/components/cards/Card.vue';
+
 export default {
   name: 'contact-form',
+  components: {
+    Card,
+  },
   data: () => ({
     emailAddress: process.env.NUXT_ENV_EMAIL_ADDRESS,
     name: undefined,

@@ -1,7 +1,7 @@
 <template>
-  <div 
+  <card 
     v-if="tag" 
-    class="tag-preview-card bg-card-light dark:bg-card-dark m-6 p-6 hover:rounded shadow-md dark:shadow-shadow-dark hover:shadow-none motion-safe:animate-fade-in transition"
+    class="tag-preview-card"
   >
     <nuxt-link ref="title" :to="`/tags/${tag.slug}`" class="font-bold text-2xl hover:underline">
       {{tag.title}}
@@ -51,8 +51,8 @@
       <div v-else>
         <p class="text-md">There are not currently any posts for this tag</p>
       </div>
-  </div>
-  <div v-else ref="lazy-load-tag-preview" class="motion-safe:animate-pulse tag-preview-card bg-card-light dark:bg-card-dark m-6 p-6 hover:rounded shadow-md dark:shadow-shadow-dark hover:shadow-none motion-safe:animate-fade-in transition">
+  </card>
+  <card v-else ref="lazy-load-tag-preview" class="motion-safe:animate-pulse tag-preview-card">
     <div class="bg-gray-500 dark:bg-white w-32 h-4 transition" />
     <div class="bg-gray-400 w-64 h-2 my-2"/>
     <br>
@@ -64,17 +64,18 @@
       :is-reversed="index % 2 === 0"
       :classes="`shadow-none p-0 m-0 md:p-4 md:m-4`"
     />
-  </div>
+  </card>
 </template>
 
 <script>
-import Divider from '@/components/helpers/Divider.vue';
+import Card from '@/components/cards/Card.vue';
+import Divider from '@/components/misc/Divider.vue';
 import PostPreview from '@/components/previews/Post.vue';
-import ToolTip from '@/components/helpers/ToolTip.vue';
+import ToolTip from '@/components/misc/ToolTip.vue';
 
 export default {
   name: 'tag-preview',
-  components: { Divider, PostPreview, ToolTip },
+  components: { Card, Divider, PostPreview, ToolTip },
   props: {
     tag: {
       type: Object,

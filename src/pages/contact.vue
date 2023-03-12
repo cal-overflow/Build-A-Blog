@@ -1,11 +1,13 @@
 <template>
   <main>
     <nav-bar :content="navigation.navbar" :current-page="currentPage" />
-    <div id="contact-header-card" class="max-w-screen-lg mx-auto">
-      <div class="bg-card-light dark:bg-card-dark m-6 p-4 shadow-md hover:shadow-none hover:rounded motion-safe:animate-fade-in-fast transition">
+    <div  class="max-w-screen-lg mx-auto">
+      <card id="contact-header-card">
+        <div class="w-full">
           <p class="text-center md:text-left text-3xl font-bold">Contact Me</p>
           <p class="text-center md:text-left text-md">Get in touch with me</p>
-      </div>
+        </div>
+      </card>
 
         <divider />
 
@@ -17,14 +19,16 @@
 </template>
 
 <script>
-import NavBar from '@/components/structural/NavBar.vue';
-import Divider from '@/components/helpers/Divider.vue';
+import Card from '@/components/cards/Card.vue';
+import NavBar from '@/components/navigation/NavBar.vue';
+import Divider from '@/components/misc/Divider.vue';
 import ContactForm from '@/components/forms/ContactForm.vue';
-import FooterBar from '@/components/structural/FooterBar.vue';
+import FooterBar from '@/components/navigation/FooterBar.vue';
 
 export default {
   name: 'contact',
   components: {
+    Card,
     NavBar,
     Divider,
     ContactForm,

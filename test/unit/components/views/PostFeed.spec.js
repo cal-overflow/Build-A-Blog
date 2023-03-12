@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils';
 import Chance from 'chance';
-import generatePost from '../../helpers/postGenerator';
+import generatePost from '../../../helpers/postGenerator';
 import PostFeed from '@/components/views/PostFeed.vue';
 import PostPreview from '@/components/previews/Post.vue';
-import Divider from '@/components/helpers/Divider.vue';
+import Divider from '@/components/misc/Divider.vue';
 
 const chance = new Chance();
 const postLimit = 10;

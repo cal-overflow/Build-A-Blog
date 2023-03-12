@@ -9,7 +9,7 @@
         {{ content.signatureNavItem.title }}
       </nav-item>
         
-      <div class="justify-between">
+      <div class="justify-between flex sm:flex-none flex-wrap">
         <nav-item
           v-for="item in content.navItems"
           :key="item.title"
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import NavItem from '../navigation/NavItem.vue';
+import NavItem from './NavItem.vue';
 
 export default {
   name: 'nav-bar',

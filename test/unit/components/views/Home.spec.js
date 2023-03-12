@@ -1,7 +1,7 @@
 import { shallowMount } from '@vue/test-utils';
 import Chance from 'chance';
 import Home from '@/components/views/Home.vue';
-import Card from '@/components/helpers/Card.vue';
+import ContentCard from '@/components/cards/ContentCard.vue';
 
 const chance = new Chance();
 
@@ -47,15 +47,15 @@ describe('Home view component', () => {
     expect(image.attributes().src).toContain(metadata.viewProperties.headshotImage);
   });
 
-  it('contains two Card components', () => {
-    expect(wrapper.findAllComponents(Card)).toHaveLength(2);
+  it('contains two ContentCard components', () => {
+    expect(wrapper.findAllComponents(ContentCard)).toHaveLength(2);
   });
 
   it('passes the blog-preview content into one of the components', () => {
-    expect(wrapper.findAllComponents(Card).wrappers[0].props('content')).toMatchObject(blogPreview);
+    expect(wrapper.findAllComponents(ContentCard).wrappers[0].props('content')).toMatchObject(blogPreview);
   });
 
   it('passes the portfolio-preview content into one of the PagePreview components', () => {
-    expect(wrapper.findAllComponents(Card).wrappers[1].props('content')).toMatchObject(portfolioPreview);
+    expect(wrapper.findAllComponents(ContentCard).wrappers[1].props('content')).toMatchObject(portfolioPreview);
   });
 });

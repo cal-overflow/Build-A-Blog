@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import Chance from 'chance';
-import generateTag from '../../helpers/tagGenerator';
+import generateTag from '../../../helpers/tagGenerator';
 import TagList from '@/components/navigation/TagList.vue';
 
 const chance = new Chance();

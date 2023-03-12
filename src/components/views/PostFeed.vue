@@ -149,15 +149,11 @@
 </template>
 
 <script>
-import Divider from '@/components/misc/Divider.vue';
-import Card from '@/components/cards/Card.vue';
 import PostPreview from '@/components/previews/Post.vue';
 
 export default {
   name: 'post-feed',
   components: {
-    Card,
-    Divider,
     PostPreview,
   },
   props: {

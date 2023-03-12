@@ -20,12 +20,12 @@
 </template>
 
 <script>
-import TagList from './TagList.vue';
-import NavItem from '@/components/navigation/NavItem.vue';
+
+
 
 export default {
   name: 'tag-dropdown',
-  components: { TagList, NavItem },
+  
   props: {
     currentPage: {
       type: String,

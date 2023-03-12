@@ -24,15 +24,8 @@
 </template>
 
 <script>
-import Card from '@/components/cards/Card.vue';
-import ContentCard from '@/components/cards/ContentCard.vue';
-
 export default {
   name: 'home-view',
-  components: {
-    Card,
-    ContentCard,
-  },
   props: {
     metadata: {
       type: Object,

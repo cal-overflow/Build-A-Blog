@@ -42,13 +42,8 @@
 </template>
 
 <script>
-import NavItem from './NavItem.vue';
-
 export default {
   name: 'footer-bar',
-  components: {
-    NavItem
-  },
   props: {
     content: {
       type: Object,

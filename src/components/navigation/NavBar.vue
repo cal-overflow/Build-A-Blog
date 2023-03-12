@@ -24,13 +24,8 @@
 </template>
 
 <script>
-import NavItem from './NavItem.vue';
-
 export default {
   name: 'nav-bar',
-  components: {
-    NavItem
-  },
   props: {
     content: {
       type: Object,

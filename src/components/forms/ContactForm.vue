@@ -103,13 +103,10 @@
 </template>
 
 <script>
-import Card from '@/components/cards/Card.vue';
+
 
 export default {
   name: 'contact-form',
-  components: {
-    Card,
-  },
   data: () => ({
     emailAddress: process.env.NUXT_ENV_EMAIL_ADDRESS,
     name: undefined,

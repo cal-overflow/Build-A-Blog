@@ -81,7 +81,7 @@ export default {
     // Only shows sections at depth 1
     for (const key in organizedContent) {
       if (key === keyToUse) continue;
-      console.log(key);
+
       if (key?.includes(keyToUse) && key.split('/').length < 2 + keyToUse.split('/').length) {
         const sectionMetadata = organizedContent[key].find(isMetadata);
         if (sectionMetadata) {

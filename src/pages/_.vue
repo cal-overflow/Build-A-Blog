@@ -90,7 +90,7 @@ export default {
       }
     }
 
-    content = content.sort((a, b) => b.id - a.id);
+    content = content?.sort((a, b) => b.id - a.id);
 
     if (!content) {
       return error({ statusCode: 404, message: 'This resource does not exist' });

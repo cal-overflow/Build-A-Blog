@@ -1,25 +1,25 @@
 <template>
-  <card v-if="post" :class="`post-preview-card ${getCardStyle}`">
+  <card v-if="section" :class="`section-preview-card ${getCardStyle}`">
     <div :class="getImageContainerStyle" style="aspect-ratio: 1 / 1;">
-      <nuxt-link ref="feature-image" :to="targetLink" :class="`w-full h-full motion-safe:animate-blur-fade-in-slow`">
+      <nuxt-link ref="feature-image" :to="`${currentRoute}/${section.slug}`" :class="`w-full h-full motion-safe:animate-blur-fade-in-slow`">
         <img :src="image" class="object-cover w-full h-full" />
       </nuxt-link>
     </div>
 
     <div :class="getPostInfoContainerStyle">
-      <nuxt-link ref="title" :to="targetLink" class="font-bold text-lg hover:underline">
-        {{post.title}}
+      <nuxt-link ref="title" :to="`${currentRoute}/${section.slug}`" class="font-bold text-lg hover:underline">
+        {{section.title}}
       </nuxt-link>
       <div :class="showMinimalContent ? 'hidden md:block' : ''">
         <nuxt-content ref="excerpt" :document="excerpt" :editable="false" :class="`prose leading-snug prose-a:text-inherit prose-a:no-underline dark:prose-invert transition pointer-events-none prose-code:before:content-none prose-code:after:content-none ${showMinimalContent ? 'minimal-preview-text' : ''}`" />
-        <nuxt-link ref="continue-reading" :to="targetLink" :class="`text-extra-gray-dark dark:text-extra-gray-light font-thin text-sm underline hover:no-underline transition ${showMinimalContent ? 'hidden md:block': ''}`">
-          {{post.isNestedSection ? 'View section' : 'Continue reading' }}
+        <nuxt-link ref="continue-reading" :to="`${currentRoute}/${section.slug}`" :class="`text-extra-gray-dark dark:text-extra-gray-light font-thin text-sm underline hover:no-underline transition ${showMinimalContent ? 'hidden md:block': ''}`">
+          View more
         </nuxt-link>
       </div>
     </div>
   </card>
 
-  <card v-else ref="lazy-load-post-preview" :class="`post-preview-card ${getCardStyle}`">
+  <card v-else ref="lazy-load-section-preview" :class="`section-preview-card ${getCardStyle}`">
     <div :class="getImageContainerStyle" style="aspect-ratio: 1 / 1;">
       <div class="bg-gray-500 object-cover w-full h-full" />
     </div>
@@ -38,12 +38,12 @@
 import Card from '@/components/cards/Card.vue';
 
 export default {
-  name: 'post-preview',
+  name: 'section-preview',
   components: {
     Card,
   },
   props: {
-    post: {
+    section: {
       type: Object,
       default: undefined,
       required: false,
@@ -70,21 +70,18 @@ export default {
     }
   },
   computed: {
-    targetLink() {
-      if (this.post.isNestedSection) {
-        return `${this.post.dir}`;
-      }
-      return `${this.post.dir}/${this.post.slug}`;
+    currentRoute() {
+      return this.$route.fullPath.split('?')[0];
     },
     excerpt() {
       return {
-        body: this.post.excerpt
+        body: this.section.excerpt
       };
     },
     getCardStyle() {
       let style = `${this.classes}`;
 
-      if (!this.post)
+      if (!this.section)
         style += ' motion-safe:animate-pulse';
 
       if (this.isReversed)
@@ -106,10 +103,10 @@ export default {
       return `mt-2 ${this.fullWidth ? 'md:w-3/5 md:m-4' : ''}`;
     },
     image() {
-      if (this.post.img.includes('http://') || this.post.img.includes('https://')) {
-        return this.post.img;
+      if (this.section.img.includes('http://') || this.section.img.includes('https://')) {
+        return this.section.img;
       }
-      else return require(`~/content/${this.dir}/${this.post.img}`);
+      else return require(`~/content/${this.dir}/${this.section.img}`);
     }
   }
 };

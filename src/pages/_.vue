@@ -63,7 +63,7 @@ export default {
 
     const organizedContent = {};
 
-    nuxtContent.forEach((item) => {
+    nuxtContent?.forEach((item) => {
       if (!organizedContent[item.dir]) {
         organizedContent[item.dir] = [item];
       }

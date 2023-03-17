@@ -84,7 +84,7 @@
               </div>
             </div>
           </div>
-          <p v-if="metadata.description && !isShowingFilter" class="text-center sm:text-left">{{metadata.description}}</p>
+          <nuxt-content v-if="!isShowingFilter" :document="metadata" class="text-center sm:text-left" />
         </div>
       </card>
       <divider />

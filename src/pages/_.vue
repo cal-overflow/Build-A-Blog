@@ -27,6 +27,8 @@ import HomeView from '@/components/views/Home.vue';
 import PostView from '@/components/views/Post.vue';
 import HandWave from '@/components/misc/HandWave.vue';
 
+const isMetadata = ({ slug, extension }) => slug === "index" && extension === ".md";
+
 export default {
   name: 'wildcard',
   components: {
@@ -37,18 +39,19 @@ export default {
   },
   async asyncData({ $content, params, error }) {
     const lastForwardSlashIndex = params.pathMatch.includes('/') ? params.pathMatch.lastIndexOf('/') : params.pathMatch.length;
+    const fullPath = '/' + (params.pathMatch.endsWith('/') ? params.pathMatch.slice(0, -1) : params.pathMatch);
     let directory = params.pathMatch.slice(0, lastForwardSlashIndex);
     const anchorIndex = params.pathMatch.indexOf('#');
     const lastIndex = anchorIndex === -1 ? params.pathMatch.length : anchorIndex;
     const slug = params.pathMatch.substring(lastForwardSlashIndex + 1, lastIndex + 1);
+    const isNestedSection = params.pathMatch.includes('/');
 
 
     if (!directory) {
       directory = 'home';
     }
 
-    const nuxtContent = await $content(directory)
-      .sortBy('id', 'desc')
+    const nuxtContent = await $content(directory, { deep: true })
       .fetch()
       .catch((err) => {
         error({
@@ -58,10 +61,36 @@ export default {
         });
       });
 
-    const isMetadata = ({ slug, extension }) => slug === "index" && extension === ".md";
-    const metadata = nuxtContent?.find(isMetadata);
-    let content = nuxtContent?.filter((item) => !isMetadata(item));
+    const organizedContent = {};
 
+    nuxtContent?.forEach((item) => {
+      if (!organizedContent[item.dir]) {
+        organizedContent[item.dir] = [item];
+      }
+      else organizedContent[item.dir].push(item);
+    });
+
+
+    const keyToUse = organizedContent[fullPath] ? fullPath : '/' + directory;
+    const sectionData = organizedContent[keyToUse];
+
+    const metadata = sectionData?.find(isMetadata);
+    let content = sectionData?.filter((item) => !isMetadata(item));
+
+    // Add index.md of nested section(s) as content for this section
+    // Only shows sections at depth 1
+    for (const key in organizedContent) {
+      if (key === keyToUse) continue;
+
+      if (key?.includes(keyToUse) && key.split('/').length < 2 + keyToUse.split('/').length) {
+        const sectionMetadata = organizedContent[key].find(isMetadata);
+        if (sectionMetadata) {
+          content.push({ ...sectionMetadata, isNestedSection: true });
+        }
+      }
+    }
+
+    content = content?.sort((a, b) => b.id - a.id);
 
     if (!content) {
       return error({ statusCode: 404, message: 'This resource does not exist' });
@@ -76,7 +105,7 @@ export default {
     //        consider 
     metadata.view = metadata.primaryView;
     
-    if (slug) {
+    if (slug && !keyToUse.endsWith(slug)) {
       content = content?.find((item) => item.slug === slug);
       metadata.view = metadata.secondaryView;
     }

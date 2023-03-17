@@ -57,7 +57,6 @@ See more information on [views](#views) below.
 
 
 ##### Optional
-1. A description for the section
 1. A list of tags for the section
 
 
@@ -70,13 +69,14 @@ primaryView: post-feed # What view to show on /blog page
 secondaryView: post-view # What is shown on pages like /blog/post-1, /blog/post-2, etc.
 
 # Optional
-description: This is the blog section.
 tags:
   - Software Engineering
   - University Course
   - Backend
   - Frontend
 ---
+
+This is the blog section.
 ```
 
 ---

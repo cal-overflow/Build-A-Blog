@@ -45,7 +45,6 @@ describe('PostFeed component', () => {
 
   describe('given there are posts and the metadata prop is given', () => {
     const title = chance.string();
-    const description = chance.string();
     beforeEach(() => {
       fakePosts = chance.n(generatePost, chance.integer({
         min: 1, max: postLimit
@@ -57,7 +56,6 @@ describe('PostFeed component', () => {
         propsData: {
           metadata: {
             title,
-            description,
           },
           content: fakePosts,
           dir: chance.string()
@@ -71,13 +69,10 @@ describe('PostFeed component', () => {
       expect(wrapper.vm).toBeTruthy();
     });
   
-    it('contains the correct text', () => {
+    it('contains the correct title', () => {
       expect(wrapper.text()).toContain(title);
     });
 
-    it('contains the correct text', () => {
-      expect(wrapper.text()).toContain(description);
-    });
   
     it('contains a Divider component', () => {
       expect(wrapper.findComponent(Divider).exists()).toBeTruthy();

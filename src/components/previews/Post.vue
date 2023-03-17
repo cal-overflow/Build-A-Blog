@@ -1,13 +1,13 @@
 <template>
   <card v-if="post" :class="`post-preview-card ${getCardStyle}`">
     <div :class="getImageContainerStyle" style="aspect-ratio: 1 / 1;">
-      <nuxt-link ref="feature-image" :to="`${currentRoute}/${post.slug}`" :class="`w-full h-full motion-safe:animate-blur-fade-in-slow`">
+      <nuxt-link ref="feature-image" :to="targetLink" :class="`w-full h-full motion-safe:animate-blur-fade-in-slow`">
         <img :src="image" class="object-cover w-full h-full" />
       </nuxt-link>
     </div>
 
     <div :class="getPostInfoContainerStyle">
-      <nuxt-link ref="title" :to="`${currentRoute}/${post.slug}`" class="font-bold text-lg hover:underline">
+      <nuxt-link ref="title" :to="targetLink" class="font-bold text-lg hover:underline">
         {{post.title}}
       </nuxt-link>
       <div class="text-xs text-extra-gray-dark dark:text-extra-gray-light">
@@ -15,8 +15,8 @@
       </div>
       <div :class="showMinimalContent ? 'hidden md:block' : ''">
         <nuxt-content ref="excerpt" :document="excerpt" :editable="false" :class="`prose leading-snug prose-a:text-inherit prose-a:no-underline dark:prose-invert transition pointer-events-none prose-code:before:content-none prose-code:after:content-none ${showMinimalContent ? 'minimal-preview-text' : ''}`" />
-        <nuxt-link ref="continue-reading" :to="`${currentRoute}/${post.slug}`" :class="`text-extra-gray-dark dark:text-extra-gray-light font-thin text-sm underline hover:no-underline transition ${showMinimalContent ? 'hidden md:block': ''}`">
-          Continue reading
+        <nuxt-link ref="continue-reading" :to="targetLink" :class="`text-extra-gray-dark dark:text-extra-gray-light font-thin text-sm underline hover:no-underline transition ${showMinimalContent ? 'hidden md:block': ''}`">
+          {{post.isNestedSection ? 'View posts' : 'Continue reading' }}
         </nuxt-link>
       </div>
     </div>
@@ -73,8 +73,11 @@ export default {
     }
   },
   computed: {
-    currentRoute() {
-      return this.$route.fullPath.split('?')[0];
+    targetLink() {
+      if (this.post.isNestedSection) {
+        return `${this.post.dir}`;
+      }
+      return `${this.post.dir}/${this.post.slug}`;
     },
     excerpt() {
       return {

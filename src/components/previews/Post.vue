@@ -13,7 +13,7 @@
       <div :class="showMinimalContent ? 'hidden md:block' : ''">
         <nuxt-content ref="excerpt" :document="excerpt" :editable="false" :class="`prose leading-snug prose-a:text-inherit prose-a:no-underline dark:prose-invert transition pointer-events-none prose-code:before:content-none prose-code:after:content-none ${showMinimalContent ? 'minimal-preview-text' : ''}`" />
         <nuxt-link ref="continue-reading" :to="targetLink" :class="`text-extra-gray-dark dark:text-extra-gray-light font-thin text-sm underline hover:no-underline transition ${showMinimalContent ? 'hidden md:block': ''}`">
-          {{post.isNestedSection ? 'View section' : 'Continue reading' }}
+          {{post.isNestedSection ? 'View posts' : 'Continue reading' }}
         </nuxt-link>
       </div>
     </div>

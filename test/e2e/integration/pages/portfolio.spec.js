@@ -9,8 +9,7 @@ describe('Portfolio page', () => {
     cy.get('#footer-bar').should('be.visible');
   });
 
-  // TODO: Update this test once more than 10 portfolio posts exist (reference blog.spec.js)
-  it('shows < 10 post preview cards', () => {
-    cy.get('#post-feed').find('.post-preview-card').should('have.length.lt', 10);
+  it('shows at least 10 post preview cards', () => {
+    cy.get('#post-feed').find('.post-preview-card').should('have.length.gte', 10);
   });
 });

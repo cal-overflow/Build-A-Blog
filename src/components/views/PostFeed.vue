@@ -3,10 +3,7 @@
     <div class="max-w-screen-lg mx-auto">
       <card>
         <div class="w-full">
-          <div class="w-full flex sm:justify-between text-center sm:text-left">
-            <!-- A spacer button for centering the title -->
-            <div class="block sm:hidden w-6 h-6 opacity-0 cursor-default">
-            </div>
+          <div class="w-full flex sm:justify-between">
             <p class="grow text-3xl font-bold">{{metadata.title}}</p>
             <button class="dark:text-white rounded-lg" @click="isShowingFilter = !isShowingFilter">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -84,7 +81,11 @@
               </div>
             </div>
           </div>
-          <nuxt-content v-if="!isShowingFilter" :document="metadata" class="text-center sm:text-left" />
+          <nuxt-content
+            v-if="!isShowingFilter"
+            :document="metadata"
+            class="prose mx-auto max-w-none prose-img:w-max prose-img:max-h-[100vh] prose-img:mx-auto prose-a:underline hover:prose-a:no-underline prose-a:text-primary-light dark:prose-invert leading-normal dark:prose-a:text-primary-dark transition prose-code:before:content-none prose-code:after:content-none"
+          />
         </div>
       </card>
       <divider />

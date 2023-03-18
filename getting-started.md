@@ -1,59 +1,57 @@
-# Build-A-Blog
+  # Build-A-Blog
 
-A template website for blogging and showcasing work. \
-This document contains the steps necessary to generate your own website using this template.
+  A template website for blogging and showcasing work. \
+  This document contains the steps necessary to generate your own website using this template.
 
-<!-- Table of contents -->
-### Table of contents
-#### Create your own website
-  1. [Generate repository](#1-generate-a-repository)
-  2. [Set environment variables](#2-set-environment-variables)
-  3. [Enter a site description](#3-enter-a-site-description)
-  4. [Create essential content](#4-create-essential-content)
-  5. [Change the color palette](#5-change-the-color-palette-optional) (optional)
-  6. [Write your first blog post](#6-write-your-first-blog-post-optional) (optional)
-#### General
-- [Running locally](#running-locally) 
-  - [Environment setup](#environment-setup)
-  - [Environment variables](#environment-variables)
-  - [Run or generate the website](#run-or-generate-the-website)
-  - [Testing](#testing-)
-- [Fetching new features](#updating-your-website-with-new-features-in-the-template) 
+  <!-- Table of contents -->
+  ### Table of contents
+  #### Create your own website
+    1. [Generate repository](#1-generate-a-repository)
+    2. [Set environment variables](#2-set-environment-variables)
+    3. [Enter a site description](#3-enter-a-site-description)
+    4. [Create essential content](#4-create-essential-content)
+    5. [Change the color palette](#5-change-the-color-palette-optional) (optional)
+    6. [Write your first blog post](#6-write-your-first-blog-post-optional) (optional)
+  #### General
+  - [Running locally](#running-locally) 
+    - [Environment setup](#environment-setup)
+    - [Environment variables](#environment-variables)
+    - [Run or generate the website](#run-or-generate-the-website)
+    - [Testing](#testing-)
+  - [Fetching new features](#updating-your-website-with-new-features-in-the-template) 
 
-## 1. Generate a repository
-Through GitHub you can use a template repository such as this to generate your own repository. \
-Use this repository as a template by following [these steps](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template).
+  ## 1. Generate a repository
+  Through GitHub you can use a template repository such as this to generate your own repository. \
+  Use this repository as a template by following [these steps](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template).
 
-Once your repository has been generated, follow the below steps.
+  Once your repository has been generated, follow the below steps.
 
-## 2. Set environment variables
-Copy the contents below into a file called `.env`  and fill in the values as needed.
+  ## 2. Set environment variables
+  Copy the contents below into a file called `.env`  and fill in the values as needed.
 
-```text[.env]
-NUXT_ENV_SITE_URL=
-NUXT_ENV_FULL_NAME=
-NUXT_ENV_EMAIL_ADDRESS=
-NUXT_ENV_SITE_NAME=
-```
-<details>
-  <summary>Click here to view the purpose of each environment variable</summary>
+  ```text[.env]
+  NUXT_ENV_SITE_URL=
+  NUXT_ENV_FULL_NAME=
+  NUXT_ENV_SITE_NAME=
+  ```
+  <details>
+    <summary>Click here to view the purpose of each environment variable</summary>
 
 
-  | Variable | Description | Required |
-  | ----: | ------ | :--: |
-  | `SITE_URL` | Utilized by the RSS feed generator to let readers know where they can find your site. | ✅ |
-  | `FULL_NAME` | Utilized throughout the site.  | ✅ |
-  | `EMAIL_ADDRESS` | Utilized for contact requests. | ✅ |
-  | `SITE_NAME` | Utilized by the site to change the site title. If left blank, the `FULL_NAME` value is used. |  |
+    | Variable | Description | Required |
+    | ----: | ------ | :--: |
+    | `SITE_URL` | Utilized by the RSS feed generator to let readers know where they can find your site. | ✅ |
+    | `FULL_NAME` | Utilized throughout the site.  | ✅ |
+    | `SITE_NAME` | Utilized by the site to change the site title. If left blank, the `FULL_NAME` value is used. |  |
 
-  Note that each environment variable name is preceded by `NUXT_ENV_` so that it is easily accessible by the nuxt application. Refer to Nuxt's [Environment Variables documentation](https://nuxtjs.org/docs/configuration-glossary/configuration-env/#automatic-injection-of-environment-variables).
-</details>
+    Note that each environment variable name is preceded by `NUXT_ENV_` so that it is easily accessible by the nuxt application. Refer to Nuxt's [Environment Variables documentation](https://nuxtjs.org/docs/configuration-glossary/configuration-env/#automatic-injection-of-environment-variables).
+  </details>
 
-## 3. Enter a site description
+  ## 3. Enter a site description
 
-Find the `head` object within the `nuxt.config.js` file. Change the value of `content` in the object named `description`.
+  Find the `head` object within the `nuxt.config.js` file. Change the value of `content` in the object named `description`.
 
-```diff
+  ```diff
 head: {
   meta: [
     // ...

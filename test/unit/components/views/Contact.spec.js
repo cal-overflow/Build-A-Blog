@@ -1,30 +1,32 @@
 import { mount } from "@vue/test-utils";
 import Chance from "chance";
-import ContactForm from '@/components/forms/ContactForm.vue';
+import Contact from '@/components/views/Contact.vue';
 
 const chance = new Chance();
 
-describe('ContactForm', () => {
-  let wrapper, query;
-  const oldEnv = process.env;
+describe('Contact', () => {
+  let wrapper, query, emailAddress;
 
-  beforeAll(() => {
-    process.env = {
-      ...oldEnv,
-      NUXT_ENV_EMAIL_ADDRESS: chance.email()
-    };
-  });
-
-  afterAll(() => {
-    process.env = oldEnv;
-  });
+  const stubs = {
+    'nuxt-link': true,
+    'nuxt-content': true,
+  };
 
   describe('default (given there are no error query params)', () => {
     beforeEach(() => {
-      wrapper = mount(ContactForm, {
+      emailAddress = chance.url();
+      wrapper = mount(Contact, {
         mocks: {
           $route: { query: [] }
-        }
+        },
+        propsData: {
+          metadata: {
+            viewProperties: {
+              emailAddress,
+            },
+          },
+        },
+        stubs,
       });
     });
 
@@ -48,7 +50,7 @@ describe('ContactForm', () => {
       const message = chance.paragraph();
       const body = `${message}\n\nFrom: ${name}`;
 
-      const expectedLink = `mailto:${process.env.NUXT_ENV_EMAIL_ADDRESS}?subject=${encodeURIComponent('Website Contact Form')}&body=${encodeURIComponent(body)}`;
+      const expectedLink = `mailto:${emailAddress}?subject=${encodeURIComponent('Website Contact Form')}&body=${encodeURIComponent(body)}`;
 
       wrapper.find('[name="name"]').setValue(name);
       wrapper.find('[name="message"]').setValue(message);
@@ -60,16 +62,25 @@ describe('ContactForm', () => {
 
   describe('given there are query params entailing an error', () => {
     beforeEach(() => {
+      emailAddress = chance.url();
       query = {
         statusCode: chance.integer({ min: 400, max: 599 }),
         path: chance.string(),
         detail: chance.sentence(),
       };
 
-      wrapper = mount(ContactForm, {
+      wrapper = mount(Contact, {
         mocks: {
           $route: { query } 
-        }
+        },
+        propsData: {
+          metadata: {
+            viewProperties: {
+              emailAddress,
+            },
+          },
+        },
+        stubs,
       });
     });
 
@@ -93,7 +104,7 @@ describe('ContactForm', () => {
       const name = chance.string();
       const extraFeedback = chance.paragraph();
       const body = `Error information:\nStatus Code: ${query.statusCode}\nPath: ${query.path}\nDetail: ${query.detail}\n\nFeedback:\n${extraFeedback}\n\nFeedback provided by: ${name}`;
-      const expectedLink = `mailto:${process.env.NUXT_ENV_EMAIL_ADDRESS}?subject=${encodeURIComponent('Website Contact Form')}&body=${encodeURIComponent(body)}`;
+      const expectedLink = `mailto:${emailAddress}?subject=${encodeURIComponent('Website Contact Form')}&body=${encodeURIComponent(body)}`;
 
       wrapper.find('[name="name"]').setValue(name);
       wrapper.find('[name="message"]').setValue(extraFeedback);
@@ -105,14 +116,23 @@ describe('ContactForm', () => {
 
   describe('given there are query params for a pre-defined topic', () => {
     beforeEach(() => {
+      emailAddress = chance.url();
       query = {
         topic: chance.string()
       };
 
-      wrapper = mount(ContactForm, {
+      wrapper = mount(Contact, {
         mocks: {
           $route: { query } 
-        }
+        },
+        propsData: {
+          metadata: {
+            viewProperties: {
+              emailAddress,
+            },
+          },
+        },
+        stubs
       });
     });
     it('renders the topic label and value correctly', () => {
@@ -125,7 +145,7 @@ describe('ContactForm', () => {
       const message = chance.paragraph();
       const body = `${message}\n\nFrom: ${name}`;
 
-      const expectedLink = `mailto:${process.env.NUXT_ENV_EMAIL_ADDRESS}?subject=${encodeURIComponent(query.topic)}&body=${encodeURIComponent(body)}`;
+      const expectedLink = `mailto:${emailAddress}?subject=${encodeURIComponent(query.topic)}&body=${encodeURIComponent(body)}`;
 
       wrapper.find('[name="name"]').setValue(name);
       wrapper.find('[name="message"]').setValue(message);

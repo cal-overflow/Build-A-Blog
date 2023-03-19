@@ -3,6 +3,7 @@
     <nav-bar :content="navigation.navbar" :current-page="currentPage" />
 
     <home-view v-if="metadata.view === 'home-view'" :dir="directory" :content="content" :metadata="metadata" />
+    <contact-view v-if="metadata.view === 'contact-view'" :dir="directory" :content="content" :metadata="metadata" />
     <post-view v-if="metadata.view === 'post-view'" :dir="directory" :content="content" />
     <post-feed
       v-if="metadata.view === 'post-feed'"
@@ -24,6 +25,7 @@
 // must import components that are not directly used so that they are accessible within nuxt/content
 import Divider from '@/components/misc/Divider.vue';
 import HomeView from '@/components/views/Home.vue';
+import ContactView from '@/components/views/Contact.vue';
 import PostView from '@/components/views/Post.vue';
 import HandWave from '@/components/misc/HandWave.vue';
 
@@ -34,6 +36,7 @@ export default {
   components: {
     Divider,
     HomeView,
+    ContactView,
     PostView,
     HandWave,
   },

@@ -109,10 +109,26 @@ export default {
       return `mt-2 ${this.fullWidth ? 'md:w-3/5 md:m-4' : ''}`;
     },
     image() {
-      if (this.post.img.includes('http://') || this.post.img.includes('https://')) {
-        return this.post.img;
+      // Loads the feature image for a post. If the post doesn't have an image, uses a placeholder.
+      let img;
+      if (this.post.img?.includes('http://') || this.post.img?.includes('https://')) {
+        img = this.post.img;
       }
-      else return require(`~/content/${this.dir}/${this.post.img}`);
+      else {
+        try {
+          img = require(`~/content/${this.dir}/${this.post.img}`);
+        }
+        catch {
+          try {
+            img = require('~/content/placeholder.png');
+          }
+          catch {
+            // Use this default placeholder since one is not defined in src/content
+            img = 'https://cal-overflow.dev/misc/placeholder.png';
+          }
+        }
+      }
+      return img;
     }
   }
 };

@@ -130,7 +130,6 @@ export default {
         img = require('~/content/placeholder.png');
       }
       catch {
-        // Use this default placeholder since one is not defined in src/content
         img = 'https://cal-overflow.dev/misc/placeholder.png';
       }
 

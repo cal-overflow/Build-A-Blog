@@ -24,6 +24,7 @@ View the source code for the website [here](https://github.com/cal-overflow/site
   - [Views](#views)
   - [Posts](#posts-)
   - [Tags](#tags)
+- [Additional Features](#additional-features)
 
 ## Getting Started
 **Make your own website 👨‍💻** \
@@ -138,4 +139,13 @@ Feature images are placed within the same folder as the blog post (i.e., `src/co
 Post tags allow you to group posts within the same section together based on similarities such as topic. Post tags are defined in the sections `index.md` file.
 
 Refer to the [sections](#sections) documentation above for more information on defining tags within a section. See the documentation for [posts](#posts-) to learn how to reference tags within a post.
+
+
+---
+
+## Additional Features
+#### Placeholder images
+By default, when a post is created without a corresponding feature image, [this placeholder](https://github.com/cal-overflow/site/blob/main/src/static/misc/placeholder.png) is used.
+
+Customize the placeholder image by adding a `src/content/placeholder.png` image.
 

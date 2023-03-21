@@ -109,10 +109,31 @@ export default {
       return `mt-2 ${this.fullWidth ? 'md:w-3/5 md:m-4' : ''}`;
     },
     image() {
-      if (this.post.img.includes('http://') || this.post.img.includes('https://')) {
+      // Loads the feature image for a post. If the post doesn't have an image, uses a placeholder.
+      if (this.post.img?.includes('http://') || this.post.img?.includes('https://')) {
         return this.post.img;
       }
-      else return require(`~/content/${this.dir}/${this.post.img}`);
+      let img;
+
+      // Try loading the image from the same path in `src/content`
+      try {
+        const currentPathFormatted = this.$route.path.replace(/^\/|\/$/g, '');
+        img = require(`~/content/${currentPathFormatted}/${this.post.img}`);
+      }
+      catch {};
+
+      if (img) return img;
+
+
+      // Use a placeholder image
+      try {
+        img = require('~/content/placeholder.png');
+      }
+      catch {
+        img = 'https://cal-overflow.dev/misc/placeholder.png';
+      }
+
+      return img;
     }
   }
 };

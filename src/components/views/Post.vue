@@ -73,11 +73,35 @@ export default {
   }),
   computed: {
     image() {
-      if (!this.content) return undefined;
-      if (this.content.img.includes('http://') || this.content.img.includes('https://')) {
+      const fallbackPlaceholder = 'https://cal-overflow.dev/misc/placeholder.png';
+
+      if (!this.content) {
+        return fallbackPlaceholder;
+      }
+
+      // Loads the feature image for a post. If the post doesn't have an image, uses a placeholder.
+      if (this.content.img?.includes('http://') || this.content.img?.includes('https://')) {
         return this.content.img;
       }
-      else return require(`~/content/${this.dir}/${this.content.img}`);
+      let img;
+
+      try {
+        img = require(`~/content/${this.dir}/${this.content.img}`);
+      }
+      catch {};
+
+      if (img) return img;
+
+
+      // Use a placeholder image
+      try {
+        img = require('~/content/placeholder.png');
+      }
+      catch {
+        img = fallbackPlaceholder;
+      }
+
+      return img;
     }
   }
 };

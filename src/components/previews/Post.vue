@@ -116,15 +116,21 @@ export default {
       }
       else {
         try {
-          img = require(`~/content/${this.dir}/${this.post.img}`);
+          img = require(`~/content/${this.dir}${this.post.img}`);
         }
         catch {
           try {
-            img = require('~/content/placeholder.png');
+            const currentPathFormatted = this.$route.path.replace(/^\/|\/$/g, '');
+            img = require(`~/content/${currentPathFormatted}/${this.post.img}`);
           }
           catch {
-            // Use this default placeholder since one is not defined in src/content
-            img = 'https://cal-overflow.dev/misc/placeholder.png';
+            try {
+              img = require('~/content/placeholder.png');
+            }
+            catch {
+              // Use this default placeholder since one is not defined in src/content
+              img = 'https://cal-overflow.dev/misc/placeholder.png';
+            }
           }
         }
       }

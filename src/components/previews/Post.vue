@@ -110,30 +110,30 @@ export default {
     },
     image() {
       // Loads the feature image for a post. If the post doesn't have an image, uses a placeholder.
-      let img;
       if (this.post.img?.includes('http://') || this.post.img?.includes('https://')) {
-        img = this.post.img;
+        return this.post.img;
       }
-      else {
-        try {
-          img = require(`~/content/${this.dir}${this.post.img}`);
-        }
-        catch {
-          try {
-            const currentPathFormatted = this.$route.path.replace(/^\/|\/$/g, '');
-            img = require(`~/content/${currentPathFormatted}/${this.post.img}`);
-          }
-          catch {
-            try {
-              img = require('~/content/placeholder.png');
-            }
-            catch {
-              // Use this default placeholder since one is not defined in src/content
-              img = 'https://cal-overflow.dev/misc/placeholder.png';
-            }
-          }
-        }
+      let img;
+
+      // Try loading the image from the same path in `src/content`
+      try {
+        const currentPathFormatted = this.$route.path.replace(/^\/|\/$/g, '');
+        img = require(`~/content/${currentPathFormatted}/${this.post.img}`);
       }
+      catch {};
+
+      if (img) return img;
+
+
+      // Use a placeholder image
+      try {
+        img = require('~/content/placeholder.png');
+      }
+      catch {
+        // Use this default placeholder since one is not defined in src/content
+        img = 'https://cal-overflow.dev/misc/placeholder.png';
+      }
+
       return img;
     }
   }

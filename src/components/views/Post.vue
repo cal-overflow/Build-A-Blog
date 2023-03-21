@@ -85,10 +85,8 @@ export default {
       }
       let img;
 
-      // Try loading the image from the same path in `src/content`
       try {
-        const currentPathFormatted = this.$route.path.replace(/^\/|\/$/g, '');
-        img = require(`~/content/${currentPathFormatted}/${this.content.img}`);
+        img = require(`~/content/${this.dir}/${this.content.img}`);
       }
       catch {};
 

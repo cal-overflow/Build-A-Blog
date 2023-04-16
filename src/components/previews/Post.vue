@@ -2,7 +2,7 @@
   <card v-if="post" :class="`post-preview-card ${getCardStyle}`">
     <div :class="getImageContainerStyle" style="aspect-ratio: 1 / 1;">
       <nuxt-link ref="feature-image" :to="targetLink" :class="`w-full h-full motion-safe:animate-blur-fade-in-slow`">
-        <img :src="image" class="object-cover w-full h-full" />
+        <img :src="image" :class="`${imageStyling}`" />
       </nuxt-link>
     </div>
 
@@ -66,6 +66,10 @@ export default {
     showMinimalContent: {
       type: Boolean,
       default: false
+    },
+    sectionMetadata: {
+      type: Object,
+      required: true
     },
     classes: {
       type: String,
@@ -134,7 +138,27 @@ export default {
       }
 
       return img;
-    }
+    },
+    imageStyling() {
+      const classes = 'w-full h-full';
+      
+      // default values
+      let objectFit = 'cover';
+      let rounding = 'none';
+
+      const imageStyling = this.sectionMetadata?.viewProperties?.imageStyling;
+      
+      if (imageStyling) {
+        if (imageStyling.objectFit) {
+          objectFit = imageStyling.objectFit;
+        }
+        if (imageStyling.rounding) {
+          rounding = imageStyling.rounding;
+        }
+      }
+
+      return `${classes} object-${objectFit} rounded-${rounding}`;
+    },
   }
 };
 </script>

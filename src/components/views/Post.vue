@@ -22,7 +22,7 @@
         </div>
 
         <div v-if="!isEditing">
-          <img id="post-feature-image" :src="image" class="object-contain w-full md:w-3/4 3xl:w-3/4 mx-auto lg:mx-auto max-h-screen" />
+          <img id="post-feature-image" :src="image" :class="featureImageStyling" />
 
           <div v-if="isDevMode">
             <divider />
@@ -126,6 +126,26 @@ export default {
 
       return img;
     },
+    featureImageStyling() {
+      const classes = 'w-full md:w-3/4 3xl:w-3/4 mx-auto lg:mx-auto max-h-screen';
+      
+      // default values
+      let objectFit = 'contain';
+      let rounding = 'none';
+
+      const featureImageStyling = this.content.viewProperties?.featureImageStyling;
+
+      if (featureImageStyling) {
+        if (featureImageStyling.objectFit) {
+          objectFit = featureImageStyling.objectFit;
+        }
+        if (featureImageStyling.rounding) {
+          rounding = featureImageStyling.rounding;
+        }
+      }
+
+      return `${classes} object-${objectFit} rounded-${rounding}`;
+    }
   },
   methods: {
     sharePost() {

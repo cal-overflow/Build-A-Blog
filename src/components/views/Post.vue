@@ -43,6 +43,28 @@
         />
       </div>
     </card>
+    <card id="post-interaction-card" class="m-0 md:m-6 p-4 flex flex-wrap">
+      <div class="w-full flex justify-between">
+        <nuxt-link :to="`/${dir}`">
+          <button
+            class="p-2 hover:bg-extra-gray-light dark:hover:bg-extra-gray-dark rounded-sm transition duration-250">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+            </svg>
+            All posts
+          </button>
+        </nuxt-link>
+        <button
+          @mouseup="sharePost"
+          :disabled="isPostUrlCopied"
+          class="p-2 hover:bg-extra-gray-light dark:hover:bg-extra-gray-dark rounded-sm transition duration-250">
+          {{ isPostUrlCopied ? 'URL Copied' : 'Share' }}
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+          </svg>
+        </button>
+      </div>
+    </card>
   </div>
 </template>
 
@@ -69,7 +91,8 @@ export default {
   },
   data: () => ({
     isEditing: false,
-    isDevMode: process.env.NODE_ENV === 'development'
+    isDevMode: process.env.NODE_ENV === 'development',
+    isPostUrlCopied: false,
   }),
   computed: {
     image() {
@@ -122,6 +145,16 @@ export default {
       }
 
       return `${classes} object-${objectFit} rounded-${rounding}`;
+    }
+  },
+  methods: {
+    sharePost() {
+      navigator.clipboard.writeText(window.location.href);
+      this.isPostUrlCopied = true;
+
+      setTimeout(() => {
+        this.isPostUrlCopied = false;
+      }, 10000);
     },
   }
 };

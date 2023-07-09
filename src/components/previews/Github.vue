@@ -205,7 +205,6 @@ export default {
       this.filteredRepositories = this.repositories.filter(({ language }) => visibleLanguages.includes(language));
     },
     sort(sortingStrategy) {
-      console.log('sorting');
       let isInvalidSort = false;
       switch (sortingStrategy.key) {
         case 'descending-created':

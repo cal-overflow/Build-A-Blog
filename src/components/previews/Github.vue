@@ -167,13 +167,7 @@ export default {
     selectedSortingStrategy: 'descending-popularity',
   }),
   fetch() {
-    // TODO - make this use the user's github name!!!!!!!!!!!!!!!! (NOT HARDCODED AS MINE LOL)
-    fetch(`https://api.github.com/users/${this.user}/repos`, {
-        method: "GET",
-        headers: {
-          // Authorization: `Bearer ${process.env.NUXT_ENV_API_TOKEN}`
-        },
-      })
+    fetch(`https://api.github.com/users/${this.user}/repos`)
     .then(async (res) => {
       if (!res.ok) {
         this.isUnableToLoad = true;

@@ -2,7 +2,7 @@
   <div class="max-w-screen-lg mx-auto">
     <card id="introduction-card" class="md:pt-3">
       <div class="max-w-sm md:w-2/5 lg:w-1/3 mx-auto md:my-auto">
-        <img :src="image" class="rounded-full motion-safe:animate-blur-fade-in-fast transition" alt="Headshot" />
+        <img :src="image" :class="headshotImageStyling" alt="Headshot" />
       </div>
       <div class="w-full md:w-3/5 lg:w-2/3 m-4 xs:mb-12 md:mb-0">
         <nuxt-content
@@ -49,13 +49,58 @@ export default {
   },
   computed: {
     image() {
-      const imageUri = this.metadata.viewProperties.headshotImage;
+      const fallbackPlaceholder = 'https://cal-overflow.dev/misc/placeholder.png';
 
-      if (imageUri.includes('http://') || imageUri.includes('https://')) {
+      if (!this.metadata.viewProperties?.headshot?.image) {
+        return fallbackPlaceholder;
+      }
+
+      // Loads the headshot image. If the post doesn't have an image, uses a placeholder.
+      const imageUri = this.metadata.viewProperties?.headshot?.image;
+
+      if (imageUri?.includes('http://') || imageUri?.includes('https://')) {
         return imageUri;
       }
-      else return require(`~/content/${this.dir}/${imageUri}`);
-    }
+      let img;
+
+      try {
+        img = require(`~/content/${this.dir}/${imageUri}`);
+      }
+      catch {};
+
+      if (img) return img;
+
+
+      // Use a placeholder image
+      try {
+        img = require('~/content/placeholder.png');
+      }
+      catch {
+        img = fallbackPlaceholder;
+      }
+
+      return img;
+    },
+    headshotImageStyling() {
+      const classes = 'motion-safe:animate-blur-fade-in-fast transition';
+      
+      // default values
+      let objectFit = 'cover';
+      let rounding = 'none';
+
+      const headshotImageStyling = this.metadata.viewProperties?.headshot?.styling;
+
+      if (headshotImageStyling) {
+        if (headshotImageStyling.objectFit) {
+          objectFit = headshotImageStyling.objectFit;
+        }
+        if (headshotImageStyling.rounding) {
+          rounding = headshotImageStyling.rounding;
+        }
+      }
+
+      return `${classes} object-${objectFit} rounded-${rounding}`;
+    },
   }
 };
 </script>

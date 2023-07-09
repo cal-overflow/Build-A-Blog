@@ -22,7 +22,7 @@
         </div>
 
         <div v-if="!isEditing">
-          <img id="post-feature-image" :src="image" class="object-contain w-full md:w-3/4 3xl:w-3/4 mx-auto lg:mx-auto max-h-screen" />
+          <img id="post-feature-image" :src="image" :class="featureImageStyling" />
 
           <div v-if="isDevMode">
             <divider />
@@ -41,6 +41,28 @@
           @startEdit="isEditing = true" 
           @endEdit="isEditing = false" 
         />
+      </div>
+    </card>
+    <card id="post-interaction-card" class="m-0 md:m-6 p-4 flex flex-wrap">
+      <div class="w-full flex justify-between">
+        <nuxt-link :to="`/${dir}`">
+          <button
+            class="p-2 hover:bg-extra-gray-light dark:hover:bg-extra-gray-dark rounded-sm transition duration-250">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+            </svg>
+            All posts
+          </button>
+        </nuxt-link>
+        <button
+          @mouseup="sharePost"
+          :disabled="isPostUrlCopied"
+          class="p-2 hover:bg-extra-gray-light dark:hover:bg-extra-gray-dark rounded-sm transition duration-250">
+          {{ isPostUrlCopied ? 'URL Copied' : 'Share' }}
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+          </svg>
+        </button>
       </div>
     </card>
   </div>
@@ -69,7 +91,8 @@ export default {
   },
   data: () => ({
     isEditing: false,
-    isDevMode: process.env.NODE_ENV === 'development'
+    isDevMode: process.env.NODE_ENV === 'development',
+    isPostUrlCopied: false,
   }),
   computed: {
     image() {
@@ -102,7 +125,37 @@ export default {
       }
 
       return img;
+    },
+    featureImageStyling() {
+      const classes = 'w-full md:w-3/4 3xl:w-3/4 mx-auto lg:mx-auto max-h-screen';
+      
+      // default values
+      let objectFit = 'contain';
+      let rounding = 'none';
+
+      const featureImageStyling = this.content.viewProperties?.featureImageStyling;
+
+      if (featureImageStyling) {
+        if (featureImageStyling.objectFit) {
+          objectFit = featureImageStyling.objectFit;
+        }
+        if (featureImageStyling.rounding) {
+          rounding = featureImageStyling.rounding;
+        }
+      }
+
+      return `${classes} object-${objectFit} rounded-${rounding}`;
     }
+  },
+  methods: {
+    sharePost() {
+      navigator.clipboard.writeText(window.location.href);
+      this.isPostUrlCopied = true;
+
+      setTimeout(() => {
+        this.isPostUrlCopied = false;
+      }, 10000);
+    },
   }
 };
 </script>

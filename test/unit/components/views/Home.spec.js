@@ -14,8 +14,10 @@ describe('Home view component', () => {
       primaryView: 'home-view',
       secondaryView: 'none',
       viewProperties: {
-        headshotImage: "https://picsum.photos/400"
-      }
+        headshot: {
+          image: "https://picsum.photos/400"
+        },
+      },
     };
 
     dir = `/${chance.string({ pool: 'abc' })}`;
@@ -44,7 +46,7 @@ describe('Home view component', () => {
   it('contains an image with the correct source', () => {
     const image = wrapper.find('img[alt="Headshot"]');
     expect(image.exists()).toBeTruthy();
-    expect(image.attributes().src).toContain(metadata.viewProperties.headshotImage);
+    expect(image.attributes().src).toContain(metadata.viewProperties.headshot.image);
   });
 
   it('contains two ContentCard components', () => {

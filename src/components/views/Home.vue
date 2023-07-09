@@ -23,7 +23,7 @@
 
     <div v-if="metadata.viewProperties.githubPreview">
       <divider />
-      <github-preview :user="metadata.viewProperties.githubPreview.user" :description="metadata.viewProperties.githubPreview.description" />
+      <github-preview :user="metadata.viewProperties.githubPreview.user" :description="metadata.viewProperties.githubPreview.description" class="motion-safe:animate-fade-in-slow" />
     </div>
   </div>
 </template>

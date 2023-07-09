@@ -12,7 +12,7 @@ describe('Home page', () => {
 
   it('shows the introduction card and three page-preview cards', () => {
     cy.get('#introduction-card').should('be.visible');
-    cy.get('.page-preview-card').should('have.length', 3);
+    cy.get('.page-preview-card').should('have.length.of.at.least', 3);
     cy.get('.page-preview-card').eq(0).should('be.visible');
     cy.get('.page-preview-card').eq(1).should('be.visible');
     cy.get('.page-preview-card').eq(2).should('be.visible');

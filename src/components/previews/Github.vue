@@ -152,7 +152,7 @@ export default {
         key: 'descending-popularity',
       },
       {
-        title: 'Creation date',
+        title: 'Last created',
         key: 'descending-created',
       },
       {

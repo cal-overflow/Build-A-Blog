@@ -20,18 +20,25 @@
         :class="`motion-safe:animate-fade-in ${i == content.length - 1 && i % 2 == 0 ? 'md:col-span-2' : '' }`"
       />
     </div>
+
+    <div v-if="metadata.viewProperties.githubPreview">
+      <divider />
+      <github-preview :user="metadata.viewProperties.githubPreview.user" :description="metadata.viewProperties.githubPreview.description" class="motion-safe:animate-fade-in-slow" />
+    </div>
   </div>
 </template>
 
 <script>
 import Card from '@/components/cards/Card.vue';
 import ContentCard from '@/components/cards/ContentCard.vue';
+import GithubPreview from '@/components/previews/Github.vue';
 
 export default {
   name: 'home-view',
   components: {
     Card,
     ContentCard,
+    GithubPreview,
   },
   props: {
     metadata: {

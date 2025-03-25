@@ -84,7 +84,7 @@
           <nuxt-content
             v-if="!isShowingFilter"
             :document="metadata"
-            class="prose mx-auto max-w-none prose-img:w-max prose-img:max-h-[100vh] prose-img:mx-auto prose-a:underline hover:prose-a:no-underline prose-a:text-primary-light dark:prose-invert leading-normal dark:prose-a:text-primary-dark transition prose-code:before:content-none prose-code:after:content-none"
+            class="prose mx-auto max-w-none prose-img:w-max prose-img:max-h-[100vh] prose-img:mx-auto prose-a:underline hover:prose-a:no-underline prose-a:text-primary-light dark:prose-invert leading-normal dark:prose-a:text-primary-dark transition prose-code:before:content-none prose-code:after:content-none prose-details prose-details-light dark:prose-details-dark prose-blockquote-light dark:prose-blockquote-dark"
           />
         </div>
       </card>
@@ -141,7 +141,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-auto mx-auto">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 00-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
             </svg>
-            Subscribe to be notified when a new post is written in this section.
+            Subscribe via RSS to be notified when a new post is written in this section.
           </p>
         </card>
       </div>

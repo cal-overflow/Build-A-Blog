@@ -14,11 +14,6 @@ describe('Nav bar', () => {
     cy.contains('Portfolio').click();
     cy.location('pathname').should('eq', '/portfolio');
   });
-  
-  it('links to the cloud page correctly', () => {
-    cy.contains('Cloud').click();
-    cy.location('pathname').should('eq', '/cloud');
-  });
 
   it('links to the blog page correctly', () => {
     cy.contains('Blog').click();

@@ -10,8 +10,8 @@
               <span v-if="content.tags.length">
                 <span class="hidden md:inline">/</span>
                 <br class="md:hidden" />
-                <span 
-                  v-for="(tag, i) in content.tags" 
+                <span
+                  v-for="(tag, i) in content.tags"
                   :key="`tags-${tag}`"
                 >
                   <nuxt-link :to="`/${dir}?tag_filter=${encodeURIComponent(tag)}`" class="hover:underline">{{ tag }}</nuxt-link>{{ (i + 1) === content.tags.length ? '' : ', ' }}
@@ -34,12 +34,12 @@
             <divider />
           </div>
         </div>
-        <nuxt-content 
-          id="post-content" 
-          :document="content" 
-          class="prose m-4 mx-auto max-w-none prose-img:w-max prose-img:max-h-[100vh] prose-img:mx-auto prose-a:underline hover:prose-a:no-underline prose-a:text-primary-light dark:prose-invert dark:prose-a:text-primary-dark transition prose-code:before:content-none prose-code:after:content-none"
-          @startEdit="isEditing = true" 
-          @endEdit="isEditing = false" 
+        <nuxt-content
+          id="post-content"
+          :document="content"
+          class="prose m-4 mx-auto max-w-none prose-img:w-max prose-img:max-h-[100vh] prose-img:mx-auto prose-a:underline hover:prose-a:no-underline prose-a:text-primary-light dark:prose-invert dark:prose-a:text-primary-dark transition prose-code:before:content-none prose-code:after:content-none prose-details prose-details-light dark:prose-details-dark prose-blockquote-light dark:prose-blockquote-dark"
+          @startEdit="isEditing = true"
+          @endEdit="isEditing = false"
         />
       </div>
     </card>
@@ -128,7 +128,7 @@ export default {
     },
     featureImageStyling() {
       const classes = 'w-full md:w-3/4 3xl:w-3/4 mx-auto lg:mx-auto max-h-screen';
-      
+
       // default values
       let objectFit = 'contain';
       let rounding = 'none';

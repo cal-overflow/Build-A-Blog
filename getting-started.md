@@ -114,7 +114,7 @@ Placeholders of the following have been provided for simplicity. Complete the fo
 Change the color scheme of the website by editing `color` object within the `tailwind.config.js` file in the `src/` directory. You can find a small description for some of the properties below.
 
 ```js
-colors: {
+cost COLORS = {
   'footer': '#292929',        // Background color of footer
   'menu-light': '#E0E0E1',    // Background color of menu bar in light mode
   'menu-dark': '#1F1F1F',     // Background color of menu bar in dark mode

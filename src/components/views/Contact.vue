@@ -5,7 +5,7 @@
           <p class="text-3xl font-bold">{{metadata.title}}</p>
           <nuxt-content
             :document="metadata"
-            class="prose mx-auto max-w-none prose-img:w-max prose-img:max-h-[100vh] prose-img:mx-auto prose-a:underline hover:prose-a:no-underline prose-a:text-primary-light dark:prose-invert leading-normal dark:prose-a:text-primary-dark transition prose-code:before:content-none prose-code:after:content-none"
+            class="prose mx-auto max-w-none prose-img:w-max prose-img:max-h-[100vh] prose-img:mx-auto prose-a:underline hover:prose-a:no-underline prose-a:text-primary-light dark:prose-invert leading-normal dark:prose-a:text-primary-dark transition prose-code:before:content-none prose-code:after:content-none prose-details prose-details-light dark:prose-details-dark prose-blockquote-light dark:prose-blockquote-dark"
           />
           <p v-if="!metadata.viewProperties || !metadata.viewProperties.emailAddress" class="font-bold text-primary-light dark:text-primary-dark">
             The email address has not been correctly configured. Contact efforts will not work properly.
@@ -15,7 +15,7 @@
 
         <divider />
 
-      
+
         <card id="contact-form-card">
           <div v-if="formSubmitted" class="flex min-h-80 motion-safe:animate-fade-in">
             <div class="m-auto">
@@ -169,7 +169,7 @@ export default {
       else {
         body = `${this.message || 'No message provided'}\n\nFrom: ${this.name || 'anonymous'}`;
       }
-      
+
       return `mailto:${this.metadata.viewProperties.emailAddress}?subject=${encodeURIComponent(this.topic || 'Website Contact Form')}&body=${encodeURIComponent(body)}`;
     },
   },

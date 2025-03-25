@@ -2,7 +2,7 @@
   <card class="grow page-preview-card flex m-0 col-span-1 flex-col justify-between text-center w-full">
     <nuxt-content
       :document="content"
-      class="w-full max-w-none prose prose:dark-invert dark:prose-invert leading-normal prose-code:before:content-none prose-code:after:content-none transition"
+      class="w-full max-w-none prose prose:dark-invert dark:prose-invert leading-normal prose-code:before:content-none prose-code:after:content-none transition prose-details prose-details-light dark:prose-details-dark prose-blockquote-light dark:prose-blockquote-dark"
     />
   </card>
 </template>

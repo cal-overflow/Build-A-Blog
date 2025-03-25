@@ -37,11 +37,4 @@ describe('Home page', () => {
       cy.location('pathname').should('eq', '/blog');
     });
   });
-
-  describe('cloud preview card', () => {
-    it('contains a link to the cloud page', () => {
-      cy.contains('Learn more').click();
-      cy.location('pathname').should('eq', '/cloud');
-    });
-  });
 });

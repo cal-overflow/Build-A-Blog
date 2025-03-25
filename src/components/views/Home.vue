@@ -7,7 +7,7 @@
       <div class="w-full md:w-3/5 lg:w-2/3 m-4 xs:mb-12 md:mb-0">
         <nuxt-content
           :document="metadata"
-          class="prose prose-a:underline hover:prose-a:no-underline prose-a:text-primary-light dark:prose-invert dark:prose-a:text-primary-dark leading-normal prose-code:before:content-none prose-code:after:content-none transition prose-details prose-details-light dark:prose-details-dark"
+          class="prose prose-a:underline hover:prose-a:no-underline prose-a:text-primary-light dark:prose-invert dark:prose-a:text-primary-dark leading-normal prose-code:before:content-none prose-code:after:content-none transition prose-details prose-details-light dark:prose-details-dark prose-blockquote-light dark:prose-blockquote-dark"
         />
       </div>
     </card>

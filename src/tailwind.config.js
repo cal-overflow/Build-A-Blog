@@ -75,7 +75,32 @@ module.exports = {
         'rotate-upside-down': 'rotate-upside-down 0.25s ease-in-out'
       },
       typography: {
-        DEFAULT: {},
+        DEFAULT: {
+          css: {
+            'blockquote p:first-of-type::before': false,
+            'blockquote p:first-of-type::after': false,
+            blockquote: {
+              color: "inherit",
+              fontStyle: 'normal',
+              marginLeft: "1rem",
+              paddingLeft: "1rem",
+            }
+          }
+        },
+        'blockquote-light': {
+          css: {
+            blockquote: {
+              borderLeftColor: COLORS["extra-gray-light"],
+            }
+          }
+        },
+        'blockquote-dark': {
+          css: {
+            blockquote: {
+              borderLeftColor: COLORS["extra-gray-dark"],
+            }
+          }
+        },
         details: {
           css: {
             details: {

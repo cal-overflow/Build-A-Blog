@@ -84,7 +84,7 @@
           <nuxt-content
             v-if="!isShowingFilter"
             :document="metadata"
-            class="prose mx-auto max-w-none prose-img:w-max prose-img:max-h-[100vh] prose-img:mx-auto prose-a:underline hover:prose-a:no-underline prose-a:text-primary-light dark:prose-invert leading-normal dark:prose-a:text-primary-dark transition prose-code:before:content-none prose-code:after:content-none"
+            class="prose mx-auto max-w-none prose-img:w-max prose-img:max-h-[100vh] prose-img:mx-auto prose-a:underline hover:prose-a:no-underline prose-a:text-primary-light dark:prose-invert leading-normal dark:prose-a:text-primary-dark transition prose-code:before:content-none prose-code:after:content-none prose-details prose-details-light dark:prose-details-dark"
           />
         </div>
       </card>
